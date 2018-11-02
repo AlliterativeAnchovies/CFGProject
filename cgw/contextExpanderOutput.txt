@@ -110,12 +110,12 @@
 	6   QuestionClause1_Transitive      wrap_does DoesConstruction_Transitive
 	6   QuestionClause1_Intransitive      wrap_does DoesConstruction_Intransitive
 	1   DoConstruction_Transitive       NounPhrase_1st_Sng_Subj VerbPhrase_inf_Transitive
-	1   DoConstruction_Transitive       NounPhrase_1st_Plr_Subj VerbPhrase_inf_Transitive
 	1   DoConstruction_Intransitive       NounPhrase_1st_Sng_Subj VerbPhrase_inf_Intransitive
+	1   DoConstruction_Transitive       NounPhrase_1st_Plr_Subj VerbPhrase_inf_Transitive
 	1   DoConstruction_Intransitive       NounPhrase_1st_Plr_Subj VerbPhrase_inf_Intransitive
 	1   DoConstruction_Transitive       NounPhrase_2nd_Sng_Subj VerbPhrase_inf_Transitive
-	1   DoConstruction_Transitive       NounPhrase_2nd_Plr_Subj VerbPhrase_inf_Transitive
 	1   DoConstruction_Intransitive       NounPhrase_2nd_Sng_Subj VerbPhrase_inf_Intransitive
+	1   DoConstruction_Transitive       NounPhrase_2nd_Plr_Subj VerbPhrase_inf_Transitive
 	1   DoConstruction_Intransitive       NounPhrase_2nd_Plr_Subj VerbPhrase_inf_Intransitive
 	1   DoConstruction_Transitive       NounPhrase_3rd_Plr_Subj VerbPhrase_inf_Transitive
 	1   DoConstruction_Intransitive       NounPhrase_3rd_Plr_Subj VerbPhrase_inf_Intransitive
@@ -137,10 +137,10 @@
 	1   InversionAre_Transitive          NounPhrase_2nd_Sng_Subj GerundPhrase_Transitive
 	1   InversionAre_Intransitive          NounPhrase_2nd_Sng_Subj GerundPhrase_Intransitive
 	1   InversionAre_Transitive          NounPhrase_1st_Plr_Subj GerundPhrase_Transitive
-	1   InversionAre_Transitive          NounPhrase_2nd_Plr_Subj GerundPhrase_Transitive
-	1   InversionAre_Transitive          NounPhrase_3rd_Plr_Subj GerundPhrase_Transitive
 	1   InversionAre_Intransitive          NounPhrase_1st_Plr_Subj GerundPhrase_Intransitive
+	1   InversionAre_Transitive          NounPhrase_2nd_Plr_Subj GerundPhrase_Transitive
 	1   InversionAre_Intransitive          NounPhrase_2nd_Plr_Subj GerundPhrase_Intransitive
+	1   InversionAre_Transitive          NounPhrase_3rd_Plr_Subj GerundPhrase_Transitive
 	1   InversionAre_Intransitive          NounPhrase_3rd_Plr_Subj GerundPhrase_Intransitive
 
 ### Clauses continued: Either/Neither ###=====================================================================================
@@ -163,26 +163,26 @@
 
 	#1st type:
 	5   neitherStatement1                              NounPhrase_1st_Sng_Subj neitherStatement2_1st_Sng
-	5   neitherStatement1                              NounPhrase_1st_Plr_Subj neitherStatement2_1st_Plr
 	5   eitherStatement1                              NounPhrase_1st_Sng_Subj eitherStatement2_1st_Sng
+	5   neitherStatement1                              NounPhrase_1st_Plr_Subj neitherStatement2_1st_Plr
 	5   eitherStatement1                              NounPhrase_1st_Plr_Subj eitherStatement2_1st_Plr
 	5   neitherStatement1                              NounPhrase_3rd_Sng_Subj neitherStatement2_3rd_Sng
-	5   neitherStatement1                              NounPhrase_3rd_Plr_Subj neitherStatement2_3rd_Plr
 	5   eitherStatement1                              NounPhrase_3rd_Sng_Subj eitherStatement2_3rd_Sng
+	5   neitherStatement1                              NounPhrase_3rd_Plr_Subj neitherStatement2_3rd_Plr
 	5   eitherStatement1                              NounPhrase_3rd_Plr_Subj eitherStatement2_3rd_Plr
 	1   neitherStatement2_1st_Sng   wrap_nor eitherStatement3
-	1   neitherStatement2_1st_Plr   wrap_nor eitherStatement3
 	1   eitherStatement2_1st_Sng   wrap_or eitherStatement3
+	1   neitherStatement2_1st_Plr   wrap_nor eitherStatement3
 	1   eitherStatement2_1st_Plr   wrap_or eitherStatement3
 	1   neitherStatement2_3rd_Sng   wrap_nor eitherStatement3
-	1   neitherStatement2_3rd_Plr   wrap_nor eitherStatement3
 	1   eitherStatement2_3rd_Sng   wrap_or eitherStatement3
+	1   neitherStatement2_3rd_Plr   wrap_nor eitherStatement3
 	1   eitherStatement2_3rd_Plr   wrap_or eitherStatement3
 	1   eitherStatement3                                    NounPhrase_1st_Sng_Subj VerbPhrase_1st_Plr
-	1   eitherStatement3                                    NounPhrase_2nd_Sng_Subj VerbPhrase_2nd_Plr
-	1   eitherStatement3                                    NounPhrase_3rd_Sng_Subj VerbPhrase_3rd_Plr
 	1   eitherStatement3                                    NounPhrase_1st_Plr_Subj VerbPhrase_1st_Plr
+	1   eitherStatement3                                    NounPhrase_2nd_Sng_Subj VerbPhrase_2nd_Plr
 	1   eitherStatement3                                    NounPhrase_2nd_Plr_Subj VerbPhrase_2nd_Plr
+	1   eitherStatement3                                    NounPhrase_3rd_Sng_Subj VerbPhrase_3rd_Plr
 	1   eitherStatement3                                    NounPhrase_3rd_Plr_Subj VerbPhrase_3rd_Plr
 
 	#2nd type:
@@ -328,28 +328,28 @@
 	1   GerundPhrase_Transitive                     Gerund_Transitive
 	1   GerundPhrase_Intransitive                     Gerund_Intransitive
 	1   GerundPhrase_Transitive                     Gerund_to_Transitive to_1st_Sng+
-	1   GerundPhrase_Transitive                     Gerund_to_Transitive to_1st_Plr+
-	1   GerundPhrase_Transitive                     Gerund_to_Transitive to_2nd_Sng+
-	1   GerundPhrase_Transitive                     Gerund_to_Transitive to_2nd_Plr+
-	1   GerundPhrase_Transitive                     Gerund_to_Transitive to_3rd_Sng+
-	1   GerundPhrase_Transitive                     Gerund_to_Transitive to_3rd_Plr+
 	1   GerundPhrase_Intransitive                     Gerund_to_Intransitive to_1st_Sng+
+	1   GerundPhrase_Transitive                     Gerund_to_Transitive to_1st_Plr+
 	1   GerundPhrase_Intransitive                     Gerund_to_Intransitive to_1st_Plr+
+	1   GerundPhrase_Transitive                     Gerund_to_Transitive to_2nd_Sng+
 	1   GerundPhrase_Intransitive                     Gerund_to_Intransitive to_2nd_Sng+
+	1   GerundPhrase_Transitive                     Gerund_to_Transitive to_2nd_Plr+
 	1   GerundPhrase_Intransitive                     Gerund_to_Intransitive to_2nd_Plr+
+	1   GerundPhrase_Transitive                     Gerund_to_Transitive to_3rd_Sng+
 	1   GerundPhrase_Intransitive                     Gerund_to_Intransitive to_3rd_Sng+
+	1   GerundPhrase_Transitive                     Gerund_to_Transitive to_3rd_Plr+
 	1   GerundPhrase_Intransitive                     Gerund_to_Intransitive to_3rd_Plr+
 	1   GerundPhrase_Transitive                     Gerund_of_Transitive of_1st_Sng+
-	1   GerundPhrase_Transitive                     Gerund_of_Transitive of_1st_Plr+
-	1   GerundPhrase_Transitive                     Gerund_of_Transitive of_2nd_Sng+
-	1   GerundPhrase_Transitive                     Gerund_of_Transitive of_2nd_Plr+
-	1   GerundPhrase_Transitive                     Gerund_of_Transitive of_3rd_Sng+
-	1   GerundPhrase_Transitive                     Gerund_of_Transitive of_3rd_Plr+
 	1   GerundPhrase_Intransitive                     Gerund_of_Intransitive of_1st_Sng+
+	1   GerundPhrase_Transitive                     Gerund_of_Transitive of_1st_Plr+
 	1   GerundPhrase_Intransitive                     Gerund_of_Intransitive of_1st_Plr+
+	1   GerundPhrase_Transitive                     Gerund_of_Transitive of_2nd_Sng+
 	1   GerundPhrase_Intransitive                     Gerund_of_Intransitive of_2nd_Sng+
+	1   GerundPhrase_Transitive                     Gerund_of_Transitive of_2nd_Plr+
 	1   GerundPhrase_Intransitive                     Gerund_of_Intransitive of_2nd_Plr+
+	1   GerundPhrase_Transitive                     Gerund_of_Transitive of_3rd_Sng+
 	1   GerundPhrase_Intransitive                     Gerund_of_Intransitive of_3rd_Sng+
+	1   GerundPhrase_Transitive                     Gerund_of_Transitive of_3rd_Plr+
 	1   GerundPhrase_Intransitive                     Gerund_of_Intransitive of_3rd_Plr+
 	1   GerundPhrase_Transitive                        Gerund_Transitive obj_1st_Sng+
 	1   GerundPhrase_Transitive                        Gerund_Transitive obj_1st_Plr+
@@ -498,16 +498,16 @@
 	1   VerbPhrase                                    VerbPhrase_3rd_Sng
 	1   VerbPhrase                                    VerbPhrase_3rd_Plr
 	1   VerbPhrase_1st_Sng                 VerbPhrase_1st_Sng_Transitive
-	1   VerbPhrase_1st_Plr                 VerbPhrase_1st_Plr_Transitive
-	1   VerbPhrase_2nd_Sng                 VerbPhrase_2nd_Sng_Transitive
-	1   VerbPhrase_2nd_Plr                 VerbPhrase_2nd_Plr_Transitive
-	1   VerbPhrase_3rd_Sng                 VerbPhrase_3rd_Sng_Transitive
-	1   VerbPhrase_3rd_Plr                 VerbPhrase_3rd_Plr_Transitive
 	1   VerbPhrase_1st_Sng                 VerbPhrase_1st_Sng_Intransitive
+	1   VerbPhrase_1st_Plr                 VerbPhrase_1st_Plr_Transitive
 	1   VerbPhrase_1st_Plr                 VerbPhrase_1st_Plr_Intransitive
+	1   VerbPhrase_2nd_Sng                 VerbPhrase_2nd_Sng_Transitive
 	1   VerbPhrase_2nd_Sng                 VerbPhrase_2nd_Sng_Intransitive
+	1   VerbPhrase_2nd_Plr                 VerbPhrase_2nd_Plr_Transitive
 	1   VerbPhrase_2nd_Plr                 VerbPhrase_2nd_Plr_Intransitive
+	1   VerbPhrase_3rd_Sng                 VerbPhrase_3rd_Sng_Transitive
 	1   VerbPhrase_3rd_Sng                 VerbPhrase_3rd_Sng_Intransitive
+	1   VerbPhrase_3rd_Plr                 VerbPhrase_3rd_Plr_Transitive
 	1   VerbPhrase_3rd_Plr                 VerbPhrase_3rd_Plr_Intransitive
 
 
@@ -515,92 +515,92 @@
 
 	#Naive - just a single verb
 	1   VerbPhrase_1st_Sng_Transitive   Verb_1st_Sng_Transitive
-	1   VerbPhrase_1st_Plr_Transitive   Verb_1st_Plr_Transitive
-	1   VerbPhrase_2nd_Sng_Transitive   Verb_2nd_Sng_Transitive
-	1   VerbPhrase_2nd_Plr_Transitive   Verb_2nd_Plr_Transitive
-	1   VerbPhrase_3rd_Sng_Transitive   Verb_3rd_Sng_Transitive
-	1   VerbPhrase_3rd_Plr_Transitive   Verb_3rd_Plr_Transitive
 	1   VerbPhrase_1st_Sng_Intransitive   Verb_1st_Sng_Intransitive
+	1   VerbPhrase_1st_Plr_Transitive   Verb_1st_Plr_Transitive
 	1   VerbPhrase_1st_Plr_Intransitive   Verb_1st_Plr_Intransitive
+	1   VerbPhrase_2nd_Sng_Transitive   Verb_2nd_Sng_Transitive
 	1   VerbPhrase_2nd_Sng_Intransitive   Verb_2nd_Sng_Intransitive
+	1   VerbPhrase_2nd_Plr_Transitive   Verb_2nd_Plr_Transitive
 	1   VerbPhrase_2nd_Plr_Intransitive   Verb_2nd_Plr_Intransitive
+	1   VerbPhrase_3rd_Sng_Transitive   Verb_3rd_Sng_Transitive
 	1   VerbPhrase_3rd_Sng_Intransitive   Verb_3rd_Sng_Intransitive
+	1   VerbPhrase_3rd_Plr_Transitive   Verb_3rd_Plr_Transitive
 	1   VerbPhrase_3rd_Plr_Intransitive   Verb_3rd_Plr_Intransitive
 	1   VerbPhrase_1st_Sng_Transitive   VerbModifier Verb_1st_Sng_Transitive
-	1   VerbPhrase_1st_Plr_Transitive   VerbModifier Verb_1st_Plr_Transitive
-	1   VerbPhrase_2nd_Sng_Transitive   VerbModifier Verb_2nd_Sng_Transitive
-	1   VerbPhrase_2nd_Plr_Transitive   VerbModifier Verb_2nd_Plr_Transitive
-	1   VerbPhrase_3rd_Sng_Transitive   VerbModifier Verb_3rd_Sng_Transitive
-	1   VerbPhrase_3rd_Plr_Transitive   VerbModifier Verb_3rd_Plr_Transitive
 	1   VerbPhrase_1st_Sng_Intransitive   VerbModifier Verb_1st_Sng_Intransitive
+	1   VerbPhrase_1st_Plr_Transitive   VerbModifier Verb_1st_Plr_Transitive
 	1   VerbPhrase_1st_Plr_Intransitive   VerbModifier Verb_1st_Plr_Intransitive
+	1   VerbPhrase_2nd_Sng_Transitive   VerbModifier Verb_2nd_Sng_Transitive
 	1   VerbPhrase_2nd_Sng_Intransitive   VerbModifier Verb_2nd_Sng_Intransitive
+	1   VerbPhrase_2nd_Plr_Transitive   VerbModifier Verb_2nd_Plr_Transitive
 	1   VerbPhrase_2nd_Plr_Intransitive   VerbModifier Verb_2nd_Plr_Intransitive
+	1   VerbPhrase_3rd_Sng_Transitive   VerbModifier Verb_3rd_Sng_Transitive
 	1   VerbPhrase_3rd_Sng_Intransitive   VerbModifier Verb_3rd_Sng_Intransitive
+	1   VerbPhrase_3rd_Plr_Transitive   VerbModifier Verb_3rd_Plr_Transitive
 	1   VerbPhrase_3rd_Plr_Intransitive   VerbModifier Verb_3rd_Plr_Intransitive
 	1   VerbPhrase_1st_Sng_Transitive   VerbPP_1st_Sng_Transitive
-	1   VerbPhrase_1st_Plr_Transitive   VerbPP_1st_Plr_Transitive
-	1   VerbPhrase_2nd_Sng_Transitive   VerbPP_2nd_Sng_Transitive
-	1   VerbPhrase_2nd_Plr_Transitive   VerbPP_2nd_Plr_Transitive
-	1   VerbPhrase_3rd_Sng_Transitive   VerbPP_3rd_Sng_Transitive
-	1   VerbPhrase_3rd_Plr_Transitive   VerbPP_3rd_Plr_Transitive
 	1   VerbPhrase_1st_Sng_Intransitive   VerbPP_1st_Sng_Intransitive
+	1   VerbPhrase_1st_Plr_Transitive   VerbPP_1st_Plr_Transitive
 	1   VerbPhrase_1st_Plr_Intransitive   VerbPP_1st_Plr_Intransitive
+	1   VerbPhrase_2nd_Sng_Transitive   VerbPP_2nd_Sng_Transitive
 	1   VerbPhrase_2nd_Sng_Intransitive   VerbPP_2nd_Sng_Intransitive
+	1   VerbPhrase_2nd_Plr_Transitive   VerbPP_2nd_Plr_Transitive
 	1   VerbPhrase_2nd_Plr_Intransitive   VerbPP_2nd_Plr_Intransitive
+	1   VerbPhrase_3rd_Sng_Transitive   VerbPP_3rd_Sng_Transitive
 	1   VerbPhrase_3rd_Sng_Intransitive   VerbPP_3rd_Sng_Intransitive
+	1   VerbPhrase_3rd_Plr_Transitive   VerbPP_3rd_Plr_Transitive
 	1   VerbPhrase_3rd_Plr_Intransitive   VerbPP_3rd_Plr_Intransitive
 	1   VerbPhrase_1st_Sng_Transitive   VerbModifier VerbPP_1st_Sng_Transitive
-	1   VerbPhrase_1st_Plr_Transitive   VerbModifier VerbPP_1st_Plr_Transitive
-	1   VerbPhrase_2nd_Sng_Transitive   VerbModifier VerbPP_2nd_Sng_Transitive
-	1   VerbPhrase_2nd_Plr_Transitive   VerbModifier VerbPP_2nd_Plr_Transitive
-	1   VerbPhrase_3rd_Sng_Transitive   VerbModifier VerbPP_3rd_Sng_Transitive
-	1   VerbPhrase_3rd_Plr_Transitive   VerbModifier VerbPP_3rd_Plr_Transitive
 	1   VerbPhrase_1st_Sng_Intransitive   VerbModifier VerbPP_1st_Sng_Intransitive
+	1   VerbPhrase_1st_Plr_Transitive   VerbModifier VerbPP_1st_Plr_Transitive
 	1   VerbPhrase_1st_Plr_Intransitive   VerbModifier VerbPP_1st_Plr_Intransitive
+	1   VerbPhrase_2nd_Sng_Transitive   VerbModifier VerbPP_2nd_Sng_Transitive
 	1   VerbPhrase_2nd_Sng_Intransitive   VerbModifier VerbPP_2nd_Sng_Intransitive
+	1   VerbPhrase_2nd_Plr_Transitive   VerbModifier VerbPP_2nd_Plr_Transitive
 	1   VerbPhrase_2nd_Plr_Intransitive   VerbModifier VerbPP_2nd_Plr_Intransitive
+	1   VerbPhrase_3rd_Sng_Transitive   VerbModifier VerbPP_3rd_Sng_Transitive
 	1   VerbPhrase_3rd_Sng_Intransitive   VerbModifier VerbPP_3rd_Sng_Intransitive
+	1   VerbPhrase_3rd_Plr_Transitive   VerbModifier VerbPP_3rd_Plr_Transitive
 	1   VerbPhrase_3rd_Plr_Intransitive   VerbModifier VerbPP_3rd_Plr_Intransitive
 
 	#Modal - will work, can run, might eat, etc... (will, can, might, should,... are modals)
 	1   VerbPhrase_1st_Sng_Transitive   Modal VerbPhrase_inf_Transitive+
-	1   VerbPhrase_1st_Plr_Transitive   Modal VerbPhrase_inf_Transitive+
-	1   VerbPhrase_2nd_Sng_Transitive   Modal VerbPhrase_inf_Transitive+
-	1   VerbPhrase_2nd_Plr_Transitive   Modal VerbPhrase_inf_Transitive+
-	1   VerbPhrase_3rd_Sng_Transitive   Modal VerbPhrase_inf_Transitive+
-	1   VerbPhrase_3rd_Plr_Transitive   Modal VerbPhrase_inf_Transitive+
 	1   VerbPhrase_1st_Sng_Intransitive   Modal VerbPhrase_inf_Intransitive+
+	1   VerbPhrase_1st_Plr_Transitive   Modal VerbPhrase_inf_Transitive+
 	1   VerbPhrase_1st_Plr_Intransitive   Modal VerbPhrase_inf_Intransitive+
+	1   VerbPhrase_2nd_Sng_Transitive   Modal VerbPhrase_inf_Transitive+
 	1   VerbPhrase_2nd_Sng_Intransitive   Modal VerbPhrase_inf_Intransitive+
+	1   VerbPhrase_2nd_Plr_Transitive   Modal VerbPhrase_inf_Transitive+
 	1   VerbPhrase_2nd_Plr_Intransitive   Modal VerbPhrase_inf_Intransitive+
+	1   VerbPhrase_3rd_Sng_Transitive   Modal VerbPhrase_inf_Transitive+
 	1   VerbPhrase_3rd_Sng_Intransitive   Modal VerbPhrase_inf_Intransitive+
+	1   VerbPhrase_3rd_Plr_Transitive   Modal VerbPhrase_inf_Transitive+
 	1   VerbPhrase_3rd_Plr_Intransitive   Modal VerbPhrase_inf_Intransitive+
 
 	#Complicated - the verb may have objects
 	1   VerbPhrase_1st_Sng_Transitive   VerbPhrase_1st_Sng_Transitive+
-	1   VerbPhrase_1st_Plr_Transitive   VerbPhrase_1st_Plr_Transitive+
-	1   VerbPhrase_2nd_Sng_Transitive   VerbPhrase_2nd_Sng_Transitive+
-	1   VerbPhrase_2nd_Plr_Transitive   VerbPhrase_2nd_Plr_Transitive+
-	1   VerbPhrase_3rd_Sng_Transitive   VerbPhrase_3rd_Sng_Transitive+
-	1   VerbPhrase_3rd_Plr_Transitive   VerbPhrase_3rd_Plr_Transitive+
 	1   VerbPhrase_1st_Sng_Intransitive   VerbPhrase_1st_Sng_Intransitive+
+	1   VerbPhrase_1st_Plr_Transitive   VerbPhrase_1st_Plr_Transitive+
 	1   VerbPhrase_1st_Plr_Intransitive   VerbPhrase_1st_Plr_Intransitive+
+	1   VerbPhrase_2nd_Sng_Transitive   VerbPhrase_2nd_Sng_Transitive+
 	1   VerbPhrase_2nd_Sng_Intransitive   VerbPhrase_2nd_Sng_Intransitive+
+	1   VerbPhrase_2nd_Plr_Transitive   VerbPhrase_2nd_Plr_Transitive+
 	1   VerbPhrase_2nd_Plr_Intransitive   VerbPhrase_2nd_Plr_Intransitive+
+	1   VerbPhrase_3rd_Sng_Transitive   VerbPhrase_3rd_Sng_Transitive+
 	1   VerbPhrase_3rd_Sng_Intransitive   VerbPhrase_3rd_Sng_Intransitive+
+	1   VerbPhrase_3rd_Plr_Transitive   VerbPhrase_3rd_Plr_Transitive+
 	1   VerbPhrase_3rd_Plr_Intransitive   VerbPhrase_3rd_Plr_Intransitive+
 	1   VerbPhrase_1st_Sng_Transitive   VerbModifier VerbPhrase_1st_Sng_Transitive+
-	1   VerbPhrase_1st_Plr_Transitive   VerbModifier VerbPhrase_1st_Plr_Transitive+
-	1   VerbPhrase_2nd_Sng_Transitive   VerbModifier VerbPhrase_2nd_Sng_Transitive+
-	1   VerbPhrase_2nd_Plr_Transitive   VerbModifier VerbPhrase_2nd_Plr_Transitive+
-	1   VerbPhrase_3rd_Sng_Transitive   VerbModifier VerbPhrase_3rd_Sng_Transitive+
-	1   VerbPhrase_3rd_Plr_Transitive   VerbModifier VerbPhrase_3rd_Plr_Transitive+
 	1   VerbPhrase_1st_Sng_Intransitive   VerbModifier VerbPhrase_1st_Sng_Intransitive+
+	1   VerbPhrase_1st_Plr_Transitive   VerbModifier VerbPhrase_1st_Plr_Transitive+
 	1   VerbPhrase_1st_Plr_Intransitive   VerbModifier VerbPhrase_1st_Plr_Intransitive+
+	1   VerbPhrase_2nd_Sng_Transitive   VerbModifier VerbPhrase_2nd_Sng_Transitive+
 	1   VerbPhrase_2nd_Sng_Intransitive   VerbModifier VerbPhrase_2nd_Sng_Intransitive+
+	1   VerbPhrase_2nd_Plr_Transitive   VerbModifier VerbPhrase_2nd_Plr_Transitive+
 	1   VerbPhrase_2nd_Plr_Intransitive   VerbModifier VerbPhrase_2nd_Plr_Intransitive+
+	1   VerbPhrase_3rd_Sng_Transitive   VerbModifier VerbPhrase_3rd_Sng_Transitive+
 	1   VerbPhrase_3rd_Sng_Intransitive   VerbModifier VerbPhrase_3rd_Sng_Intransitive+
+	1   VerbPhrase_3rd_Plr_Transitive   VerbModifier VerbPhrase_3rd_Plr_Transitive+
 	1   VerbPhrase_3rd_Plr_Intransitive   VerbModifier VerbPhrase_3rd_Plr_Intransitive+
 
 	#Infinite - the verb is in the infinitive or subjunctive.
@@ -748,12 +748,12 @@
 	1   Verb_inf                                     Verb_inf_Intransitive
 #All verbs that aren't 3rd_Sng are conjugated like the 3rd_Plr (some irregular exceptions but I don't think they can crop up)
 	1   Verb_1st_Sng_Transitive           Verb_3rd_Plr_Transitive
-	1   Verb_1st_Plr_Transitive           Verb_3rd_Plr_Transitive
-	1   Verb_2nd_Sng_Transitive           Verb_3rd_Plr_Transitive
-	1   Verb_2nd_Plr_Transitive           Verb_3rd_Plr_Transitive
 	1   Verb_1st_Sng_Intransitive           Verb_3rd_Plr_Intransitive
+	1   Verb_1st_Plr_Transitive           Verb_3rd_Plr_Transitive
 	1   Verb_1st_Plr_Intransitive           Verb_3rd_Plr_Intransitive
+	1   Verb_2nd_Sng_Transitive           Verb_3rd_Plr_Transitive
 	1   Verb_2nd_Sng_Intransitive           Verb_3rd_Plr_Intransitive
+	1   Verb_2nd_Plr_Transitive           Verb_3rd_Plr_Transitive
 	1   Verb_2nd_Plr_Intransitive           Verb_3rd_Plr_Intransitive
 
 #Dealing with person and plurality
@@ -807,26 +807,26 @@
 	#Don't template the 3rd Sng because that requires has instead of have
 
 	1   VerbPP_1st_Sng_Transitive                 wrap_have PastParticiple_Transitive
-	1   VerbPP_1st_Plr_Transitive                 wrap_have PastParticiple_Transitive
-	1   VerbPP_2nd_Sng_Transitive                 wrap_have PastParticiple_Transitive
-	1   VerbPP_2nd_Plr_Transitive                 wrap_have PastParticiple_Transitive
-	1   VerbPP_3rd_Plr_Transitive                 wrap_have PastParticiple_Transitive
 	1   VerbPP_1st_Sng_Intransitive                 wrap_have PastParticiple_Intransitive
+	1   VerbPP_1st_Plr_Transitive                 wrap_have PastParticiple_Transitive
 	1   VerbPP_1st_Plr_Intransitive                 wrap_have PastParticiple_Intransitive
+	1   VerbPP_2nd_Sng_Transitive                 wrap_have PastParticiple_Transitive
 	1   VerbPP_2nd_Sng_Intransitive                 wrap_have PastParticiple_Intransitive
+	1   VerbPP_2nd_Plr_Transitive                 wrap_have PastParticiple_Transitive
 	1   VerbPP_2nd_Plr_Intransitive                 wrap_have PastParticiple_Intransitive
+	1   VerbPP_3rd_Plr_Transitive                 wrap_have PastParticiple_Transitive
 	1   VerbPP_3rd_Plr_Intransitive                 wrap_have PastParticiple_Intransitive
 	1   VerbPP_3rd_Sng_Transitive                            wrap_has  PastParticiple_Transitive
 	1   VerbPP_3rd_Sng_Intransitive                            wrap_has  PastParticiple_Intransitive
 	1   VerbPP_1st_Sng                               VerbPP_1st_Sng_Transitive
-	1   VerbPP_1st_Plr                               VerbPP_1st_Plr_Transitive
-	1   VerbPP_2nd_Sng                               VerbPP_2nd_Sng_Transitive
-	1   VerbPP_2nd_Plr                               VerbPP_2nd_Plr_Transitive
-	1   VerbPP_3rd_Plr                               VerbPP_3rd_Plr_Transitive
 	1   VerbPP_1st_Sng                               VerbPP_1st_Sng_Intransitive
+	1   VerbPP_1st_Plr                               VerbPP_1st_Plr_Transitive
 	1   VerbPP_1st_Plr                               VerbPP_1st_Plr_Intransitive
+	1   VerbPP_2nd_Sng                               VerbPP_2nd_Sng_Transitive
 	1   VerbPP_2nd_Sng                               VerbPP_2nd_Sng_Intransitive
+	1   VerbPP_2nd_Plr                               VerbPP_2nd_Plr_Transitive
 	1   VerbPP_2nd_Plr                               VerbPP_2nd_Plr_Intransitive
+	1   VerbPP_3rd_Plr                               VerbPP_3rd_Plr_Transitive
 	1   VerbPP_3rd_Plr                               VerbPP_3rd_Plr_Intransitive
     1   VerbPP_3rd_Sng                                          VerbPP_3rd_Sng_Transitive
     1   VerbPP_3rd_Sng                                          VerbPP_3rd_Sng_Intransitive

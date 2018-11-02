@@ -27,6 +27,9 @@ finishedReadingPipes = False
 templateDict = {}
 ignoreTuples = []
 
+lineCounterOld = 0
+lineCounterNew = 0
+
 def checkUnorderedListEquality(s, t):
     return sorted(s) == sorted(t)
 
@@ -34,6 +37,7 @@ def doReplacing(line,listOfTemplators):
 	global outputString
 	global templateDict
 	global ignoreTuples
+	global lineCounterNew
 	if listOfTemplators == []:
 		splitline = line.split("∂");
 		actualLine = line.split("∂")[0]
@@ -42,6 +46,7 @@ def doReplacing(line,listOfTemplators):
 			if any([checkUnorderedListEquality(lineEnders,x) for x in ignoreTuples]):
 				#It's on the ignore list!
 				return
+		lineCounterNew = lineCounterNew + 1
 		outputString = outputString + "\n" + actualLine
 		return
 	else:
@@ -101,6 +106,7 @@ for line in allLines:
 				#Now we are on the normal stuff
 				#Copy each line unless it contains one of the templates
 				#In which case perform the template
+				lineCounterOld = lineCounterOld + 1
 				listOfTemplators = ["{" + x + "}" for x in templateDict.keys() if "{" + x + "}" in line]
 				doReplacing(line,listOfTemplators)
 
@@ -113,3 +119,8 @@ fout = open("S1.gr", "w")
 fout.write(outputString)
 fout = open("contextExpanderOutput.txt", "w")
 fout.write(outputString)
+print("Input file had " + str(lineCounterOld) + " lines of production rules.")
+print("That includes comments but not template headers, brackets, and whitespace")
+print("Output file has " + str(lineCounterNew) + " lines of production rules.")
+print("Thus the output file is " + str(lineCounterNew/lineCounterOld) + " times as large.")
+print("")
