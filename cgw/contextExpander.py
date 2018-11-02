@@ -46,7 +46,8 @@ def doReplacing(line,listOfTemplators):
 			if any([checkUnorderedListEquality(lineEnders,x) for x in ignoreTuples]):
 				#It's on the ignore list!
 				return
-		lineCounterNew = lineCounterNew + 1
+		if len(actualLine.strip()) > 0 and actualLine.strip()[0] != '#':
+			lineCounterNew = lineCounterNew + 1
 		outputString = outputString + "\n" + actualLine
 		return
 	else:
@@ -79,6 +80,8 @@ for line in allLines:
 		bracketMode = False
 		continue
 	elif not bracketMode:
+		if len(trimmed) > 0 and trimmed[0] != '#':
+			lineCounterOld = lineCounterOld + 1
 		outputString = outputString + "\n" + line
 	else:
 		if len(trimmed) == 0:
@@ -106,9 +109,12 @@ for line in allLines:
 				#Now we are on the normal stuff
 				#Copy each line unless it contains one of the templates
 				#In which case perform the template
-				lineCounterOld = lineCounterOld + 1
-				listOfTemplators = ["{" + x + "}" for x in templateDict.keys() if "{" + x + "}" in line]
-				doReplacing(line,listOfTemplators)
+				if firstChar == '#':
+					outputString = outputString + "\n" + line
+				else:
+					lineCounterOld = lineCounterOld + 1
+					listOfTemplators = ["{" + x + "}" for x in templateDict.keys() if "{" + x + "}" in line]
+					doReplacing(line,listOfTemplators)
 
 
 #print(outputString)
@@ -120,7 +126,7 @@ fout.write(outputString)
 fout = open("contextExpanderOutput.txt", "w")
 fout.write(outputString)
 print("Input file had " + str(lineCounterOld) + " lines of production rules.")
-print("That includes comments but not template headers, brackets, and whitespace")
+print("This does not include comments, template headers, brackets, and whitespace")
 print("Output file has " + str(lineCounterNew) + " lines of production rules.")
 print("Thus the output file is " + str(lineCounterNew/lineCounterOld) + " times as large.")
 print("")

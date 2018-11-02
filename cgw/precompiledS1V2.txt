@@ -85,7 +85,7 @@
 }
 ### Clauses continued: Either/Neither ###=====================================================================================
 {
-	<person_phrase1 _1st _3rd>
+	<person_phrase1 _1st _2nd _3rd>
 	<person_phrase2 _1st _2nd _3rd>
 	<plurality _Sng _Plr>
 	<ne/e n ε>
@@ -99,7 +99,32 @@
 	#Here is a naive, improvable interpretation of either/neither stuffs:
 	#"either [NP] or [NP] [VP_plural]" OR "either [NP] [VP] or [NP] [VP]"
 	#Concerning the first type:
-	#	If 2nd person is used it must come last, and verb phrase must be conjugated according to last
+	#	The verb phrase must be conjugated according to last noun phrase, but pluralized 
+	#	(which I think will always be the same regardless of the last noun phrase, for our purposes)
+	#	Possible outcomes:
+	#		You and I, He and I, You and He,
+	#		I and You, I and He, He and You,
+	#		We and I, You and We, He and We.
+	#   	I and We, We and You, We and He.
+	#		You and You, He and He, I and I, We and We
+	#	When I look at this list, some of the combinations feel wrong, and I think I can put my finger on it.
+	#	There are two problems:
+	#	First, "I" should never start a phrase - if it does it should become 'me'
+	#		- other things may go to direct object form if desired but its not necessary
+	#   Second, the second noun phrase should be a direct object and not a subject
+	#		- unless it is 'I' in which case it's okay to leave it.
+	#	Fun fact: it's weird how the rule is different for I than it is for everything else!
+	#	New Possible outcomes:
+	#		You and Me, He and Me, You and Him,
+	#		Me and You, Me and Him, He and You,
+	#		We and Me, You and Us, He and Us.
+	#   	Me and Us, We and You, We and Him.
+	#		You and You, He and Him, Me and I, We and Us
+	#	Some of these still don't make sense - but we can fix that later.
+	#	If it weren't for "I" going against the pattern, we could implement this with contextExpander already.
+	#   What we need is some kind of conditional.  For example, to fix the first problem:
+	#   eitherStatement1 -> NounPhrase{person_phrase1}{plurality}{_DirObj IF (person_phrase1,plurality)==(_1st,_Plr) ELSE _Subj}
+	#	I will add this to contextExpander.py tomorrow.
 
 	1   StatementClause                                     {ne/e}eitherStatement
 	1   {ne/e}eitherStatement                               wrap_{ne/e}either {ne/e}eitherStatement1
