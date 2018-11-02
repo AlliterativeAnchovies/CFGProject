@@ -63,8 +63,8 @@
 
 	#Do-Construction:
 	#[do/does] NounPhrase VerbPhrase_inf
-	1   QuestionClause1                    wrap_do DoConstruction
-	1   QuestionClause1                    wrap_does DoesConstruction
+	5   QuestionClause1                    wrap_do DoConstruction
+	6   QuestionClause1                    wrap_does DoesConstruction
 	1   DoConstruction                     NounPhrase_1st{plurality}_Subj VerbPhrase_inf
 	1   DoConstruction                     NounPhrase_2nd{plurality}_Subj VerbPhrase_inf
 	1   DoConstruction                     NounPhrase_3rd_Plr_Subj VerbPhrase_inf
@@ -194,41 +194,53 @@
 {
 	<person _1st _2nd _3rd>
 	<plurality _Sng _Plr>
+	<transitivity _Transitive _Intransitive>
 
 	#######################################
 	#									  #
 	#   Global Nonterminals: VerbPhrase   #
 	#									  #
 	###############################################################
-	#VerbPhrase takes either no arguments or (person,plurality)   #
-	#	if no arguments, it picks a random (person,plurality)     #
-	#VerbPhrase can also take the single argument 'inf'           #
-	#	which is used for infinitives, do-construction questions, #
-	#	and subjunctive clauses.								  #
+	#VerbPhrase takes either no arguments:   					  #
+	#	it picks a random (person,plurality,transitivity)         #
+	# or (person,plurality)                                       #
+	#	it picks a random (transitivity)                          #
+	# or (person,plurality,transitivity)                          #
+	#	this is the one with all attributes defined               #
+	# or ("inf")                                                  #
+	#	ex: VerbPhrase_inf                                        #
+	#   this is when you want a phrase in the infinitive          #
+	#   it picks a random (transitivity)                          #
+	# or ("inf",transitivity)                                     #
+	#   ex: VerbPhrase_inf_Transitive                             #
+	#   this is when you want a phrase in the infinitive, but     #
+	#	with a specific transitivity.                             #
 	###############################################################
 
 	1   VerbPhrase                                    VerbPhrase{person}{plurality}
+	1   VerbPhrase{person}{plurality}                 VerbPhrase{person}{plurality}{transitivity}
 
 
 	########Types of Verb Phrases:
 
 	#Naive - just a single verb
-	1   VerbPhrase{person}{plurality}                 Verb{person}{plurality}
-	1   VerbPhrase{person}{plurality}                 VerbModifier Verb{person}{plurality}
-	1   VerbPhrase{person}{plurality}                 VerbPP{person}{plurality}
-	1   VerbPhrase{person}{plurality}                 VerbModifier VerbPP{person}{plurality}
+	1   VerbPhrase{person}{plurality}{transitivity}   Verb{person}{plurality}{transitivity}
+	1   VerbPhrase{person}{plurality}{transitivity}   VerbModifier Verb{person}{plurality}{transitivity}
+	1   VerbPhrase{person}{plurality}{transitivity}   VerbPP{person}{plurality}{transitivity}
+	1   VerbPhrase{person}{plurality}{transitivity}   VerbModifier VerbPP{person}{plurality}{transitivity}
 
 	#Modal - will work, can run, might eat, etc... (will, can, might, should,... are modals)
-	1   VerbPhrase{person}{plurality}                 Modal VerbPhrase_inf+
+	1   VerbPhrase{person}{plurality}{transitivity}   Modal VerbPhrase_inf{transitivity}+
 
 	#Complicated - the verb may have objects
-	1   VerbPhrase{person}{plurality}                 VerbPhrase{person}{plurality}+
-	1   VerbPhrase{person}{plurality}                 VerbModifier VerbPhrase{person}{plurality}+
+	1   VerbPhrase{person}{plurality}{transitivity}   VerbPhrase{person}{plurality}{transitivity}+
+	1   VerbPhrase{person}{plurality}{transitivity}   VerbModifier VerbPhrase{person}{plurality}{transitivity}+
 
 	#Infinite - the verb is in the infinitive or subjunctive.
-	1   VerbPhrase_inf                                VerbModifier VerbPhrase_inf+
-	1   VerbPhrase_inf                                VerbPhrase_inf+
-	1   VerbPhrase_inf                                Verb_inf
+	1   VerbPhrase_inf                                VerbPhrase_inf{transitivity}
+	1   VerbPhrase_inf{transitivity}                  VerbModifier VerbPhrase_inf{transitivity}+
+	1   VerbPhrase_inf{transitivity}                  VerbPhrase_inf{transitivity}+
+	1   VerbPhrase_inf{transitivity}                  Verb_inf{transitivity}
 
 	########Types of Verb Phrases ^^^
 
@@ -243,18 +255,18 @@
 	#PrepOfLocation is defined near the bottom of this file.)
 
 	#Because is/are/am are irregular, we can't template this bit out easily, so instead we have to write it all out
-	1   VerbPhrase_1st_Sng                            VerbModifier am+
-	1   VerbPhrase_1st_Sng                            am+
-	1   VerbPhrase_1st_Plr                            VerbModifier are+
-	1   VerbPhrase_1st_Plr                            are+
-	1   VerbPhrase_2nd_Sng                            VerbModifier are+
-	1   VerbPhrase_2nd_Sng                            are+
-	1   VerbPhrase_2nd_Plr                            VerbModifier are+
-	1   VerbPhrase_2nd_Plr                            are+
-	1   VerbPhrase_3rd_Sng                            VerbModifier is+
-	1   VerbPhrase_3rd_Sng                            is+
-	1   VerbPhrase_3rd_Plr                            VerbModifier are+
-	1   VerbPhrase_3rd_Plr                            are+
+	1   VerbPhrase_1st_Sng{transitivity}              VerbModifier am+
+	1   VerbPhrase_1st_Sng{transitivity}              am+
+	1   VerbPhrase_1st_Plr{transitivity}              VerbModifier are+
+	1   VerbPhrase_1st_Plr{transitivity}              are+
+	1   VerbPhrase_2nd_Sng{transitivity}              VerbModifier are+
+	1   VerbPhrase_2nd_Sng{transitivity}              are+
+	1   VerbPhrase_2nd_Plr{transitivity}              VerbModifier are+
+	1   VerbPhrase_2nd_Plr{transitivity}              are+
+	1   VerbPhrase_3rd_Sng{transitivity}              VerbModifier is+
+	1   VerbPhrase_3rd_Sng{transitivity}              is+
+	1   VerbPhrase_3rd_Plr{transitivity}              VerbModifier are+
+	1   VerbPhrase_3rd_Plr{transitivity}              are+
 	1   am+                                           wrap_am isAdj+
 	1   is+                                           wrap_is isAdj+
 	1   are+                                          wrap_are isAdj+
@@ -273,22 +285,21 @@
 	#########Complicated Verb Phrases:
 
 	#Here we have to take into account transitivity (does it take a direct object or not?)
-	1   VerbPhrase{person}{plurality}+                Verb{person}{plurality}_Transitive Objects+
-	1   VerbPhrase{person}{plurality}+                VerbPP{person}{plurality}_Transitive Objects+
-	1   VerbPhrase{person}{plurality}+                Verb{person}{plurality}_Intransitive IndirectObject+
-	1   VerbPhrase{person}{plurality}+                VerbPP{person}{plurality}_Intransitive IndirectObject+
+	1   VerbPhrase{person}{plurality}_Transitive+     Verb{person}{plurality}_Transitive Objects+
+	1   VerbPhrase{person}{plurality}_Transitive+     VerbPP{person}{plurality}_Transitive Objects+
+	1   VerbPhrase{person}{plurality}_Intransitive+   Verb{person}{plurality}_Intransitive IndirectObject+
+	1   VerbPhrase{person}{plurality}_Intransitive+   VerbPP{person}{plurality}_Intransitive IndirectObject+
 
-	1   VerbPhrase_inf+                               Verb_inf_Transitive
-	1   VerbPhrase_inf+                               VerbPP_3rd_Plr_Transitive
-	1   VerbPhrase_inf+                               Verb_inf_Transitive Objects+
-	1   VerbPhrase_inf+                               VerbPP_3rd_Plr_Transitive Objects+
-	1   VerbPhrase_inf+                               Verb_inf_Intransitive IndirectObject+
-	1   VerbPhrase_inf+                               VerbPP_3rd_Plr_Intransitive IndirectObject+
+	1   VerbPhrase_inf_Transitive+                    Verb_inf_Transitive
+	1   VerbPhrase_inf_Transitive+                    VerbPP_3rd_Plr_Transitive
+	1   VerbPhrase_inf_Transitive+                    Verb_inf_Transitive Objects+
+	1   VerbPhrase_inf_Transitive+                    VerbPP_3rd_Plr_Transitive Objects+
+	1   VerbPhrase_inf_Intransitive+                  Verb_inf_Intransitive IndirectObject+
+	1   VerbPhrase_inf_Intransitive+                  VerbPP_3rd_Plr_Intransitive IndirectObject+
 
 	1   Objects+                                      IndirectObject+
 	1   Objects+                                      DirectObject IndirectObject+
 	1   Objects+                                      DirectObject
-	1   Objects+                                      DirectObject-
 	1   DirectObject                                  NounPhrase_DirObj
 	1   IndirectObject+                               IndirectObject
 	1   IndirectObject                                Prep NounPhrase_IndObj
