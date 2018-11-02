@@ -108,7 +108,7 @@ If for some reason you wanted your phrase to loop through everything but specifi
 {
 	<person _1st _2nd _3rd>
 	<plurality _Sng _Plr>
-	|IGNORE _1st _2nd|
+	|IGNORE _1st _Plr|
 	Clause -> NounPhrase{person}{plurality} VerbPhrase{person}{plurality}
 }
 ```
@@ -119,7 +119,7 @@ And finally, if you also had nonterminals of the form `NounPhrase{person}` and `
 {
 	<person _1st _2nd _3rd>
 	<plurality _Sng _Plr ε>
-	|IGNORE _1st _2nd|
+	|IGNORE _1st _Plr|
 	Clause -> NounPhrase{person}{plurality} VerbPhrase{person}{plurality}
 }
 ```
