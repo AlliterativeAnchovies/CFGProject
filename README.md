@@ -1,18 +1,21 @@
 # ReadMe
 
 ## Basics
+
 I will summarize how this project works - you should also read the 2 ReadMe files written by our lecturer, in the cgw folder (everything is in the cgw folder).
 
 The goal is to create a CFG (Context Free Grammar) that generates as many grammatical English sentences as possible while generating very few ungrammatical sentences.  There are 2 sides to this project: generating random sentences, and checking if a given sentence is inside the grammar.
 
 ### Generating Random Sentences
-|   python pcfg_parse_gen.py -o 20 -g S1.gr,Vocab.gr
+
+`python pcfg_parse_gen.py -o 20 -g S1.gr,Vocab.gr`
 
 This line of code runs the sentence generator.  This is self explanatory.  Keep an eye out for ungrammatical sentences!
 
 
 ### Checking Sentences
-|   python pcfg_parse_gen.py -i -g "*.gr" < example_sentences.txt
+
+`python pcfg_parse_gen.py -i -g "*.gr" < example_sentences.txt`
 
 This line of code runs the sentence checker on every sentence in example_sentences.txt
 
@@ -20,12 +23,17 @@ You are allowed to add more to example_sentences, but let's avoid that until our
 correctly parses every single sentence already given to us (harder than it looks...)
 
 If a sentence is not parsed, it looks like this:
+
+```
 #No parses found for: when the king drinks , Patsy drinks .
 (TOP (X when) (X the) (X king) (X drinks) (X ,) (X Patsy) (X drinks) (X .))
+```
 
 If a sentence is parsed, if gives the parse tree in this ungodly mess:
 
+```
 (TOP (S1 (QuestionClause (QuestionClauseInner (QuestionClause1 (wrap_do do) (DoConstruction (NounPhrase_3rd_Plr_Subj (SimpleNounPhrase_3rd_Plr_Subj (ProperStuffs_Plr (Noun_3rd_Plr (Noun_p coconuts) ) ) ) ) (VerbPhrase_inf (Verb_inf (Verb_inf_Transitive speak) ) ))) ) (EOS_Question ?)) ) )
+```
 
 For reference - this is the parse tree for "do coconuts speak ?"
 
@@ -130,7 +138,7 @@ Warning: make sparing use of IGNORE commands.  I'm pretty sure I could write pro
 
 ### Actually Running The Template Code!
 
-|   python contextExpander.py precompiledS1V2.txt
+`python contextExpander.py precompiledS1V2.txt`
 
 This will take template code in precompiledS1V2.txt, compile it into an actual CFG, and then save the result in S1.gr and contextExpanderOutput.txt.  (there is a weird error where, at least on my mac, S1.gr will not open in TextEdit because TextEdit thinks it is corrupted, even though it can be used fine to generate sentences and whatnot.  So if you want to see what your code compiled to, contextExpanderOutput.txt is your best bet.)
 
