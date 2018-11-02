@@ -11,7 +11,7 @@
 	#To avoid this, all terminals used directly should be 'wrapped' in a nonterminal.
 	#The reason there are two "wordlist"s is purely so that the angle bracket
 	#declarations fit on one line, it is no different than having everything in
-	#one list and only saying "1   wrap_{wordlistN} {wordlistN}" once.
+	#one list and only saying "1   wrap_wordlistN wordlistN" once.
 
 	#All of the words here must exist in Vocab.gr
 	#We are NOT allowed to add words that aren't already in there.

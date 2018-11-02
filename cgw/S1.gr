@@ -144,25 +144,25 @@
 	#1st type:
 	5   neitherStatement1                              NounPhrase_1st_Sng_Subj neitherStatement2_1st_Sng
 	5   eitherStatement1                              NounPhrase_1st_Sng_Subj eitherStatement2_1st_Sng
-	5   neitherStatement1                              NounPhrase_1st_Plr_Subj neitherStatement2_1st_Plr
-	5   eitherStatement1                              NounPhrase_1st_Plr_Subj eitherStatement2_1st_Plr
 	5   neitherStatement1                              NounPhrase_3rd_Sng_Subj neitherStatement2_3rd_Sng
 	5   eitherStatement1                              NounPhrase_3rd_Sng_Subj eitherStatement2_3rd_Sng
+	5   neitherStatement1                              NounPhrase_1st_Plr_Subj neitherStatement2_1st_Plr
+	5   eitherStatement1                              NounPhrase_1st_Plr_Subj eitherStatement2_1st_Plr
 	5   neitherStatement1                              NounPhrase_3rd_Plr_Subj neitherStatement2_3rd_Plr
 	5   eitherStatement1                              NounPhrase_3rd_Plr_Subj eitherStatement2_3rd_Plr
 	1   neitherStatement2_1st_Sng   wrap_nor eitherStatement3
 	1   eitherStatement2_1st_Sng   wrap_or eitherStatement3
-	1   neitherStatement2_1st_Plr   wrap_nor eitherStatement3
-	1   eitherStatement2_1st_Plr   wrap_or eitherStatement3
 	1   neitherStatement2_3rd_Sng   wrap_nor eitherStatement3
 	1   eitherStatement2_3rd_Sng   wrap_or eitherStatement3
+	1   neitherStatement2_1st_Plr   wrap_nor eitherStatement3
+	1   eitherStatement2_1st_Plr   wrap_or eitherStatement3
 	1   neitherStatement2_3rd_Plr   wrap_nor eitherStatement3
 	1   eitherStatement2_3rd_Plr   wrap_or eitherStatement3
 	1   eitherStatement3                                    NounPhrase_1st_Sng_Subj VerbPhrase_1st_Plr
-	1   eitherStatement3                                    NounPhrase_2nd_Sng_Subj VerbPhrase_2nd_Plr
-	1   eitherStatement3                                    NounPhrase_3rd_Sng_Subj VerbPhrase_3rd_Plr
 	1   eitherStatement3                                    NounPhrase_1st_Plr_Subj VerbPhrase_1st_Plr
+	1   eitherStatement3                                    NounPhrase_2nd_Sng_Subj VerbPhrase_2nd_Plr
 	1   eitherStatement3                                    NounPhrase_2nd_Plr_Subj VerbPhrase_2nd_Plr
+	1   eitherStatement3                                    NounPhrase_3rd_Sng_Subj VerbPhrase_3rd_Plr
 	1   eitherStatement3                                    NounPhrase_3rd_Plr_Subj VerbPhrase_3rd_Plr
 
 	#2nd type:
@@ -197,90 +197,90 @@
 	1   NounPhrase                                     NounPhrase_DirObj
 	1   NounPhrase                                     NounPhrase_IndObj
 	1   NounPhrase_Subj                               NounPhrase_1st_Sng_Subj
-	1   NounPhrase_Subj                               NounPhrase_1st_Plr_Subj
 	1   NounPhrase_DirObj                               NounPhrase_1st_Sng_DirObj
-	1   NounPhrase_DirObj                               NounPhrase_1st_Plr_DirObj
 	1   NounPhrase_IndObj                               NounPhrase_1st_Sng_IndObj
+	1   NounPhrase_Subj                               NounPhrase_1st_Plr_Subj
+	1   NounPhrase_DirObj                               NounPhrase_1st_Plr_DirObj
 	1   NounPhrase_IndObj                               NounPhrase_1st_Plr_IndObj
 	1   NounPhrase_Subj                               NounPhrase_2nd_Sng_Subj
-	1   NounPhrase_Subj                               NounPhrase_2nd_Plr_Subj
 	1   NounPhrase_DirObj                               NounPhrase_2nd_Sng_DirObj
-	1   NounPhrase_DirObj                               NounPhrase_2nd_Plr_DirObj
 	1   NounPhrase_IndObj                               NounPhrase_2nd_Sng_IndObj
+	1   NounPhrase_Subj                               NounPhrase_2nd_Plr_Subj
+	1   NounPhrase_DirObj                               NounPhrase_2nd_Plr_DirObj
 	1   NounPhrase_IndObj                               NounPhrase_2nd_Plr_IndObj
 	1   NounPhrase_Subj                               NounPhrase_3rd_Sng_Subj
-	1   NounPhrase_Subj                               NounPhrase_3rd_Plr_Subj
 	1   NounPhrase_DirObj                               NounPhrase_3rd_Sng_DirObj
-	1   NounPhrase_DirObj                               NounPhrase_3rd_Plr_DirObj
 	1   NounPhrase_IndObj                               NounPhrase_3rd_Sng_IndObj
+	1   NounPhrase_Subj                               NounPhrase_3rd_Plr_Subj
+	1   NounPhrase_DirObj                               NounPhrase_3rd_Plr_DirObj
 	1   NounPhrase_IndObj                               NounPhrase_3rd_Plr_IndObj
 	1   NounPhrase_3rd_Sng_Subj                Determiner_3rd_Sng NounPhraseSmart_3rd_Sng_Subj
-	1   NounPhrase_3rd_Plr_Subj                Determiner_3rd_Plr NounPhraseSmart_3rd_Plr_Subj
 	1   NounPhrase_3rd_Sng_DirObj                Determiner_3rd_Sng NounPhraseSmart_3rd_Sng_DirObj
-	1   NounPhrase_3rd_Plr_DirObj                Determiner_3rd_Plr NounPhraseSmart_3rd_Plr_DirObj
 	1   NounPhrase_3rd_Sng_IndObj                Determiner_3rd_Sng NounPhraseSmart_3rd_Sng_IndObj
+	1   NounPhrase_3rd_Plr_Subj                Determiner_3rd_Plr NounPhraseSmart_3rd_Plr_Subj
+	1   NounPhrase_3rd_Plr_DirObj                Determiner_3rd_Plr NounPhraseSmart_3rd_Plr_DirObj
 	1   NounPhrase_3rd_Plr_IndObj                Determiner_3rd_Plr NounPhraseSmart_3rd_Plr_IndObj
 	1   NounPhrase_1st_Sng_Subj            SimpleNounPhrase_1st_Sng_Subj
-	1   NounPhrase_1st_Plr_Subj            SimpleNounPhrase_1st_Plr_Subj
 	1   NounPhrase_1st_Sng_DirObj            SimpleNounPhrase_1st_Sng_DirObj
-	1   NounPhrase_1st_Plr_DirObj            SimpleNounPhrase_1st_Plr_DirObj
 	1   NounPhrase_1st_Sng_IndObj            SimpleNounPhrase_1st_Sng_IndObj
+	1   NounPhrase_1st_Plr_Subj            SimpleNounPhrase_1st_Plr_Subj
+	1   NounPhrase_1st_Plr_DirObj            SimpleNounPhrase_1st_Plr_DirObj
 	1   NounPhrase_1st_Plr_IndObj            SimpleNounPhrase_1st_Plr_IndObj
 	1   NounPhrase_2nd_Sng_Subj            SimpleNounPhrase_2nd_Sng_Subj
-	1   NounPhrase_2nd_Plr_Subj            SimpleNounPhrase_2nd_Plr_Subj
 	1   NounPhrase_2nd_Sng_DirObj            SimpleNounPhrase_2nd_Sng_DirObj
-	1   NounPhrase_2nd_Plr_DirObj            SimpleNounPhrase_2nd_Plr_DirObj
 	1   NounPhrase_2nd_Sng_IndObj            SimpleNounPhrase_2nd_Sng_IndObj
+	1   NounPhrase_2nd_Plr_Subj            SimpleNounPhrase_2nd_Plr_Subj
+	1   NounPhrase_2nd_Plr_DirObj            SimpleNounPhrase_2nd_Plr_DirObj
 	1   NounPhrase_2nd_Plr_IndObj            SimpleNounPhrase_2nd_Plr_IndObj
 	1   NounPhrase_3rd_Sng_Subj            SimpleNounPhrase_3rd_Sng_Subj
-	1   NounPhrase_3rd_Plr_Subj            SimpleNounPhrase_3rd_Plr_Subj
 	1   NounPhrase_3rd_Sng_DirObj            SimpleNounPhrase_3rd_Sng_DirObj
-	1   NounPhrase_3rd_Plr_DirObj            SimpleNounPhrase_3rd_Plr_DirObj
 	1   NounPhrase_3rd_Sng_IndObj            SimpleNounPhrase_3rd_Sng_IndObj
+	1   NounPhrase_3rd_Plr_Subj            SimpleNounPhrase_3rd_Plr_Subj
+	1   NounPhrase_3rd_Plr_DirObj            SimpleNounPhrase_3rd_Plr_DirObj
 	1   NounPhrase_3rd_Plr_IndObj            SimpleNounPhrase_3rd_Plr_IndObj
 
 	#Naive Noun Phrase - either [Determiner Noun] or [Pronoun] or [Proper Noun]
 	1   SimpleNounPhrase_3rd_Sng_Subj          Determiner_3rd_Sng Noun_3rd_Sng
-	1   SimpleNounPhrase_3rd_Plr_Subj          Determiner_3rd_Plr Noun_3rd_Plr
 	1   SimpleNounPhrase_3rd_Sng_DirObj          Determiner_3rd_Sng Noun_3rd_Sng
-	1   SimpleNounPhrase_3rd_Plr_DirObj          Determiner_3rd_Plr Noun_3rd_Plr
 	1   SimpleNounPhrase_3rd_Sng_IndObj          Determiner_3rd_Sng Noun_3rd_Sng
+	1   SimpleNounPhrase_3rd_Plr_Subj          Determiner_3rd_Plr Noun_3rd_Plr
+	1   SimpleNounPhrase_3rd_Plr_DirObj          Determiner_3rd_Plr Noun_3rd_Plr
 	1   SimpleNounPhrase_3rd_Plr_IndObj          Determiner_3rd_Plr Noun_3rd_Plr
 	1   SimpleNounPhrase_1st_Sng_Subj      Pronoun_1st_Sng_Subj
-	1   SimpleNounPhrase_1st_Plr_Subj      Pronoun_1st_Plr_Subj
 	1   SimpleNounPhrase_1st_Sng_DirObj      Pronoun_1st_Sng_DirObj
-	1   SimpleNounPhrase_1st_Plr_DirObj      Pronoun_1st_Plr_DirObj
 	1   SimpleNounPhrase_1st_Sng_IndObj      Pronoun_1st_Sng_IndObj
+	1   SimpleNounPhrase_1st_Plr_Subj      Pronoun_1st_Plr_Subj
+	1   SimpleNounPhrase_1st_Plr_DirObj      Pronoun_1st_Plr_DirObj
 	1   SimpleNounPhrase_1st_Plr_IndObj      Pronoun_1st_Plr_IndObj
 	1   SimpleNounPhrase_2nd_Sng_Subj      Pronoun_2nd_Sng_Subj
-	1   SimpleNounPhrase_2nd_Plr_Subj      Pronoun_2nd_Plr_Subj
 	1   SimpleNounPhrase_2nd_Sng_DirObj      Pronoun_2nd_Sng_DirObj
-	1   SimpleNounPhrase_2nd_Plr_DirObj      Pronoun_2nd_Plr_DirObj
 	1   SimpleNounPhrase_2nd_Sng_IndObj      Pronoun_2nd_Sng_IndObj
+	1   SimpleNounPhrase_2nd_Plr_Subj      Pronoun_2nd_Plr_Subj
+	1   SimpleNounPhrase_2nd_Plr_DirObj      Pronoun_2nd_Plr_DirObj
 	1   SimpleNounPhrase_2nd_Plr_IndObj      Pronoun_2nd_Plr_IndObj
 	1   SimpleNounPhrase_3rd_Sng_Subj      Pronoun_3rd_Sng_Subj
-	1   SimpleNounPhrase_3rd_Plr_Subj      Pronoun_3rd_Plr_Subj
 	1   SimpleNounPhrase_3rd_Sng_DirObj      Pronoun_3rd_Sng_DirObj
-	1   SimpleNounPhrase_3rd_Plr_DirObj      Pronoun_3rd_Plr_DirObj
 	1   SimpleNounPhrase_3rd_Sng_IndObj      Pronoun_3rd_Sng_IndObj
+	1   SimpleNounPhrase_3rd_Plr_Subj      Pronoun_3rd_Plr_Subj
+	1   SimpleNounPhrase_3rd_Plr_DirObj      Pronoun_3rd_Plr_DirObj
 	1   SimpleNounPhrase_3rd_Plr_IndObj      Pronoun_3rd_Plr_IndObj
 	1   SimpleNounPhrase_Subj                         SimpleNounPhrase_1st_Sng_Subj
-	1   SimpleNounPhrase_Subj                         SimpleNounPhrase_1st_Plr_Subj
 	1   SimpleNounPhrase_DirObj                         SimpleNounPhrase_1st_Sng_DirObj
-	1   SimpleNounPhrase_DirObj                         SimpleNounPhrase_1st_Plr_DirObj
 	1   SimpleNounPhrase_IndObj                         SimpleNounPhrase_1st_Sng_IndObj
+	1   SimpleNounPhrase_Subj                         SimpleNounPhrase_1st_Plr_Subj
+	1   SimpleNounPhrase_DirObj                         SimpleNounPhrase_1st_Plr_DirObj
 	1   SimpleNounPhrase_IndObj                         SimpleNounPhrase_1st_Plr_IndObj
 	1   SimpleNounPhrase_Subj                         SimpleNounPhrase_2nd_Sng_Subj
-	1   SimpleNounPhrase_Subj                         SimpleNounPhrase_2nd_Plr_Subj
 	1   SimpleNounPhrase_DirObj                         SimpleNounPhrase_2nd_Sng_DirObj
-	1   SimpleNounPhrase_DirObj                         SimpleNounPhrase_2nd_Plr_DirObj
 	1   SimpleNounPhrase_IndObj                         SimpleNounPhrase_2nd_Sng_IndObj
+	1   SimpleNounPhrase_Subj                         SimpleNounPhrase_2nd_Plr_Subj
+	1   SimpleNounPhrase_DirObj                         SimpleNounPhrase_2nd_Plr_DirObj
 	1   SimpleNounPhrase_IndObj                         SimpleNounPhrase_2nd_Plr_IndObj
 	1   SimpleNounPhrase_Subj                         SimpleNounPhrase_3rd_Sng_Subj
-	1   SimpleNounPhrase_Subj                         SimpleNounPhrase_3rd_Plr_Subj
 	1   SimpleNounPhrase_DirObj                         SimpleNounPhrase_3rd_Sng_DirObj
-	1   SimpleNounPhrase_DirObj                         SimpleNounPhrase_3rd_Plr_DirObj
 	1   SimpleNounPhrase_IndObj                         SimpleNounPhrase_3rd_Sng_IndObj
+	1   SimpleNounPhrase_Subj                         SimpleNounPhrase_3rd_Plr_Subj
+	1   SimpleNounPhrase_DirObj                         SimpleNounPhrase_3rd_Plr_DirObj
 	1   SimpleNounPhrase_IndObj                         SimpleNounPhrase_3rd_Plr_IndObj
 	1   SimpleNounPhrase                               SimpleNounPhrase_Subj
 	1   SimpleNounPhrase                               SimpleNounPhrase_DirObj
@@ -344,76 +344,76 @@
 	#Less Naive Noun Phrase
 	#Nouns can be modified with this type
 	1   NounPhraseSmart_1st_Sng_Subj       NounModifier Noun_1st_Sng
-	1   NounPhraseSmart_1st_Plr_Subj       NounModifier Noun_1st_Plr
 	1   NounPhraseSmart_1st_Sng_DirObj       NounModifier Noun_1st_Sng
-	1   NounPhraseSmart_1st_Plr_DirObj       NounModifier Noun_1st_Plr
 	1   NounPhraseSmart_1st_Sng_IndObj       NounModifier Noun_1st_Sng
+	1   NounPhraseSmart_1st_Plr_Subj       NounModifier Noun_1st_Plr
+	1   NounPhraseSmart_1st_Plr_DirObj       NounModifier Noun_1st_Plr
 	1   NounPhraseSmart_1st_Plr_IndObj       NounModifier Noun_1st_Plr
 	1   NounPhraseSmart_2nd_Sng_Subj       NounModifier Noun_2nd_Sng
-	1   NounPhraseSmart_2nd_Plr_Subj       NounModifier Noun_2nd_Plr
 	1   NounPhraseSmart_2nd_Sng_DirObj       NounModifier Noun_2nd_Sng
-	1   NounPhraseSmart_2nd_Plr_DirObj       NounModifier Noun_2nd_Plr
 	1   NounPhraseSmart_2nd_Sng_IndObj       NounModifier Noun_2nd_Sng
+	1   NounPhraseSmart_2nd_Plr_Subj       NounModifier Noun_2nd_Plr
+	1   NounPhraseSmart_2nd_Plr_DirObj       NounModifier Noun_2nd_Plr
 	1   NounPhraseSmart_2nd_Plr_IndObj       NounModifier Noun_2nd_Plr
 	1   NounPhraseSmart_3rd_Sng_Subj       NounModifier Noun_3rd_Sng
-	1   NounPhraseSmart_3rd_Plr_Subj       NounModifier Noun_3rd_Plr
 	1   NounPhraseSmart_3rd_Sng_DirObj       NounModifier Noun_3rd_Sng
-	1   NounPhraseSmart_3rd_Plr_DirObj       NounModifier Noun_3rd_Plr
 	1   NounPhraseSmart_3rd_Sng_IndObj       NounModifier Noun_3rd_Sng
+	1   NounPhraseSmart_3rd_Plr_Subj       NounModifier Noun_3rd_Plr
+	1   NounPhraseSmart_3rd_Plr_DirObj       NounModifier Noun_3rd_Plr
 	1   NounPhraseSmart_3rd_Plr_IndObj       NounModifier Noun_3rd_Plr
 	1   NounPhraseSmart_1st_Sng_Subj       Noun_1st_Sng
-	1   NounPhraseSmart_1st_Plr_Subj       Noun_1st_Plr
 	1   NounPhraseSmart_1st_Sng_DirObj       Noun_1st_Sng
-	1   NounPhraseSmart_1st_Plr_DirObj       Noun_1st_Plr
 	1   NounPhraseSmart_1st_Sng_IndObj       Noun_1st_Sng
+	1   NounPhraseSmart_1st_Plr_Subj       Noun_1st_Plr
+	1   NounPhraseSmart_1st_Plr_DirObj       Noun_1st_Plr
 	1   NounPhraseSmart_1st_Plr_IndObj       Noun_1st_Plr
 	1   NounPhraseSmart_2nd_Sng_Subj       Noun_2nd_Sng
-	1   NounPhraseSmart_2nd_Plr_Subj       Noun_2nd_Plr
 	1   NounPhraseSmart_2nd_Sng_DirObj       Noun_2nd_Sng
-	1   NounPhraseSmart_2nd_Plr_DirObj       Noun_2nd_Plr
 	1   NounPhraseSmart_2nd_Sng_IndObj       Noun_2nd_Sng
+	1   NounPhraseSmart_2nd_Plr_Subj       Noun_2nd_Plr
+	1   NounPhraseSmart_2nd_Plr_DirObj       Noun_2nd_Plr
 	1   NounPhraseSmart_2nd_Plr_IndObj       Noun_2nd_Plr
 	1   NounPhraseSmart_3rd_Sng_Subj       Noun_3rd_Sng
-	1   NounPhraseSmart_3rd_Plr_Subj       Noun_3rd_Plr
 	1   NounPhraseSmart_3rd_Sng_DirObj       Noun_3rd_Sng
-	1   NounPhraseSmart_3rd_Plr_DirObj       Noun_3rd_Plr
 	1   NounPhraseSmart_3rd_Sng_IndObj       Noun_3rd_Sng
+	1   NounPhraseSmart_3rd_Plr_Subj       Noun_3rd_Plr
+	1   NounPhraseSmart_3rd_Plr_DirObj       Noun_3rd_Plr
 	1   NounPhraseSmart_3rd_Plr_IndObj       Noun_3rd_Plr
 	1   NounPhraseSmart_1st_Sng_Subj       NounModifier Noun+Prep_1st_Sng
-	1   NounPhraseSmart_1st_Plr_Subj       NounModifier Noun+Prep_1st_Plr
 	1   NounPhraseSmart_1st_Sng_DirObj       NounModifier Noun+Prep_1st_Sng
-	1   NounPhraseSmart_1st_Plr_DirObj       NounModifier Noun+Prep_1st_Plr
 	1   NounPhraseSmart_1st_Sng_IndObj       NounModifier Noun+Prep_1st_Sng
+	1   NounPhraseSmart_1st_Plr_Subj       NounModifier Noun+Prep_1st_Plr
+	1   NounPhraseSmart_1st_Plr_DirObj       NounModifier Noun+Prep_1st_Plr
 	1   NounPhraseSmart_1st_Plr_IndObj       NounModifier Noun+Prep_1st_Plr
 	1   NounPhraseSmart_2nd_Sng_Subj       NounModifier Noun+Prep_2nd_Sng
-	1   NounPhraseSmart_2nd_Plr_Subj       NounModifier Noun+Prep_2nd_Plr
 	1   NounPhraseSmart_2nd_Sng_DirObj       NounModifier Noun+Prep_2nd_Sng
-	1   NounPhraseSmart_2nd_Plr_DirObj       NounModifier Noun+Prep_2nd_Plr
 	1   NounPhraseSmart_2nd_Sng_IndObj       NounModifier Noun+Prep_2nd_Sng
+	1   NounPhraseSmart_2nd_Plr_Subj       NounModifier Noun+Prep_2nd_Plr
+	1   NounPhraseSmart_2nd_Plr_DirObj       NounModifier Noun+Prep_2nd_Plr
 	1   NounPhraseSmart_2nd_Plr_IndObj       NounModifier Noun+Prep_2nd_Plr
 	1   NounPhraseSmart_3rd_Sng_Subj       NounModifier Noun+Prep_3rd_Sng
-	1   NounPhraseSmart_3rd_Plr_Subj       NounModifier Noun+Prep_3rd_Plr
 	1   NounPhraseSmart_3rd_Sng_DirObj       NounModifier Noun+Prep_3rd_Sng
-	1   NounPhraseSmart_3rd_Plr_DirObj       NounModifier Noun+Prep_3rd_Plr
 	1   NounPhraseSmart_3rd_Sng_IndObj       NounModifier Noun+Prep_3rd_Sng
+	1   NounPhraseSmart_3rd_Plr_Subj       NounModifier Noun+Prep_3rd_Plr
+	1   NounPhraseSmart_3rd_Plr_DirObj       NounModifier Noun+Prep_3rd_Plr
 	1   NounPhraseSmart_3rd_Plr_IndObj       NounModifier Noun+Prep_3rd_Plr
 	1   NounPhraseSmart_1st_Sng_Subj       Noun+Prep_1st_Sng
-	1   NounPhraseSmart_1st_Plr_Subj       Noun+Prep_1st_Plr
 	1   NounPhraseSmart_1st_Sng_DirObj       Noun+Prep_1st_Sng
-	1   NounPhraseSmart_1st_Plr_DirObj       Noun+Prep_1st_Plr
 	1   NounPhraseSmart_1st_Sng_IndObj       Noun+Prep_1st_Sng
+	1   NounPhraseSmart_1st_Plr_Subj       Noun+Prep_1st_Plr
+	1   NounPhraseSmart_1st_Plr_DirObj       Noun+Prep_1st_Plr
 	1   NounPhraseSmart_1st_Plr_IndObj       Noun+Prep_1st_Plr
 	1   NounPhraseSmart_2nd_Sng_Subj       Noun+Prep_2nd_Sng
-	1   NounPhraseSmart_2nd_Plr_Subj       Noun+Prep_2nd_Plr
 	1   NounPhraseSmart_2nd_Sng_DirObj       Noun+Prep_2nd_Sng
-	1   NounPhraseSmart_2nd_Plr_DirObj       Noun+Prep_2nd_Plr
 	1   NounPhraseSmart_2nd_Sng_IndObj       Noun+Prep_2nd_Sng
+	1   NounPhraseSmart_2nd_Plr_Subj       Noun+Prep_2nd_Plr
+	1   NounPhraseSmart_2nd_Plr_DirObj       Noun+Prep_2nd_Plr
 	1   NounPhraseSmart_2nd_Plr_IndObj       Noun+Prep_2nd_Plr
 	1   NounPhraseSmart_3rd_Sng_Subj       Noun+Prep_3rd_Sng
-	1   NounPhraseSmart_3rd_Plr_Subj       Noun+Prep_3rd_Plr
 	1   NounPhraseSmart_3rd_Sng_DirObj       Noun+Prep_3rd_Sng
-	1   NounPhraseSmart_3rd_Plr_DirObj       Noun+Prep_3rd_Plr
 	1   NounPhraseSmart_3rd_Sng_IndObj       Noun+Prep_3rd_Sng
+	1   NounPhraseSmart_3rd_Plr_Subj       Noun+Prep_3rd_Plr
+	1   NounPhraseSmart_3rd_Plr_DirObj       Noun+Prep_3rd_Plr
 	1   NounPhraseSmart_3rd_Plr_IndObj       Noun+Prep_3rd_Plr
 
 	#"The carrot of doom" - Noun+Prep is what is responsible for the "of doom" part.
@@ -641,12 +641,12 @@
 	1   Verb_inf                                     Verb_inf_Intransitive
 #All verbs that aren't 3rd_Sng are conjugated like the 3rd_Plr (some irregular exceptions but I don't think they can crop up)
 	1   Verb_1st_Sng_Transitive           Verb_3rd_Plr_Transitive
-	1   Verb_1st_Plr_Transitive           Verb_3rd_Plr_Transitive
 	1   Verb_1st_Sng_Intransitive           Verb_3rd_Plr_Intransitive
+	1   Verb_1st_Plr_Transitive           Verb_3rd_Plr_Transitive
 	1   Verb_1st_Plr_Intransitive           Verb_3rd_Plr_Intransitive
 	1   Verb_2nd_Sng_Transitive           Verb_3rd_Plr_Transitive
-	1   Verb_2nd_Plr_Transitive           Verb_3rd_Plr_Transitive
 	1   Verb_2nd_Sng_Intransitive           Verb_3rd_Plr_Intransitive
+	1   Verb_2nd_Plr_Transitive           Verb_3rd_Plr_Transitive
 	1   Verb_2nd_Plr_Intransitive           Verb_3rd_Plr_Intransitive
 
 #Dealing with person and plurality
@@ -700,24 +700,24 @@
 	#Don't template the 3rd Sng because that requires has instead of have
 
 	1   VerbPP_1st_Sng_Transitive                 wrap_have PastParticiple_Transitive
-	1   VerbPP_1st_Plr_Transitive                 wrap_have PastParticiple_Transitive
 	1   VerbPP_1st_Sng_Intransitive                 wrap_have PastParticiple_Intransitive
+	1   VerbPP_1st_Plr_Transitive                 wrap_have PastParticiple_Transitive
 	1   VerbPP_1st_Plr_Intransitive                 wrap_have PastParticiple_Intransitive
 	1   VerbPP_2nd_Sng_Transitive                 wrap_have PastParticiple_Transitive
-	1   VerbPP_2nd_Plr_Transitive                 wrap_have PastParticiple_Transitive
 	1   VerbPP_2nd_Sng_Intransitive                 wrap_have PastParticiple_Intransitive
+	1   VerbPP_2nd_Plr_Transitive                 wrap_have PastParticiple_Transitive
 	1   VerbPP_2nd_Plr_Intransitive                 wrap_have PastParticiple_Intransitive
 	1   VerbPP_3rd_Plr_Transitive                 wrap_have PastParticiple_Transitive
 	1   VerbPP_3rd_Plr_Intransitive                 wrap_have PastParticiple_Intransitive
 	1   VerbPP_3rd_Sng_Transitive                            wrap_has  PastParticiple_Transitive
 	1   VerbPP_3rd_Sng_Intransitive                            wrap_has  PastParticiple_Intransitive
 	1   VerbPP_1st_Sng                               VerbPP_1st_Sng_Transitive
-	1   VerbPP_1st_Plr                               VerbPP_1st_Plr_Transitive
 	1   VerbPP_1st_Sng                               VerbPP_1st_Sng_Intransitive
+	1   VerbPP_1st_Plr                               VerbPP_1st_Plr_Transitive
 	1   VerbPP_1st_Plr                               VerbPP_1st_Plr_Intransitive
 	1   VerbPP_2nd_Sng                               VerbPP_2nd_Sng_Transitive
-	1   VerbPP_2nd_Plr                               VerbPP_2nd_Plr_Transitive
 	1   VerbPP_2nd_Sng                               VerbPP_2nd_Sng_Intransitive
+	1   VerbPP_2nd_Plr                               VerbPP_2nd_Plr_Transitive
 	1   VerbPP_2nd_Plr                               VerbPP_2nd_Plr_Intransitive
 	1   VerbPP_3rd_Plr                               VerbPP_3rd_Plr_Transitive
 	1   VerbPP_3rd_Plr                               VerbPP_3rd_Plr_Intransitive
