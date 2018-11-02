@@ -1,0 +1,305 @@
+# The start symbol is TOP.
+
+# These two rules are required; choose their weights carefully!
+99  TOP  S1
+1   TOP  S2
+
+#######################################Our Stuff VVV
+
+####Clauses
+1   S1                        Statement
+1   S1                        Question+
+1   Statement                 Clause EOS_statement
+1   Question+                 Question
+1   Question+                 QWord Question
+1   Question+                 Question_inv EOS_question
+1   Question_inv              InvertedQuestion
+1   Question_inv              InvertedQuestion +QClause_with_subord
+1   Question                  wrap_does QClause_3ps
+1   Question                  wrap_do QClause_3pp
+10  QClause_3ps               +QClause_3ps EOS_question
+1   QClause_3ps               QClause_3ps_with_subord EOS_question
+10  QClause_3pp               +QClause_3pp EOS_question
+1   QClause_3ps               QClause_3pp_with_subord EOS_question
+1   QClause_3ps_with_subord   +QClause_3ps +QClause_with_subord
+1   QClause_3pp_with_subord   +QClause_3pp +QClause_with_subord
+1   +QClause_with_subord      wrap_that SubjunctiveClause
+1   +QClause_with_subord      SubjunctiveClause
+1   +QClause_3ps              NP_3ps VP_inf
+1   +QClause_3pp              NP_3pp VP_inf
+10  Clause                    NP_3ps VP_3ps
+10  Clause                    NP_3pp VP_3pp
+1   Clause                    Clause +Clause
+1   +Clause                   CoordConj Clause
+1   +Clause                   SubordConj Clause
+1   +Clause                   wrap_that SubjunctiveClause
+1   +Clause                   SubjunctiveClause
+1   +Clause                   wrap_so Clause
+1   +Clause                   wrap_when Clause
+1   SubjunctiveClause         NP_3ps VP_inf
+1   SubjunctiveClause         NP_3pp VP_inf
+1   InvertedQuestion          wrap_is InvertedQuestion_3ps
+1   InvertedQuestion          wrap_are InvertedQuestion_3pp
+1   InvertedQuestion_3ps      NP_3ps InvertedQuestion_3ps+
+1   InvertedQuestion_3ps+     VerbModifier DirectObject
+1   InvertedQuestion_3ps+     Gerund+
+1   InvertedQuestion_3pp      NP_3pp InvertedQuestion_3pp+
+1   InvertedQuestion_3pp+     VerbModifier DirectObject
+1   InvertedQuestion_3pp+     Gerund+
+
+####Noun Phrases
+1   NP                NP_3ps
+1   NP                NP_3pp
+1   NP_3ps            Det_3ps +Noun_3ps
+1   NP_3ps            NPsimple_3ps
+1   NP_3ps            Adv_cmadj Gerund+
+1   NP_3ps            Gerund+
+1   NP_3ps            SubjectPronoun_3ps
+1   NP_3pp            Det_3pp +Noun_3pp
+1   NP_3pp            NPsimple_3pp
+1   NP_3pp            SubjectPronoun_3pp
+1   Gerund+           Gerund
+1   Gerund+           Gerund_to to_3ps+
+1   Gerund+           Gerund_of of_3ps+
+1   NPsimple_3ps      Det_3ps Noun_3ps
+1   NPsimple_3ps      ProperAll_notthing
+1   NPsimple_3ps      wrap_the ProperThing
+1   NPsimple_3pp      Det_3pp Noun_3pp
+1   NPsimple_3pp      Noun_3pp
+1   +Noun_3ps         NounModifier Noun_3ps
+1   +Noun_3ps         NounModifier Noun+Prep_3ps
+1   +Noun_3ps         Noun_3ps
+1   +Noun_3ps         Noun+Prep_3ps
+1   +Noun_3pp         NounModifier Noun_3pp
+1   +Noun_3pp         Noun_3pp
+1   Noun+Prep_3ps     Noun_3ps of_3ps+
+1   of_3ps+           wrap_of NPsimple_3ps
+1   to_3ps+           wrap_to NPsimple_3ps
+1   NounModifier      Adj
+1   NounModifier      Adj Adj
+1   NounModifier      Adv_cmadj Adj
+
+####Verb Phrases
+1   VP                   VP_3ps
+
+1   VP_3ps               VerbModifier VP_3ps+
+1   VP_3ps               VP_3ps+
+1   VP_3ps               VerbModifier is+
+1   VP_3ps               is+
+1   VP_3ps               Verb_3ps
+1   VP_3ps               Modal VP_inf+
+
+1   VP_3pp               VerbModifier VP_3pp+
+1   VP_3pp               VP_3pp+
+1   VP_3pp               VerbModifier are+
+1   VP_3pp               are+
+1   VP_3pp               Verb_3pp
+1   VP_3pp               Modal VP_inf+
+
+1   VP_inf               VerbModifier VP_inf+
+1   VP_inf               VP_inf+
+1   VP_inf               Verb_inf
+
+1   is+                  wrap_is isAdj+
+1   are+                 wrap_are isAdj+
+1   isAdj+               Adj
+1   isAdj+               Adj_comp than+
+1   isAdj+               wrap_the Adj_sup
+1   isAdj+               PrepOfLocation NP
+1   than+                than NP
+1   VerbModifier         Adv_cmverbs
+
+1   VP_3ps+              VerbTransitive_3ps
+1   VP_3ps+              VerbPP_3ps_Transitive
+1   VP_3ps+              VerbTransitive_3ps Objects+
+1   VP_3ps+              VerbPP_3ps_Transitive Objects+
+1   VP_3ps+              VerbIntransitive_3ps IndirectObject+
+1   VP_3ps+              VerbPP_3ps_Intransitive IndirectObject+
+
+1   VP_inf+              VerbTransitive_inf
+1   VP_inf+              VerbPP_3pp_Transitive
+1   VP_inf+              VerbTransitive_inf Objects+
+1   VP_inf+              VerbPP_3pp_Transitive Objects+
+1   VP_inf+              VerbIntransitive_inf IndirectObject+
+1   VP_inf+              VerbPP_3pp_Intransitive IndirectObject+
+
+1   VP_3pp+              VerbTransitive_3pp
+1   VP_3pp+              VerbPP_3pp_Transitive
+1   VP_3pp+              VerbTransitive_3pp Objects+
+1   VP_3pp+              VerbPP_3pp_Transitive Objects+
+1   VP_3pp+              VerbIntransitive_3pp IndirectObject+
+1   VP_3pp+              VerbPP_3pp_Intransitive IndirectObject+
+
+1   Objects+             IndirectObject+
+1   Objects+             DirectObject IndirectObject+
+1   Objects+             DirectObject
+1   Objects+             DirectObject-
+1   DirectObject         NP
+1   IndirectObject+      IndirectObject
+1   IndirectObject       Prep NP
+
+#"it is Sir Lancelot who knows Zoot !" requires a lot of context
+#Because "knows" is conjugated according to Sir Lancelot, not it.
+#You may have already realized this, but we're working with a context
+#free grammar.  I've tried to carry through as much context as possible
+#(for example, VP_3pp vs VP_3ps for person and plurality)
+#But it would involve a literally exponential size blowup to try and save
+#the context that is the person and plurality of the direct object 
+#of the first clause and carry that over to the second clause.
+#I mean literally exponential.  If I wanted to start saving that, it would
+#double the amount of nonterminals.
+#So instead I'm cheating with "DirectObject-".  This cuts the clause short
+#and appends a "[who|that][verb phrase]" onto the end of the clause.
+#This way I can control the context and limit the size blowup to just the
+#lines below here.
+1   DirectObject-        NP_3ps DegenerateClause_3ps
+1   DirectObject-        NP_3pp DegenerateClause_3pp
+1   DegenerateClause_3ps wrap_who VP_3ps
+1   DegenerateClause_3ps wrap_that VP_3ps
+1   DegenerateClause_3pp wrap_who VP_3pp
+1   DegenerateClause_3pp wrap_that VP_3pp
+
+####Groupers
+# A grouper is a whole part of speech grouped together without
+# respect for their differences.
+
+1   Adjective             Adj
+
+#all VerbT are 3rd person singular
+1   VerbTransitive_3ps          VerbT_3ps
+1   VerbIntransitive_3ps        Verb_intr_3ps
+1   Verb_3ps                    VerbTransitive_3ps
+1   Verb_3ps                    VerbIntransitive_3ps
+1   Verb_inf                    VerbIntransitive_inf
+1   Verb_inf                    VerbTransitive_inf
+1   Verb_3pp                    VerbTransitive_3pp
+1   Verb_3pp                    VerbIntransitive_3pp
+
+#Dealing with person and plurality
+1   Det_3ps      Det_s
+1   Det_3ps      Det_a
+1   Det_3pp      Det_a
+1   Det_3pp      Detpl
+1   Noun_3ps     Noun
+1   Noun_3pp     Noun_p
+
+#cmadj = can modify adjectives
+#such as "the unfortunately green eyes"
+#loc = adverb of location
+#1/3/3/1 weightings because 8 in total, proportionally represented
+1   Adverb Adv_time
+3   Adverb Adv
+3   Adverb Adv_cmadj
+1   Adverb Adv_loc
+
+#Adverbs that can modify verbs
+4   Adv_cmverbs Adv
+3   Adv_cmverbs Adv_cmadj
+
+#Typo prevention
+1   Adv_cmadg Adv_cmadj
+
+#Error prevention
+1   VerbT VerbT_3ps
+
+#Gerunds
+1   Gerund    Gerund_
+1   Gerund    Gerund_to
+1   Gerund    Gerund_of
+1   Gerund_to Gerund_to_
+1   Gerund_to Gerund_to_of_
+1   Gerund_of Gerund_of_
+1   Gerund_of Gerund_to_of_
+
+#Proper
+1   ProperAll          Proper
+1   ProperAll          ProperPlace
+1   ProperAll          ProperThing
+1   ProperAll_notthing Proper
+1   ProperAll_notthing ProperPlace
+
+#Questions
+1   QWord wrap_what
+1   QWord wrap_who
+1   QWord wrap_how
+1   QWord wrap_when
+1   QWord wrap_where
+1   QWord wrap_why
+
+#Verbs that take to as a preposition
+1   ToTakers_inf ride
+1   Totakers_inf speak
+1   ToTakers_inf migrate
+1   ToTakers_3pp ride
+1   ToTakers_3pp speak
+1   ToTakers_3pp migrate
+1   ToTakers_3ps rides
+1   ToTakers_3ps speaks
+1   ToTakers_3pp migrates
+
+#Prepositions
+1   PrepOfLocation at
+1   PrepOfLocation by
+1   PrepOfLocation near
+1   PrepOfLocation with
+1   PrepOfLocation above
+
+#Verbs in past using participles
+1   VerbPP_1ps_Transitive      wrap_have PastParticipleTransitive
+1   VerbPP_2ps_Transitive      wrap_have PastParticipleTransitive
+1   VerbPP_3ps_Transitive      wrap_has  PastParticipleTransitive
+1   VerbPP_1pp_Transitive      wrap_have PastParticipleTransitive
+1   VerbPP_2pp_Transitive      wrap_have PastParticipleTransitive
+1   VerbPP_3pp_Transitive      wrap_have PastParticipleTransitive
+1   VerbPP_1ps_Intransitive    wrap_have PastParticipleIntransitive
+1   VerbPP_2ps_Intransitive    wrap_have PastParticipleIntransitive
+1   VerbPP_3ps_Intransitive    wrap_has  PastParticipleIntransitive
+1   VerbPP_1pp_Intransitive    wrap_have PastParticipleIntransitive
+1   VerbPP_2pp_Intransitive    wrap_have PastParticipleIntransitive
+1   VerbPP_3pp_Intransitive    wrap_have PastParticipleIntransitive
+1   VerbPP_1ps                 VerbPP_1ps_Transitive
+1   VerbPP_1ps                 VerbPP_1ps_Intransitive
+1   VerbPP_2ps                 VerbPP_2ps_Transitive
+1   VerbPP_2ps                 VerbPP_2ps_Intransitive
+1   VerbPP_3ps                 VerbPP_3ps_Transitive
+1   VerbPP_3ps                 VerbPP_3ps_Intransitive
+1   VerbPP_1pp                 VerbPP_1pp_Transitive
+1   VerbPP_1pp                 VerbPP_1pp_Intransitive
+1   VerbPP_2pp                 VerbPP_2pp_Transitive
+1   VerbPP_2pp                 VerbPP_2pp_Intransitive
+1   VerbPP_3pp                 VerbPP_3pp_Transitive
+1   VerbPP_3pp                 VerbPP_3pp_Intransitive
+
+
+#If a terminal is not 'wrapped', and instead used in place, the parser
+#does not mark it as correct when comparing example sentences!
+#Wrappers
+1   wrap_is      is
+1   wrap_of      of
+1   wrap_to      to
+1   wrap_the     the
+1   wrap_does    does
+1   wrap_do      do
+1   wrap_what    what
+1   wrap_who     who
+1   wrap_whose   whose
+1   wrap_how     how
+1   wrap_when    when
+1   wrap_where   where
+1   wrap_why     why
+1   wrap_that    that
+1   wrap_so      so
+1   wrap_either  either
+1   wrap_neither neither
+1   wrap_or      or
+1   wrap_nor     nor
+1   wrap_are     are
+1   wrap_at      at
+1   wrap_have    have
+1   wrap_has     has
+
+#######################################Our Stuff ^^^
+
+
+# in case you use S1.gr by itself
+1   S2   Misc

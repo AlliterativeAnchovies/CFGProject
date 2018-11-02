@@ -1,0 +1,147 @@
+2017-09-04.10-30-41.bravas.inf.ed.ac.uk ls -l
+2017-09-04.10-30-52.bravas.inf.ed.ac.uk vi print_tree.py 
+2017-09-04.10-30-53.bravas.inf.ed.ac.uk ls -l
+2017-09-04.10-30-55.bravas.inf.ed.ac.uk ls -l
+2017-09-04.10-30-58.bravas.inf.ed.ac.uk vi pcfg_parse_gen.py 
+2017-09-04.10-31-25.bravas.inf.ed.ac.uk vi README.md
+2017-09-04.10-31-30.bravas.inf.ed.ac.uk vi ~/cgw/allowed_words 
+2017-09-04.10-31-33.bravas.inf.ed.ac.uk vi allowed_words.txt 
+2017-09-04.10-31-49.bravas.inf.ed.ac.uk vi README.md
+2017-09-04.10-31-50.bravas.inf.ed.ac.uk ls -l
+2017-09-04.10-31-52.bravas.inf.ed.ac.uk python pcfg_parse_gen.py 
+2017-09-04.10-32-10.bravas.inf.ed.ac.uk vi README.md
+2017-09-04.10-32-10.bravas.inf.ed.ac.uk python pcfg_parse_gen.py -o 20 -g S1.gr,Vocab.gr
+2017-09-04.10-32-12.bravas.inf.ed.ac.uk python pcfg_parse_gen.py -o 20 -g S1.gr,Vocab.gr
+2017-09-04.10-32-14.bravas.inf.ed.ac.uk python pcfg_parse_gen.py -o 20 -g S1.gr,Vocab.gr
+2017-09-04.10-32-15.bravas.inf.ed.ac.uk python pcfg_parse_gen.py -o 20 -g S1.gr,Vocab.gr
+2017-09-04.10-32-17.bravas.inf.ed.ac.uk ls -l
+2017-09-04.10-32-20.bravas.inf.ed.ac.uk vi SR.gr
+2017-09-04.10-32-45.bravas.inf.ed.ac.uk vi S1.gr
+2017-09-04.10-32-52.bravas.inf.ed.ac.uk vi README.md
+2017-09-04.10-32-59.bravas.inf.ed.ac.uk vi S2.gr 
+2017-09-04.10-33-24.bravas.inf.ed.ac.uk vi README.md
+2017-09-04.10-33-29.bravas.inf.ed.ac.uk vi unseen.tags 
+2017-09-04.10-33-35.bravas.inf.ed.ac.uk vi README.md
+2017-09-04.10-33-35.bravas.inf.ed.ac.uk ls -l
+2017-09-04.10-33-36.bravas.inf.ed.ac.uk ls -l
+2017-09-04.10-33-36.bravas.inf.ed.ac.uk ls -l
+2017-09-04.10-33-37.bravas.inf.ed.ac.uk ls -l
+2017-09-04.10-33-37.bravas.inf.ed.ac.uk ls -l
+2017-09-04.10-33-37.bravas.inf.ed.ac.uk ls -l
+2017-09-04.10-33-38.bravas.inf.ed.ac.uk ls -l
+2017-09-04.10-34-01.bravas.inf.ed.ac.uk vi README.md
+2017-09-04.10-34-02.bravas.inf.ed.ac.uk ls -l
+2017-09-04.10-34-07.bravas.inf.ed.ac.uk ls -l
+2017-09-04.10-34-08.bravas.inf.ed.ac.uk ls -l
+2017-09-04.10-34-09.bravas.inf.ed.ac.uk ls -l
+2017-09-04.10-43-08.bravas.inf.ed.ac.uk ls -l
+2017-09-04.10-43-13.bravas.inf.ed.ac.uk python print_tree.py 
+2017-09-04.10-43-23.bravas.inf.ed.ac.uk vi README.md
+2017-09-04.10-43-24.bravas.inf.ed.ac.uk ls -l
+2017-09-04.10-43-40.bravas.inf.ed.ac.uk vi drawtree.py 
+2017-09-04.10-43-47.bravas.inf.ed.ac.uk vi README.md
+2017-09-04.10-43-48.bravas.inf.ed.ac.uk ls -l
+2017-09-04.10-43-55.bravas.inf.ed.ac.uk vi drawtree.py 
+2017-09-04.10-43-56.bravas.inf.ed.ac.uk ls -l
+2017-09-04.10-44-01.bravas.inf.ed.ac.uk vi print_tree.py 
+2017-09-04.10-44-06.bravas.inf.ed.ac.uk vi print_tree.py 
+2017-09-04.10-44-12.bravas.inf.ed.ac.uk vi print_tree.py 
+2017-09-04.10-44-38.bravas.inf.ed.ac.uk vi README.md
+2017-09-04.10-44-38.bravas.inf.ed.ac.uk python pcfg_parse_gen.py -i -g "*.gr" < example_sentences.txt
+2017-09-04.10-44-50.bravas.inf.ed.ac.uk python pcfg_parse_gen.py -i -g "*.gr" < example_sentences.txt | python print_tree.py 
+2017-09-04.10-44-55.bravas.inf.ed.ac.uk python pcfg_parse_gen.py -i -g "*.gr" < example_sentences.txt | python drawtree.py 
+2017-09-04.10-45-00.bravas.inf.ed.ac.uk python pcfg_parse_gen.py -i -g "*.gr" < example_sentences.txt | python print_tree.py 
+2017-09-04.10-45-03.bravas.inf.ed.ac.uk ls -l
+2017-09-04.10-45-06.bravas.inf.ed.ac.uk ls -l *.py
+2017-09-04.10-47-34.brendel.inf.ed.ac.uk ls -l
+2017-09-04.10-47-37.brendel.inf.ed.ac.uk cat .history
+2017-09-04.10-47-43.brendel.inf.ed.ac.uk python pcfg_parse_gen.py -i -g "*.gr" < example_sentences.txt | python print_tree.py 
+2017-09-04.10-47-50.brendel.inf.ed.ac.uk python pcfg_parse_gen.py -i -g "*.gr" < example_sentences.txt | python print_tree.py 
+2017-09-04.10-52-32.bravas.inf.ed.ac.uk ls -l
+2017-09-04.10-52-36.bravas.inf.ed.ac.uk vi unseen.tags 
+2017-09-04.10-52-37.bravas.inf.ed.ac.uk ls -l
+2017-09-04.10-52-48.bravas.inf.ed.ac.uk vi example_sentences.txt 
+2017-09-04.10-52-49.bravas.inf.ed.ac.uk ls -l
+2017-09-04.10-52-54.bravas.inf.ed.ac.uk vi README.gr
+2017-09-04.10-53-06.bravas.inf.ed.ac.uk vi README.md
+2017-09-04.10-53-06.bravas.inf.ed.ac.uk python pcfg_parse_gen.py -i -g "*.gr" < example_sentences.txt
+2017-09-04.10-53-06.bravas.inf.ed.ac.uk python pcfg_parse_gen.py -i -g "*.gr" < example_sentences.txt
+2017-09-04.10-53-48.bravas.inf.ed.ac.uk vi README.md
+2017-09-04.10-54-18.bravas.inf.ed.ac.uk vi Vocab.gr 
+2017-09-04.10-54-23.bravas.inf.ed.ac.uk vi S2.gr
+2017-09-04.10-54-35.bravas.inf.ed.ac.uk vi S2.gr
+2017-09-04.10-54-48.bravas.inf.ed.ac.uk vi S1.gr 
+2017-09-04.10-54-49.bravas.inf.ed.ac.uk vi S1.gr 
+2017-09-04.10-54-54.bravas.inf.ed.ac.uk cat README.md | grep S2
+2017-09-04.10-55-01.bravas.inf.ed.ac.uk cat README.md | grep S2 | grep py
+2017-09-04.10-55-17.bravas.inf.ed.ac.uk vi README.md
+2017-09-04.10-55-19.bravas.inf.ed.ac.uk grep S2 *.py
+2017-09-04.10-55-21.bravas.inf.ed.ac.uk grep S2 *
+2017-09-04.10-55-53.bravas.inf.ed.ac.uk vi README.md
+2017-09-04.10-56-08.bravas.inf.ed.ac.uk vi README.md
+2017-09-04.10-56-15.bravas.inf.ed.ac.uk python pcfg_parse_gen.py -i -g "*.gr"
+2017-09-04.10-56-17.bravas.inf.ed.ac.uk python pcfg_parse_gen.py -i -g "*.gr" < example_sentences.txt 
+2017-09-04.10-56-20.bravas.inf.ed.ac.uk ls -l
+2017-09-04.10-57-43.bravas.inf.ed.ac.uk vi README.md
+2017-09-04.10-57-43.bravas.inf.ed.ac.uk ls -l
+2017-09-04.10-57-46.bravas.inf.ed.ac.uk vi unseen.tags 
+2017-09-04.10-57-49.bravas.inf.ed.ac.uk vi unseen.tags 
+2017-09-04.10-57-49.bravas.inf.ed.ac.uk ls -l
+2017-09-04.10-57-53.bravas.inf.ed.ac.uk vi S1.gr
+2017-09-04.10-57-54.bravas.inf.ed.ac.uk ls -l
+2017-09-04.10-57-57.bravas.inf.ed.ac.uk vi S2.gr
+2017-09-04.10-57-58.bravas.inf.ed.ac.uk ls -l
+2017-09-04.10-58-05.bravas.inf.ed.ac.uk vi Vocab.gr 
+2017-09-04.10-58-06.bravas.inf.ed.ac.uk ls -l
+2017-09-04.10-59-34.bravas.inf.ed.ac.uk vi pcfg_parse_gen.py 
+2017-09-04.10-59-34.bravas.inf.ed.ac.uk ls -l
+2017-09-05.10-57-17.ashbury.inf.ed.ac.uk ls -l
+2017-09-05.10-57-18.ashbury.inf.ed.ac.uk ls -l
+2017-09-05.10-57-21.ashbury.inf.ed.ac.uk cat .history | grep python
+2017-09-05.10-57-26.ashbury.inf.ed.ac.uk python pcfg_parse_gen.py -i -g "*.gr" < example_sentences.txt 
+2017-09-05.10-57-28.ashbury.inf.ed.ac.uk ls -l
+2017-09-05.10-57-29.ashbury.inf.ed.ac.uk w
+2017-09-05.10-57-41.ashbury.inf.ed.ac.uk top
+2017-09-05.10-57-42.ashbury.inf.ed.ac.uk ls -lt
+2017-09-05.10-58-02.ashbury.inf.ed.ac.uk ls -lt
+2017-09-05.10-58-04.ashbury.inf.ed.ac.uk ls -l
+2017-09-06.12-10-14.bravas.inf.ed.ac.uk ls -l
+2017-09-06.12-10-19.bravas.inf.ed.ac.uk vi example_sentences.txt 
+2017-09-06.12-10-20.bravas.inf.ed.ac.uk ls -l
+2017-09-06.12-10-32.bravas.inf.ed.ac.uk vi README.md
+2017-09-06.12-10-33.bravas.inf.ed.ac.uk mkdir code
+2017-09-06.12-10-36.bravas.inf.ed.ac.uk cp * code
+2017-09-06.12-10-37.bravas.inf.ed.ac.uk ls -l
+2017-09-06.12-10-41.bravas.inf.ed.ac.uk rm -rf *.py
+2017-09-06.12-10-43.bravas.inf.ed.ac.uk rm -rf *.txt
+2017-09-06.12-10-43.bravas.inf.ed.ac.uk ls -l
+2017-09-06.12-10-45.bravas.inf.ed.ac.uk rm -rf *.gr
+2017-09-06.12-10-46.bravas.inf.ed.ac.uk ls -l
+2017-09-06.12-10-49.bravas.inf.ed.ac.uk rm -rf unseen.tags 
+2017-09-06.12-10-50.bravas.inf.ed.ac.uk ls code
+2017-09-06.12-10-51.bravas.inf.ed.ac.uk ls -l
+2017-09-06.12-10-58.bravas.inf.ed.ac.uk vi README.md
+2017-09-06.12-11-01.bravas.inf.ed.ac.uk vi README.md
+2017-09-06.12-11-05.bravas.inf.ed.ac.uk mv code/* .
+2017-09-06.12-11-06.bravas.inf.ed.ac.uk ls -l
+2017-09-06.12-11-08.bravas.inf.ed.ac.uk rm -rf code
+2017-09-06.12-11-09.bravas.inf.ed.ac.uk ls -l
+2017-09-06.12-12-52.bravas.inf.ed.ac.uk vi INF2A-README.txt
+2017-09-06.12-12-53.bravas.inf.ed.ac.uk ls -l *.py
+2017-09-06.12-12-59.bravas.inf.ed.ac.uk vi INF2A-README.txt
+2017-09-06.12-13-01.bravas.inf.ed.ac.uk vi INF2A-README.txt
+2017-09-06.12-13-05.bravas.inf.ed.ac.uk vi INF2A-README.txt
+2017-09-06.12-13-16.bravas.inf.ed.ac.uk vi README.md
+2017-09-06.12-13-42.bravas.inf.ed.ac.uk vi INF2A-README.txt
+2017-09-06.12-13-45.bravas.inf.ed.ac.uk python pcfg_parse_gen.py -h
+2017-09-06.12-16-21.bravas.inf.ed.ac.uk ls -l
+2017-09-06.12-17-35.bravas.inf.ed.ac.uk ls -l
+2017-09-06.12-18-04.bravas.inf.ed.ac.uk ls -l
+2017-09-06.12-20-21.bravas.inf.ed.ac.uk pico INF2A-README.txt 
+2017-09-06.12-20-22.bravas.inf.ed.ac.uk ls -l
+2017-09-06.12-20-29.bravas.inf.ed.ac.uk pico INF2A-README.txt 
+2017-09-06.12-20-29.bravas.inf.ed.ac.uk ls -l
+2017-09-06.12-20-45.bravas.inf.ed.ac.uk rm -rf .git
+2017-09-06.12-20-47.bravas.inf.ed.ac.uk rm -rf .*swp
+2017-09-06.12-20-58.bravas.inf.ed.ac.uk rm -rf .*.swn
+2017-09-06.12-20-59.bravas.inf.ed.ac.uk rm -rf .*.swo

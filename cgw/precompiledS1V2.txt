@@ -1,0 +1,406 @@
+###Wrappers
+{
+	<wordlist1 is of to the does do what who whose how when where why>
+	<wordlist2 that so either neither or nor are at have has than am ,>
+	<questionWords where when why how>
+	<qwt who what>
+
+	#There is a bug in the instructor's code which causes a small, hard to
+	#notice problem if we use a terminal and a nonterminal in a production rule
+	#Example: A -> is B; A,B nonterminals and 'is' is a terminal
+	#To avoid this, all terminals used directly should be 'wrapped' in a nonterminal.
+	#The reason there are two "wordlist"s is purely so that the angle bracket
+	#declarations fit on one line, it is no different than having everything in
+	#one list and only saying "1   wrap_{wordlistN} {wordlistN}" once.
+
+	#All of the words here must exist in Vocab.gr
+	#We are NOT allowed to add words that aren't already in there.
+
+	1   wrap_{wordlist1}        {wordlist1}
+	1   wrap_{wordlist2}        {wordlist2}
+	1   QuestionWord            {questionWords}
+	1   QuestionWord_Transitive {qwt}
+}
+
+### Clauses ###=========================================================================================
+{
+	<person _1st _2nd _3rd>
+	<plurality _Sng _Plr>
+
+	##########################################################################
+	#																		 #	
+	#   Global Nonterminals: QuestionClause, StatementClause, SimpleClause   #
+	#																		 #
+	##########################################################################
+	#StatementClause takes no arguments										 #
+	#QuestionClause takes no arguments										 #
+	#SimpleClause takes either no arguments or (person,plurality)			 #
+	#	if no arguments, it will pick an arbitrary (person,plurality) pair.  #
+	##########################################################################
+
+	1   S1               StatementClause
+	1   S1               QuestionClause
+
+	#Here we handle the most naive statement clause:
+	1   StatementClause                    SimpleClause{person}{plurality} EOS_Statement
+	1   SimpleClause{person}{plurality}    NounPhrase{person}{plurality}_Subj VerbPhrase{person}{plurality}
+	1   SimpleClause                       SimpleClause{person}{plurality}
+	
+	#There are 2 main ways to ask questions in english:
+	#"Do-Construction": We run. -> Do we run?
+	#"Inversion": We are running. -> Are we running?
+	#Both of these can have question words prepended:
+	#How do we run?
+	#Why are we running?
+	#Generic question words are {where when why how}, grouped in the nonterminal QuestionWord
+	#There is also {who what} in QuestionWord_Transitive, but they must take a transitive verb phrase!
+	#Currently I do not try to handle QuestionWord_Transitive
+
+	#Add question words:
+	1   QuestionClause                     QuestionClauseInner EOS_Question
+	1   QuestionClauseInner                QuestionWord QuestionClause1
+	1   QuestionClauseInner                QuestionClause1
+
+	#Do-Construction:
+	#[do/does] NounPhrase VerbPhrase_inf
+	1   QuestionClause1                    wrap_do DoConstruction
+	1   QuestionClause1                    wrap_does DoesConstruction
+	1   DoConstruction                     NounPhrase_1st{plurality}_Subj VerbPhrase_inf
+	1   DoConstruction                     NounPhrase_2nd{plurality}_Subj VerbPhrase_inf
+	1   DoConstruction                     NounPhrase_3rd_Plr_Subj VerbPhrase_inf
+	1   DoesConstruction                   NounPhrase_3rd_Sng_Subj VerbPhrase_inf
+
+	#Inversion question:
+	#[is/are/am] NounPhrase GerundPhrase
+	1   QuestionClause1                     wrap_am InversionAm
+	1   QuestionClause1                     wrap_are InversionAre
+	1   QuestionClause1                     wrap_is InversionIs
+	1   InversionAm                         NounPhrase_1st_Sng_Subj GerundPhrase
+	1   InversionIs                         NounPhrase_3rd_Sng_Subj GerundPhrase
+	1   InversionAre                        NounPhrase_2nd_Sng_Subj GerundPhrase
+	1   InversionAre                        NounPhrase{person}_Plr_Subj GerundPhrase
+
+}
+### Clauses continued: Either/Neither ###=====================================================================================
+{
+	<person_phrase1 _1st _3rd>
+	<person_phrase2 _1st _2nd _3rd>
+	<plurality _Sng _Plr>
+	<ne/e n ε>
+
+	###################################################################
+	#																  #
+	#   Global Nonterminals: NONE!  This is a self contained section  #
+	#																  #
+	###################################################################
+
+	#Here is a naive, improvable interpretation of either/neither stuffs:
+	#"either [NP] or [NP] [VP_plural]" OR "either [NP] [VP] or [NP] [VP]"
+	#Concerning the first type:
+	#	If 2nd person is used it must come last, and verb phrase must be conjugated according to last
+
+	1   StatementClause                                     {ne/e}eitherStatement
+	1   {ne/e}eitherStatement                               wrap_{ne/e}either {ne/e}eitherStatement1
+
+	#1st type:
+	5   {ne/e}eitherStatement1                              NounPhrase{person_phrase1}{plurality}_Subj {ne/e}eitherStatement2{person_phrase1}{plurality}
+	1   {ne/e}eitherStatement2{person_phrase1}{plurality}   wrap_{ne/e}or eitherStatement3
+	1   eitherStatement3                                    NounPhrase{person_phrase2}{plurality}_Subj VerbPhrase{person_phrase2}_Plr
+
+	#2nd type:
+	1   {ne/e}eitherStatement1                              SimpleClause {ne/e}either2ndType
+	1   {ne/e}either2ndType                                 wrap_{ne/e}or SimpleClause
+
+}
+### Noun Phrases ###=====================================================================================
+{
+	<person _1st _2nd _3rd>
+	<plurality _Sng _Plr>
+	<role _Subj _DirObj _IndObj>
+
+	#######################################################################
+	#																	  #
+	#   Global Nonterminals: NounPhrase, SimpleNounPhrase, GerundPhrase   #
+	#																	  #
+	###########################################################################
+	#NounPhrase takes either no arguments, (role), or (person,plurality,role) #
+	#	if no arguments, it picks a random (person,plurality,role)            #
+	#	if (role), it picks a random (person,plurality).					  #
+	#SimpleNounPhrase behaves like NounPhrase							      #
+	#GerundPhrase takes no arguments			 							  #
+	###########################################################################
+
+	#Note: only 3rd person can use determiners.  In fact only 3rd person can do most of this stuff, since
+	#the other persons only show up as pronouns.  So you will probably see a lot of explicit '_3rd's here.
+
+	#Note 2: 'us' is not in our vocabulary.  Literally every other verb is, but 'us' is not...  Which is a pain because
+	#it breaks part of the template.  I'm leaving it as is for now and next lecture I will go talk to the lecturer and ask
+	#if we can add 'us'.  In the meantime, if you see Pronoun_1st_Plr_IndObj or Pronoun_1st_Plr_DirObj in a generated
+	#sentence, ignore it and mentally replace it with 'us'.
+
+	1   NounPhrase                                     NounPhrase{role}
+	1   NounPhrase{role}                               NounPhrase{person}{plurality}{role}
+	1   NounPhrase_3rd{plurality}{role}                Determiner_3rd{plurality} NounPhraseSmart_3rd{plurality}{role}
+	1   NounPhrase{person}{plurality}{role}            SimpleNounPhrase{person}{plurality}{role}
+
+	#Naive Noun Phrase - either [Determiner Noun] or [Pronoun] or [Proper Noun]
+	1   SimpleNounPhrase_3rd{plurality}{role}          Determiner_3rd{plurality} Noun_3rd{plurality}
+	1   SimpleNounPhrase{person}{plurality}{role}      Pronoun{person}{plurality}{role}
+	1   SimpleNounPhrase{role}                         SimpleNounPhrase{person}{plurality}{role}
+	1   SimpleNounPhrase                               SimpleNounPhrase{role}
+	1   SimpleNounPhrase_3rd_Sng{role}                 ProperStuffs_Sng
+	1   ProperStuffs_Sng                               ProperAll_notthing
+	1   ProperStuffs_Sng                               wrap_the ProperThing
+	1   SimpleNounPhrase_3rd_Plr{role}                 ProperStuffs_Plr
+	1   ProperStuffs_Plr                               Noun_3rd_Plr
+
+	#Gerund Noun Phrase: "[[[Quickly running]]] through the store is illegal."  {Verbs ending in -ing can act as nouns, they are called gerunds}
+	#A gerund can't really be an indirect object:  "He throws the ball to running" makes no sense.
+	#Neither can it be a direct object: "He throws running" is nonesense.  However, verbs of emotion work with direct object gerunds:
+	#"He likes running", "He hates running", etc.  This is worth looking into, however I bet that every time -ing can be used
+	#in this context, we could use the infinitive instead - "He likes to run", "He hates to run".  So it would probably be best to handle
+	#that by having infinitives have a chance to evaluate to a gerund instead.
+	1   NounPhrase_3rd_Sng_Subj                        Adv_cmadj GerundPhrase
+	1   NounPhrase_3rd_Sng_Subj                        GerundPhrase
+	1   GerundPhrase                                   Gerund
+	1   GerundPhrase                                   Gerund_to to{person}{plurality}+
+	1   GerundPhrase                                   Gerund_of of{person}{plurality}+
+	1   GerundPhrase                                   Gerund_obj obj{person}{plurality}+
+	1   of{person}{plurality}+                         wrap_of SimpleNounPhrase{person}{plurality}_IndObj
+	1   to{person}{plurality}+                         wrap_to SimpleNounPhrase{person}{plurality}_IndObj
+	1   obj{person}{plurality}+                        SimpleNounPhrase{person}{plurality}_DirObj
+
+	#Less Naive Noun Phrase
+	#Nouns can be modified with this type
+	1   NounPhraseSmart{person}{plurality}{role}       NounModifier Noun{person}{plurality}
+	1   NounPhraseSmart{person}{plurality}{role}       Noun{person}{plurality}
+	1   NounPhraseSmart{person}{plurality}{role}       NounModifier Noun+Prep{person}{plurality}
+	1   NounPhraseSmart{person}{plurality}{role}       Noun+Prep{person}{plurality}
+
+	#"The carrot of doom" - Noun+Prep is what is responsible for the "of doom" part.
+	1   Noun+Prep{person}{plurality}                   Noun{person}{plurality} of{person}{plurality}+
+
+
+	#Noun modifiers go in front of a noun (but before the determiner)
+	#"big" [ADJ], "big yellow" [ADJ ADJ], "unfortunately small" [ADV ADJ] are the 3 types of modifiers.
+	#This section could be split off into its own "AdjectivePhrase" bit but I think that is overkill, this should suffice.
+	#Adv_cmadj is the subset of adverbs that can modify adjectives (since not all adverbs can)
+	1   NounModifier                       Adj
+	1   NounModifier                       Adj Adj
+	1   NounModifier                       Adv_cmadj Adj
+
+}
+### Verb Phrases ###=====================================================================================
+{
+	<person _1st _2nd _3rd>
+	<plurality _Sng _Plr>
+
+	#######################################
+	#									  #
+	#   Global Nonterminals: VerbPhrase   #
+	#									  #
+	###############################################################
+	#VerbPhrase takes either no arguments or (person,plurality)   #
+	#	if no arguments, it picks a random (person,plurality)     #
+	#VerbPhrase can also take the single argument 'inf'           #
+	#	which is used for infinitives, do-construction questions, #
+	#	and subjunctive clauses.								  #
+	###############################################################
+
+	1   VerbPhrase                                    VerbPhrase{person}{plurality}
+
+
+	########Types of Verb Phrases:
+
+	#Naive - just a single verb
+	1   VerbPhrase{person}{plurality}                 Verb{person}{plurality}
+	1   VerbPhrase{person}{plurality}                 VerbModifier Verb{person}{plurality}
+	1   VerbPhrase{person}{plurality}                 VerbPP{person}{plurality}
+	1   VerbPhrase{person}{plurality}                 VerbModifier VerbPP{person}{plurality}
+
+	#Modal - will work, can run, might eat, etc... (will, can, might, should,... are modals)
+	1   VerbPhrase{person}{plurality}                 Modal VerbPhrase_inf+
+
+	#Complicated - the verb may have objects
+	1   VerbPhrase{person}{plurality}                 VerbPhrase{person}{plurality}+
+	1   VerbPhrase{person}{plurality}                 VerbModifier VerbPhrase{person}{plurality}+
+
+	#Infinite - the verb is in the infinitive or subjunctive.
+	1   VerbPhrase_inf                                VerbModifier VerbPhrase_inf+
+	1   VerbPhrase_inf                                VerbPhrase_inf+
+	1   VerbPhrase_inf                                Verb_inf
+
+	########Types of Verb Phrases ^^^
+
+	########Am/Is/Are:
+	
+	#Am, is and are require special treatment because instead of taking objects they can take adjectives,
+	#and also can be used in the comparative/superlative.  Also you can say someone is 'at' a place - aka
+	#you can use a preposition of location with am/is/are.
+	#(Many verbs can take preps of loc, but it's highly irregular when they can or can't.  If you so desire,
+	#you can go through the whole vocab list to see which verbs allow them, and incorporate them here.
+	#An example is run: He runs at the person, he runs over the field, he runs near the lake, etc...
+	#PrepOfLocation is defined near the bottom of this file.)
+
+	#Because is/are/am are irregular, we can't template this bit out easily, so instead we have to write it all out
+	1   VerbPhrase_1st_Sng                            VerbModifier am+
+	1   VerbPhrase_1st_Sng                            am+
+	1   VerbPhrase_1st_Plr                            VerbModifier are+
+	1   VerbPhrase_1st_Plr                            are+
+	1   VerbPhrase_2nd_Sng                            VerbModifier are+
+	1   VerbPhrase_2nd_Sng                            are+
+	1   VerbPhrase_2nd_Plr                            VerbModifier are+
+	1   VerbPhrase_2nd_Plr                            are+
+	1   VerbPhrase_3rd_Sng                            VerbModifier is+
+	1   VerbPhrase_3rd_Sng                            is+
+	1   VerbPhrase_3rd_Plr                            VerbModifier are+
+	1   VerbPhrase_3rd_Plr                            are+
+	1   am+                                           wrap_am isAdj+
+	1   is+                                           wrap_is isAdj+
+	1   are+                                          wrap_are isAdj+
+
+	#The possiblities are: Bob [is smelly], Bob [is stinkier than Jill], Bob [is the stinkiest], Bob [is at the goal]
+	1   isAdj+                                        Adj
+	1   isAdj+                                        Adj_comp than+
+	1   isAdj+                                        wrap_the Adj_sup
+	1   isAdj+                                        PrepOfLocation NounPhrase_IndObj
+	1   than+                                         wrap_than NounPhrase_DirObj
+	1   VerbModifier                                  Adv_cmverbs
+
+	#########Is/Are ^^^^
+
+
+	#########Complicated Verb Phrases:
+
+	#Here we have to take into account transitivity (does it take a direct object or not?)
+	1   VerbPhrase{person}{plurality}+                Verb{person}{plurality}_Transitive Objects+
+	1   VerbPhrase{person}{plurality}+                VerbPP{person}{plurality}_Transitive Objects+
+	1   VerbPhrase{person}{plurality}+                Verb{person}{plurality}_Intransitive IndirectObject+
+	1   VerbPhrase{person}{plurality}+                VerbPP{person}{plurality}_Intransitive IndirectObject+
+
+	1   VerbPhrase_inf+                               Verb_inf_Transitive
+	1   VerbPhrase_inf+                               VerbPP_3rd_Plr_Transitive
+	1   VerbPhrase_inf+                               Verb_inf_Transitive Objects+
+	1   VerbPhrase_inf+                               VerbPP_3rd_Plr_Transitive Objects+
+	1   VerbPhrase_inf+                               Verb_inf_Intransitive IndirectObject+
+	1   VerbPhrase_inf+                               VerbPP_3rd_Plr_Intransitive IndirectObject+
+
+	1   Objects+                                      IndirectObject+
+	1   Objects+                                      DirectObject IndirectObject+
+	1   Objects+                                      DirectObject
+	1   Objects+                                      DirectObject-
+	1   DirectObject                                  NounPhrase_DirObj
+	1   IndirectObject+                               IndirectObject
+	1   IndirectObject                                Prep NounPhrase_IndObj
+
+	#########Complicated Verb Phrases: ^^^^
+}
+
+#########################################################################################
+### Everything below here is just a preliminary transformation directly from Vocab.gr ###
+###          AKA: Nothing complicated should happen, and we just group stuff.         ###
+#########################################################################################
+
+#Gerunds
+#_to means it can take to as a following preposition
+#_of means it can take of as a following preposition
+#_obj means it can take a direct object
+#This was slightly too complicated to leave in Vocab.gr
+1    Gerund_to    having
+1    Gerund_obj   having
+1    Gerund_to    speaking
+1    Gerund_of    speaking
+1    Gerund_obj   covering
+1    Gerund_obj   being
+1    Gerund_to    riding
+1    Gerund_obj   riding
+1    Gerund_obj   drinking
+1    Gerund_obj   growing
+1    Gerund_obj   carrying
+1    Gerund_obj   suggesting
+1    Gerund_to    migrating
+1    Gerund_of    knowing
+1    Gerund_obj   knowing
+
+#all VerbT are 3rd person singular
+{
+	<person _1st _2nd _3rd>
+	<plurality _Sng _Plr>
+	#Some things you thing should be templated out here won't be, because of how they are defined in Vocab.gr
+	1   Verb_3rd_Sng_Transitive                      VerbT_3ps
+	1   Verb_3rd_Sng_Intransitive                    Verb_intr_3ps
+	1   Verb{person}{plurality}                      Verb{person}{plurality}_Transitive
+	1   Verb{person}{plurality}                      Verb{person}{plurality}_Intransitive
+	1   Verb_inf                                     Verb_inf_Transitive
+	1   Verb_inf                                     Verb_inf_Intransitive
+}
+#All verbs that aren't 3rd_Sng are conjugated like the 3rd_Plr (some irregular exceptions but I don't think they can crop up)
+{
+	<person _1st _2nd>
+	<plurality _Sng _Plr>
+	<transitivity _Transitive _Intransitive>
+	1   Verb{person}{plurality}{transitivity}           Verb_3rd_Plr{transitivity}
+}
+
+#Dealing with person and plurality
+#Not templated - this is grabbing stuff from Vocab.gr
+1   Determiner_3rd_Sng      Det_s
+1   Determiner_3rd_Sng      Det_a
+1   Determiner_3rd_Plr      Det_a
+1   Determiner_3rd_Plr      Detpl
+1   Noun_3rd_Sng            Noun
+1   Noun_3rd_Plr            Noun_p
+
+#cmadj = can modify adjectives
+#such as "the unfortunately green eyes"
+#loc = adverb of location
+#1/3/3/1 weightings because 8 in total, proportionally represented
+1   Adverb Adv_time
+3   Adverb Adv
+3   Adverb Adv_cmadj
+1   Adverb Adv_loc
+
+#Adverbs that can modify verbs
+4   Adv_cmverbs Adv
+3   Adv_cmverbs Adv_cmadj
+
+#Proper
+1   ProperAll          Proper
+1   ProperAll          ProperPlace
+1   ProperAll          ProperThing
+1   ProperAll_notthing Proper
+1   ProperAll_notthing ProperPlace
+
+#Verbs that take to as a preposition
+1   ToTakers_inf     ride
+1   Totakers_inf     speak
+1   ToTakers_inf     migrate
+1   ToTakers_3rd_Plr ride
+1   ToTakers_3rd_Plr speak
+1   ToTakers_3rd_Plr migrate
+1   ToTakers_3rd_Sng rides
+1   ToTakers_3rd_Sng speaks
+1   ToTakers_3rd_Sng migrates
+
+#Prepositions
+1   PrepOfLocation at
+1   PrepOfLocation by
+1   PrepOfLocation near
+1   PrepOfLocation with
+1   PrepOfLocation above
+
+#Verbs in past using participles
+{
+	<person _1st _2nd _3rd>
+	<plurality _Sng _Plr>
+	<transitivity _Transitive _Intransitive>
+	|IGNORE _3rd _Sng _Transitive|
+	|IGNORE _3rd _Sng _Intransitive|
+	|IGNORE _3rd _Sng|
+	#Don't template the 3rd Sng because that requires has instead of have
+
+	1   VerbPP{person}{plurality}{transitivity}                 wrap_have PastParticiple{transitivity}
+	1   VerbPP_3rd_Sng{transitivity}                            wrap_has  PastParticiple{transitivity}
+	1   VerbPP{person}{plurality}                               VerbPP{person}{plurality}{transitivity}
+    1   VerbPP_3rd_Sng                                          VerbPP_3rd_Sng{transitivity}
+}

@@ -1,0 +1,319 @@
+####Clauses
+{
+	<person 1st 2nd 3rd>
+	<plurality Sng Plr>
+	1   S1                                         Statement
+	1   S1                                         Question+
+	1   Statement                                  Clause EOS_statement
+	1   Question+                                  Question
+	1   Question+                                  QWord Question
+	1   Question+                                  Question_inv EOS_question
+	1   Question_inv                               InvertedQuestion
+	1   Question_inv                               InvertedQuestion +QClause_with_subord
+	1   Question                                   wrap_does QClause_3rd_Sng
+	1   Question                                   wrap_do QClause_3rd_Plr
+	10  QClause_{person}_{plurality}               +QClause_{person}_{plurality} EOS_question
+	1   QClause_{person}_{plurality}               QClause_{person}_{plurality}_with_subord EOS_question
+	1   QClause_{person}_{plurality}_with_subord   +QClause_{person}_{plurality} +QClause_with_subord
+	1   +QClause_with_subord                       wrap_that SubjunctiveClause
+	1   +QClause_with_subord                       SubjunctiveClause
+	1   +QClause_{person}_{plurality}              NP_{person}_{plurality} VP_inf
+	10  Clause                                     SimpleClause
+	1   Clause                                     Clause +Clause
+	1   SimpleClause                               NP_{person}_{plurality} VP_{person}_{plurality}
+	1   +Clause                                    CoordConj Clause
+	1   +Clause                                    SubordConj Clause
+	1   +Clause                                    wrap_that SubjunctiveClause
+	1   +Clause                                    SubjunctiveClause
+	1   +Clause                                    wrap_so Clause
+	1   +Clause                                    wrap_when Clause
+	1   SubjunctiveClause                          NP_{person}_{plurality} VP_inf
+	1   InvertedQuestion                           wrap_is InvertedQuestion_3rd_Sng
+	1   InvertedQuestion                           wrap_are InvertedQuestion_3rd_Plr
+	1   InvertedQuestion_{person}_{plurality}      NP_3rd_Sng InvertedQuestion_{person}_{plurality}+
+	1   InvertedQuestion_{person}_{plurality}+     VerbModifier DirectObject
+	1   InvertedQuestion_{person}_{plurality}+     Gerund+
+}
+####Clauses continued: Either/Neither
+#Note: this is first segment of code written from scratch after writing contextExpander.py
+#So I'm experimenting a lot with the potential features
+{
+	<person_phrase1 1st 3rd>
+	<person_phrase2 1st 2nd 3rd>
+	<plurality Sng Plr>
+	<ne/e n ε>
+	#Here is a naive, improvable interpretation of either/neither stuffs:
+	#"either [NP] or [NP] [VP_plural]" OR "either [NP] [VP] or [NP] [VP]"
+	#Concerning the first type:
+	#	If 2nd person is used it must come last, and verb phrase must be conjugated according to last
+
+	1   Clause                                            wrap_{ne/e}either {ne/e}either+
+
+	#1st type:
+	5   {ne/e}either+                                     NP_{person_phrase1}_{plurality} {ne/e}or+_{person_phrase1}_{plurality}
+	1   {ne/e}or+_{person_phrase1}_{plurality}            wrap_{ne/e}or eitherClauseStuffs
+	1   eitherClauseStuffs                                NP_{person_phrase2}_{plurality} VP_{person_phrase2}_Plr
+
+	#2nd type:
+	1   {ne/e}either+                                     SimpleClause {ne/e}either2ndType+
+	1   {ne/e}either2ndType+                              wrap_{ne/e}or SimpleClause
+
+}
+
+####Noun Phrases
+{
+	<person 3rd>
+	<plurality Sng Plr>
+	1   NP                                 NP_{person}_{plurality}
+	1   NP_{person}_{plurality}            Det_{person}_{plurality} +Noun_{person}_{plurality}
+	1   NP_{person}_{plurality}            NPsimple_{person}_{plurality}
+	1   NP_{person}_{plurality}            SubjectPronoun_{person}_{plurality}
+	1   NP_3rd_Sng                         Adv_cmadj Gerund+
+	1   NP_3rd_Sng                         Gerund+
+	1   Gerund+                            Gerund
+	1   Gerund+                            Gerund_to to_{person}_{plurality}+
+	1   Gerund+                            Gerund_of of_{person}_{plurality}+
+	1   NPsimple_{person}_{plurality}      Det_{person}_{plurality} Noun_{person}_{plurality}
+	1   NPsimple_3rd_Sng                   ProperStuffs_Sng
+	1   ProperStuffs_Sng                   ProperAll_notthing
+	1   ProperStuffs_Sng                   wrap_the ProperThing
+	1   NPsimple_3rd_Plr                   ProperStuffs_Plr
+	1   ProperStuffs_Plr                   Noun_3rd_Plr
+	1   +Noun_{person}_{plurality}         NounModifier Noun_{person}_{plurality}
+	1   +Noun_{person}_{plurality}         Noun_{person}_{plurality}
+	1   +Noun_{person}_{plurality}         NounModifier Noun+Prep_{person}_{plurality}
+	1   +Noun_{person}_{plurality}         Noun+Prep_{person}_{plurality}
+	1   Noun+Prep_{person}_{plurality}     Noun_{person}_{plurality} of_{person}_{plurality}+
+	1   of_{person}_{plurality}+           wrap_of NPsimple_{person}_{plurality}
+	1   to_{person}_{plurality}+           wrap_to NPsimple_{person}_{plurality}
+	1   NounModifier                       Adj
+	1   NounModifier                       Adj Adj
+	1   NounModifier                       Adv_cmadj Adj
+}
+{
+	<person 1st 2nd>
+	<plurality Sng Plr>
+	#This is just pronouns
+	1   NP_{person}_{plurality}            SubjectPronoun_{person}_{plurality}
+}
+
+####Verb Phrases
+{
+	<person 1st 2nd 3rd>
+	<plurality Sng Plr>
+	1   VP                                    VP_{person}_{plurality}
+
+	1   VP_{person}_{plurality}               VerbModifier VP_{person}_{plurality}+
+	1   VP_{person}_{plurality}               VP_{person}_{plurality}+
+	1   VP_{person}_{plurality}               Verb_{person}_{plurality}
+	1   VP_{person}_{plurality}               Modal VP_inf+
+
+	1   VP_3rd_Sng                            VerbModifier is+
+	1   VP_3rd_Sng                            is+
+
+	1   VP_3rd_Plr                            VerbModifier are+
+	1   VP_3rd_Plr                            are+
+
+	1   VP_inf                                VerbModifier VP_inf+
+	1   VP_inf                                VP_inf+
+	1   VP_inf                                Verb_inf
+
+	1   is+                                   wrap_is isAdj+
+	1   are+                                  wrap_are isAdj+
+	1   isAdj+                                Adj
+	1   isAdj+                                Adj_comp than+
+	1   isAdj+                                wrap_the Adj_sup
+	1   isAdj+                                PrepOfLocation NP
+	1   than+                                 than NP
+	1   VerbModifier                          Adv_cmverbs
+
+	1   VP_{person}_{plurality}+              VerbTransitive_{person}_{plurality}
+	1   VP_{person}_{plurality}+              VerbPP_{person}_{plurality}_Transitive
+	1   VP_{person}_{plurality}+              VerbTransitive_{person}_{plurality} Objects+
+	1   VP_{person}_{plurality}+              VerbPP_{person}_{plurality}_Transitive Objects+
+	1   VP_{person}_{plurality}+              VerbIntransitive_{person}_{plurality} IndirectObject+
+	1   VP_{person}_{plurality}+              VerbPP_{person}_{plurality}_Intransitive IndirectObject+
+
+	1   VP_inf+                               VerbTransitive_inf
+	1   VP_inf+                               VerbPP_3rd_Plr_Transitive
+	1   VP_inf+                               VerbTransitive_inf Objects+
+	1   VP_inf+                               VerbPP_3rd_Plr_Transitive Objects+
+	1   VP_inf+                               VerbIntransitive_inf IndirectObject+
+	1   VP_inf+                               VerbPP_3rd_Plr_Intransitive IndirectObject+
+
+	1   Objects+                              IndirectObject+
+	1   Objects+                              DirectObject IndirectObject+
+	1   Objects+                              DirectObject
+	1   Objects+                              DirectObject-
+	1   DirectObject                          NP
+	1   IndirectObject+                       IndirectObject
+	1   IndirectObject                        Prep NP
+}
+
+#"it is Sir Lancelot who knows Zoot !" requires a lot of context
+#Because "knows" is conjugated according to Sir Lancelot, not it.
+#You may have already realized this, but we're working with a context
+#free grammar.  I've tried to carry through as much context as possible
+#(for example, VP_3rd_Plr vs VP_3rd_Sng for person and plurality)
+#But it would involve a literally exponential size blowup to try and save
+#the context that is the person and plurality of the direct object 
+#of the first clause and carry that over to the second clause.
+#I mean literally exponential.  If I wanted to start saving that, it would
+#double the amount of nonterminals.
+#So instead I'm cheating with "DirectObject-".  This cuts the clause short
+#and appends a "[who|that][verb phrase]" onto the end of the clause.
+#This way I can control the context and limit the size blowup to just the
+#lines below here.
+#		<Note: I did this before creating the contextExpander.py script, 
+#				it may be worth it to utilize that to get rid of this cheat>
+{
+	<person 1st 2nd 3rd>
+	<plurality Sng Plr>
+	1   DirectObject-                             NP_{person}_{plurality} DegenerateClause_{person}_{plurality}
+	1   DegenerateClause_{person}_{plurality}     wrap_who VP_{person}_{plurality}
+	1   DegenerateClause_{person}_{plurality}     wrap_that VP_{person}_{plurality}
+}
+
+####Groupers
+# A grouper is a whole part of speech grouped together without
+# respect for their differences.
+
+1   Adjective             Adj
+
+#all VerbT are 3rd person singular
+{
+	<person 1st 2nd 3rd>
+	<plurality Sng Plr>
+	#Some things you thing should be templated out here won't be, because of how they are defined in Vocab.gr
+	1   VerbTransitive_3rd_Sng                       VerbT_3ps
+	1   VerbIntransitive_3rd_Sng                     Verb_intr_3ps
+	1   Verb_{person}_{plurality}                    VerbTransitive_{person}_{plurality}
+	1   Verb_{person}_{plurality}                    VerbIntransitive_{person}_{plurality}
+	1   Verb_inf                                     VerbIntransitive_inf
+	1   Verb_inf                                     VerbTransitive_inf
+}
+#All verbs that aren't 3rd_Sng are conjugated like the 3rd_Plr (some irregular exceptions but I don't think they can crop up)
+{
+	<person 1st 2nd>
+	<plurality Sng Plr>
+	1   VerbIntransitive_{person}_{plurality}            VerbIntransitive_3rd_Plr
+	1   VerbTransitive_{person}_{plurality}              VerbTransitive_3rd_Plr
+}
+
+#Dealing with person and plurality
+#Not templated - this is grabbing stuff from Vocab.gr
+1   Det_3rd_Sng      Det_s
+1   Det_3rd_Sng      Det_a
+1   Det_3rd_Plr      Det_a
+1   Det_3rd_Plr      Detpl
+1   Noun_3rd_Sng     Noun
+1   Noun_3rd_Plr     Noun_p
+
+#cmadj = can modify adjectives
+#such as "the unfortunately green eyes"
+#loc = adverb of location
+#1/3/3/1 weightings because 8 in total, proportionally represented
+1   Adverb Adv_time
+3   Adverb Adv
+3   Adverb Adv_cmadj
+1   Adverb Adv_loc
+
+#Adverbs that can modify verbs
+4   Adv_cmverbs Adv
+3   Adv_cmverbs Adv_cmadj
+
+#Typo prevention
+1   Adv_cmadg Adv_cmadj
+
+#Error prevention
+#No template, this is an alias
+1   VerbT VerbT_3ps
+
+#Gerunds
+1   Gerund    Gerund_
+1   Gerund    Gerund_to
+1   Gerund    Gerund_of
+1   Gerund_to Gerund_to_
+1   Gerund_to Gerund_to_of_
+1   Gerund_of Gerund_of_
+1   Gerund_of Gerund_to_of_
+
+#Proper
+1   ProperAll          Proper
+1   ProperAll          ProperPlace
+1   ProperAll          ProperThing
+1   ProperAll_notthing Proper
+1   ProperAll_notthing ProperPlace
+
+#Questions
+1   QWord wrap_what
+1   QWord wrap_who
+1   QWord wrap_how
+1   QWord wrap_when
+1   QWord wrap_where
+1   QWord wrap_why
+
+#Verbs that take to as a preposition
+1   ToTakers_inf     ride
+1   Totakers_inf     speak
+1   ToTakers_inf     migrate
+1   ToTakers_3rd_Plr ride
+1   ToTakers_3rd_Plr speak
+1   ToTakers_3rd_Plr migrate
+1   ToTakers_3rd_Sng rides
+1   ToTakers_3rd_Sng speaks
+1   ToTakers_3rd_Sng migrates
+
+#Prepositions
+1   PrepOfLocation at
+1   PrepOfLocation by
+1   PrepOfLocation near
+1   PrepOfLocation with
+1   PrepOfLocation above
+
+#Verbs in past using participles
+{
+	<person 1st 2nd 3rd>
+	<plurality Sng Plr>
+	<transitivity Transitive Intransitive>
+	|IGNORE 3rd Sng Transitive|
+	|IGNORE 3rd Sng Intransitive|
+	|IGNORE 3rd Sng|
+	#Don't template the 3rd Sng because that requires has instead of have
+
+	1   VerbPP_{person}_{plurality}_{transitivity}                 wrap_have PastParticiple{transitivity}
+	1   VerbPP_3rd_Sng_Transitive                                  wrap_has  PastParticipleTransitive
+	1   VerbPP_3rd_Sng_Intransitive                                wrap_has  PastParticipleIntransitive
+	1   VerbPP_{person}_{plurality}                                VerbPP_{person}_{plurality}_{transitivity}
+    1   VerbPP_3rd_Sng                                             VerbPP_3rd_Sng_{transitivity}
+}
+
+
+#If a terminal is not 'wrapped', and instead used in place, the parser
+#does not mark it as correct when comparing example sentences!
+#Wrappers
+1   wrap_is      is
+1   wrap_of      of
+1   wrap_to      to
+1   wrap_the     the
+1   wrap_does    does
+1   wrap_do      do
+1   wrap_what    what
+1   wrap_who     who
+1   wrap_whose   whose
+1   wrap_how     how
+1   wrap_when    when
+1   wrap_where   where
+1   wrap_why     why
+1   wrap_that    that
+1   wrap_so      so
+1   wrap_either  either
+1   wrap_neither neither
+1   wrap_or      or
+1   wrap_nor     nor
+1   wrap_are     are
+1   wrap_at      at
+1   wrap_have    have
+1   wrap_has     has
+
+#######################################Our Stuff ^^^
