@@ -278,17 +278,17 @@
 1    Misc    knew
 
 # Verbs (present participles).
-1    Gerund   having
-1    Gerund   speaking
-1    Gerund   covering
-1    Gerund   being
-1    Gerund   riding
-1    Gerund   drinking
-1    Gerund   growing
-1    Gerund   carrying
-1    Gerund   suggesting
-1    Gerund   migrating
-1    Gerund   knowing
+1    Gerund_Transitive     having
+1    Gerund_Intransitive   speaking
+1    Gerund_Transitive     covering
+1    Gerund_Transitive     being
+1    Gerund_Transitive     riding
+1    Gerund_Transitive     drinking
+1    Gerund_Intransitive   growing
+1    Gerund_Transitive     carrying
+1    Gerund_Transitive     suggesting
+1    Gerund_Intransitive   migrating
+1    Gerund_Transitive     knowing
 
 # Verbs (past participle).
 1    PastParticiple_Transitive      had

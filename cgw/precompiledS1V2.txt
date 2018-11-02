@@ -26,6 +26,7 @@
 {
 	<person _1st _2nd _3rd>
 	<plurality _Sng _Plr>
+	<transitivity _Transitive _Intransitive>
 
 	##########################################################################
 	#																		 #	
@@ -58,27 +59,28 @@
 
 	#Add question words:
 	1   QuestionClause                     QuestionClauseInner EOS_Question
-	1   QuestionClauseInner                QuestionWord QuestionClause1
-	1   QuestionClauseInner                QuestionClause1
+	1   QuestionClauseInner                QuestionWord QuestionClause1{transitivity}
+	1   QuestionClauseInner                QuestionWord_Transitive QuestionClause1_Transitive
+	1   QuestionClauseInner                QuestionClause1{transitivity}
 
 	#Do-Construction:
 	#[do/does] NounPhrase VerbPhrase_inf
-	5   QuestionClause1                    wrap_do DoConstruction
-	6   QuestionClause1                    wrap_does DoesConstruction
-	1   DoConstruction                     NounPhrase_1st{plurality}_Subj VerbPhrase_inf
-	1   DoConstruction                     NounPhrase_2nd{plurality}_Subj VerbPhrase_inf
-	1   DoConstruction                     NounPhrase_3rd_Plr_Subj VerbPhrase_inf
-	1   DoesConstruction                   NounPhrase_3rd_Sng_Subj VerbPhrase_inf
+	5   QuestionClause1{transitivity}      wrap_do DoConstruction{transitivity}
+	6   QuestionClause1{transitivity}      wrap_does DoesConstruction{transitivity}
+	1   DoConstruction{transitivity}       NounPhrase_1st{plurality}_Subj VerbPhrase_inf{transitivity}
+	1   DoConstruction{transitivity}       NounPhrase_2nd{plurality}_Subj VerbPhrase_inf{transitivity}
+	1   DoConstruction{transitivity}       NounPhrase_3rd_Plr_Subj VerbPhrase_inf{transitivity}
+	1   DoesConstruction{transitivity}     NounPhrase_3rd_Sng_Subj VerbPhrase_inf{transitivity}
 
 	#Inversion question:
 	#[is/are/am] NounPhrase GerundPhrase
-	1   QuestionClause1                     wrap_am InversionAm
-	1   QuestionClause1                     wrap_are InversionAre
-	1   QuestionClause1                     wrap_is InversionIs
-	1   InversionAm                         NounPhrase_1st_Sng_Subj GerundPhrase
-	1   InversionIs                         NounPhrase_3rd_Sng_Subj GerundPhrase
-	1   InversionAre                        NounPhrase_2nd_Sng_Subj GerundPhrase
-	1   InversionAre                        NounPhrase{person}_Plr_Subj GerundPhrase
+	1   QuestionClause1{transitivity}       wrap_am InversionAm{transitivity}
+	1   QuestionClause1{transitivity}       wrap_are InversionAre{transitivity}
+	1   QuestionClause1{transitivity}       wrap_is InversionIs{transitivity}
+	1   InversionAm{transitivity}           NounPhrase_1st_Sng_Subj GerundPhrase{transitivity}
+	1   InversionIs{transitivity}           NounPhrase_3rd_Sng_Subj GerundPhrase{transitivity}
+	1   InversionAre{transitivity}          NounPhrase_2nd_Sng_Subj GerundPhrase{transitivity}
+	1   InversionAre{transitivity}          NounPhrase{person}_Plr_Subj GerundPhrase{transitivity}
 
 }
 ### Clauses continued: Either/Neither ###=====================================================================================
@@ -88,11 +90,11 @@
 	<plurality _Sng _Plr>
 	<ne/e n ε>
 
-	###################################################################
-	#																  #
-	#   Global Nonterminals: NONE!  This is a self contained section  #
-	#																  #
-	###################################################################
+	####################################################################
+	#																   #
+	#   Global Nonterminals: NONE!  This is a self contained section   #
+	#																   #
+	####################################################################
 
 	#Here is a naive, improvable interpretation of either/neither stuffs:
 	#"either [NP] or [NP] [VP_plural]" OR "either [NP] [VP] or [NP] [VP]"
@@ -117,6 +119,7 @@
 	<person _1st _2nd _3rd>
 	<plurality _Sng _Plr>
 	<role _Subj _DirObj _IndObj>
+	<transitivity _Transitive _Intransitive>
 
 	#######################################################################
 	#																	  #
@@ -162,10 +165,11 @@
 	#that by having infinitives have a chance to evaluate to a gerund instead.
 	1   NounPhrase_3rd_Sng_Subj                        Adv_cmadj GerundPhrase
 	1   NounPhrase_3rd_Sng_Subj                        GerundPhrase
-	1   GerundPhrase                                   Gerund
-	1   GerundPhrase                                   Gerund_to to{person}{plurality}+
-	1   GerundPhrase                                   Gerund_of of{person}{plurality}+
-	1   GerundPhrase                                   Gerund_obj obj{person}{plurality}+
+	1   GerundPhrase                                   GerundPhrase{transitivity}
+	1   GerundPhrase{transitivity}                     Gerund{transitivity}
+	1   GerundPhrase{transitivity}                     Gerund_to{transitivity} to{person}{plurality}+
+	1   GerundPhrase{transitivity}                     Gerund_of{transitivity} of{person}{plurality}+
+	1   GerundPhrase_Transitive                        Gerund_Transitive obj{person}{plurality}+
 	1   of{person}{plurality}+                         wrap_of SimpleNounPhrase{person}{plurality}_IndObj
 	1   to{person}{plurality}+                         wrap_to SimpleNounPhrase{person}{plurality}_IndObj
 	1   obj{person}{plurality}+                        SimpleNounPhrase{person}{plurality}_DirObj
@@ -317,21 +321,16 @@
 #_of means it can take of as a following preposition
 #_obj means it can take a direct object
 #This was slightly too complicated to leave in Vocab.gr
-1    Gerund_to    having
-1    Gerund_obj   having
-1    Gerund_to    speaking
-1    Gerund_of    speaking
-1    Gerund_obj   covering
-1    Gerund_obj   being
-1    Gerund_to    riding
-1    Gerund_obj   riding
-1    Gerund_obj   drinking
-1    Gerund_obj   growing
-1    Gerund_obj   carrying
-1    Gerund_obj   suggesting
-1    Gerund_to    migrating
-1    Gerund_of    knowing
-1    Gerund_obj   knowing
+1    Gerund_to_Transitive      having
+1    Gerund_to_Intransitive    speaking
+1    Gerund_of_Intransitive    speaking
+1    Gerund_to_Transitive      riding
+1    Gerund_to_Intransitive    migrating
+1    Gerund_of_Transitive      knowing
+{
+	<transitivity _Transitive _Intransitive>
+	1   Gerund    Gerund{transitivity}
+}
 
 #all VerbT are 3rd person singular
 {
