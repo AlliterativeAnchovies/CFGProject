@@ -1,6 +1,6 @@
 Competitive Grammar Writing in Python
 =====================================
-@@@@@@@@@@@@@ Bailey's Note: you don't have to clone it, everything you need will already come from this repo.
+@@@@@@@@@@@@@ Bailey's Note: you don't have to run this line, everything you need will already come from this repo.
 Get started:
 
     git clone https://github.com/anoopsarkar/cgw.git
