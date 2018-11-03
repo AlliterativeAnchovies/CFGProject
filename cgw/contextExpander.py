@@ -28,8 +28,8 @@ finishedReadingPipes = False
 templateDict = {}
 ignoreTuples = []
 
-lineCounterOld = 0
-lineCounterNew = 0
+lineCounterOld = 0.0
+lineCounterNew = 0.0
 
 def checkUnorderedListEquality(s, t):
     return sorted(s) == sorted(t)

@@ -27,6 +27,7 @@
 	<person _1st _2nd _3rd>
 	<plurality _Sng _Plr>
 	<transitivity _Transitive _Intransitive>
+	<ispunctuation ε _Punc>
 
 	##########################################################################
 	#																		 #	
@@ -46,6 +47,21 @@
 	1   StatementClause                    SimpleClause{person}{plurality} EOS_Statement
 	1   SimpleClause{person}{plurality}    NounPhrase{person}{plurality}_Subj VerbPhrase{person}{plurality}
 	1   SimpleClause                       SimpleClause{person}{plurality}
+
+	#There are 3 types of more complicated statements - Compound, Complex, and Compound-Complex.
+	#In theory we could keep compounding sentences but then it becomes a run-on and I deem that ungrammatical.
+	#So let's try not to have direct Clause-recursion.
+
+	#A compound statement contains 2 independent (read: simple) clauses.
+	1   StatementClause                    CompoundStatement EOS_Statement
+	1   CompoundStatement                  SimpleClause CompoundStatement1
+
+		#Compound Statements can be joined with a coordinating conjunction or , ; : --
+	1   CompoundStatement1                 CoordConj{ispunctuation} SimpleClause
+		
+		#They can also be joined with , + coordinating conjunction
+	1   CompoundStatement1                 Comma CompoundStatement2
+	1   CompoundStatement2                 CoordConj SimpleClause
 	
 	#There are 2 main ways to ask questions in english:
 	#"Do-Construction": We run. -> Do we run?
@@ -358,7 +374,6 @@
 #_of means it can take of as a following preposition
 #_obj means it can take a direct object
 #This was slightly too complicated to leave in Vocab.gr
-1    Gerund_to_Transitive      having
 1    Gerund_to_Intransitive    speaking
 1    Gerund_of_Intransitive    speaking
 1    Gerund_to_Transitive      riding

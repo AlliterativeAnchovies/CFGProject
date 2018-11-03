@@ -96,11 +96,19 @@
 1    EOS_Question    ?
 
 # Pauses.
-1    EOC           ,
-1    EOS_Statement ...
-1    EOC           --
-1    EOC           ;
-1    EOC           :
+1    EOC             ,
+1    Comma           ,
+1    CoordConj_Punc  ,
+1    EOS_Statement   ...
+1    EOC             --
+1    Dash            --
+1    CoordConj_Punc  --
+1    Semicolon       ;
+1    EOC             ;
+1    CoordConj_Punc  ;
+1    Colon           :
+1    EOC             :
+1    CoordConj_Punc  :
 
 # Coordinating conjunctions.
 1    CoordConj     and
