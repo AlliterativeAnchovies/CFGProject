@@ -144,7 +144,7 @@
 1    Modal    may
 1    Modal    might
 1    Modal    must
-1    Modal    ought
+1    Modal_x  ought #must be followed by 'to'
 1    Modal    shall
 1    Modal    should
 1    Modal    will
