@@ -49,12 +49,12 @@ def doReplacing(line,listOfTemplators):
 			#Every odd index (if starting at 0) is a conditional - ex: a$cond1$b -> c$cond2$
 			for cond in range(len(condSplit)):
 				if cond%2 == 0: continue
-				#a conditional looks like this: x?a,b,c=_a,_b,_c:y
+				#a conditional looks like this: a,b,c=_a,_b,_c?x:y
 				#Let's grab the components
 				splitAtQmark = condSplit[cond].split("?")
 				splitAtColon = splitAtQmark[1].split(":")
-				splitAtEquals = splitAtColon[0].split("=")
-				toBeIfTrue = splitAtQmark[0]
+				splitAtEquals = splitAtQmark[0].split("=")
+				toBeIfTrue = splitAtColon[0]
 				toBeIfFalse = splitAtColon[1]
 				templateCondition = splitAtEquals[0]
 				valueOfCondition = splitAtEquals[1]
