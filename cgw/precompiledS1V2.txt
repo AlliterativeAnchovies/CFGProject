@@ -136,9 +136,14 @@
 	1   {ne/e}eitherStatement                               wrap_{ne/e}either {ne/e}eitherStatement1
 
 	#1st type:
+
+		#The conditional on this line ensures that if I begins a phrase, it becomes Me instead.
 	5   {ne/e}eitherStatement1                              NounPhrase{person_phrase1}{plurality1}$_DirObj?person_phrase1,plurality1=_1st,_Sng:_Subj$ {ne/e}eitherStatement2{person_phrase1}{plurality1}
 	1   {ne/e}eitherStatement2{person_phrase1}{plurality1}  wrap_{ne/e}or eitherStatement3
-	1   eitherStatement3                                    NounPhrase{person_phrase2}{plurality2}$_Subj?person_phrase2,plurality2=_1st,_Sng:_DirObj$ VerbPhrase{person_phrase2}_Plr
+
+		#The next to lines make the 2nd noun always a direct object, unless it is I in which case it is also allowed to stay as just 'I' (a subject)
+	1   eitherStatement3                                    NounPhrase{person_phrase2}{plurality2}_DirObj VerbPhrase{person_phrase2}_Plr
+	1   eitherStatement3                                    NounPhrase_1st_Sng_Subj VerbPhrase_1st_Plr
 
 	#2nd type:
 	1   {ne/e}eitherStatement1                              SimpleClause {ne/e}either2ndType
