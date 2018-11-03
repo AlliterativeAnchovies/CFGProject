@@ -27,6 +27,7 @@ finishedReadingAngles = False
 finishedReadingPipes = False
 templateDict = {}
 ignoreTuples = []
+killList = []
 
 lineCounterOld = 0.0
 lineCounterNew = 0.0
@@ -75,9 +76,11 @@ def doReplacing(line,listOfTemplators):
 			if any([set(x).issubset(lineEnders) for x in ignoreTuples]):
 				#It's on the ignore list!
 				return
-		if len(actualLine.strip()) > 0 and actualLine.strip()[0] != '#':
-			lineCounterNew = lineCounterNew + 1
-		outputString = outputString + "\n" + actualLine
+		splitlisttemp = actualLine.split()
+		if not any([x in splitlisttemp for x in killList]):
+			if len(actualLine.strip()) > 0 and actualLine.strip()[0] != '#':
+				lineCounterNew = lineCounterNew + 1
+			outputString = outputString + "\n" + actualLine
 		return
 	else:
 		curTemplateRaw = listOfTemplators[0]
@@ -109,9 +112,14 @@ for line in allLines:
 		bracketMode = False
 		continue
 	elif not bracketMode:
-		if len(trimmed) > 0 and trimmed[0] != '#':
+		if len(trimmed) > 0 and trimmed[0] != '#' and trimmed[0] != '<':
 			lineCounterOld = lineCounterOld + 1
-		outputString = outputString + "\n" + line
+		if (len(trimmed) > 0 and trimmed[0] != '<') or len(trimmed) == 0:
+			outputString = outputString + "\n" + line
+		elif len(trimmed) > 0:
+			#add to kill list
+			toKill = trimmed.split('<')[1].split('>')[0].split()[1:]
+			killList = killList + toKill
 	else:
 		if len(trimmed) == 0:
 			outputString = outputString + "\n"
