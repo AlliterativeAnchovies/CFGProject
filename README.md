@@ -55,7 +55,7 @@ One final consideration is that the grammar must be written in Chomsky Normal Fo
 
 ## How Templates Work
 
-Every template is enclosed in curly braces.  It may optionally start with a header or multiple headers. *There is no real point to having a template without a header, but it's important to know that if you enclose something in curly braces the compiler will treat it as a header*
+Every template is enclosed in curly braces.  It may optionally start with a header or multiple headers. *There is no real point to having a template without a header, but it's important to know that if you enclose something in curly braces the compiler will treat it as a template*
 
 ```
 {
