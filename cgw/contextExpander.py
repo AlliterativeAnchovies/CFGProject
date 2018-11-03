@@ -43,6 +43,33 @@ def doReplacing(line,listOfTemplators):
 		actualLine = line.split("∂")[0]
 		if len(splitline) > 1:
 			lineEnders = line.split("∂")[1:]
+			#First check for any conditionals
+			condSplit = actualLine.split("$")
+			#Every odd index (if starting at 0) is a conditional - ex: a$cond1$b -> c$cond2$
+			for cond in range(len(condSplit)):
+				if cond%2 == 0: continue
+				#a conditional looks like this: x?a,b,c=_a,_b,_c:y
+				#Let's grab the components
+				splitAtQmark = condSplit[cond].split("?")
+				splitAtColon = splitAtQmark[1].split(":")
+				splitAtEquals = splitAtColon[0].split("=")
+				toBeIfTrue = splitAtQmark[0]
+				toBeIfFalse = splitAtColon[1]
+				templateCondition = splitAtEquals[0]
+				valueOfCondition = splitAtEquals[1]
+				templateConditions = templateCondition.split(',')
+				valuesOfCondition  = valueOfCondition.split(',')
+				tuplesToCheck = []
+				for indx in range(len(templateConditions)):
+					tuplesToCheck.append(templateConditions[indx] + ":" + valuesOfCondition[indx])
+				#we want to know if the tuple is a subset of the lineEnders list
+				if set(tuplesToCheck).issubset(set(lineEnders)):
+					condSplit[cond] = toBeIfTrue
+				else:
+					condSplit[cond] = toBeIfFalse
+				actualLine = "".join(condSplit)
+		
+			#Now check if on the ignore list
 			if any([checkUnorderedListEquality(lineEnders,x) for x in ignoreTuples]):
 				#It's on the ignore list!
 				return
@@ -58,7 +85,7 @@ def doReplacing(line,listOfTemplators):
 			realReplacement = replacement
 			if realReplacement == "ε":
 				realReplacement = ""
-			doReplacing(line.replace(curTemplateRaw,realReplacement)+"∂"+replacement,listOfTemplators)
+			doReplacing(line.replace(curTemplateRaw,realReplacement)+"∂"+curTemplate + ":" + replacement,listOfTemplators)
 
 
 for line in allLines:

@@ -1,7 +1,7 @@
 ###Wrappers
 {
 	<wordlist1 is of to the does do what who whose how when where why>
-	<wordlist2 that so either neither or nor are at have has than am ,>
+	<wordlist2 that so either neither or nor are at have has than am>
 	<questionWords where when why how>
 	<qwt who what>
 
@@ -89,7 +89,8 @@
 {
 	<person_phrase1 _1st _2nd _3rd>
 	<person_phrase2 _1st _2nd _3rd>
-	<plurality _Sng _Plr>
+	<plurality1 _Sng _Plr>
+	<plurality2 _Sng _Plr>
 	<ne/e n ε>
 
 	####################################################################
@@ -122,19 +123,22 @@
 	#		We and Me, You and Us, He and Us.
 	#   	Me and Us, We and You, We and Him.
 	#		You and You, He and Him, Me and I, We and Us
-	#	Some of these still don't make sense - but we can fix that later.
+	#	Some of these still feel weird sense - but we can fix that later.
 	#	If it weren't for "I" going against the pattern, we could implement this with contextExpander already.
 	#   What we need is some kind of conditional.  For example, to fix the first problem:
 	#   eitherStatement1 -> NounPhrase{person_phrase1}{plurality}{_DirObj IF (person_phrase1,plurality)==(_1st,_Plr) ELSE _Subj}
-	#	I will add this to contextExpander.py tomorrow.
+	#	I went ahead and added this to contextExpander.py - conditionals are evaluated after the template has been fulfilled but
+	#	before IGNORE.  The simplest production rule utilizing a conditional would look like:
+	#	A{a}{b} -> B$_e?a,b=_c,_d:_f$
+	#	Which makes the template A{a}{b} -> B_e if the 'a' template componant is _c and the 'b' is _d, otherwise A{a}{b} -> B_f
 
 	1   StatementClause                                     {ne/e}eitherStatement
 	1   {ne/e}eitherStatement                               wrap_{ne/e}either {ne/e}eitherStatement1
 
 	#1st type:
-	5   {ne/e}eitherStatement1                              NounPhrase{person_phrase1}{plurality}_Subj {ne/e}eitherStatement2{person_phrase1}{plurality}
-	1   {ne/e}eitherStatement2{person_phrase1}{plurality}   wrap_{ne/e}or eitherStatement3
-	1   eitherStatement3                                    NounPhrase{person_phrase2}{plurality}_Subj VerbPhrase{person_phrase2}_Plr
+	5   {ne/e}eitherStatement1                              NounPhrase{person_phrase1}{plurality1}$_DirObj?person_phrase1,plurality1=_1st,_Sng:_Subj$ {ne/e}eitherStatement2{person_phrase1}{plurality1}
+	1   {ne/e}eitherStatement2{person_phrase1}{plurality1}  wrap_{ne/e}or eitherStatement3
+	1   eitherStatement3                                    NounPhrase{person_phrase2}{plurality2}$_Subj?person_phrase2,plurality2=_1st,_Sng:_DirObj$ VerbPhrase{person_phrase2}_Plr
 
 	#2nd type:
 	1   {ne/e}eitherStatement1                              SimpleClause {ne/e}either2ndType
@@ -431,9 +435,9 @@
 	<person _1st _2nd _3rd>
 	<plurality _Sng _Plr>
 	<transitivity _Transitive _Intransitive>
-	|IGNORE _3rd _Sng _Transitive|
-	|IGNORE _3rd _Sng _Intransitive|
-	|IGNORE _3rd _Sng|
+	|IGNORE person:_3rd plurality:_Sng transitivity:_Transitive|
+	|IGNORE person:_3rd plurality:_Sng transitivity_Intransitive|
+	|IGNORE person:_3rd plurality:_Sng|
 	#Don't template the 3rd Sng because that requires has instead of have
 
 	1   VerbPP{person}{plurality}{transitivity}                 wrap_have PastParticiple{transitivity}
