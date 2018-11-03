@@ -92,6 +92,7 @@
 	<plurality1 _Sng _Plr>
 	<plurality2 _Sng _Plr>
 	<ne/e n ε>
+	|IGNORE person_phrase1:_1st person_phrase2:_1st|
 
 	####################################################################
 	#																   #
@@ -440,8 +441,6 @@
 	<person _1st _2nd _3rd>
 	<plurality _Sng _Plr>
 	<transitivity _Transitive _Intransitive>
-	|IGNORE person:_3rd plurality:_Sng transitivity:_Transitive|
-	|IGNORE person:_3rd plurality:_Sng transitivity_Intransitive|
 	|IGNORE person:_3rd plurality:_Sng|
 	#Don't template the 3rd Sng because that requires has instead of have
 

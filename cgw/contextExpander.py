@@ -70,7 +70,8 @@ def doReplacing(line,listOfTemplators):
 				actualLine = "".join(condSplit)
 		
 			#Now check if on the ignore list
-			if any([checkUnorderedListEquality(lineEnders,x) for x in ignoreTuples]):
+			#if any([checkUnorderedListEquality(lineEnders,x) for x in ignoreTuples]):
+			if any([set(x).issubset(lineEnders) for x in ignoreTuples]):
 				#It's on the ignore list!
 				return
 		if len(actualLine.strip()) > 0 and actualLine.strip()[0] != '#':
