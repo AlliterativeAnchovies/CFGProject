@@ -48,7 +48,7 @@
 	1   SimpleClause{person}{plurality}    NounPhrase{person}{plurality}_Subj VerbPhrase{person}{plurality}
 	1   SimpleClause                       SimpleClause{person}{plurality}
 
-	#There are 3 types of more complicated statements - Compound, Complex, and Compound-Complex.
+	#There are 3 related types of more complicated statements - Compound, Complex, and Compound-Complex.
 	#In theory we could keep compounding sentences but then it becomes a run-on and I deem that ungrammatical.
 	#So let's try not to have direct Clause-recursion.
 
@@ -96,7 +96,7 @@
 	#Do-Construction:
 	#[do/does] NounPhrase VerbPhrase_inf
 	5   QuestionClause1{transitivity}      wrap_do DoConstruction{transitivity}
-	6   QuestionClause1{transitivity}      wrap_does DoesConstruction{transitivity}
+	1   QuestionClause1{transitivity}      wrap_does DoesConstruction{transitivity}
 	1   DoConstruction{transitivity}       NounPhrase_1st{plurality}_Subj VerbPhrase_inf{transitivity}
 	1   DoConstruction{transitivity}       NounPhrase_2nd{plurality}_Subj VerbPhrase_inf{transitivity}
 	1   DoConstruction{transitivity}       NounPhrase_3rd_Plr_Subj VerbPhrase_inf{transitivity}
@@ -104,13 +104,13 @@
 
 	#Inversion question:
 	#[is/are/am] NounPhrase GerundPhrase
-	1   QuestionClause1{transitivity}       wrap_am InversionAm{transitivity}
-	1   QuestionClause1{transitivity}       wrap_are InversionAre{transitivity}
-	1   QuestionClause1{transitivity}       wrap_is InversionIs{transitivity}
-	1   InversionAm{transitivity}           NounPhrase_1st_Sng_Subj GerundPhrase{transitivity}
-	1   InversionIs{transitivity}           NounPhrase_3rd_Sng_Subj GerundPhrase{transitivity}
-	1   InversionAre{transitivity}          NounPhrase_2nd_Sng_Subj GerundPhrase{transitivity}
-	1   InversionAre{transitivity}          NounPhrase{person}_Plr_Subj GerundPhrase{transitivity}
+	1   QuestionClause1{transitivity}      wrap_am InversionAm{transitivity}
+	1   QuestionClause1{transitivity}      wrap_are InversionAre{transitivity}
+	1   QuestionClause1{transitivity}      wrap_is InversionIs{transitivity}
+	1   InversionAm{transitivity}          NounPhrase_1st_Sng_Subj ContinuousVerbPhrase{transitivity}
+	1   InversionIs{transitivity}          NounPhrase_3rd_Sng_Subj ContinuousVerbPhrase{transitivity}
+	1   InversionAre{transitivity}         NounPhrase_2nd_Sng_Subj ContinuousVerbPhrase{transitivity}
+	1   InversionAre{transitivity}         NounPhrase{person}_Plr_Subj ContinuousVerbPhrase{transitivity}
 
 }
 ### Clauses continued: Either/Neither ###=====================================================================================
@@ -194,6 +194,7 @@
 	#NounPhrase takes either no arguments, (role), or (person,plurality,role) #
 	#	if no arguments, it picks a random (person,plurality,role)            #
 	#	if (role), it picks a random (person,plurality).					  #
+	#   if (person,plurality,role), this is the default.                      #
 	#SimpleNounPhrase behaves like NounPhrase							      #
 	#GerundPhrase takes no arguments			 							  #
 	###########################################################################
@@ -265,10 +266,10 @@
 	<plurality _Sng _Plr>
 	<transitivity _Transitive _Intransitive>
 
-	#######################################
-	#									  #
-	#   Global Nonterminals: VerbPhrase   #
-	#									  #
+	############################################################
+	#									                       #
+	#   Global Nonterminals: VerbPhrase, ContinousVerbPhrase   #
+	#									                       #
 	###############################################################
 	#VerbPhrase takes either no arguments:   					  #
 	#	it picks a random (person,plurality,transitivity)         #
@@ -284,6 +285,12 @@
 	#   ex: VerbPhrase_inf_Transitive                             #
 	#   this is when you want a phrase in the infinitive, but     #
 	#	with a specific transitivity.                             #
+	# or (person,plurality,transitivity)                          #
+	#   this is the default.                                      #
+	#ContinuousVerbPhrase takes either no arguments:              #
+	#   it picks a random (transitivity)                          #
+	# or (transitivity)                                           #
+	#   this is the default.                                      #
 	###############################################################
 
 	1   VerbPhrase                                    VerbPhrase{person}{plurality}
@@ -305,11 +312,31 @@
 	1   VerbPhrase{person}{plurality}{transitivity}   VerbPhrase{person}{plurality}{transitivity}+
 	1   VerbPhrase{person}{plurality}{transitivity}   VerbModifier VerbPhrase{person}{plurality}{transitivity}+
 
-	#Infinite - the verb is in the infinitive or subjunctive.
+	#Infinite - the verb is in the infinitive (or subjunctive).
 	1   VerbPhrase_inf                                VerbPhrase_inf{transitivity}
 	1   VerbPhrase_inf{transitivity}                  VerbModifier VerbPhrase_inf{transitivity}+
 	1   VerbPhrase_inf{transitivity}                  VerbPhrase_inf{transitivity}+
 	1   VerbPhrase_inf{transitivity}                  Verb_inf{transitivity}
+
+	#Subjunctifier - the verb can take a subjunctive clause.
+	#The only verb like this we have is suggest, which is intransitive 
+	#	but that doesn't matter as long as the dependent clause is transitive
+	1   VerbPhrase{person}{plurality}{transitivity}   SubjunctiveVerbPhrase{person}{plurality}
+	1   VerbPhrase_inf{transitivity}                  Subjunctive_1st_Sng SubjunctiveClause
+	1   SubjunctiveVerbPhrase{person}{plurality}      Subjunctive{person}{plurality} SubjunctiveClause
+	1   SubjunctiveVerbPhrase{person}{plurality}      PPSubjunctive{person}{plurality} SubjunctiveClause
+	1   SubjunctiveClause                             wrap_that SubjunctiveClause2
+	1   SubjunctiveClause                             SubjunctiveClause2
+	1   SubjunctiveClause2                            NounPhrase_Subj VerbPhrase_inf_Transitive
+
+	#Present Participle - the verb is conjugated like a present participle
+	#We will only handle simple cases with this, analagously to the Naive case
+	#But we also incorporate the subjunctifier case
+	1   ContinuousVerbPhrase                          ContinuousVerbPhrase{transitivity}
+	1   ContinuousVerbPhrase{transitivity}            Gerund{transitivity}
+	1   ContinuousVerbPhrase{transitivity}            VerbModifier Gerund{transitivity}
+	1   ContinuousVerbPhrase{transitivity}            PresentParticipleSubjunctive SubjunctiveClause	
+
 
 	########Types of Verb Phrases ^^^
 
@@ -475,4 +502,17 @@
 	1   VerbPP_3rd_Sng{transitivity}                            wrap_has  PastParticiple{transitivity}
 	1   VerbPP{person}{plurality}                               VerbPP{person}{plurality}{transitivity}
     1   VerbPP_3rd_Sng                                          VerbPP_3rd_Sng{transitivity}
+}
+#Verbs that can take the subjunctive
+{
+	<person _1st _2nd _3rd>
+	<plurality _Sng _Plr>
+	|IGNORE person:_3rd plurality:_Sng|
+
+	1   wrap_suggested                        suggested
+	1   Subjunctive{person}{plurality}        suggest
+	1   Subjunctive_3rd_Sng                   suggests
+	1   PPSubjunctive{person}{plurality}      wrap_have wrap_suggested
+	1   PPSubjunctive_3rd_Sng                 wrap_has wrap_suggested
+	1   PresentParticipleSubjunctive          suggesting
 }

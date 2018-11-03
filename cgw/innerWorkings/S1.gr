@@ -84,7 +84,7 @@
 	1   SimpleClause                       SimpleClause_3rd_Sng
 	1   SimpleClause                       SimpleClause_3rd_Plr
 
-	#There are 3 types of more complicated statements - Compound, Complex, and Compound-Complex.
+	#There are 3 related types of more complicated statements - Compound, Complex, and Compound-Complex.
 	#In theory we could keep compounding sentences but then it becomes a run-on and I deem that ungrammatical.
 	#So let's try not to have direct Clause-recursion.
 
@@ -136,8 +136,8 @@
 	#[do/does] NounPhrase VerbPhrase_inf
 	5   QuestionClause1_Transitive      wrap_do DoConstruction_Transitive
 	5   QuestionClause1_Intransitive      wrap_do DoConstruction_Intransitive
-	6   QuestionClause1_Transitive      wrap_does DoesConstruction_Transitive
-	6   QuestionClause1_Intransitive      wrap_does DoesConstruction_Intransitive
+	1   QuestionClause1_Transitive      wrap_does DoesConstruction_Transitive
+	1   QuestionClause1_Intransitive      wrap_does DoesConstruction_Intransitive
 	1   DoConstruction_Transitive       NounPhrase_1st_Sng_Subj VerbPhrase_inf_Transitive
 	1   DoConstruction_Intransitive       NounPhrase_1st_Sng_Subj VerbPhrase_inf_Intransitive
 	1   DoConstruction_Transitive       NounPhrase_1st_Plr_Subj VerbPhrase_inf_Transitive
@@ -153,24 +153,24 @@
 
 	#Inversion question:
 	#[is/are/am] NounPhrase GerundPhrase
-	1   QuestionClause1_Transitive       wrap_am InversionAm_Transitive
-	1   QuestionClause1_Intransitive       wrap_am InversionAm_Intransitive
-	1   QuestionClause1_Transitive       wrap_are InversionAre_Transitive
-	1   QuestionClause1_Intransitive       wrap_are InversionAre_Intransitive
-	1   QuestionClause1_Transitive       wrap_is InversionIs_Transitive
-	1   QuestionClause1_Intransitive       wrap_is InversionIs_Intransitive
-	1   InversionAm_Transitive           NounPhrase_1st_Sng_Subj GerundPhrase_Transitive
-	1   InversionAm_Intransitive           NounPhrase_1st_Sng_Subj GerundPhrase_Intransitive
-	1   InversionIs_Transitive           NounPhrase_3rd_Sng_Subj GerundPhrase_Transitive
-	1   InversionIs_Intransitive           NounPhrase_3rd_Sng_Subj GerundPhrase_Intransitive
-	1   InversionAre_Transitive          NounPhrase_2nd_Sng_Subj GerundPhrase_Transitive
-	1   InversionAre_Intransitive          NounPhrase_2nd_Sng_Subj GerundPhrase_Intransitive
-	1   InversionAre_Transitive          NounPhrase_1st_Plr_Subj GerundPhrase_Transitive
-	1   InversionAre_Intransitive          NounPhrase_1st_Plr_Subj GerundPhrase_Intransitive
-	1   InversionAre_Transitive          NounPhrase_2nd_Plr_Subj GerundPhrase_Transitive
-	1   InversionAre_Intransitive          NounPhrase_2nd_Plr_Subj GerundPhrase_Intransitive
-	1   InversionAre_Transitive          NounPhrase_3rd_Plr_Subj GerundPhrase_Transitive
-	1   InversionAre_Intransitive          NounPhrase_3rd_Plr_Subj GerundPhrase_Intransitive
+	1   QuestionClause1_Transitive      wrap_am InversionAm_Transitive
+	1   QuestionClause1_Intransitive      wrap_am InversionAm_Intransitive
+	1   QuestionClause1_Transitive      wrap_are InversionAre_Transitive
+	1   QuestionClause1_Intransitive      wrap_are InversionAre_Intransitive
+	1   QuestionClause1_Transitive      wrap_is InversionIs_Transitive
+	1   QuestionClause1_Intransitive      wrap_is InversionIs_Intransitive
+	1   InversionAm_Transitive          NounPhrase_1st_Sng_Subj ContinuousVerbPhrase_Transitive
+	1   InversionAm_Intransitive          NounPhrase_1st_Sng_Subj ContinuousVerbPhrase_Intransitive
+	1   InversionIs_Transitive          NounPhrase_3rd_Sng_Subj ContinuousVerbPhrase_Transitive
+	1   InversionIs_Intransitive          NounPhrase_3rd_Sng_Subj ContinuousVerbPhrase_Intransitive
+	1   InversionAre_Transitive         NounPhrase_2nd_Sng_Subj ContinuousVerbPhrase_Transitive
+	1   InversionAre_Intransitive         NounPhrase_2nd_Sng_Subj ContinuousVerbPhrase_Intransitive
+	1   InversionAre_Transitive         NounPhrase_1st_Plr_Subj ContinuousVerbPhrase_Transitive
+	1   InversionAre_Intransitive         NounPhrase_1st_Plr_Subj ContinuousVerbPhrase_Intransitive
+	1   InversionAre_Transitive         NounPhrase_2nd_Plr_Subj ContinuousVerbPhrase_Transitive
+	1   InversionAre_Intransitive         NounPhrase_2nd_Plr_Subj ContinuousVerbPhrase_Intransitive
+	1   InversionAre_Transitive         NounPhrase_3rd_Plr_Subj ContinuousVerbPhrase_Transitive
+	1   InversionAre_Intransitive         NounPhrase_3rd_Plr_Subj ContinuousVerbPhrase_Intransitive
 
 ### Clauses continued: Either/Neither ###=====================================================================================
 
@@ -271,6 +271,7 @@
 	#NounPhrase takes either no arguments, (role), or (person,plurality,role) #
 	#	if no arguments, it picks a random (person,plurality,role)            #
 	#	if (role), it picks a random (person,plurality).					  #
+	#   if (person,plurality,role), this is the default.                      #
 	#SimpleNounPhrase behaves like NounPhrase							      #
 	#GerundPhrase takes no arguments			 							  #
 	###########################################################################
@@ -540,10 +541,10 @@
 
 ### Verb Phrases ###=====================================================================================
 
-	#######################################
-	#									  #
-	#   Global Nonterminals: VerbPhrase   #
-	#									  #
+	############################################################
+	#									                       #
+	#   Global Nonterminals: VerbPhrase, ContinousVerbPhrase   #
+	#									                       #
 	###############################################################
 	#VerbPhrase takes either no arguments:   					  #
 	#	it picks a random (person,plurality,transitivity)         #
@@ -559,6 +560,12 @@
 	#   ex: VerbPhrase_inf_Transitive                             #
 	#   this is when you want a phrase in the infinitive, but     #
 	#	with a specific transitivity.                             #
+	# or (person,plurality,transitivity)                          #
+	#   this is the default.                                      #
+	#ContinuousVerbPhrase takes either no arguments:              #
+	#   it picks a random (transitivity)                          #
+	# or (transitivity)                                           #
+	#   this is the default.                                      #
 	###############################################################
 
 	1   VerbPhrase                                    VerbPhrase_1st_Sng
@@ -673,7 +680,7 @@
 	1   VerbPhrase_3rd_Plr_Transitive   VerbModifier VerbPhrase_3rd_Plr_Transitive+
 	1   VerbPhrase_3rd_Plr_Intransitive   VerbModifier VerbPhrase_3rd_Plr_Intransitive+
 
-	#Infinite - the verb is in the infinitive or subjunctive.
+	#Infinite - the verb is in the infinitive (or subjunctive).
 	1   VerbPhrase_inf                                VerbPhrase_inf_Transitive
 	1   VerbPhrase_inf                                VerbPhrase_inf_Intransitive
 	1   VerbPhrase_inf_Transitive                  VerbModifier VerbPhrase_inf_Transitive+
@@ -682,6 +689,52 @@
 	1   VerbPhrase_inf_Intransitive                  VerbPhrase_inf_Intransitive+
 	1   VerbPhrase_inf_Transitive                  Verb_inf_Transitive
 	1   VerbPhrase_inf_Intransitive                  Verb_inf_Intransitive
+
+	#Subjunctifier - the verb can take a subjunctive clause.
+	#The only verb like this we have is suggest, which is intransitive 
+	#	but that doesn't matter as long as the dependent clause is transitive
+	1   VerbPhrase_1st_Sng_Transitive   SubjunctiveVerbPhrase_1st_Sng
+	1   VerbPhrase_1st_Sng_Intransitive   SubjunctiveVerbPhrase_1st_Sng
+	1   VerbPhrase_1st_Plr_Transitive   SubjunctiveVerbPhrase_1st_Plr
+	1   VerbPhrase_1st_Plr_Intransitive   SubjunctiveVerbPhrase_1st_Plr
+	1   VerbPhrase_2nd_Sng_Transitive   SubjunctiveVerbPhrase_2nd_Sng
+	1   VerbPhrase_2nd_Sng_Intransitive   SubjunctiveVerbPhrase_2nd_Sng
+	1   VerbPhrase_2nd_Plr_Transitive   SubjunctiveVerbPhrase_2nd_Plr
+	1   VerbPhrase_2nd_Plr_Intransitive   SubjunctiveVerbPhrase_2nd_Plr
+	1   VerbPhrase_3rd_Sng_Transitive   SubjunctiveVerbPhrase_3rd_Sng
+	1   VerbPhrase_3rd_Sng_Intransitive   SubjunctiveVerbPhrase_3rd_Sng
+	1   VerbPhrase_3rd_Plr_Transitive   SubjunctiveVerbPhrase_3rd_Plr
+	1   VerbPhrase_3rd_Plr_Intransitive   SubjunctiveVerbPhrase_3rd_Plr
+	1   VerbPhrase_inf_Transitive                  Subjunctive_1st_Sng SubjunctiveClause
+	1   VerbPhrase_inf_Intransitive                  Subjunctive_1st_Sng SubjunctiveClause
+	1   SubjunctiveVerbPhrase_1st_Sng      Subjunctive_1st_Sng SubjunctiveClause
+	1   SubjunctiveVerbPhrase_1st_Plr      Subjunctive_1st_Plr SubjunctiveClause
+	1   SubjunctiveVerbPhrase_2nd_Sng      Subjunctive_2nd_Sng SubjunctiveClause
+	1   SubjunctiveVerbPhrase_2nd_Plr      Subjunctive_2nd_Plr SubjunctiveClause
+	1   SubjunctiveVerbPhrase_3rd_Sng      Subjunctive_3rd_Sng SubjunctiveClause
+	1   SubjunctiveVerbPhrase_3rd_Plr      Subjunctive_3rd_Plr SubjunctiveClause
+	1   SubjunctiveVerbPhrase_1st_Sng      PPSubjunctive_1st_Sng SubjunctiveClause
+	1   SubjunctiveVerbPhrase_1st_Plr      PPSubjunctive_1st_Plr SubjunctiveClause
+	1   SubjunctiveVerbPhrase_2nd_Sng      PPSubjunctive_2nd_Sng SubjunctiveClause
+	1   SubjunctiveVerbPhrase_2nd_Plr      PPSubjunctive_2nd_Plr SubjunctiveClause
+	1   SubjunctiveVerbPhrase_3rd_Sng      PPSubjunctive_3rd_Sng SubjunctiveClause
+	1   SubjunctiveVerbPhrase_3rd_Plr      PPSubjunctive_3rd_Plr SubjunctiveClause
+	1   SubjunctiveClause                             wrap_that SubjunctiveClause2
+	1   SubjunctiveClause                             SubjunctiveClause2
+	1   SubjunctiveClause2                            NounPhrase_Subj VerbPhrase_inf_Transitive
+
+	#Present Participle - the verb is conjugated like a present participle
+	#We will only handle simple cases with this, analagously to the Naive case
+	#But we also incorporate the subjunctifier case
+	1   ContinuousVerbPhrase                          ContinuousVerbPhrase_Transitive
+	1   ContinuousVerbPhrase                          ContinuousVerbPhrase_Intransitive
+	1   ContinuousVerbPhrase_Transitive            Gerund_Transitive
+	1   ContinuousVerbPhrase_Intransitive            Gerund_Intransitive
+	1   ContinuousVerbPhrase_Transitive            VerbModifier Gerund_Transitive
+	1   ContinuousVerbPhrase_Intransitive            VerbModifier Gerund_Intransitive
+	1   ContinuousVerbPhrase_Transitive            PresentParticipleSubjunctive SubjunctiveClause	
+	1   ContinuousVerbPhrase_Intransitive            PresentParticipleSubjunctive SubjunctiveClause	
+
 
 	########Types of Verb Phrases ^^^
 
@@ -899,6 +952,21 @@
 	1   VerbPP_3rd_Plr                               VerbPP_3rd_Plr_Intransitive
     1   VerbPP_3rd_Sng                                          VerbPP_3rd_Sng_Transitive
     1   VerbPP_3rd_Sng                                          VerbPP_3rd_Sng_Intransitive
+#Verbs that can take the subjunctive
 
+	1   wrap_suggested                        suggested
+	1   Subjunctive_1st_Sng        suggest
+	1   Subjunctive_1st_Plr        suggest
+	1   Subjunctive_2nd_Sng        suggest
+	1   Subjunctive_2nd_Plr        suggest
+	1   Subjunctive_3rd_Plr        suggest
+	1   Subjunctive_3rd_Sng                   suggests
+	1   PPSubjunctive_1st_Sng      wrap_have wrap_suggested
+	1   PPSubjunctive_1st_Plr      wrap_have wrap_suggested
+	1   PPSubjunctive_2nd_Sng      wrap_have wrap_suggested
+	1   PPSubjunctive_2nd_Plr      wrap_have wrap_suggested
+	1   PPSubjunctive_3rd_Plr      wrap_have wrap_suggested
+	1   PPSubjunctive_3rd_Sng                 wrap_has wrap_suggested
+	1   PresentParticipleSubjunctive          suggesting
 # in case you use S1.gr by itself
 1   S2   Misc

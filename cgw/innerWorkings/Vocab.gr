@@ -132,7 +132,7 @@
 1    Misc    there
 
 # Subordinating conjunctions.
-1    Misc          that
+1    SubjuncConj   that
 1    SubordConj    so
 1    SubordConj    while
 1    SubordConj    because
