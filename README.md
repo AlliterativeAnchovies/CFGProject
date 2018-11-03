@@ -1,172 +1,226 @@
 # ReadMe
 
-[[[ This ReadMe is kind of outdated and convoluted.  It's not wrong, but it may be incomplete and convoluted.  I'll rewrite it soon, I promise.  Before Sunday. ]]]
+## How To Get Started
 
-## Basics
+All scripts are in python2.  So make sure you're using that version.
 
-I will summarize how this project works - you should also read the 2 ReadMe files written by our lecturer, in the cgw folder (everything is in the cgw folder).
-
-The goal is to create a CFG (Context Free Grammar) that generates as many grammatical English sentences as possible while generating very few ungrammatical sentences.  There are 2 sides to this project: generating random sentences, and checking if a given sentence is inside the grammar.
-
-### Generating Random Sentences
-
-`python pcfg_parse_gen.py -o 20 -g S1.gr,Vocab.gr`
-
-This line of code runs the sentence generator.  This is self explanatory.  Keep an eye out for ungrammatical sentences!
-
-
-### Checking Sentences
-
-`python pcfg_parse_gen.py -i -g "*.gr" < example_sentences.txt`
-
-This line of code runs the sentence checker on every sentence in example_sentences.txt
-
-You are allowed to add more to example_sentences, but let's avoid that until our parser
-correctly parses every single sentence already given to us (harder than it looks...)
-
-If a sentence is not parsed, it looks like this:
+There are 3 possible tasks you may want to do: compiling your template to a CFG, generating sentences, and checking if the example sentences are in the grammar.  All of this is handled by the 'run.py' wrapper script:
 
 ```
-#No parses found for: when the king drinks , Patsy drinks .
-(TOP (X when) (X the) (X king) (X drinks) (X ,) (X Patsy) (X drinks) (X .))
+	python run.py compile
+	python run.py generate
+	python run.py check
 ```
 
-If a sentence is parsed, if gives the parse tree in this ungodly mess:
+When you first clone this project to your desktop, run all 3 of them to make sure everything works for you!
+
+You should make sure your working directory is ../CFGProject/cgw.  Everything is run from the cgw folder, and if you try to run the script from a different directory then run.py will not be able to find the necessary scripts to compile/generate/check the grammar.
+
+## How To Change The CFG
+
+Instead of working with an ordinary CFG, I've written a script that will convert a "template CFG" into a normal CFG for us.  Exactly what a template is will be explained in the next section.
+
+The only file you should ever need to edit is "CFGTemplate.txt", which is where the template CFG is written.  
+
+*You may potentially also want to edit Vocab.gr, which is inside the innerWorkings folder - if you want to edit Vocab.gr, one of the rules of this project is that we're not allowed to add new words to the vocabulary.  We are only allowed to change the nonterminals and weights in Vocab.gr - any terminal labeled 'Misc' is up for grabs for being labeled, but if it has a different label then don't change it because it's already in use by our CFG.  You can give a vocab word 2 labels if you please.*
+
+I recommend you dive straight into CFGTemplate.txt and poke around, see if you understand what's going on before you read the next section.
+
+After you change CFGTemplate.txt, you need to save it and then compile it, or else generate and check will use the old compiled version.
+
+If you want to see the compiled version, either look at contextExpanderOutput.txt or innerWorkings/S1.gr.  They should have the same contents.
+
+Every line in the CFG, ignoring special template lines, looks something like this:
 
 ```
-(TOP (S1 (QuestionClause (QuestionClauseInner (QuestionClause1 (wrap_do do) (DoConstruction (NounPhrase_3rd_Plr_Subj (SimpleNounPhrase_3rd_Plr_Subj (ProperStuffs_Plr (Noun_3rd_Plr (Noun_p coconuts) ) ) ) ) (VerbPhrase_inf (Verb_inf (Verb_inf_Transitive speak) ) ))) ) (EOS_Question ?)) ) )
+1   Clause       NounPhrase_1st_Sng VerbPhrase_1st_Sng
 ```
 
-For reference - this is the parse tree for "do coconuts speak ?"
-
-Later on when we try to eliminate ungrammatical sentences, this may be useful as it lets us see exactly why the CFG thinks it should work.  It may be worth writing another python script to take these parse trees in and spit out a more readable version (perhaps by drawing it as a tree rather than printing a string)
-
-You need to use python2.7 to run those two lines of code!  I set up an anaconda environment for it.
-If you don't know what anaconda is, you should install it - it allows you to have multiple versions of
-python on your computer, which you'll see is important later on because contextExpander.py runs on python3
-
-## Rules
-
-Please read the teacher's readme's for full familiarity with the rules.  There should be no problem if you only edit "precompiledS1V2.txt" though (that is the file that we use contextExpander.py on to generate our grammer, which is saved in S1.gr)
-
-## What The Grammar Looks Like And How To Get Started
-
-For this, I will post a segment of the code:
-
-```
-###Wrappers
-{
-	<wordlist1 is of to the does do what who whose how when where why>
-	<wordlist2 that so either neither or nor are at have has than am ,>
-	<questionWords where when why how>
-	<qwt who what>
-
-	1   wrap_{wordlist1}        {wordlist1}
-	1   wrap_{wordlist2}        {wordlist2}
-	1   QuestionWord            {questionWords}
-	1   QuestionWord_Transitive {qwt}
-}
-```
-
-This is a 'weighted grammar'.  Each normal line is broken into 3 parts - the weight and the 2 sides of the production rule.
-
-So `1   wrap_{wordlist1}        {wordlist1}` is broken into 1, wrap_{wordlist1},{wordlist1} and it means that there is a production rule wrap_{wordlist1} -> {wordlist1} and that this rule has weight 1.  A more abstract example would be:
-
-```
-2   A   B C
-10  A   D
-```
-
-Which gives us A->BC and A->D.  A->D is 5 times as likely to be used in the generation process compared to A->BC, because it's weight is 10 compared to A->BC's 2.  By default, you should leave weights at 1 unless you are debugging and want to make sure that the sentence generator always generates sentences of the type you want, or if you have a rule like A->AA, in which case you should make it considerably less likely than other production rules because we want to avoid infinite recursion!
-
-The grammar is in Chomsky Normal form, so every production rule can have at most 2 nonterminals on the right hand side.
-
-Nonterminals can have names that use nonalphanumeric characters, by the way!  Just don't use |,<,{,},∂,or #.
-```
-# is comments
-∂ is a special token used by contextExpander.py mid-generation
-< and | are special tokens that will be explained next section
-{ and } can be used but only in circumstances explained next section
-```
-
-## Next Section (AKA How to use templates to your advantage)
-
-The problem with CFGs is that they're context free.  Consider the sentence "It is Sir Lancelot who knows the truth ."  This may seem like a benign sentence, but it's hard for a CFG to parse - "knows" is conjugated according to "Sir Lancelot" - that is, "knows" needs context provided by "Sir Lancelot" *Even though they are in different clauses!!!*
-
-How do we pass this context along?  Well, we can add tags to our nonterminals.  Instead of 1 nonterminal `Clause -> NounPhrase VerbPhrase`, which is in danger of having the VerbPhrase use an incorrectly conjugated verb with respect to the NounPhrase, we can have multiple:
+This represents the production rule
 
 ```
 Clause -> NounPhrase_1st_Sng VerbPhrase_1st_Sng
-Clause -> NounPhrase_2nd_Sng VerbPhrase_2nd_Sng
-Clause -> NounPhrase_1st_Plr VerbPhrase_1st_Plr
-...etc
 ```
 
-If we want to have all possible combinations of (1st,2nd,3rd) person and plural/singular, we need to write out the same thing 6 times!  That's inefficient, but there's no way around it - the CFG *must* expand exponentially with every tag introduced.  A human can't keep up - but a computer can.  We can express the aforementioned production rule succinctly as `Clause -> NounPhrase{person}{plurality} VerbPhrase{person}{plurality}` where person ranges over (1st,2nd,3rd) and plurality over (plural,singular).  I wrote a script, contextExpander.py, to take these rules and produce all the required production rules based on a template.  Here is how you would express it in actual code:
+and that specific rule has weighting 1.  If we had:
+
+```
+10  Clause       NounPhrase_1st_Sng VerbPhrase_1st_Sng
+2   Clause       NounPhrase_2nd_Plr VerbPhrase_2nd_Plr
+```
+
+then the first rule would be 5 times as likely to be used in the random sentence generator.
+
+One final consideration is that the grammar must be written in Chomsky Normal Form
+
+## How Templates Work
+
+Every template is enclosed in curly braces.  It may optionally start with a header or multiple headers. *There is no real point to having a template without a header, but it's important to know that if you enclose something in curly braces the compiler will treat it as a template*
 
 ```
 {
 	<person _1st _2nd _3rd>
 	<plurality _Sng _Plr>
-	Clause -> NounPhrase{person}{plurality} VerbPhrase{person}{plurality}
+	1   Clause       NounPhrase_1st_Sng
+	1   Clause       NounPhrase{person}{plurality} VerbPhrase{person}{plurality}
+	1   Clause       NounPhrase{person}{plurality}
+	1   Clause       NounPhrase{plurality}
 }
 ```
 
-If for some reason you wanted your phrase to loop through everything but specifically 1st person plural:
+This is an example of a really simple template.  It gets compiled to:
+
+```
+	1   Clause       NounPhrase_1st_Sng
+	1   Clause       NounPhrase_1st_Sng VerbPhrase_1st_Sng
+	1   Clause       NounPhrase_1st_Plr VerbPhrase_1st_Plr
+	1   Clause       NounPhrase_2nd_Sng VerbPhrase_2nd_Sng
+	1   Clause       NounPhrase_2nd_Plr VerbPhrase_2nd_Plr
+	1   Clause       NounPhrase_3rd_Sng VerbPhrase_3rd_Sng
+	1   Clause       NounPhrase_3rd_Plr VerbPhrase_3rd_Plr
+	1   Clause       NounPhrase_1st_Sng
+	1   Clause       NounPhrase_1st_Plr
+	1   Clause       NounPhrase_2nd_Sng
+	1   Clause       NounPhrase_2nd_Plr
+	1   Clause       NounPhrase_3rd_Sng
+	1   Clause       NounPhrase_3rd_Plr
+	1   Clause       NounPhrase_Sng
+	1   Clause       NounPhrase_Plr
+```
+
+*Note that the 4th line in the original only corresponds to 2 lines in the output, not 6 like the others, because it does not contain {person} as part of its template.  The compiler will not expand things inside a template unless they need to be.*
+
+*Also note that the 1st line in the original is basically a pre-filled template, which is useful when certain cases have specific features.*
+
+*Final note: if a template contains ε (epsilon), instead of literally placing ε, it will place the empty string.*
+
+Simple templates like this are just a pattern matching game.  They have a bit more power than that though.
 
 ```
 {
 	<person _1st _2nd _3rd>
 	<plurality _Sng _Plr>
-	|IGNORE _1st _Plr|
-	Clause -> NounPhrase{person}{plurality} VerbPhrase{person}{plurality}
+	|IGNORE person:_1st|
+	|IGNORE person:_2nd plurality:_Plr|
+	1   Clause       NounPhrase{person}{plurality} VerbPhrase{person}{plurality}
 }
 ```
 
-And finally, if you also had nonterminals of the form `NounPhrase{person}` and `VerbPhrase{person}`, so you wanted to sometimes ignore plurality altogether (aka replace {plurality} with the empty string):
+becomes
+
+```
+	1   Clause       NounPhrase_2nd_Sng VerbPhrase_2nd_Sng
+	1   Clause       NounPhrase_3rd_Sng VerbPhrase_3rd_Sng
+	1   Clause       NounPhrase_3rd_Plr VerbPhrase_3rd_Plr
+```
+
+The ignore header caused all 1st person and all plural 2nd person expansions to not be considered.  This can occasionally be useful - in English, 3rd person singular verbs work differently from all the rest so it may make sense to occasionally exclude them.
+
+*IGNORE statements must come before the production rules, and after the headers.*
+
+Finally, the most powerful feature of the templates is that of the conditional.
 
 ```
 {
 	<person _1st _2nd _3rd>
-	<plurality _Sng _Plr ε>
-	|IGNORE _1st _Plr|
-	Clause -> NounPhrase{person}{plurality} VerbPhrase{person}{plurality}
+	<plurality _Sng _Plr>
+	5   Clause   NounPhrase{person}{plurality}$person,plurality=_1st,_Sng?_DirObj:_Subj$
 }
 ```
 
-Note that the underscores on 1st,2nd,3rd are not required but I think it makes the resultant code more readable.  If you're still not sure how to use this, look at "precompiledS1V2.txt" to see real world examples of their use, and "contextExpanderOutput.txt" to see what the compiled, un-templated code looks like.
-
-Warning: make sparing use of IGNORE commands.  I'm pretty sure I could write production rules that will not change like expected using IGNOREs, because of the way I programmed it.  I don't think you would write one by accident, but it is definitely possible. (the fix would make the contextExpander.py a lot more complicated so I'm not going to bother unless it becomes a problem - don't worry too much, I don't think it'll be a problem.  Just don't try to push them to the limit.)
-
-### Actually Running The Template Code!
-
-`python contextExpander.py precompiledS1V2.txt`
-
-This will take template code in precompiledS1V2.txt, compile it into an actual CFG, and then save the result in S1.gr and contextExpanderOutput.txt.  (there is a weird error where, at least on my mac, S1.gr will not open in TextEdit because TextEdit thinks it is corrupted, even though it can be used fine to generate sentences and whatnot.  So if you want to see what your code compiled to, contextExpanderOutput.txt is your best bet.)
-
-One problem: contextExpander.py is in python3...  And the other scripts are in python2.  I'd like them to all be the same, but python2 file input reading is apparently harder than python3 so I didn't want to deal with it XD (and it's the teacher's scripts that are in py2 so I don't want to make those py3.)  I use anaconda (I mentioned earlier) to deal with this discrepancy.  Your computer should be able to use both at once though - maybe write python2 and python3 instead of just python to specify? (not sure, haven't tested).  Feel free to convert contextExpander.py in your own time.
-
-## How We Can Colaborate On This
-
-I've already split up the CFG into 3 sections - Clauses, Noun Phrases, Verb Phrases.  As we go on these may get split further.  But they're all very self contained so we can work on them seperately.  It's not set in stone which one you have to work on, but you should only change 1 inbetween commits.  That way merge conflicts are easy to deal with.
-
-Please comment your CFG.  I'm also enforcing a bit of Object-Oriented-Programming standards - every section should be thought of as an object, and it has private and public production rules.  At the start of each section, these should be put in plain view.
+which compiles to
 
 ```
-	##########################################################################
-	#									 #	
-	#   Global Nonterminals: QuestionClause, StatementClause, SimpleClause   #
-	#								         #
-	#############################################################################
-	#StatementClause takes no arguments					    #
-	#QuestionClause takes no arguments					    #
-	#SimpleClause takes either no arguments or (person,plurality)	            #
-	#	if no arguments, it will pick an arbitrary (person,plurality) pair. #
-	#############################################################################
+	5   Clause   NounPhrase_1st_Sng_DirObj
+	5   Clause   NounPhrase_1st_Plr_Subj
+	5   Clause   NounPhrase_2nd_Sng_Subj
+	5   Clause   NounPhrase_2nd_Plr_Subj
+	5   Clause   NounPhrase_3rd_Sng_Subj
+	5   Clause   NounPhrase_3rd_Plr_Subj
 ```
 
-This is an example of the header for the Clause section that states which Nonterminals are allowed to be used by other sections if they so please.  Here, arguments refer to templates.  So basically SimpleClause looks like either `SimpleClause` or `SimpleClause{person}{plurality}` - templates can be thought of as functions.
+Conditionals look kind of complicated so here is that conditional broken up:
 
-### This was a mouthful!
-#### I'm tired
-##### Bye now!
+```
+Full Phrase:
+	5   Clause   NounPhrase{person}{plurality}$person,plurality=_1st,_Sng?_DirObj:_Subj$
+Production Rule:
+	Clause  ->  NounPhrase{person}{plurality}$person,plurality=_1st,_Sng?_DirObj:_Subj$
+Conditional:
+	$person,plurality=_1st,_Sng?_DirObj:_Subj$
+In Human Words:
+	The conditional evaluates to _DirObj if the template for person evaluates to _1st 
+		and simultaneously the template for plurality evaluates to _Sng
+	Otherwise the conditional evaluates to _Subj
+```
+
+*If it helps, the format is like a ternary statement: A?B:C = B if A else C*
+
+There aren't too many situations where you should need this.  The example I gave here is actually in use in the code, though (albeit in a slightly more complicated fashion).  This is because "I and You" sounds wrong but "Me and You" is right.  However "He and I" still sounds correct and "Him and I" does not for the most part (depends on circumstance).  I and He are subject pronouns, Me and Him are direct object pronouns.  There is a specific rule for what sounds right or wrong, but the rule is the exact opposite for I and Me, hence why the conditional is specifically changing the 1st person singular noun phrase.  If that all sounds like gobbledygook, I wrote out the full reasoning in the neither/either section of the code.  Just cmnd-f/ctrl-f to `### Clauses continued: Either/Neither ###` to see it.
+
+## Final Considerations
+
+I have tried to make our template model an object oriented system.  None of what I am about to say is enforced by the compiler, but I think we should adhere to the following standards so that we can work together seemlessly:
+
+We should think of each template as an object, and each production rule as a function:
+
+```
+{ ### Random Verb Phrases
+	<person _1st _2nd _3rd>
+	<plurality _Sng _Plr>
+	1      RandomVerbPhrase        VerbPhrase{person}{plurality}
+	1      VerbPhrase{person}{plurality} SomeProductionRule
+}
+```
+
+Here, "Random Verb Phrases" is an object, and it contains 2 functions - RandomVerbPhrase() and VerbPhrase(person,plurality).
+
+Every object of sufficient complexity should have a header at the top, saying which functions are intended to be accessible by other objects (think private/public).  Here is an example of the header to the NounPhrase section taken straight from the current code:
+
+```
+### Noun Phrases ###=====================================================================================
+{
+	<person _1st _2nd _3rd>
+	<plurality _Sng _Plr>
+	<role _Subj _DirObj _IndObj>
+	<transitivity _Transitive _Intransitive>
+	#######################################################################
+	#								      #
+	#   Global Nonterminals: NounPhrase, SimpleNounPhrase, GerundPhrase   #
+	#								      #
+	###########################################################################
+	#NounPhrase takes either no arguments, (role), or (person,plurality,role) #
+	#	if no arguments, it picks a random (person,plurality,role)        #
+	#	if (role), it picks a random (person,plurality).		  #
+	#SimpleNounPhrase behaves like NounPhrase				  #
+	#GerundPhrase takes no arguments			 	          #
+	###########################################################################
+	
+	/*Code Here*/
+	
+}
+```
+
+By adopting this object oriented approach, we can each work on different objects without worrying about merge conflicts!  So even though the compiler doesn't enforce this, I will enforce it.
+
+## Reserved Symbols
+
+Nonterminals can be composed of any symbol you want - they don't have to be alphanumeric!  However, certain symbols have special meanings for templates, so if you are not specifically using them as part of template code, you should avoid using the following symbols:
+
+```
+{
+}
+<
+>
+|
+∂ #Very Bad
+ε #Badish
+$ #Extremely Bad
+?
+:
+,
+```
+
+Not all of them will probably cause problems, I labeled the ones that I think are extremely likely to cause a problem so if you have to use them for whatever reason, don't use the labeled ones.
+
+*You can use them all outside of template blocks though.*
