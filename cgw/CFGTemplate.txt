@@ -53,7 +53,11 @@
 	#So let's try not to have direct Clause-recursion.
 
 	#A compound statement contains 2 independent (read: simple) clauses.
+	#A complex statement is similar but uses SubordConj instead.
+	#For compound-complex statements, the most prevalent case in english is just a complex statement joined to a compound one.
 	1   StatementClause                    CompoundStatement EOS_Statement
+	1   StatementClause                    ComplexStatement EOS_Statement
+	1   StatementClause                    CompoundComplexStatement EOS_Statement
 	1   CompoundStatement                  SimpleClause CompoundStatement1
 
 		#Compound Statements can be joined with a coordinating conjunction or , ; : --
@@ -62,6 +66,14 @@
 		#They can also be joined with , + coordinating conjunction
 	1   CompoundStatement1                 Comma CompoundStatement2
 	1   CompoundStatement2                 CoordConj SimpleClause
+
+		#If complex it works the same way
+	1   ComplexStatement                   SimpleClause ComplexStatement1
+	1   ComplexStatement1                  SubordConj SimpleClause
+
+		#CompoundComplex merges the two, complex head compounded with a simple clause
+	1   CompoundComplexStatement           ComplexStatement CompoundStatement1
+
 	
 	#There are 2 main ways to ask questions in english:
 	#"Do-Construction": We run. -> Do we run?
