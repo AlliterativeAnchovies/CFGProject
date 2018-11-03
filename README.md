@@ -1,5 +1,7 @@
 # ReadMe
 
+[[[ This ReadMe is kind of outdated and convoluted.  It's not wrong, but it may be incomplete and convoluted.  I'll rewrite it soon, I promise.  Before Sunday. ]]]
+
 ## Basics
 
 I will summarize how this project works - you should also read the 2 ReadMe files written by our lecturer, in the cgw folder (everything is in the cgw folder).
