@@ -213,14 +213,14 @@ Nonterminals can be composed of any symbol you want - they don't have to be alph
 <
 >
 |
-**∂**
-**ε**
-**$**
+∂ #Very Bad
+ε #Badish
+$ #Extremely Bad
 ?
 :
 ,
 ```
 
-Not all of them will probably cause problems, I bolded the ones that I think are extremely likely to cause a problem so if you have to use them for whatever reason, don't use the bold ones.
+Not all of them will probably cause problems, I labeled the ones that I think are extremely likely to cause a problem so if you have to use them for whatever reason, don't use the labeled ones.
 
 *You can use them all outside of template blocks though.*
