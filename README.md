@@ -2,7 +2,7 @@
 
 ## How To Get Started
 
-All scripts are in python2, unfortunately.  So make sure you're using that version.
+All scripts are in python2.  So make sure you're using that version.
 
 There are 3 possible tasks you may want to do: compiling your template to a CFG, generating sentences, and checking if the example sentences are in the grammar.  All of this is handled by the 'run.py' wrapper script:
 
