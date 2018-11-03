@@ -1,3 +1,4 @@
+# -*- coding: utf-8 -*-
 import sys
 
 if (len(sys.argv) < 2 ):
@@ -5,7 +6,7 @@ if (len(sys.argv) < 2 ):
 	print("So I'm going to crash the program by dividing by zero, like a gentleman :)")
 	print(5/0)
 
-print('\nFile to Parse:', sys.argv[1],'\n')
+print('\nFile to Parse:'+ sys.argv[1]+'\n')
 fileToParse = open(sys.argv[1],'r')
 theFile = fileToParse.read()
 #print('Fun fact!  Your file looks like this:\n',theFile,'\n')
