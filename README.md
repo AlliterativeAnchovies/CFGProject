@@ -116,7 +116,7 @@ becomes
 
 The ignore header caused all 1st person and all plural 2nd person expansions to not be considered.  This can occasionally be useful - in English, 3rd person singular verbs work differently from all the rest so it may make sense to occasionally exclude them.
 
-*IGNORE statements must come before every production rule, and after all the headers.*
+*IGNORE statements must come before the production rules, and after the headers.*
 
 Finally, the most powerful feature of the templates is that of the conditional.
 
