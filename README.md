@@ -124,7 +124,7 @@ Finally, the most powerful feature of the templates is that of the conditional.
 {
 	<person _1st _2nd _3rd>
 	<plurality _Sng _Plr>
-	5   Clause   NounPhrase{person}{plurality}$_DirObj?person,plurality=_1st,_Sng:_Subj$
+	5   Clause   NounPhrase{person}{plurality}$person,plurality=_1st,_Sng?_DirObj:_Subj$
 }
 ```
 
@@ -143,18 +143,18 @@ Conditionals look kind of complicated so here is that conditional broken up:
 
 ```
 Full Phrase:
-	5   Clause   NounPhrase{person}{plurality}$_DirObj?person,plurality=_1st,_Sng:_Subj$
+	5   Clause   NounPhrase{person}{plurality}$person,plurality=_1st,_Sng?_DirObj:_Subj$
 Production Rule:
-	Clause  ->  NounPhrase{person}{plurality}$_DirObj?person,plurality=_1st,_Sng:_Subj$
+	Clause  ->  NounPhrase{person}{plurality}$person,plurality=_1st,_Sng?_DirObj:_Subj$
 Conditional:
-	$_DirObj?person,plurality=_1st,_Sng:_Subj$
+	$person,plurality=_1st,_Sng?_DirObj:_Subj$
 In Human Words:
 	The conditional evaluates to _DirObj if the template for person evaluates to _1st 
 		and simultaneously the template for plurality evaluates to _Sng
 	Otherwise the conditional evaluates to _Subj
 ```
 
-*If it helps, the format is exactly like a ternary statement: A?B:C = A if B else C*
+*If it helps, the format is like a ternary statement: A?B:C = B if A else C*
 
 There aren't too many situations where you should need this.  The example I gave here is actually in use in the code, though (albeit in a slightly more complicated fashion).  This is because "I and You" sounds wrong but "Me and You" is right.  However "He and I" still sounds correct and "Him and I" does not for the most part (depends on circumstance).  I and He are subject pronouns, Me and Him are direct object pronouns.  There is a specific rule for what sounds right or wrong, but the rule is the exact opposite for I and Me, hence why the conditional is specifically changing the 1st person singular noun phrase.  If that all sounds like gobbledygook, I wrote out the full reasoning in the neither/either section of the code.  Just cmnd-f/ctrl-f to `### Clauses continued: Either/Neither ###` to see it.
 
