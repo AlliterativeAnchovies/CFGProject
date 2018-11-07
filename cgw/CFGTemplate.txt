@@ -422,11 +422,22 @@
 	1   Objects+                                      IndirectObject+
 	1   Objects+                                      DirectObject IndirectObject+
 	1   Objects+                                      DirectObject
+	1   Objects+                                      ModifyingClause
+	#^^^ "Modifying clause" is 'who'/'that' + VerbPhrase, as in "It is Bob who killed me", "It was the window that broke"
 	1   DirectObject                                  NounPhrase_DirObj
 	1   IndirectObject+                               IndirectObject
 	1   IndirectObject                                Prep NounPhrase_IndObj
 
 	#########Complicated Verb Phrases: ^^^^
+}
+
+###Modifying Clause, group with VerbClause:
+{
+	<person 1st 2nd 3rd>
+	<plurality Sng Plr>
+	1   ModifyingClause                           NounPhrase_{person}_{plurality} DegenerateClause_{person}_{plurality}
+	1   DegenerateClause_{person}_{plurality}     wrap_who VerbPhrase_{person}_{plurality}
+	1   DegenerateClause_{person}_{plurality}     wrap_that VerbPhrase_{person}_{plurality}
 }
 
 #########################################################################################

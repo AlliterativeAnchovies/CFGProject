@@ -1077,11 +1077,33 @@
 	1   Objects+                                      IndirectObject+
 	1   Objects+                                      DirectObject IndirectObject+
 	1   Objects+                                      DirectObject
+	1   Objects+                                      ModifyingClause
+	#^^^ "Modifying clause" is 'who'/'that' + VerbPhrase, as in "It is Bob who killed me", "It was the window that broke"
 	1   DirectObject                                  NounPhrase_DirObj
 	1   IndirectObject+                               IndirectObject
 	1   IndirectObject                                Prep NounPhrase_IndObj
 
 	#########Complicated Verb Phrases: ^^^^
+
+###Modifying Clause, group with VerbClause:
+	1   ModifyingClause                           NounPhrase_1st_Sng DegenerateClause_1st_Sng
+	1   ModifyingClause                           NounPhrase_1st_Plr DegenerateClause_1st_Plr
+	1   ModifyingClause                           NounPhrase_2nd_Sng DegenerateClause_2nd_Sng
+	1   ModifyingClause                           NounPhrase_2nd_Plr DegenerateClause_2nd_Plr
+	1   ModifyingClause                           NounPhrase_3rd_Sng DegenerateClause_3rd_Sng
+	1   ModifyingClause                           NounPhrase_3rd_Plr DegenerateClause_3rd_Plr
+	1   DegenerateClause_1st_Sng     wrap_who VerbPhrase_1st_Sng
+	1   DegenerateClause_1st_Plr     wrap_who VerbPhrase_1st_Plr
+	1   DegenerateClause_2nd_Sng     wrap_who VerbPhrase_2nd_Sng
+	1   DegenerateClause_2nd_Plr     wrap_who VerbPhrase_2nd_Plr
+	1   DegenerateClause_3rd_Sng     wrap_who VerbPhrase_3rd_Sng
+	1   DegenerateClause_3rd_Plr     wrap_who VerbPhrase_3rd_Plr
+	1   DegenerateClause_1st_Sng     wrap_that VerbPhrase_1st_Sng
+	1   DegenerateClause_1st_Plr     wrap_that VerbPhrase_1st_Plr
+	1   DegenerateClause_2nd_Sng     wrap_that VerbPhrase_2nd_Sng
+	1   DegenerateClause_2nd_Plr     wrap_that VerbPhrase_2nd_Plr
+	1   DegenerateClause_3rd_Sng     wrap_that VerbPhrase_3rd_Sng
+	1   DegenerateClause_3rd_Plr     wrap_that VerbPhrase_3rd_Plr
 
 #########################################################################################
 ### Everything below here is just a preliminary transformation directly from Vocab.gr ###
