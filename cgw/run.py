@@ -23,6 +23,7 @@ elif sys.argv[1] == "check":
 	call(checkCommand+'innerWorkings/example_sentences.txt',shell=True)
 elif sys.argv[1] == "compile":
 	call(["python","contextExpander.py","CFGTemplate.txt"])
+	call(["python","toCNF.py","contextExpanderOutput.txt"])
 elif sys.argv[1] == "getUnknown":
 	out = getCheckOutput()
 elif sys.argv[1] == "niceParseTree":

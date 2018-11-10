@@ -157,13 +157,14 @@ for line in allLines:
 #print(outputString)
 outputString = "# The start symbol is TOP.\n# These two rules are required; choose their weights carefully!\n99  TOP  S1\n#1   TOP  S2\n" + outputString
 outputString = outputString + "\n# in case you use S1.gr by itself\n1   S2   Misc"
-fout = open("innerWorkings/S1.gr", "w")
+#fout = open("innerWorkings/S1.gr", "w")
 #print(outputString)
-fout.write(outputString)
+#fout.write(outputString)
 fout = open("contextExpanderOutput.txt", "w")
 fout.write(outputString)
 print("Input file had " + str(lineCounterOld) + " lines of production rules.")
 print("This does not include comments, template headers, brackets, and whitespace")
 print("Output file has " + str(lineCounterNew) + " lines of production rules.")
 print("Thus the output file is " + str(lineCounterNew/lineCounterOld) + " times as large.")
+print("The above figures are all pre-CNF")
 print("")

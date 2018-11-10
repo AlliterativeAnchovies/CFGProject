@@ -18,3 +18,4 @@ if (len(sys.argv) == 2):
 				
 				
 	open("CNFConversion.txt", "w").write("".join(output))
+	open("S1.gr", "w").write("".join(output))
