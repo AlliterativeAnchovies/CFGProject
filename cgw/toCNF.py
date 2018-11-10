@@ -1,5 +1,13 @@
 import sys
 
+def lineCounter(output): #counts the number of production rules in the final output
+	count = 0
+	for line in output:  #it does this by checking if a line begins with a number
+		l = line.strip()
+		if len(l) == 0: continue
+		if l[0].isdigit: count = count + 1
+	return count
+
 if (len(sys.argv) == 2):
 	allLines = open(sys.argv[1],'r').readlines()
 
@@ -19,3 +27,4 @@ if (len(sys.argv) == 2):
 				
 	open("CNFConversion.txt", "w").write("".join(output))
 	open("S1.gr", "w").write("".join(output))
+	print("Final Production Rule Quantity: " + str(lineCounter(output)))

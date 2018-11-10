@@ -212,7 +212,6 @@
 	#sentence, ignore it and mentally replace it with 'us'.
 
 	1   NounPhrase                                     NounPhrase{role}
-	1   NounPhrase{person}{plurality}                  NounPhrase{person}{plurality}{role}
 	1   NounPhrase{role}                               NounPhrase{person}{plurality}{role}
 	1   NounPhrase_3rd{plurality}{role}                Determiner_3rd{plurality} NounPhraseSmart_3rd{plurality}{role}
 	1   NounPhrase{person}{plurality}{role}            SimpleNounPhrase{person}{plurality}{role}
@@ -270,7 +269,8 @@
 	<person _1st _2nd _3rd>
 	<plurality _Sng _Plr>
 	<transitivity _Transitive _Intransitive>
-	#coin flips and die is just to allow me to use a conditional to compress two lines at once, potentially with a weighted probability
+	<simpleorwith Simple With>
+	<continuousorwith Inner With>
 
 	##############################################################################
 	#									                                         #
@@ -306,67 +306,62 @@
 
 	########Types of Verb Phrases:
 
-	###Naive - just a single verb - adverbs allowed, past participles allowed, and can be followed with 'with' ("ride with the horse")
+	#Naive - just a single verb - adverbs allowed, past participles allowed, and can be followed with 'with' ("ride with the horse")
+	#This section looks complicated because of the conditionals, sorry!  It's really simple but you may need to stare at it a bit to understand.
+	1   VerbPhrase{person}{plurality}{transitivity}                  {simpleorwith}VerbPhrase{person}{plurality}{transitivity}
+	1   SimpleVerbPhrase{person}{plurality}{transitivity}            WithVerbPhrase{person}{plurality}{transitivity}
+	1   {simpleorwith}VerbPhrase{person}{plurality}{transitivity}    {simpleorwith}Case1{person}{plurality}{transitivity} $simpleorwith=With?WithEnding:$
+	1   {simpleorwith}VerbPhrase{person}{plurality}{transitivity}    {simpleorwith}Case2{person}{plurality}{transitivity} $simpleorwith=With?WithEnding:$
+	1   {simpleorwith}VerbPhrase{person}{plurality}{transitivity}    {simpleorwith}Case3{person}{plurality}{transitivity} $simpleorwith=With?WithEnding:$
+	1   {simpleorwith}VerbPhrase{person}{plurality}{transitivity}    {simpleorwith}Case4{person}{plurality}{transitivity} $simpleorwith=With?WithEnding:$
+	1   {simpleorwith}Case1{person}{plurality}{transitivity}         $simpleorwith=With?WithTakers:Verb${person}{plurality}{transitivity}
+	1   {simpleorwith}Case2{person}{plurality}{transitivity}         VerbModifier $simpleorwith=With?WithTakers:Verb${person}{plurality}{transitivity}
+	1   {simpleorwith}Case3{person}{plurality}{transitivity}         $simpleorwith=With?WithTakers:Verb$PP{person}{plurality}{transitivity}
+	1   {simpleorwith}Case4{person}{plurality}{transitivity}         VerbModifier $simpleorwith=With?WithTakers:Verb$PP{person}{plurality}{transitivity}
 
-	1   VerbPhrase{person}{plurality}{transitivity}         VerbModifier SimpleVerbPhrase{person}{plurality}{transitivity}
-	1   VerbPhrase{person}{plurality}{transitivity}         SimpleVerbPhrase{person}{plurality}{transitivity}
-	1   VerbPhrase{person}{plurality}{transitivity}         NaiveVerbPhrase{person}{plurality}{transitivity}
+	#Modal - will work, can run, might eat, etc... (will, can, might, should,... are modals)
+	9   VerbPhrase{person}{plurality}{transitivity}                  Modal VerbPhrase_inf{transitivity}+
+	1   VerbPhrase{person}{plurality}{transitivity}                  ought_modal VerbPhrase_inf{transitivity}+
+	9   VerbPhrase{person}{plurality}{transitivity}                  Modal ModalPhrase2{transitivity}
+	1   VerbPhrase{person}{plurality}{transitivity}                  ought_modal ModalPhrase2{transitivity}
+	2   ModalPhrase2{transitivity}                                   wrap_be ContinuousVerbPhrase{transitivity}
 
-	# Verb + (optional DirecObj only if transitive) + (optional IndirecObj) 
-	1   SimpleVerbPhrase{person}{plurality}{transitivity}   Verb{person}{plurality}{transitivity} $transitivity=_Transitive?DirectObject:$
-	1   SimpleVerbPhrase{person}{plurality}{transitivity}   Verb{person}{plurality}{transitivity} $transitivity=_Transitive?DirectObject:$ IndirectObject
-	1   SimpleVerbPhrase{person}{plurality}{transitivity}   Verb{person}{plurality}{transitivity}
-	1   SimpleVerbPhrase{person}{plurality}{transitivity}   Verb{person}{plurality}{transitivity} IndirectObject
-	# Same as above, but in this case the verb might be followed by 'with': I ride the horse to town with you.
-	1   SimpleVerbPhrase{person}{plurality}{transitivity}   WithTakers{person}{plurality}{transitivity} $transitivity=_Transitive?DirectObject:$ WithEnding
-	1   SimpleVerbPhrase{person}{plurality}{transitivity}   WithTakers{person}{plurality}{transitivity} $transitivity=_Transitive?DirectObject:$ IndirectObject WithEnding
-	1   SimpleVerbPhrase{person}{plurality}{transitivity}   WithTakers{person}{plurality}{transitivity} WithEnding
-	1   SimpleVerbPhrase{person}{plurality}{transitivity}   WithTakers{person}{plurality}{transitivity} IndirectObject WithEnding
-	# Extremely Simple Version, just a verb and its modifier
-	1   NaiveVerbPhrase{person}{plurality}{transitivity}    VerbModifier Verb{person}{plurality}{transitivity}
-	1   NaiveVerbPhrase{person}{plurality}{transitivity}    Verb{person}{plurality}{transitivity}
-	
-	###Modal - will work, can run, might eat, etc... (will, can, might, should,... are modals)
+	#Complicated - the verb may have objects
+	1   VerbPhrase{person}{plurality}{transitivity}                  VerbPhrase{person}{plurality}{transitivity}+
+	1   VerbPhrase{person}{plurality}{transitivity}                  VerbModifier VerbPhrase{person}{plurality}{transitivity}+
 
-	1   FullModal                                           ought_modal
-	9   FullModal                                           Modal
+	#Infinite - the verb is in the infinitive (or subjunctive).
+	1   VerbPhrase_inf                                               VerbPhrase_inf{transitivity}
+	1   VerbPhrase_inf{transitivity}                                 VerbModifier VerbPhrase_inf{transitivity}+
+	1   VerbPhrase_inf{transitivity}                                 VerbPhrase_inf{transitivity}+
+	1   VerbPhrase_inf{transitivity}                                 Verb_inf{transitivity}
 
-	1   VerbPhrase{person}{plurality}{transitivity}         ModalVerbPhrase{person}{plurality}{transitivity}
-	1   ModalVerbPhrase{person}{plurality}{transitivity}    FullModal VerbPhrase_inf{transitivity}
-	1   ModalVerbPhrase{person}{plurality}{transitivity}    FullModal wrap_be ContinuousVerbPhrase{transitivity}
+	#Subjunctifier - the verb can take a subjunctive clause.
+	#The only verb like this we have is suggest, which is intransitive 
+	#	but that doesn't matter as long as the dependent clause is transitive
+	1   VerbPhrase{person}{plurality}{transitivity}                  SubjunctiveVerbPhrase{person}{plurality}
+	1   VerbPhrase_inf{transitivity}                                 Subjunctive_1st_Sng SubjunctiveClause
+	1   SubjunctiveVerbPhrase{person}{plurality}                     Subjunctive{person}{plurality} SubjunctiveClause
+	1   SubjunctiveVerbPhrase{person}{plurality}                     PPSubjunctive{person}{plurality} SubjunctiveClause
+	1   SubjunctiveClause                                            wrap_that SubjunctiveClause2
+	1   SubjunctiveClause                                            SubjunctiveClause2
+	1   SubjunctiveClause2                                           NounPhrase_Subj VerbPhrase_inf_Transitive
 
-	###Infinite - the verb is in the infinitive (or subjunctive).
-	
-	1   VerbPhrase_inf                                      VerbPhrase_inf{transitivity}
-	10  VerbPhrase_inf{transitivity}                        VerbModifier Verb_inf{transitivity}
-	10  VerbPhrase_inf{transitivity}                        Verb_inf{transitivity}
-	#vvvvv Subjunctive_1st_Sng is only 'suggest', so this line is saying that an allowable infinitive is 'I ought to suggest that [subjunctive clause]'
-	1   VerbPhrase_inf{transitivity}                        Subjunctive_1st_Sng SubjunctiveClause
+	#Present Participle - the verb is conjugated like a present participle
+	#We will only handle simple cases with this, analagously to the Naive case
+	#But we also incorporate the subjunctifier case
+	#And like the Naive case, we include 'with' clauses
+	1   ContinuousVerbPhrase                                         ContinuousVerbPhrase{transitivity}
+	1   ContinuousVerbPhrase{transitivity}                           {continuousorwith}ContinuousVerbPhrase{transitivity}
+	1   {continuousorwith}ContinuousVerbPhrase{transitivity}         {continuousorwith}ContinuousVerbPhraseCase1{transitivity} $continuousorwith=With?WithEnding:$
+	1   {continuousorwith}ContinuousVerbPhrase{transitivity}         {continuousorwith}ContinuousVerbPhraseCase2{transitivity} $continuousorwith=With?WithEnding:$
+	1   {continuousorwith}ContinuousVerbPhrase{transitivity}         {continuousorwith}ContinuousVerbPhraseCase3{transitivity} $continuousorwith=With?WithEnding:$
+	1   {continuousorwith}ContinuousVerbPhraseCase1{transitivity}    Gerund{transitivity}
+	1   {continuousorwith}ContinuousVerbPhraseCase2{transitivity}    VerbModifier Gerund{transitivity}
+	1   {continuousorwith}ContinuousVerbPhraseCase3{transitivity}    PresentParticipleSubjunctive SubjunctiveClause
 
-	###Subjunctifier - the verb can take a subjunctive clause.
-	#  The only verb like this we have is suggest, which is intransitive 
-	1   VerbPhrase{person}{plurality}{transitivity}         SubjunctiveVerbPhrase{person}{plurality}
-	1   SubjunctiveVerbPhrase{person}{plurality}            Subjunctive{person}{plurality} wrap_that NounPhrase_Subj VerbPhrase_inf_transitive
-	1   SubjunctiveVerbPhrase{person}{plurality}            PPSubjunctive{person}{plurality} wrap_that NounPhrase_Subj VerbPhrase_inf_Transitive
-	1   SubjunctiveVerbPhrase{person}{plurality}            Subjunctive{person}{plurality} NounPhrase_Subj VerbPhrase_inf_transitive
-	1   SubjunctiveVerbPhrase{person}{plurality}            PPSubjunctive{person}{plurality} NounPhrase_Subj VerbPhrase_inf_Transitive
-
-	###Present Participle - the verb is conjugated like a present participle
-	#  We will only handle simple cases with this, analagously to the Naive case
-	#  But we also incorporate the subjunctifier case
-	#  And like the Naive case, we include 'with' clauses
-	1   ContinuousVerbPhrase                                ContinuousVerbPhrase{transitivity}
-	1   ContinuousVerbPhrase{transitivity}                  Gerund{transitivity}
-	1   ContinuousVerbPhrase{transitivity}                  VerbModifier Gerund{transitivity}
-	1   ContinuousVerbPhrase{transitivity}                  PresentParticipleSubjunctive SubjunctiveClause
-
-	###Objects
-	1   DirectObject                                        NounPhrase_DirObj
-	1   IndirectObject                                      Prep NounPhrase_IndObj
-
-	###With-Takers - Certain verbs can be followed by 'with' "Speak with" "Ride with" "Drink with" etc
-	1   WithEnding                                          wrap_with NounPhrase_IndObj
-
+   #With-Takers - Certain verbs can be followed by 'with' "Speak with" "Ride with" "Drink with" etc
+	1   WithEnding                                                   wrap_with NounPhrase_IndObj
 
 
 	########Types of Verb Phrases ^^^
@@ -408,8 +403,42 @@
 
 	#########Is/Are ^^^^
 
+
+	#########Complicated Verb Phrases:
+
+	#Here we have to take into account transitivity (does it take a direct object or not?)
+	1   VerbPhrase{person}{plurality}_Transitive+     Verb{person}{plurality}_Transitive Objects+
+	1   VerbPhrase{person}{plurality}_Transitive+     VerbPP{person}{plurality}_Transitive Objects+
+	1   VerbPhrase{person}{plurality}_Intransitive+   Verb{person}{plurality}_Intransitive IndirectObject+
+	1   VerbPhrase{person}{plurality}_Intransitive+   VerbPP{person}{plurality}_Intransitive IndirectObject+
+
+	1   VerbPhrase_inf_Transitive+                    Verb_inf_Transitive
+	1   VerbPhrase_inf_Transitive+                    VerbPP_3rd_Plr_Transitive
+	1   VerbPhrase_inf_Transitive+                    Verb_inf_Transitive Objects+
+	1   VerbPhrase_inf_Transitive+                    VerbPP_3rd_Plr_Transitive Objects+
+	1   VerbPhrase_inf_Intransitive+                  Verb_inf_Intransitive IndirectObject+
+	1   VerbPhrase_inf_Intransitive+                  VerbPP_3rd_Plr_Intransitive IndirectObject+
+
+	1   Objects+                                      IndirectObject+
+	1   Objects+                                      DirectObject IndirectObject+
+	1   Objects+                                      DirectObject
+	1   Objects+                                      ModifyingClause
+	#^^^ "Modifying clause" is 'who'/'that' + VerbPhrase, as in "It is Bob who killed me", "It was the window that broke"
+	1   DirectObject                                  NounPhrase_DirObj
+	1   IndirectObject+                               IndirectObject
+	1   IndirectObject                                Prep NounPhrase_IndObj
+
+	#########Complicated Verb Phrases: ^^^^
 }
 
+###Modifying Clause, group with VerbClause:
+{
+	<person 1st 2nd 3rd>
+	<plurality Sng Plr>
+	1   ModifyingClause                           NounPhrase_{person}_{plurality} DegenerateClause_{person}_{plurality}
+	1   DegenerateClause_{person}_{plurality}     wrap_who VerbPhrase_{person}_{plurality}
+	1   DegenerateClause_{person}_{plurality}     wrap_that VerbPhrase_{person}_{plurality}
+}
 
 #########################################################################################
 ### Everything below here is just a preliminary transformation directly from Vocab.gr ###
@@ -503,7 +532,7 @@
 1   WithTakers_3rd_Sng_Intransitive   speaks
 1   WithTakers_3rd_Sng_Transitive     drinks
 1   WithTakersPP_Transitive           ridden
-1   WithTakersPP_Intransitive         spoken
+1   WithtakersPP_Intransitive         spoken
 1   WithTakersPP_Transitive           drunk
 1   WithTakersContinuous_Transitive   riding
 1   WithTakersContinuous_Intransitive speaking
