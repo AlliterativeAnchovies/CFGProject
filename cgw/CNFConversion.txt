@@ -44,6 +44,7 @@
 	1   wrap_be        be
 	1   wrap_ought        ought
 	1   wrap_with        with
+	1   wrap_which        which
 	1   QuestionWord            where
 	1   QuestionWord            when
 	1   QuestionWord            why
@@ -68,6 +69,8 @@
 
 	1   S1               StatementClause EOS_Statement
 	1   S1               QuestionClause  EOS_Question
+
+	############Statements############
 
 	#Here we handle the most naive statement clause:
 	1   StatementClause                    SimpleClause_1st_Sng
@@ -98,7 +101,6 @@
 	#For compound-complex statements, the most prevalent case in english is just a complex statement joined to a compound one.
 	1   StatementClause                    CompoundStatement
 	1   StatementClause                    ComplexStatement
-	1   StatementClause                    CompoundComplexStatement
 
 		#Compound Statements can be joined with a coordinating conjunction or , ; : --
 		#They can also be joined with , + coordinating conjunction
@@ -124,6 +126,9 @@
 5 SubordConj_CompoundStatement SubordConj CompoundStatement
 1 ComplexStatement CompoundStatement SubordConj_CompoundStatement
 1 SubordConj_CompoundStatement SubordConj CompoundStatement
+
+
+	############Questions#############
 
 	#There are 2 main ways to ask questions in english:
 	#"Do-Construction": We run. -> Do we run?
@@ -306,6 +311,7 @@
 	#Note 2: 'us' is not in our vocabulary.  Literally every other pronoun is, but 'us' is not...
 	#TODO: Remove all things that involve 'us'
 
+	#Casting
 	1   NounPhrase                                     NounPhrase_Subj
 	1   NounPhrase                                     NounPhrase_DirObj
 	1   NounPhrase                                     NounPhrase_IndObj
@@ -345,6 +351,29 @@
 	1   NounPhrase_Subj                               NounPhrase_3rd_Plr_Subj
 	1   NounPhrase_DirObj                               NounPhrase_3rd_Plr_DirObj
 	1   NounPhrase_IndObj                               NounPhrase_3rd_Plr_IndObj
+	1   SimpleNounPhrase_Subj                         SimpleNounPhrase_1st_Sng_Subj
+	1   SimpleNounPhrase_DirObj                         SimpleNounPhrase_1st_Sng_DirObj
+	1   SimpleNounPhrase_IndObj                         SimpleNounPhrase_1st_Sng_IndObj
+	1   SimpleNounPhrase_Subj                         SimpleNounPhrase_1st_Plr_Subj
+	1   SimpleNounPhrase_DirObj                         SimpleNounPhrase_1st_Plr_DirObj
+	1   SimpleNounPhrase_IndObj                         SimpleNounPhrase_1st_Plr_IndObj
+	1   SimpleNounPhrase_Subj                         SimpleNounPhrase_2nd_Sng_Subj
+	1   SimpleNounPhrase_DirObj                         SimpleNounPhrase_2nd_Sng_DirObj
+	1   SimpleNounPhrase_IndObj                         SimpleNounPhrase_2nd_Sng_IndObj
+	1   SimpleNounPhrase_Subj                         SimpleNounPhrase_2nd_Plr_Subj
+	1   SimpleNounPhrase_DirObj                         SimpleNounPhrase_2nd_Plr_DirObj
+	1   SimpleNounPhrase_IndObj                         SimpleNounPhrase_2nd_Plr_IndObj
+	1   SimpleNounPhrase_Subj                         SimpleNounPhrase_3rd_Sng_Subj
+	1   SimpleNounPhrase_DirObj                         SimpleNounPhrase_3rd_Sng_DirObj
+	1   SimpleNounPhrase_IndObj                         SimpleNounPhrase_3rd_Sng_IndObj
+	1   SimpleNounPhrase_Subj                         SimpleNounPhrase_3rd_Plr_Subj
+	1   SimpleNounPhrase_DirObj                         SimpleNounPhrase_3rd_Plr_DirObj
+	1   SimpleNounPhrase_IndObj                         SimpleNounPhrase_3rd_Plr_IndObj
+	1   SimpleNounPhrase                               SimpleNounPhrase_Subj
+	1   SimpleNounPhrase                               SimpleNounPhrase_DirObj
+	1   SimpleNounPhrase                               SimpleNounPhrase_IndObj
+
+	#Entering Noun Phrase
 	1   NounPhrase_3rd_Sng_Subj                Determiner_3rd_Sng NounPhraseSmart_3rd_Sng_Subj
 	1   NounPhrase_3rd_Sng_DirObj                Determiner_3rd_Sng NounPhraseSmart_3rd_Sng_DirObj
 	1   NounPhrase_3rd_Sng_IndObj                Determiner_3rd_Sng NounPhraseSmart_3rd_Sng_IndObj
@@ -377,6 +406,18 @@
 	1   SimpleNounPhrase_3rd_Plr_Subj          Determiner_3rd_Plr Noun_3rd_Plr
 	1   SimpleNounPhrase_3rd_Plr_DirObj          Determiner_3rd_Plr Noun_3rd_Plr
 	1   SimpleNounPhrase_3rd_Plr_IndObj          Determiner_3rd_Plr Noun_3rd_Plr
+1 SimpleNounPhrase_3rd_Sng_Subj Determiner_3rd_Sng Noun_3rd_Sng_ObjectClause_3rd_Sng
+1 Noun_3rd_Sng_ObjectClause_3rd_Sng Noun_3rd_Sng ObjectClause_3rd_Sng
+1 SimpleNounPhrase_3rd_Sng_DirObj Determiner_3rd_Sng Noun_3rd_Sng_ObjectClause_3rd_Sng
+1 Noun_3rd_Sng_ObjectClause_3rd_Sng Noun_3rd_Sng ObjectClause_3rd_Sng
+1 SimpleNounPhrase_3rd_Sng_IndObj Determiner_3rd_Sng Noun_3rd_Sng_ObjectClause_3rd_Sng
+1 Noun_3rd_Sng_ObjectClause_3rd_Sng Noun_3rd_Sng ObjectClause_3rd_Sng
+1 SimpleNounPhrase_3rd_Plr_Subj Determiner_3rd_Plr Noun_3rd_Plr_ObjectClause_3rd_Plr
+1 Noun_3rd_Plr_ObjectClause_3rd_Plr Noun_3rd_Plr ObjectClause_3rd_Plr
+1 SimpleNounPhrase_3rd_Plr_DirObj Determiner_3rd_Plr Noun_3rd_Plr_ObjectClause_3rd_Plr
+1 Noun_3rd_Plr_ObjectClause_3rd_Plr Noun_3rd_Plr ObjectClause_3rd_Plr
+1 SimpleNounPhrase_3rd_Plr_IndObj Determiner_3rd_Plr Noun_3rd_Plr_ObjectClause_3rd_Plr
+1 Noun_3rd_Plr_ObjectClause_3rd_Plr Noun_3rd_Plr ObjectClause_3rd_Plr
 	1   SimpleNounPhrase_1st_Sng_Subj      Pronoun_1st_Sng_Subj
 	1   SimpleNounPhrase_1st_Sng_DirObj      Pronoun_1st_Sng_DirObj
 	1   SimpleNounPhrase_1st_Sng_IndObj      Pronoun_1st_Sng_IndObj
@@ -395,36 +436,57 @@
 	1   SimpleNounPhrase_3rd_Plr_Subj      Pronoun_3rd_Plr_Subj
 	1   SimpleNounPhrase_3rd_Plr_DirObj      Pronoun_3rd_Plr_DirObj
 	1   SimpleNounPhrase_3rd_Plr_IndObj      Pronoun_3rd_Plr_IndObj
-	1   SimpleNounPhrase_Subj                         SimpleNounPhrase_1st_Sng_Subj
-	1   SimpleNounPhrase_DirObj                         SimpleNounPhrase_1st_Sng_DirObj
-	1   SimpleNounPhrase_IndObj                         SimpleNounPhrase_1st_Sng_IndObj
-	1   SimpleNounPhrase_Subj                         SimpleNounPhrase_1st_Plr_Subj
-	1   SimpleNounPhrase_DirObj                         SimpleNounPhrase_1st_Plr_DirObj
-	1   SimpleNounPhrase_IndObj                         SimpleNounPhrase_1st_Plr_IndObj
-	1   SimpleNounPhrase_Subj                         SimpleNounPhrase_2nd_Sng_Subj
-	1   SimpleNounPhrase_DirObj                         SimpleNounPhrase_2nd_Sng_DirObj
-	1   SimpleNounPhrase_IndObj                         SimpleNounPhrase_2nd_Sng_IndObj
-	1   SimpleNounPhrase_Subj                         SimpleNounPhrase_2nd_Plr_Subj
-	1   SimpleNounPhrase_DirObj                         SimpleNounPhrase_2nd_Plr_DirObj
-	1   SimpleNounPhrase_IndObj                         SimpleNounPhrase_2nd_Plr_IndObj
-	1   SimpleNounPhrase_Subj                         SimpleNounPhrase_3rd_Sng_Subj
-	1   SimpleNounPhrase_DirObj                         SimpleNounPhrase_3rd_Sng_DirObj
-	1   SimpleNounPhrase_IndObj                         SimpleNounPhrase_3rd_Sng_IndObj
-	1   SimpleNounPhrase_Subj                         SimpleNounPhrase_3rd_Plr_Subj
-	1   SimpleNounPhrase_DirObj                         SimpleNounPhrase_3rd_Plr_DirObj
-	1   SimpleNounPhrase_IndObj                         SimpleNounPhrase_3rd_Plr_IndObj
-	1   SimpleNounPhrase                               SimpleNounPhrase_Subj
-	1   SimpleNounPhrase                               SimpleNounPhrase_DirObj
-	1   SimpleNounPhrase                               SimpleNounPhrase_IndObj
+	1   SimpleNounPhrase_1st_Sng_Subj      Pronoun_1st_Sng_Subj ObjectClause_1st_Sng
+	1   SimpleNounPhrase_1st_Sng_DirObj      Pronoun_1st_Sng_DirObj ObjectClause_1st_Sng
+	1   SimpleNounPhrase_1st_Sng_IndObj      Pronoun_1st_Sng_IndObj ObjectClause_1st_Sng
+	1   SimpleNounPhrase_1st_Plr_Subj      Pronoun_1st_Plr_Subj ObjectClause_1st_Plr
+	1   SimpleNounPhrase_1st_Plr_DirObj      Pronoun_1st_Plr_DirObj ObjectClause_1st_Plr
+	1   SimpleNounPhrase_1st_Plr_IndObj      Pronoun_1st_Plr_IndObj ObjectClause_1st_Plr
+	1   SimpleNounPhrase_2nd_Sng_Subj      Pronoun_2nd_Sng_Subj ObjectClause_2nd_Sng
+	1   SimpleNounPhrase_2nd_Sng_DirObj      Pronoun_2nd_Sng_DirObj ObjectClause_2nd_Sng
+	1   SimpleNounPhrase_2nd_Sng_IndObj      Pronoun_2nd_Sng_IndObj ObjectClause_2nd_Sng
+	1   SimpleNounPhrase_2nd_Plr_Subj      Pronoun_2nd_Plr_Subj ObjectClause_2nd_Plr
+	1   SimpleNounPhrase_2nd_Plr_DirObj      Pronoun_2nd_Plr_DirObj ObjectClause_2nd_Plr
+	1   SimpleNounPhrase_2nd_Plr_IndObj      Pronoun_2nd_Plr_IndObj ObjectClause_2nd_Plr
+	1   SimpleNounPhrase_3rd_Sng_Subj      Pronoun_3rd_Sng_Subj ObjectClause_3rd_Sng
+	1   SimpleNounPhrase_3rd_Sng_DirObj      Pronoun_3rd_Sng_DirObj ObjectClause_3rd_Sng
+	1   SimpleNounPhrase_3rd_Sng_IndObj      Pronoun_3rd_Sng_IndObj ObjectClause_3rd_Sng
+	1   SimpleNounPhrase_3rd_Plr_Subj      Pronoun_3rd_Plr_Subj ObjectClause_3rd_Plr
+	1   SimpleNounPhrase_3rd_Plr_DirObj      Pronoun_3rd_Plr_DirObj ObjectClause_3rd_Plr
+	1   SimpleNounPhrase_3rd_Plr_IndObj      Pronoun_3rd_Plr_IndObj ObjectClause_3rd_Plr
 	1   SimpleNounPhrase_3rd_Sng_Subj                 ProperStuffs_Sng
 	1   SimpleNounPhrase_3rd_Sng_DirObj                 ProperStuffs_Sng
 	1   SimpleNounPhrase_3rd_Sng_IndObj                 ProperStuffs_Sng
-	1   ProperStuffs_Sng                               ProperAll_notthing
-	1   ProperStuffs_Sng                               wrap_the ProperThing
 	1   SimpleNounPhrase_3rd_Plr_Subj                 ProperStuffs_Plr
 	1   SimpleNounPhrase_3rd_Plr_DirObj                 ProperStuffs_Plr
 	1   SimpleNounPhrase_3rd_Plr_IndObj                 ProperStuffs_Plr
+
+	#Proper Noun Stuffs
+	1   ProperStuffs_Sng                               ProperAll_notthing
+	1   ProperStuffs_Sng                               wrap_the ProperThing
 	1   ProperStuffs_Plr                               Noun_3rd_Plr
+
+	###Object Clauses
+	#It is Sir Lancelot [who knows Zoot],[that knows Zoot],[which knows Zoot]
+
+	1   ObjectClause_1st_Sng                wrap_who   VerbPhrase_1st_Sng
+	1   ObjectClause_1st_Plr                wrap_who   VerbPhrase_1st_Plr
+	1   ObjectClause_2nd_Sng                wrap_who   VerbPhrase_2nd_Sng
+	1   ObjectClause_2nd_Plr                wrap_who   VerbPhrase_2nd_Plr
+	1   ObjectClause_3rd_Sng                wrap_who   VerbPhrase_3rd_Sng
+	1   ObjectClause_3rd_Plr                wrap_who   VerbPhrase_3rd_Plr
+	1   ObjectClause_1st_Sng                wrap_that  VerbPhrase_1st_Sng
+	1   ObjectClause_1st_Plr                wrap_that  VerbPhrase_1st_Plr
+	1   ObjectClause_2nd_Sng                wrap_that  VerbPhrase_2nd_Sng
+	1   ObjectClause_2nd_Plr                wrap_that  VerbPhrase_2nd_Plr
+	1   ObjectClause_3rd_Sng                wrap_that  VerbPhrase_3rd_Sng
+	1   ObjectClause_3rd_Plr                wrap_that  VerbPhrase_3rd_Plr
+	1   ObjectClause_1st_Sng                wrap_which VerbPhrase_1st_Sng
+	1   ObjectClause_1st_Plr                wrap_which VerbPhrase_1st_Plr
+	1   ObjectClause_2nd_Sng                wrap_which VerbPhrase_2nd_Sng
+	1   ObjectClause_2nd_Plr                wrap_which VerbPhrase_2nd_Plr
+	1   ObjectClause_3rd_Sng                wrap_which VerbPhrase_3rd_Sng
+	1   ObjectClause_3rd_Plr                wrap_which VerbPhrase_3rd_Plr
 
 	#Gerund Noun Phrase: "[[[Quickly running]]] through the store is illegal."  {Verbs ending in -ing can act as nouns, they are called gerunds}
 	#A gerund can't really be an indirect object:  "He throws the ball to running" makes no sense.
@@ -912,8 +974,16 @@
 	10  VerbPhrase_inf_Transitive                        Verb_inf_Transitive
 	10  VerbPhrase_inf_Intransitive                        Verb_inf_Intransitive
 	#vvvvv Subjunctive_1st_Sng is only 'suggest', so this line is saying that an allowable infinitive is 'I ought to suggest that [subjunctive clause]'
-	1   VerbPhrase_inf_Transitive                        Subjunctive_1st_Sng SubjunctiveClause
-	1   VerbPhrase_inf_Intransitive                        Subjunctive_1st_Sng SubjunctiveClause
+1 VerbPhrase_inf_Transitive Subjunctive_1st_Sng wrap_that_NounPhrase_Subj_VerbPhrase_inf_Transitive
+1 wrap_that_NounPhrase_Subj_VerbPhrase_inf_Transitive wrap_that NounPhrase_Subj_VerbPhrase_inf_Transitive
+1 NounPhrase_Subj_VerbPhrase_inf_Transitive NounPhrase_Subj VerbPhrase_inf_Transitive
+1 VerbPhrase_inf_Intransitive Subjunctive_1st_Sng wrap_that_NounPhrase_Subj_VerbPhrase_inf_Transitive
+1 wrap_that_NounPhrase_Subj_VerbPhrase_inf_Transitive wrap_that NounPhrase_Subj_VerbPhrase_inf_Transitive
+1 NounPhrase_Subj_VerbPhrase_inf_Transitive NounPhrase_Subj VerbPhrase_inf_Transitive
+1 VerbPhrase_inf_Transitive Subjunctive_1st_Sng NounPhrase_Subj_VerbPhrase_inf_Transitive
+1 NounPhrase_Subj_VerbPhrase_inf_Transitive NounPhrase_Subj VerbPhrase_inf_Transitive
+1 VerbPhrase_inf_Intransitive Subjunctive_1st_Sng NounPhrase_Subj_VerbPhrase_inf_Transitive
+1 NounPhrase_Subj_VerbPhrase_inf_Transitive NounPhrase_Subj VerbPhrase_inf_Transitive
 
 	###Subjunctifier - the verb can take a subjunctive clause.
 	#  The only verb like this we have is suggest, which is intransitive 
@@ -929,24 +999,24 @@
 	1   VerbPhrase_3rd_Sng_Intransitive         SubjunctiveVerbPhrase_3rd_Sng
 	1   VerbPhrase_3rd_Plr_Transitive         SubjunctiveVerbPhrase_3rd_Plr
 	1   VerbPhrase_3rd_Plr_Intransitive         SubjunctiveVerbPhrase_3rd_Plr
-1 SubjunctiveVerbPhrase_1st_Sng Subjunctive_1st_Sng wrap_that_NounPhrase_Subj_VerbPhrase_inf_transitive
-1 wrap_that_NounPhrase_Subj_VerbPhrase_inf_transitive wrap_that NounPhrase_Subj_VerbPhrase_inf_transitive
-1 NounPhrase_Subj_VerbPhrase_inf_transitive NounPhrase_Subj VerbPhrase_inf_transitive
-1 SubjunctiveVerbPhrase_1st_Plr Subjunctive_1st_Plr wrap_that_NounPhrase_Subj_VerbPhrase_inf_transitive
-1 wrap_that_NounPhrase_Subj_VerbPhrase_inf_transitive wrap_that NounPhrase_Subj_VerbPhrase_inf_transitive
-1 NounPhrase_Subj_VerbPhrase_inf_transitive NounPhrase_Subj VerbPhrase_inf_transitive
-1 SubjunctiveVerbPhrase_2nd_Sng Subjunctive_2nd_Sng wrap_that_NounPhrase_Subj_VerbPhrase_inf_transitive
-1 wrap_that_NounPhrase_Subj_VerbPhrase_inf_transitive wrap_that NounPhrase_Subj_VerbPhrase_inf_transitive
-1 NounPhrase_Subj_VerbPhrase_inf_transitive NounPhrase_Subj VerbPhrase_inf_transitive
-1 SubjunctiveVerbPhrase_2nd_Plr Subjunctive_2nd_Plr wrap_that_NounPhrase_Subj_VerbPhrase_inf_transitive
-1 wrap_that_NounPhrase_Subj_VerbPhrase_inf_transitive wrap_that NounPhrase_Subj_VerbPhrase_inf_transitive
-1 NounPhrase_Subj_VerbPhrase_inf_transitive NounPhrase_Subj VerbPhrase_inf_transitive
-1 SubjunctiveVerbPhrase_3rd_Sng Subjunctive_3rd_Sng wrap_that_NounPhrase_Subj_VerbPhrase_inf_transitive
-1 wrap_that_NounPhrase_Subj_VerbPhrase_inf_transitive wrap_that NounPhrase_Subj_VerbPhrase_inf_transitive
-1 NounPhrase_Subj_VerbPhrase_inf_transitive NounPhrase_Subj VerbPhrase_inf_transitive
-1 SubjunctiveVerbPhrase_3rd_Plr Subjunctive_3rd_Plr wrap_that_NounPhrase_Subj_VerbPhrase_inf_transitive
-1 wrap_that_NounPhrase_Subj_VerbPhrase_inf_transitive wrap_that NounPhrase_Subj_VerbPhrase_inf_transitive
-1 NounPhrase_Subj_VerbPhrase_inf_transitive NounPhrase_Subj VerbPhrase_inf_transitive
+1 SubjunctiveVerbPhrase_1st_Sng Subjunctive_1st_Sng wrap_that_NounPhrase_Subj_VerbPhrase_inf_Transitive
+1 wrap_that_NounPhrase_Subj_VerbPhrase_inf_Transitive wrap_that NounPhrase_Subj_VerbPhrase_inf_Transitive
+1 NounPhrase_Subj_VerbPhrase_inf_Transitive NounPhrase_Subj VerbPhrase_inf_Transitive
+1 SubjunctiveVerbPhrase_1st_Plr Subjunctive_1st_Plr wrap_that_NounPhrase_Subj_VerbPhrase_inf_Transitive
+1 wrap_that_NounPhrase_Subj_VerbPhrase_inf_Transitive wrap_that NounPhrase_Subj_VerbPhrase_inf_Transitive
+1 NounPhrase_Subj_VerbPhrase_inf_Transitive NounPhrase_Subj VerbPhrase_inf_Transitive
+1 SubjunctiveVerbPhrase_2nd_Sng Subjunctive_2nd_Sng wrap_that_NounPhrase_Subj_VerbPhrase_inf_Transitive
+1 wrap_that_NounPhrase_Subj_VerbPhrase_inf_Transitive wrap_that NounPhrase_Subj_VerbPhrase_inf_Transitive
+1 NounPhrase_Subj_VerbPhrase_inf_Transitive NounPhrase_Subj VerbPhrase_inf_Transitive
+1 SubjunctiveVerbPhrase_2nd_Plr Subjunctive_2nd_Plr wrap_that_NounPhrase_Subj_VerbPhrase_inf_Transitive
+1 wrap_that_NounPhrase_Subj_VerbPhrase_inf_Transitive wrap_that NounPhrase_Subj_VerbPhrase_inf_Transitive
+1 NounPhrase_Subj_VerbPhrase_inf_Transitive NounPhrase_Subj VerbPhrase_inf_Transitive
+1 SubjunctiveVerbPhrase_3rd_Sng Subjunctive_3rd_Sng wrap_that_NounPhrase_Subj_VerbPhrase_inf_Transitive
+1 wrap_that_NounPhrase_Subj_VerbPhrase_inf_Transitive wrap_that NounPhrase_Subj_VerbPhrase_inf_Transitive
+1 NounPhrase_Subj_VerbPhrase_inf_Transitive NounPhrase_Subj VerbPhrase_inf_Transitive
+1 SubjunctiveVerbPhrase_3rd_Plr Subjunctive_3rd_Plr wrap_that_NounPhrase_Subj_VerbPhrase_inf_Transitive
+1 wrap_that_NounPhrase_Subj_VerbPhrase_inf_Transitive wrap_that NounPhrase_Subj_VerbPhrase_inf_Transitive
+1 NounPhrase_Subj_VerbPhrase_inf_Transitive NounPhrase_Subj VerbPhrase_inf_Transitive
 1 SubjunctiveVerbPhrase_1st_Sng PPSubjunctive_1st_Sng wrap_that_NounPhrase_Subj_VerbPhrase_inf_Transitive
 1 wrap_that_NounPhrase_Subj_VerbPhrase_inf_Transitive wrap_that NounPhrase_Subj_VerbPhrase_inf_Transitive
 1 NounPhrase_Subj_VerbPhrase_inf_Transitive NounPhrase_Subj VerbPhrase_inf_Transitive
@@ -965,18 +1035,18 @@
 1 SubjunctiveVerbPhrase_3rd_Plr PPSubjunctive_3rd_Plr wrap_that_NounPhrase_Subj_VerbPhrase_inf_Transitive
 1 wrap_that_NounPhrase_Subj_VerbPhrase_inf_Transitive wrap_that NounPhrase_Subj_VerbPhrase_inf_Transitive
 1 NounPhrase_Subj_VerbPhrase_inf_Transitive NounPhrase_Subj VerbPhrase_inf_Transitive
-1 SubjunctiveVerbPhrase_1st_Sng Subjunctive_1st_Sng NounPhrase_Subj_VerbPhrase_inf_transitive
-1 NounPhrase_Subj_VerbPhrase_inf_transitive NounPhrase_Subj VerbPhrase_inf_transitive
-1 SubjunctiveVerbPhrase_1st_Plr Subjunctive_1st_Plr NounPhrase_Subj_VerbPhrase_inf_transitive
-1 NounPhrase_Subj_VerbPhrase_inf_transitive NounPhrase_Subj VerbPhrase_inf_transitive
-1 SubjunctiveVerbPhrase_2nd_Sng Subjunctive_2nd_Sng NounPhrase_Subj_VerbPhrase_inf_transitive
-1 NounPhrase_Subj_VerbPhrase_inf_transitive NounPhrase_Subj VerbPhrase_inf_transitive
-1 SubjunctiveVerbPhrase_2nd_Plr Subjunctive_2nd_Plr NounPhrase_Subj_VerbPhrase_inf_transitive
-1 NounPhrase_Subj_VerbPhrase_inf_transitive NounPhrase_Subj VerbPhrase_inf_transitive
-1 SubjunctiveVerbPhrase_3rd_Sng Subjunctive_3rd_Sng NounPhrase_Subj_VerbPhrase_inf_transitive
-1 NounPhrase_Subj_VerbPhrase_inf_transitive NounPhrase_Subj VerbPhrase_inf_transitive
-1 SubjunctiveVerbPhrase_3rd_Plr Subjunctive_3rd_Plr NounPhrase_Subj_VerbPhrase_inf_transitive
-1 NounPhrase_Subj_VerbPhrase_inf_transitive NounPhrase_Subj VerbPhrase_inf_transitive
+1 SubjunctiveVerbPhrase_1st_Sng Subjunctive_1st_Sng NounPhrase_Subj_VerbPhrase_inf_Transitive
+1 NounPhrase_Subj_VerbPhrase_inf_Transitive NounPhrase_Subj VerbPhrase_inf_Transitive
+1 SubjunctiveVerbPhrase_1st_Plr Subjunctive_1st_Plr NounPhrase_Subj_VerbPhrase_inf_Transitive
+1 NounPhrase_Subj_VerbPhrase_inf_Transitive NounPhrase_Subj VerbPhrase_inf_Transitive
+1 SubjunctiveVerbPhrase_2nd_Sng Subjunctive_2nd_Sng NounPhrase_Subj_VerbPhrase_inf_Transitive
+1 NounPhrase_Subj_VerbPhrase_inf_Transitive NounPhrase_Subj VerbPhrase_inf_Transitive
+1 SubjunctiveVerbPhrase_2nd_Plr Subjunctive_2nd_Plr NounPhrase_Subj_VerbPhrase_inf_Transitive
+1 NounPhrase_Subj_VerbPhrase_inf_Transitive NounPhrase_Subj VerbPhrase_inf_Transitive
+1 SubjunctiveVerbPhrase_3rd_Sng Subjunctive_3rd_Sng NounPhrase_Subj_VerbPhrase_inf_Transitive
+1 NounPhrase_Subj_VerbPhrase_inf_Transitive NounPhrase_Subj VerbPhrase_inf_Transitive
+1 SubjunctiveVerbPhrase_3rd_Plr Subjunctive_3rd_Plr NounPhrase_Subj_VerbPhrase_inf_Transitive
+1 NounPhrase_Subj_VerbPhrase_inf_Transitive NounPhrase_Subj VerbPhrase_inf_Transitive
 1 SubjunctiveVerbPhrase_1st_Sng PPSubjunctive_1st_Sng NounPhrase_Subj_VerbPhrase_inf_Transitive
 1 NounPhrase_Subj_VerbPhrase_inf_Transitive NounPhrase_Subj VerbPhrase_inf_Transitive
 1 SubjunctiveVerbPhrase_1st_Plr PPSubjunctive_1st_Plr NounPhrase_Subj_VerbPhrase_inf_Transitive
@@ -998,10 +1068,18 @@
 	1   ContinuousVerbPhrase                                ContinuousVerbPhrase_Intransitive
 	1   ContinuousVerbPhrase_Transitive                  Gerund_Transitive
 	1   ContinuousVerbPhrase_Intransitive                  Gerund_Intransitive
-	1   ContinuousVerbPhrase_Transitive                  VerbModifier Gerund_Transitive
-	1   ContinuousVerbPhrase_Intransitive                  VerbModifier Gerund_Intransitive
-	1   ContinuousVerbPhrase_Transitive                  PresentParticipleSubjunctive SubjunctiveClause
-	1   ContinuousVerbPhrase_Intransitive                  PresentParticipleSubjunctive SubjunctiveClause
+	1   ContinuousVerbPhrase_Transitive                  VerbModifier                 Gerund_Transitive
+	1   ContinuousVerbPhrase_Intransitive                  VerbModifier                 Gerund_Intransitive
+1 ContinuousVerbPhrase_Transitive PresentParticipleSubjunctive wrap_that_NounPhrase_Subj_VerbPhrase_inf_Transitive
+1 wrap_that_NounPhrase_Subj_VerbPhrase_inf_Transitive wrap_that NounPhrase_Subj_VerbPhrase_inf_Transitive
+1 NounPhrase_Subj_VerbPhrase_inf_Transitive NounPhrase_Subj VerbPhrase_inf_Transitive
+1 ContinuousVerbPhrase_Intransitive PresentParticipleSubjunctive wrap_that_NounPhrase_Subj_VerbPhrase_inf_Transitive
+1 wrap_that_NounPhrase_Subj_VerbPhrase_inf_Transitive wrap_that NounPhrase_Subj_VerbPhrase_inf_Transitive
+1 NounPhrase_Subj_VerbPhrase_inf_Transitive NounPhrase_Subj VerbPhrase_inf_Transitive
+1 ContinuousVerbPhrase_Transitive PresentParticipleSubjunctive NounPhrase_Subj_VerbPhrase_inf_Transitive
+1 NounPhrase_Subj_VerbPhrase_inf_Transitive NounPhrase_Subj VerbPhrase_inf_Transitive
+1 ContinuousVerbPhrase_Intransitive PresentParticipleSubjunctive NounPhrase_Subj_VerbPhrase_inf_Transitive
+1 NounPhrase_Subj_VerbPhrase_inf_Transitive NounPhrase_Subj VerbPhrase_inf_Transitive
 
 	###Objects
 	1   DirectObject                                        NounPhrase_DirObj

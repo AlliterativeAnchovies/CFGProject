@@ -2,7 +2,7 @@
 {
 	<wordlist1 is of to the does do what who whose how when where why>
 	<wordlist2 that so either neither or nor are at have has than am>
-	<wordlist3 be ought with>
+	<wordlist3 be ought with which>
 	<questionWords where when why how>
 	<qwt who what>
 
@@ -63,7 +63,6 @@
 	#For compound-complex statements, the most prevalent case in english is just a complex statement joined to a compound one.
 	1   StatementClause                    CompoundStatement
 	1   StatementClause                    ComplexStatement
-	1   StatementClause                    CompoundComplexStatement
 
 		#Compound Statements can be joined with a coordinating conjunction or , ; : --
 		#They can also be joined with , + coordinating conjunction
@@ -81,8 +80,6 @@
 	5   ComplexStatement                   SimpleClause      SubordConj CompoundStatement
 	1   ComplexStatement                   CompoundStatement SubordConj CompoundStatement
 
-	###Object Clauses
-	#It is Sir Lancelot [who knows Zoot],[that knows Zoot],[which knows Zoot]
 
 	############Questions#############
 	
@@ -209,22 +206,36 @@
 	#Note 2: 'us' is not in our vocabulary.  Literally every other pronoun is, but 'us' is not...
 	#TODO: Remove all things that involve 'us'
 
+	#Casting
 	1   NounPhrase                                     NounPhrase{role}
 	1   NounPhrase{person}{plurality}                  NounPhrase{person}{plurality}{role}
 	1   NounPhrase{role}                               NounPhrase{person}{plurality}{role}
+	1   SimpleNounPhrase{role}                         SimpleNounPhrase{person}{plurality}{role}
+	1   SimpleNounPhrase                               SimpleNounPhrase{role}
+
+	#Entering Noun Phrase
 	1   NounPhrase_3rd{plurality}{role}                Determiner_3rd{plurality} NounPhraseSmart_3rd{plurality}{role}
 	1   NounPhrase{person}{plurality}{role}            SimpleNounPhrase{person}{plurality}{role}
 
 	#Naive Noun Phrase - either [Determiner Noun] or [Pronoun] or [Proper Noun]
 	1   SimpleNounPhrase_3rd{plurality}{role}          Determiner_3rd{plurality} Noun_3rd{plurality}
+	1   SimpleNounPhrase_3rd{plurality}{role}          Determiner_3rd{plurality} Noun_3rd{plurality} ObjectClause_3rd{plurality}
 	1   SimpleNounPhrase{person}{plurality}{role}      Pronoun{person}{plurality}{role}
-	1   SimpleNounPhrase{role}                         SimpleNounPhrase{person}{plurality}{role}
-	1   SimpleNounPhrase                               SimpleNounPhrase{role}
+	1   SimpleNounPhrase{person}{plurality}{role}      Pronoun{person}{plurality}{role} ObjectClause{person}{plurality}
 	1   SimpleNounPhrase_3rd_Sng{role}                 ProperStuffs_Sng
+	1   SimpleNounPhrase_3rd_Plr{role}                 ProperStuffs_Plr
+
+	#Proper Noun Stuffs
 	1   ProperStuffs_Sng                               ProperAll_notthing
 	1   ProperStuffs_Sng                               wrap_the ProperThing
-	1   SimpleNounPhrase_3rd_Plr{role}                 ProperStuffs_Plr
 	1   ProperStuffs_Plr                               Noun_3rd_Plr
+
+	###Object Clauses
+	#It is Sir Lancelot [who knows Zoot],[that knows Zoot],[which knows Zoot]
+
+	1   ObjectClause{person}{plurality}                wrap_who   VerbPhrase{person}{plurality}
+	1   ObjectClause{person}{plurality}                wrap_that  VerbPhrase{person}{plurality}
+	1   ObjectClause{person}{plurality}                wrap_which VerbPhrase{person}{plurality}
 
 	#Gerund Noun Phrase: "[[[Quickly running]]] through the store is illegal."  {Verbs ending in -ing can act as nouns, they are called gerunds}
 	#A gerund can't really be an indirect object:  "He throws the ball to running" makes no sense.
@@ -336,15 +347,16 @@
 	10  VerbPhrase_inf{transitivity}                        VerbModifier Verb_inf{transitivity}
 	10  VerbPhrase_inf{transitivity}                        Verb_inf{transitivity}
 	#vvvvv Subjunctive_1st_Sng is only 'suggest', so this line is saying that an allowable infinitive is 'I ought to suggest that [subjunctive clause]'
-	1   VerbPhrase_inf{transitivity}                        Subjunctive_1st_Sng SubjunctiveClause
+	1   VerbPhrase_inf{transitivity}                        Subjunctive_1st_Sng wrap_that NounPhrase_Subj VerbPhrase_inf_Transitive
+	1   VerbPhrase_inf{transitivity}                        Subjunctive_1st_Sng           NounPhrase_Subj VerbPhrase_inf_Transitive
 
 	###Subjunctifier - the verb can take a subjunctive clause.
 	#  The only verb like this we have is suggest, which is intransitive 
 	1   VerbPhrase{person}{plurality}{transitivity}         SubjunctiveVerbPhrase{person}{plurality}
-	1   SubjunctiveVerbPhrase{person}{plurality}            Subjunctive{person}{plurality} wrap_that NounPhrase_Subj VerbPhrase_inf_transitive
+	1   SubjunctiveVerbPhrase{person}{plurality}            Subjunctive{person}{plurality}   wrap_that NounPhrase_Subj VerbPhrase_inf_Transitive
 	1   SubjunctiveVerbPhrase{person}{plurality}            PPSubjunctive{person}{plurality} wrap_that NounPhrase_Subj VerbPhrase_inf_Transitive
-	1   SubjunctiveVerbPhrase{person}{plurality}            Subjunctive{person}{plurality} NounPhrase_Subj VerbPhrase_inf_transitive
-	1   SubjunctiveVerbPhrase{person}{plurality}            PPSubjunctive{person}{plurality} NounPhrase_Subj VerbPhrase_inf_Transitive
+	1   SubjunctiveVerbPhrase{person}{plurality}            Subjunctive{person}{plurality}             NounPhrase_Subj VerbPhrase_inf_Transitive
+	1   SubjunctiveVerbPhrase{person}{plurality}            PPSubjunctive{person}{plurality}           NounPhrase_Subj VerbPhrase_inf_Transitive
 
 	###Present Participle - the verb is conjugated like a present participle
 	#  We will only handle simple cases with this, analagously to the Naive case
@@ -352,8 +364,9 @@
 	#  And like the Naive case, we include 'with' clauses
 	1   ContinuousVerbPhrase                                ContinuousVerbPhrase{transitivity}
 	1   ContinuousVerbPhrase{transitivity}                  Gerund{transitivity}
-	1   ContinuousVerbPhrase{transitivity}                  VerbModifier Gerund{transitivity}
-	1   ContinuousVerbPhrase{transitivity}                  PresentParticipleSubjunctive SubjunctiveClause
+	1   ContinuousVerbPhrase{transitivity}                  VerbModifier                 Gerund{transitivity}
+	1   ContinuousVerbPhrase{transitivity}                  PresentParticipleSubjunctive wrap_that             NounPhrase_Subj VerbPhrase_inf_Transitive
+	1   ContinuousVerbPhrase{transitivity}                  PresentParticipleSubjunctive                       NounPhrase_Subj VerbPhrase_inf_Transitive
 
 	###Objects
 	1   DirectObject                                        NounPhrase_DirObj
