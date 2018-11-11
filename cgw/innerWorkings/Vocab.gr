@@ -121,12 +121,19 @@
 
 # Numbers.
 #Detpl is plural determiner
-1    Detpl    eight
-1    Detpl    five
-1    Det      one
-1    Detpl    5.5
-1    Detpl    sixty
-1    Detpl    5,000
+#quant is quantity
+1    Detpl        eight
+1    quant_Plr    eight
+1    Detpl        five
+1    quant_Plr    five
+1    Det          one
+1    quant_Sng    one
+1    Detpl        5.5
+1    quant_Plr    5.5
+1    Detpl        sixty
+1    quant_Plr    sixty
+1    Detpl        5,000
+1    quant_Plr    5,000
 
 # Expletive.
 1    Misc    there
