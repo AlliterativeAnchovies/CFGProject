@@ -2,7 +2,7 @@
 {
 	<wordlist1 is of to the does do what who whose how when where why>
 	<wordlist2 that so either neither or nor are at have has than am>
-	<wordlist3 be ought with which speak speaks>
+	<wordlist3 be ought with which speak speaks was were by been>
 	<questionWords where when why how>
 	<qwt who what>
 
@@ -220,8 +220,10 @@
 	1   NounPhrase{person}{plurality}{role}            SimpleNounPhrase{person}{plurality}{role}
 
 	#Naive Noun Phrase - either [Determiner Noun] or [Pronoun] or [Proper Noun]
-	1   SimpleNounPhrase_3rd{plurality}{role}          Determiner_3rd{plurality} Noun_3rd{plurality}
-	1   SimpleNounPhrase_3rd{plurality}{role}          Determiner_3rd{plurality} Noun_3rd{plurality} ObjectClause_3rd{plurality}
+	1   SimpleNounPhrase_3rd{plurality}{role}          Determiner_3rd{plurality}              Noun_3rd{plurality}
+	1   SimpleNounPhrase_3rd{plurality}{role}          Determiner_3rd{plurality} NounModifier Noun_3rd{plurality}
+	1   SimpleNounPhrase_3rd{plurality}{role}          Determiner_3rd{plurality}              Noun_3rd{plurality} ObjectClause_3rd{plurality}
+	1   SimpleNounPhrase_3rd{plurality}{role}          Determiner_3rd{plurality} NounModifier Noun_3rd{plurality} ObjectClause_3rd{plurality}
 	1   SimpleNounPhrase{person}{plurality}{role}      Pronoun{person}{plurality}{role}
 	1   SimpleNounPhrase{person}{plurality}{role}      Pronoun{person}{plurality}{role} ObjectClause{person}{plurality}
 	1   SimpleNounPhrase_3rd_Sng{role}                 ProperStuffs_Sng
@@ -281,7 +283,9 @@
 	<plurality _Sng _Plr>
 	<transitivity _Transitive _Intransitive>
 	<PP PP ε>
+	<extrapasty Past ε>
 	#PP is past participle
+	#extrapasty toggles between Passive and PastPassive
 
 	##############################################################################
 	#									                                         #
@@ -329,6 +333,18 @@
 	1   SimpleVerbPhrase{PP}{person}{plurality}{transitivity}   Verb{PP}{person}{plurality}{transitivity} $transitivity=_Transitive?DirectObject:$ IndirectObject
 	1   SimpleVerbPhrase{PP}{person}{plurality}{transitivity}   Verb{PP}{person}{plurality}{transitivity}
 	1   SimpleVerbPhrase{PP}{person}{plurality}{transitivity}   Verb{PP}{person}{plurality}{transitivity} IndirectObject
+
+	# Same as above but in the passive voice
+	1   SimpleVerbPhrase{person}{plurality}{transitivity}                    {extrapasty}PassiveVerbPhrase{person}{plurality}{transitivity}
+	1   {extrapasty}PassiveVerbPhrase{person}{plurality}{transitivity}       Verb{extrapasty}Passive{person}{plurality}{transitivity}
+	1   {extrapasty}PassiveVerbPhrase{person}{plurality}{transitivity}       Verb{extrapasty}Passive{person}{plurality}{transitivity} IndirectObject
+	1   {extrapasty}PassiveVerbPhrase{person}{plurality}_Transitive          Verb{extrapasty}Passive{person}{plurality}_Transitive DirectObject
+	1   {extrapasty}PassiveVerbPhrase{person}{plurality}_Transitive          Verb{extrapasty}Passive{person}{plurality}_Transitive DirectObject IndirectObject
+	1   {extrapasty}PassiveVerbPhrase{person}{plurality}{transitivity}       Verb{extrapasty}Passive{person}{plurality}{transitivity}                           wrap_by SimpleNounPhrase_DirObj
+	1   {extrapasty}PassiveVerbPhrase{person}{plurality}{transitivity}       Verb{extrapasty}Passive{person}{plurality}{transitivity} IndirectObject            wrap_by SimpleNounPhrase_DirObj
+	1   {extrapasty}PassiveVerbPhrase{person}{plurality}_Transitive          Verb{extrapasty}Passive{person}{plurality}_Transitive DirectObject                 wrap_by SimpleNounPhrase_DirObj
+	1   {extrapasty}PassiveVerbPhrase{person}{plurality}_Transitive          Verb{extrapasty}Passive{person}{plurality}_Transitive DirectObject IndirectObject  wrap_by SimpleNounPhrase_DirObj
+
 	# Same as above, but in this case the verb might be followed by 'with': I ride the horse to town with you.
 	1   SimpleVerbPhrase{PP}{person}{plurality}{transitivity}   WithTakers{PP}{person}{plurality}{transitivity} $transitivity=_Transitive?DirectObject:$ WithEnding
 	1   SimpleVerbPhrase{PP}{person}{plurality}{transitivity}   WithTakers{PP}{person}{plurality}{transitivity} $transitivity=_Transitive?DirectObject:$ IndirectObject WithEnding
@@ -348,6 +364,7 @@
 
 	1   VerbPhrase{PP}{person}{plurality}{transitivity}         ModalVerbPhrase{PP}{person}{plurality}{transitivity}
 	1   ModalVerbPhrase{person}{plurality}{transitivity}        FullModal VerbPhrase_inf{transitivity}
+	1   ModalVerbPhrase{person}{plurality}{transitivity}        FullModal PastPassiveVerbPhrase_2nd{plurality}{transitivity}
 	#after a modal, have & be are always the infinitive form (never is, has, are, etc)
 	1   ModalVerbPhrasePP{person}{plurality}{transitivity}      FullModal wrap_have PastParticiple{transitivity}
 	1   ModalVerbPhrase{person}{plurality}{transitivity}        FullModal wrap_be ContinuousVerbPhrase{transitivity}
@@ -477,6 +494,7 @@
 	1   Verb{person}{plurality}{transitivity}           Verb_3rd_Plr{transitivity}
 }
 
+
 #Dealing with person and plurality
 #Not templated - this is grabbing stuff from Vocab.gr
 1   Determiner_3rd_Sng      Det_s
@@ -506,16 +524,22 @@
 1   ProperAll_notthing Proper
 1   ProperAll_notthing ProperPlace
 
-#Verbs that take to as a preposition
+#Verbs that take to as a preposition (past tense treated the same)
 1   ToTakers_inf     ride
 1   ToTakers_inf     speak
 1   ToTakers_inf     migrate
 1   ToTakers_3rd_Plr ride
+1   ToTakers_3rd_Plr rode
 1   ToTakers_3rd_Plr speak
+1   ToTakers_3rd_Plr spoke
 1   ToTakers_3rd_Plr migrate
+1   ToTakers_3rd_Plr migrated
 1   ToTakers_3rd_Sng rides
+1   ToTakers_3rd_Sng rode
 1   ToTakers_3rd_Sng speaks
+1   ToTakers_3rd_Sng spoke
 1   ToTakers_3rd_Sng migrates
+1   ToTakers_3rd_Sng migrated
 
 #Verbs that take with as a preposition
 #To be takes with as well, but that is handled seperatly since its so irregular.
@@ -567,6 +591,36 @@
 	1   VerbPP{person}{plurality}                               VerbPP{person}{plurality}{transitivity}
     1   VerbPP_3rd_Sng                                          VerbPP_3rd_Sng{transitivity}
 }
+
+#Verbs using passive tense
+#I was, you were, they were, he was, we were
+{
+	<plurality _Sng _Plr>
+	<person _1st _2nd _3rd>
+	<passivetenseableT ridden drunk suggested carried known covered>
+	<passivetenseableI spoken grown>
+	1   wrap_{passivetenseableT}                        {passivetenseableT}
+	1   wrap_{passivetenseableI}                        {passivetenseableI}
+	1   VerbPassive_1st_Sng_Transitive                  wrap_was  wrap_{passivetenseableT}
+	1   VerbPassive_2nd{plurality}_Transitive           wrap_were wrap_{passivetenseableT}
+	1   VerbPassive_3rd_Sng_Transitive                  wrap_was  wrap_{passivetenseableT}
+	1   VerbPassive{person}_Plr_Transitive              wrap_were wrap_{passivetenseableT}
+	1   VerbPassive_1st_Sng_Intransitive                wrap_was  wrap_{passivetenseableI}
+	1   VerbPassive_2nd{plurality}_Intransitive         wrap_were wrap_{passivetenseableI}
+	1   VerbPassive_3rd_Sng_Intransitive                wrap_was  wrap_{passivetenseableI}
+	1   VerbPassive{person}_Plr_Intransitive            wrap_were wrap_{passivetenseableI}
+
+	#Past Passive
+	1   VerbPastPassive_1st_Sng_Transitive              wrap_has  wrap_been wrap_{passivetenseableT}
+	1   VerbPastPassive_2nd{plurality}_Transitive       wrap_have wrap_been wrap_{passivetenseableT}
+	1   VerbPastPassive_3rd_Sng_Transitive              wrap_has  wrap_been wrap_{passivetenseableT}
+	1   VerbPastPassive{person}_Plr_Transitive          wrap_have wrap_been wrap_{passivetenseableT}
+	1   VerbPastPassive_1st_Sng_Intransitive            wrap_has  wrap_been wrap_{passivetenseableI}
+	1   VerbPastPassive_2nd{plurality}_Intransitive     wrap_have wrap_been wrap_{passivetenseableI}
+	1   VerbPastPassive_3rd_Sng_Intransitive            wrap_has  wrap_been wrap_{passivetenseableI}
+	1   VerbPastPassive{person}_Plr_Intransitive        wrap_have wrap_been wrap_{passivetenseableI}
+}
+
 #Verbs that can take the subjunctive
 {
 	<person _1st _2nd _3rd>
@@ -579,4 +633,25 @@
 	1   PPSubjunctive{person}{plurality}      wrap_have wrap_suggested
 	1   PPSubjunctive_3rd_Sng                 wrap_has wrap_suggested
 	1   PresentParticipleSubjunctive          suggesting
+}
+
+#Past tense (we treat them like normal verbs)
+{
+	<person _1st _2nd _3rd>
+	<plurality _Sng _Plr>
+
+	1    Verb{person}{plurality}_Transitive      had
+	1    Verb{person}{plurality}_Intransitive    spoke
+	1    Verb{person}{plurality}_Transitive      covered
+	1    Verb_1st_Sng_Transitive                 was
+	1    Verb_3rd_Sng_Transitive                 was
+	1    Verb_2nd{plurality}_Transitive          were
+	1    Verb{person}_Plr_Transitive             were
+	1    Verb{person}{plurality}_Transitive      rode
+	1    Verb{person}{plurality}_Transitive      drank
+	1    Verb{person}{plurality}_Intransitive    grew
+	1    Verb{person}{plurality}_Transitive      carried
+	1    Verb{person}{plurality}_Transitive      suggested
+	1    Verb{person}{plurality}_Intransitive    migrated
+	1    Verb{person}{plurality}_Transitive      knew
 }
