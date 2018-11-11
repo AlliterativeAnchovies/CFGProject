@@ -98,6 +98,7 @@
 	1   QuestionClause                     QuestionWord_Transitive
 	1   QuestionClause                     QuestionWord            QuestionClauseHead{transitivity}
 	1   QuestionClause                     QuestionWord_Transitive QuestionClauseHead_Transitive
+	1   QuestionClause                                             QuestionClauseHead{transitivity}
 
 	#Do-Construction:
 	#[do/does] NounPhrase VerbPhrase_inf
@@ -353,6 +354,8 @@
 	###Subjunctifier - the verb can take a subjunctive clause.
 	#  The only verb like this we have is suggest, which is intransitive 
 	1   VerbPhrase{person}{plurality}{transitivity}         SubjunctiveVerbPhrase{person}{plurality}
+	1   VerbPhrase_inf{transitivity}                        Subjunctive_1st_Sng              wrap_that NounPhrase_Subj VerbPhrase_inf_Transitive
+	1   VerbPhrase_inf{transitivity}                        Subjunctive_1st_Sng                        NounPhrase_Subj VerbPhrase_inf_Transitive
 	1   SubjunctiveVerbPhrase{person}{plurality}            Subjunctive{person}{plurality}   wrap_that NounPhrase_Subj VerbPhrase_inf_Transitive
 	1   SubjunctiveVerbPhrase{person}{plurality}            PPSubjunctive{person}{plurality} wrap_that NounPhrase_Subj VerbPhrase_inf_Transitive
 	1   SubjunctiveVerbPhrase{person}{plurality}            Subjunctive{person}{plurality}             NounPhrase_Subj VerbPhrase_inf_Transitive

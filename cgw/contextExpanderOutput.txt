@@ -138,6 +138,8 @@
 	1   QuestionClause                     QuestionWord            QuestionClauseHead_Transitive
 	1   QuestionClause                     QuestionWord            QuestionClauseHead_Intransitive
 	1   QuestionClause                     QuestionWord_Transitive QuestionClauseHead_Transitive
+	1   QuestionClause                                             QuestionClauseHead_Transitive
+	1   QuestionClause                                             QuestionClauseHead_Intransitive
 
 	#Do-Construction:
 	#[do/does] NounPhrase VerbPhrase_inf
@@ -871,6 +873,10 @@
 	1   VerbPhrase_3rd_Sng_Intransitive         SubjunctiveVerbPhrase_3rd_Sng
 	1   VerbPhrase_3rd_Plr_Transitive         SubjunctiveVerbPhrase_3rd_Plr
 	1   VerbPhrase_3rd_Plr_Intransitive         SubjunctiveVerbPhrase_3rd_Plr
+	1   VerbPhrase_inf_Transitive                        Subjunctive_1st_Sng              wrap_that NounPhrase_Subj VerbPhrase_inf_Transitive
+	1   VerbPhrase_inf_Intransitive                        Subjunctive_1st_Sng              wrap_that NounPhrase_Subj VerbPhrase_inf_Transitive
+	1   VerbPhrase_inf_Transitive                        Subjunctive_1st_Sng                        NounPhrase_Subj VerbPhrase_inf_Transitive
+	1   VerbPhrase_inf_Intransitive                        Subjunctive_1st_Sng                        NounPhrase_Subj VerbPhrase_inf_Transitive
 	1   SubjunctiveVerbPhrase_1st_Sng            Subjunctive_1st_Sng   wrap_that NounPhrase_Subj VerbPhrase_inf_Transitive
 	1   SubjunctiveVerbPhrase_1st_Plr            Subjunctive_1st_Plr   wrap_that NounPhrase_Subj VerbPhrase_inf_Transitive
 	1   SubjunctiveVerbPhrase_2nd_Sng            Subjunctive_2nd_Sng   wrap_that NounPhrase_Subj VerbPhrase_inf_Transitive
