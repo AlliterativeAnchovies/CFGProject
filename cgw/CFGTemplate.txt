@@ -69,8 +69,8 @@
 
 		#Compound Statements can be joined with a coordinating conjunction or , ; : --
 		#They can also be joined with , + coordinating conjunction
-	1   CompoundStatement                  SimpleClause       CoordConj{ispunctuation} SimpleClause
-	1   CompoundStatement                  SimpleClause Comma CoordConj                SimpleClause
+	100 CompoundStatement                  SimpleClause       CoordConj{ispunctuation} SimpleClause
+	100 CompoundStatement                  SimpleClause Comma CoordConj                SimpleClause
 
 		#If complex it works the same way except we use subordinating conjunctions
 	50  ComplexStatement                   SimpleClause           SubordConj    SimpleClause
@@ -83,6 +83,10 @@
 	5   ComplexStatement                   CompoundStatement SubordConj SimpleClause
 	5   ComplexStatement                   SimpleClause      SubordConj CompoundStatement
 	1   ComplexStatement                   CompoundStatement SubordConj CompoundStatement
+
+	#Another interesting statement format: when/if X, Y
+	1   StatementClause                    wrap_when SimpleClause Comma SimpleClause
+	1   StatementClause                    wrap_if   SimpleClause Comma SimpleClause
 
 
 	############Questions#############
@@ -433,10 +437,16 @@
 	#vvvvv Subjunctive_1st_Sng is only 'suggest', so this line is saying that an allowable infinitive is 'I ought to suggest that [subjunctive clause]'
 	1   VerbPhrase_inf{transitivity}                            Subjunctive_1st_Sng wrap_that NounPhrase_Subj VerbPhrase_inf_Transitive
 	1   VerbPhrase_inf{transitivity}                            Subjunctive_1st_Sng           NounPhrase_Subj VerbPhrase_inf_Transitive
-	1   VerbPhrase_inf{transitivity}   					    	Verb_inf{transitivity} $transitivity=_Transitive?DirectObject:$
-	1   VerbPhrase_inf{transitivity}   				    		Verb_inf{transitivity} $transitivity=_Transitive?DirectObject:$ IndirectObject
+	1   VerbPhrase_inf_Transitive   					    	Verb_inf_Transitive     DirectObject
+	1   VerbPhrase_inf_Transitive   				    		Verb_inf_Transitive     DirectObject IndirectObject
 	1   VerbPhrase_inf{transitivity}       						Verb_inf{transitivity}
-	1   VerbPhrase_inf{transitivity}   		    				Verb_inf{transitivity} IndirectObject
+	1   VerbPhrase_inf{transitivity}   		    				Verb_inf{transitivity}               IndirectObject
+
+	#Passive voice infinitives, oh boy
+	1   VerbPhrase_inf_Transitive   					    	VerbPassive_inf_Transitive    DirectObject
+	1   VerbPhrase_inf_Transitive   				    		VerbPassive_inf_Transitive    DirectObject IndirectObject
+	1   VerbPhrase_inf{transitivity}       						VerbPassive_inf{transitivity}
+	1   VerbPhrase_inf{transitivity}   		    				VerbPassive_inf{transitivity}              IndirectObject
 
 	###Subjunctifier - the verb can take a subjunctive clause.
 	#  The only verb like this we have is suggest, which is transitive 
@@ -447,9 +457,12 @@
 	1   SubjunctiveVerbPhrase{person}{plurality}                PPSubjunctive{person}{plurality}                 NounPhrase_Subj VerbPhrase_inf_Transitive
 
 	# "know" is like suggest but it does not take the subjunctive, just normal verbing
+	# It can also take 'what'
 	1   VerbPhrase{person}{plurality}_Transitive                PseudoSubjunctiveVerbPhrase{person}{plurality}
 	1   PseudoSubjunctiveVerbPhrase{person}{plurality}          PseudoSubjunctive{person}{plurality}   wrap_that NounPhrase_Subj VerbPhrase
 	1   PseudoSubjunctiveVerbPhrase{person}{plurality}          PseudoPPSubjunctive{person}{plurality} wrap_that NounPhrase_Subj VerbPhrase
+	1   PseudoSubjunctiveVerbPhrase{person}{plurality}          PseudoSubjunctive{person}{plurality}   wrap_what NounPhrase_Subj VerbPhrase
+	1   PseudoSubjunctiveVerbPhrase{person}{plurality}          PseudoPPSubjunctive{person}{plurality} wrap_what NounPhrase_Subj VerbPhrase
 	1   PseudoSubjunctiveVerbPhrase{person}{plurality}          PseudoSubjunctive{person}{plurality}             NounPhrase_Subj VerbPhrase
 	1   PseudoSubjunctiveVerbPhrase{person}{plurality}          PseudoPPSubjunctive{person}{plurality}           NounPhrase_Subj VerbPhrase
 
@@ -457,9 +470,21 @@
 	#  We will only handle simple cases with this, analagously to the Naive case
 	#  But we also incorporate the subjunctifier case
 	#  And like the Naive case, we include 'with' clauses
+	#  And actually everything can end in 'with' if you really want it to "We are covering it with a tarp"
+	
+	1   VerbPhrase_1st_Sng{transitivity}                        wrap_am        ContinuousVerbPhrase{transitivity}
+	1   VerbPhrase_3rd_Sng{transitivity}                        wrap_is        ContinuousVerbPhrase{transitivity}
+	1   VerbPhrase_2nd{plurality}{transitivity}                 wrap_are       ContinuousVerbPhrase{transitivity}
+	1   VerbPhrase{person}_Plr{transitivity}                    wrap_are       ContinuousVerbPhrase{transitivity}
+	1   VerbPhrase_1st_Sng{transitivity}                        wrap_am  SimpleContinuousVerbPhrase{transitivity} WithEnding
+	1   VerbPhrase_3rd_Sng{transitivity}                        wrap_is  SimpleContinuousVerbPhrase{transitivity} WithEnding
+	1   VerbPhrase_2nd{plurality}{transitivity}                 wrap_are SimpleContinuousVerbPhrase{transitivity} WithEnding
+	1   VerbPhrase{person}_Plr{transitivity}                    wrap_are SimpleContinuousVerbPhrase{transitivity} WithEnding
+
 	1   ContinuousVerbPhrase                                    ContinuousVerbPhrase{transitivity}
-	1   ContinuousVerbPhrase{transitivity}                                   Gerund{transitivity}
-	1   ContinuousVerbPhrase{transitivity}                      VerbModifier Gerund{transitivity}
+	1   ContinuousVerbPhrase{transitivity}                      SimpleContinuousVerbPhrase{transitivity}
+	1   SimpleContinuousVerbPhrase{transitivity}                             Gerund{transitivity}
+	1   SimpleContinuousVerbPhrase{transitivity}                VerbModifier Gerund{transitivity}
 	1   ContinuousVerbPhrase{transitivity}                                   Gerund{transitivity}                  ForEnding
 	1   ContinuousVerbPhrase{transitivity}                      VerbModifier Gerund{transitivity}                  ForEnding
 	1   ContinuousVerbPhrase{transitivity}                                   {prep}TakersContinuous{transitivity}  {prep}Ending
@@ -697,6 +722,11 @@
 	1   VerbPassive_2nd{plurality}_Intransitive         wrap_were wrap_{passivetenseableI}
 	1   VerbPassive_3rd_Sng_Intransitive                wrap_was  wrap_{passivetenseableI}
 	1   VerbPassive{person}_Plr_Intransitive            wrap_were wrap_{passivetenseableI}
+
+	#Infinite Passive
+	#                   ...wow that's pretty passive
+	1   VerbPassive_inf_Transitive                      wrap_be   wrap_{passivetenseableT}
+	1   VerbPassive_inf_Intransitive                    wrap_be   wrap_{passivetenseableI}
 
 	#Past Passive
 	1   VerbPastPassive_1st_Sng_Transitive              wrap_has  wrap_been wrap_{passivetenseableT}

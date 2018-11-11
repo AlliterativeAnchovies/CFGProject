@@ -116,9 +116,9 @@
 
 		#Compound Statements can be joined with a coordinating conjunction or , ; : --
 		#They can also be joined with , + coordinating conjunction
-	1   CompoundStatement                  SimpleClause       CoordConj SimpleClause
-	1   CompoundStatement                  SimpleClause       CoordConj_Punc SimpleClause
-	1   CompoundStatement                  SimpleClause Comma CoordConj                SimpleClause
+	100 CompoundStatement                  SimpleClause       CoordConj SimpleClause
+	100 CompoundStatement                  SimpleClause       CoordConj_Punc SimpleClause
+	100 CompoundStatement                  SimpleClause Comma CoordConj                SimpleClause
 
 		#If complex it works the same way except we use subordinating conjunctions
 	50  ComplexStatement                   SimpleClause           SubordConj    SimpleClause
@@ -131,6 +131,10 @@
 	5   ComplexStatement                   CompoundStatement SubordConj SimpleClause
 	5   ComplexStatement                   SimpleClause      SubordConj CompoundStatement
 	1   ComplexStatement                   CompoundStatement SubordConj CompoundStatement
+
+	#Another interesting statement format: when/if X, Y
+	1   StatementClause                    wrap_when SimpleClause Comma SimpleClause
+	1   StatementClause                    wrap_if   SimpleClause Comma SimpleClause
 
 
 	############Questions#############
@@ -1679,14 +1683,20 @@
 	1   VerbPhrase_inf_Intransitive                            Subjunctive_1st_Sng wrap_that NounPhrase_Subj VerbPhrase_inf_Transitive
 	1   VerbPhrase_inf_Transitive                            Subjunctive_1st_Sng           NounPhrase_Subj VerbPhrase_inf_Transitive
 	1   VerbPhrase_inf_Intransitive                            Subjunctive_1st_Sng           NounPhrase_Subj VerbPhrase_inf_Transitive
-	1   VerbPhrase_inf_Transitive   					    	Verb_inf_Transitive DirectObject
-	1   VerbPhrase_inf_Intransitive   					    	Verb_inf_Intransitive 
-	1   VerbPhrase_inf_Transitive   				    		Verb_inf_Transitive DirectObject IndirectObject
-	1   VerbPhrase_inf_Intransitive   				    		Verb_inf_Intransitive  IndirectObject
+	1   VerbPhrase_inf_Transitive   					    	Verb_inf_Transitive     DirectObject
+	1   VerbPhrase_inf_Transitive   				    		Verb_inf_Transitive     DirectObject IndirectObject
 	1   VerbPhrase_inf_Transitive       						Verb_inf_Transitive
 	1   VerbPhrase_inf_Intransitive       						Verb_inf_Intransitive
-	1   VerbPhrase_inf_Transitive   		    				Verb_inf_Transitive IndirectObject
-	1   VerbPhrase_inf_Intransitive   		    				Verb_inf_Intransitive IndirectObject
+	1   VerbPhrase_inf_Transitive   		    				Verb_inf_Transitive               IndirectObject
+	1   VerbPhrase_inf_Intransitive   		    				Verb_inf_Intransitive               IndirectObject
+
+	#Passive voice infinitives, oh boy
+	1   VerbPhrase_inf_Transitive   					    	VerbPassive_inf_Transitive    DirectObject
+	1   VerbPhrase_inf_Transitive   				    		VerbPassive_inf_Transitive    DirectObject IndirectObject
+	1   VerbPhrase_inf_Transitive       						VerbPassive_inf_Transitive
+	1   VerbPhrase_inf_Intransitive       						VerbPassive_inf_Intransitive
+	1   VerbPhrase_inf_Transitive   		    				VerbPassive_inf_Transitive              IndirectObject
+	1   VerbPhrase_inf_Intransitive   		    				VerbPassive_inf_Intransitive              IndirectObject
 
 	###Subjunctifier - the verb can take a subjunctive clause.
 	#  The only verb like this we have is suggest, which is transitive 
@@ -1722,6 +1732,7 @@
 	1   SubjunctiveVerbPhrase_3rd_Plr                PPSubjunctive_3rd_Plr                 NounPhrase_Subj VerbPhrase_inf_Transitive
 
 	# "know" is like suggest but it does not take the subjunctive, just normal verbing
+	# It can also take 'what'
 	1   VerbPhrase_1st_Sng_Transitive                PseudoSubjunctiveVerbPhrase_1st_Sng
 	1   VerbPhrase_1st_Plr_Transitive                PseudoSubjunctiveVerbPhrase_1st_Plr
 	1   VerbPhrase_2nd_Sng_Transitive                PseudoSubjunctiveVerbPhrase_2nd_Sng
@@ -1740,6 +1751,18 @@
 	1   PseudoSubjunctiveVerbPhrase_2nd_Plr          PseudoPPSubjunctive_2nd_Plr wrap_that NounPhrase_Subj VerbPhrase
 	1   PseudoSubjunctiveVerbPhrase_3rd_Sng          PseudoPPSubjunctive_3rd_Sng wrap_that NounPhrase_Subj VerbPhrase
 	1   PseudoSubjunctiveVerbPhrase_3rd_Plr          PseudoPPSubjunctive_3rd_Plr wrap_that NounPhrase_Subj VerbPhrase
+	1   PseudoSubjunctiveVerbPhrase_1st_Sng          PseudoSubjunctive_1st_Sng   wrap_what NounPhrase_Subj VerbPhrase
+	1   PseudoSubjunctiveVerbPhrase_1st_Plr          PseudoSubjunctive_1st_Plr   wrap_what NounPhrase_Subj VerbPhrase
+	1   PseudoSubjunctiveVerbPhrase_2nd_Sng          PseudoSubjunctive_2nd_Sng   wrap_what NounPhrase_Subj VerbPhrase
+	1   PseudoSubjunctiveVerbPhrase_2nd_Plr          PseudoSubjunctive_2nd_Plr   wrap_what NounPhrase_Subj VerbPhrase
+	1   PseudoSubjunctiveVerbPhrase_3rd_Sng          PseudoSubjunctive_3rd_Sng   wrap_what NounPhrase_Subj VerbPhrase
+	1   PseudoSubjunctiveVerbPhrase_3rd_Plr          PseudoSubjunctive_3rd_Plr   wrap_what NounPhrase_Subj VerbPhrase
+	1   PseudoSubjunctiveVerbPhrase_1st_Sng          PseudoPPSubjunctive_1st_Sng wrap_what NounPhrase_Subj VerbPhrase
+	1   PseudoSubjunctiveVerbPhrase_1st_Plr          PseudoPPSubjunctive_1st_Plr wrap_what NounPhrase_Subj VerbPhrase
+	1   PseudoSubjunctiveVerbPhrase_2nd_Sng          PseudoPPSubjunctive_2nd_Sng wrap_what NounPhrase_Subj VerbPhrase
+	1   PseudoSubjunctiveVerbPhrase_2nd_Plr          PseudoPPSubjunctive_2nd_Plr wrap_what NounPhrase_Subj VerbPhrase
+	1   PseudoSubjunctiveVerbPhrase_3rd_Sng          PseudoPPSubjunctive_3rd_Sng wrap_what NounPhrase_Subj VerbPhrase
+	1   PseudoSubjunctiveVerbPhrase_3rd_Plr          PseudoPPSubjunctive_3rd_Plr wrap_what NounPhrase_Subj VerbPhrase
 	1   PseudoSubjunctiveVerbPhrase_1st_Sng          PseudoSubjunctive_1st_Sng             NounPhrase_Subj VerbPhrase
 	1   PseudoSubjunctiveVerbPhrase_1st_Plr          PseudoSubjunctive_1st_Plr             NounPhrase_Subj VerbPhrase
 	1   PseudoSubjunctiveVerbPhrase_2nd_Sng          PseudoSubjunctive_2nd_Sng             NounPhrase_Subj VerbPhrase
@@ -1757,12 +1780,45 @@
 	#  We will only handle simple cases with this, analagously to the Naive case
 	#  But we also incorporate the subjunctifier case
 	#  And like the Naive case, we include 'with' clauses
+	#  And actually everything can end in 'with' if you really want it to "We are covering it with a tarp"
+
+	1   VerbPhrase_1st_Sng_Transitive                        wrap_am        ContinuousVerbPhrase_Transitive
+	1   VerbPhrase_1st_Sng_Intransitive                        wrap_am        ContinuousVerbPhrase_Intransitive
+	1   VerbPhrase_3rd_Sng_Transitive                        wrap_is        ContinuousVerbPhrase_Transitive
+	1   VerbPhrase_3rd_Sng_Intransitive                        wrap_is        ContinuousVerbPhrase_Intransitive
+	1   VerbPhrase_2nd_Sng_Transitive                 wrap_are       ContinuousVerbPhrase_Transitive
+	1   VerbPhrase_2nd_Sng_Intransitive                 wrap_are       ContinuousVerbPhrase_Intransitive
+	1   VerbPhrase_2nd_Plr_Transitive                 wrap_are       ContinuousVerbPhrase_Transitive
+	1   VerbPhrase_2nd_Plr_Intransitive                 wrap_are       ContinuousVerbPhrase_Intransitive
+	1   VerbPhrase_1st_Plr_Transitive                    wrap_are       ContinuousVerbPhrase_Transitive
+	1   VerbPhrase_1st_Plr_Intransitive                    wrap_are       ContinuousVerbPhrase_Intransitive
+	1   VerbPhrase_2nd_Plr_Transitive                    wrap_are       ContinuousVerbPhrase_Transitive
+	1   VerbPhrase_2nd_Plr_Intransitive                    wrap_are       ContinuousVerbPhrase_Intransitive
+	1   VerbPhrase_3rd_Plr_Transitive                    wrap_are       ContinuousVerbPhrase_Transitive
+	1   VerbPhrase_3rd_Plr_Intransitive                    wrap_are       ContinuousVerbPhrase_Intransitive
+	1   VerbPhrase_1st_Sng_Transitive                        wrap_am  SimpleContinuousVerbPhrase_Transitive WithEnding
+	1   VerbPhrase_1st_Sng_Intransitive                        wrap_am  SimpleContinuousVerbPhrase_Intransitive WithEnding
+	1   VerbPhrase_3rd_Sng_Transitive                        wrap_is  SimpleContinuousVerbPhrase_Transitive WithEnding
+	1   VerbPhrase_3rd_Sng_Intransitive                        wrap_is  SimpleContinuousVerbPhrase_Intransitive WithEnding
+	1   VerbPhrase_2nd_Sng_Transitive                 wrap_are SimpleContinuousVerbPhrase_Transitive WithEnding
+	1   VerbPhrase_2nd_Sng_Intransitive                 wrap_are SimpleContinuousVerbPhrase_Intransitive WithEnding
+	1   VerbPhrase_2nd_Plr_Transitive                 wrap_are SimpleContinuousVerbPhrase_Transitive WithEnding
+	1   VerbPhrase_2nd_Plr_Intransitive                 wrap_are SimpleContinuousVerbPhrase_Intransitive WithEnding
+	1   VerbPhrase_1st_Plr_Transitive                    wrap_are SimpleContinuousVerbPhrase_Transitive WithEnding
+	1   VerbPhrase_1st_Plr_Intransitive                    wrap_are SimpleContinuousVerbPhrase_Intransitive WithEnding
+	1   VerbPhrase_2nd_Plr_Transitive                    wrap_are SimpleContinuousVerbPhrase_Transitive WithEnding
+	1   VerbPhrase_2nd_Plr_Intransitive                    wrap_are SimpleContinuousVerbPhrase_Intransitive WithEnding
+	1   VerbPhrase_3rd_Plr_Transitive                    wrap_are SimpleContinuousVerbPhrase_Transitive WithEnding
+	1   VerbPhrase_3rd_Plr_Intransitive                    wrap_are SimpleContinuousVerbPhrase_Intransitive WithEnding
+
 	1   ContinuousVerbPhrase                                    ContinuousVerbPhrase_Transitive
 	1   ContinuousVerbPhrase                                    ContinuousVerbPhrase_Intransitive
-	1   ContinuousVerbPhrase_Transitive                                   Gerund_Transitive
-	1   ContinuousVerbPhrase_Intransitive                                   Gerund_Intransitive
-	1   ContinuousVerbPhrase_Transitive                      VerbModifier Gerund_Transitive
-	1   ContinuousVerbPhrase_Intransitive                      VerbModifier Gerund_Intransitive
+	1   ContinuousVerbPhrase_Transitive                      SimpleContinuousVerbPhrase_Transitive
+	1   ContinuousVerbPhrase_Intransitive                      SimpleContinuousVerbPhrase_Intransitive
+	1   SimpleContinuousVerbPhrase_Transitive                             Gerund_Transitive
+	1   SimpleContinuousVerbPhrase_Intransitive                             Gerund_Intransitive
+	1   SimpleContinuousVerbPhrase_Transitive                VerbModifier Gerund_Transitive
+	1   SimpleContinuousVerbPhrase_Intransitive                VerbModifier Gerund_Intransitive
 	1   ContinuousVerbPhrase_Transitive                                   Gerund_Transitive                  ForEnding
 	1   ContinuousVerbPhrase_Intransitive                                   Gerund_Intransitive                  ForEnding
 	1   ContinuousVerbPhrase_Transitive                      VerbModifier Gerund_Transitive                  ForEnding
@@ -2108,6 +2164,17 @@
 	1   VerbPassive_1st_Plr_Intransitive            wrap_were wrap_grown
 	1   VerbPassive_2nd_Plr_Intransitive            wrap_were wrap_grown
 	1   VerbPassive_3rd_Plr_Intransitive            wrap_were wrap_grown
+
+	#Infinite Passive
+	#                   ...wow that's pretty passive
+	1   VerbPassive_inf_Transitive                      wrap_be   wrap_ridden
+	1   VerbPassive_inf_Transitive                      wrap_be   wrap_drunk
+	1   VerbPassive_inf_Transitive                      wrap_be   wrap_suggested
+	1   VerbPassive_inf_Transitive                      wrap_be   wrap_carried
+	1   VerbPassive_inf_Transitive                      wrap_be   wrap_known
+	1   VerbPassive_inf_Transitive                      wrap_be   wrap_covered
+	1   VerbPassive_inf_Intransitive                    wrap_be   wrap_spoken
+	1   VerbPassive_inf_Intransitive                    wrap_be   wrap_grown
 
 	#Past Passive
 	1   VerbPastPassive_1st_Sng_Transitive              wrap_has  wrap_been wrap_ridden
