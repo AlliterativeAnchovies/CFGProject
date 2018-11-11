@@ -277,7 +277,8 @@
 	<person _1st _2nd _3rd>
 	<plurality _Sng _Plr>
 	<transitivity _Transitive _Intransitive>
-	#coin flips and die is just to allow me to use a conditional to compress two lines at once, potentially with a weighted probability
+	<PP PP ε>
+	#PP is past participle
 
 	##############################################################################
 	#									                                         #
@@ -320,18 +321,18 @@
 	1   VerbPhrase{person}{plurality}{transitivity}         NaiveVerbPhrase{person}{plurality}{transitivity}
 
 	# Verb + (optional DirecObj only if transitive) + (optional IndirecObj) 
-	1   SimpleVerbPhrase{person}{plurality}{transitivity}   Verb{person}{plurality}{transitivity} $transitivity=_Transitive?DirectObject:$
-	1   SimpleVerbPhrase{person}{plurality}{transitivity}   Verb{person}{plurality}{transitivity} $transitivity=_Transitive?DirectObject:$ IndirectObject
-	1   SimpleVerbPhrase{person}{plurality}{transitivity}   Verb{person}{plurality}{transitivity}
-	1   SimpleVerbPhrase{person}{plurality}{transitivity}   Verb{person}{plurality}{transitivity} IndirectObject
+	1   SimpleVerbPhrase{person}{plurality}{transitivity}   Verb{PP}{person}{plurality}{transitivity} $transitivity=_Transitive?DirectObject:$
+	1   SimpleVerbPhrase{person}{plurality}{transitivity}   Verb{PP}{person}{plurality}{transitivity} $transitivity=_Transitive?DirectObject:$ IndirectObject
+	1   SimpleVerbPhrase{person}{plurality}{transitivity}   Verb{PP}{person}{plurality}{transitivity}
+	1   SimpleVerbPhrase{person}{plurality}{transitivity}   Verb{PP}{person}{plurality}{transitivity} IndirectObject
 	# Same as above, but in this case the verb might be followed by 'with': I ride the horse to town with you.
-	1   SimpleVerbPhrase{person}{plurality}{transitivity}   WithTakers{person}{plurality}{transitivity} $transitivity=_Transitive?DirectObject:$ WithEnding
-	1   SimpleVerbPhrase{person}{plurality}{transitivity}   WithTakers{person}{plurality}{transitivity} $transitivity=_Transitive?DirectObject:$ IndirectObject WithEnding
-	1   SimpleVerbPhrase{person}{plurality}{transitivity}   WithTakers{person}{plurality}{transitivity} WithEnding
-	1   SimpleVerbPhrase{person}{plurality}{transitivity}   WithTakers{person}{plurality}{transitivity} IndirectObject WithEnding
+	1   SimpleVerbPhrase{person}{plurality}{transitivity}   WithTakers{PP}{person}{plurality}{transitivity} $transitivity=_Transitive?DirectObject:$ WithEnding
+	1   SimpleVerbPhrase{person}{plurality}{transitivity}   WithTakers{PP}{person}{plurality}{transitivity} $transitivity=_Transitive?DirectObject:$ IndirectObject WithEnding
+	1   SimpleVerbPhrase{person}{plurality}{transitivity}   WithTakers{PP}{person}{plurality}{transitivity} WithEnding
+	1   SimpleVerbPhrase{person}{plurality}{transitivity}   WithTakers{PP}{person}{plurality}{transitivity} IndirectObject WithEnding
 	# Extremely Simple Version, just a verb and its modifier
-	1   NaiveVerbPhrase{person}{plurality}{transitivity}    VerbModifier Verb{person}{plurality}{transitivity}
-	1   NaiveVerbPhrase{person}{plurality}{transitivity}    Verb{person}{plurality}{transitivity}
+	1   NaiveVerbPhrase{person}{plurality}{transitivity}    VerbModifier Verb{PP}{person}{plurality}{transitivity}
+	1   NaiveVerbPhrase{person}{plurality}{transitivity}    Verb{PP}{person}{plurality}{transitivity}
 	
 	###Modal - will work, can run, might eat, etc... (will, can, might, should,... are modals)
 
@@ -340,6 +341,7 @@
 
 	1   VerbPhrase{person}{plurality}{transitivity}         ModalVerbPhrase{person}{plurality}{transitivity}
 	1   ModalVerbPhrase{person}{plurality}{transitivity}    FullModal VerbPhrase_inf{transitivity}
+	1   ModalVerbPhrase{person}{plurality}{transitivity}    FullModal VerbPP{person}{plurality}{transitivity}
 	1   ModalVerbPhrase{person}{plurality}{transitivity}    FullModal wrap_be ContinuousVerbPhrase{transitivity}
 
 	###Infinite - the verb is in the infinitive (or subjunctive).
@@ -350,12 +352,14 @@
 	#vvvvv Subjunctive_1st_Sng is only 'suggest', so this line is saying that an allowable infinitive is 'I ought to suggest that [subjunctive clause]'
 	1   VerbPhrase_inf{transitivity}                        Subjunctive_1st_Sng wrap_that NounPhrase_Subj VerbPhrase_inf_Transitive
 	1   VerbPhrase_inf{transitivity}                        Subjunctive_1st_Sng           NounPhrase_Subj VerbPhrase_inf_Transitive
+	1   VerbPhrase_inf{transitivity}   						Verb_inf{transitivity} $transitivity=_Transitive?DirectObject:$
+	1   VerbPhrase_inf{transitivity}   						Verb_inf{transitivity} $transitivity=_Transitive?DirectObject:$ IndirectObject
+	1   VerbPhrase_inf{transitivity}   						Verb_inf{transitivity}
+	1   VerbPhrase_inf{transitivity}   						Verb_inf{transitivity} IndirectObject
 
 	###Subjunctifier - the verb can take a subjunctive clause.
 	#  The only verb like this we have is suggest, which is intransitive 
 	1   VerbPhrase{person}{plurality}{transitivity}         SubjunctiveVerbPhrase{person}{plurality}
-	1   VerbPhrase_inf{transitivity}                        Subjunctive_1st_Sng              wrap_that NounPhrase_Subj VerbPhrase_inf_Transitive
-	1   VerbPhrase_inf{transitivity}                        Subjunctive_1st_Sng                        NounPhrase_Subj VerbPhrase_inf_Transitive
 	1   SubjunctiveVerbPhrase{person}{plurality}            Subjunctive{person}{plurality}   wrap_that NounPhrase_Subj VerbPhrase_inf_Transitive
 	1   SubjunctiveVerbPhrase{person}{plurality}            PPSubjunctive{person}{plurality} wrap_that NounPhrase_Subj VerbPhrase_inf_Transitive
 	1   SubjunctiveVerbPhrase{person}{plurality}            Subjunctive{person}{plurality}             NounPhrase_Subj VerbPhrase_inf_Transitive

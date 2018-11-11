@@ -167,4 +167,3 @@ print("This does not include comments, template headers, brackets, and whitespac
 print("Output file has " + str(lineCounterNew) + " lines of production rules.")
 print("Thus the output file is " + str(lineCounterNew/lineCounterOld) + " times as large.")
 print("The above figures are all pre-CNF")
-print("")
