@@ -3,7 +3,7 @@
 	<wordlist1 is of to the does do what who whose how when where why>
 	<wordlist2 that so either neither or nor are at have has than am>
 	<wordlist3 be ought with which speak speaks was were by been and>
-	<wordlist4 from because>
+	<wordlist4 from because not for>
 	<questionWords where when why how>
 	<qwt who what>
 
@@ -46,8 +46,9 @@
 	#	if no arguments, it will pick an arbitrary (person,plurality) pair.  #
 	##########################################################################
 
-	1   S1               StatementClause EOS_Statement
-	1   S1               QuestionClause  EOS_Question
+	1   S1               StatementClause  EOS_Statement
+	1   S1               QuestionClause   EOS_Question
+	1   S1               ImperativeClause EOS_Statement
 
 	############Statements############
 
@@ -120,6 +121,12 @@
 	1   QuestionClauseHead{transitivity}   wrap_are  NounPhrase_2nd_Sng_Subj        ContinuousVerbPhrase{transitivity}
 	1   QuestionClauseHead{transitivity}   wrap_are  NounPhrase{person}_Plr_Subj    ContinuousVerbPhrase{transitivity}
 	1   QuestionClauseHead{transitivity}   wrap_is   NounPhrase_3rd_Sng_Subj        ContinuousVerbPhrase{transitivity}
+
+	############Imperatives###########
+
+	#Either simply VP ("Speak!") or, to invert it into the negative ("Do not speak!") do + not + VP_inf
+	1   ImperativeClause                   VerbPhrase
+	1   ImperativeClause                   wrap_do wrap_not VerbPhrase_inf
 
 }
 ### Clauses continued: Either/Neither ###=====================================================================================
@@ -355,11 +362,17 @@
 	1   {extrapasty}PassiveVerbPhrase{person}{plurality}_Transitive          Verb{extrapasty}Passive{person}{plurality}_Transitive DirectObject                 wrap_by SimpleNounPhrase_DirObj
 	1   {extrapasty}PassiveVerbPhrase{person}{plurality}_Transitive          Verb{extrapasty}Passive{person}{plurality}_Transitive DirectObject IndirectObject  wrap_by SimpleNounPhrase_DirObj
 
-	# Same as above, but in this case the verb might be followed by 'with': I ride the horse to town with you.
+	# Same as above, but in this case the verb might be followed by 'with' or 'from': I ride the horse to town with you.
 	1   SimpleVerbPhrase{PP}{person}{plurality}_Transitive      {prep}Takers{PP}{person}{plurality}_Transitive    DirectObject                {prep}Ending
 	1   SimpleVerbPhrase{PP}{person}{plurality}_Transitive      {prep}Takers{PP}{person}{plurality}_Transitive    DirectObject IndirectObject {prep}Ending
 	1   SimpleVerbPhrase{PP}{person}{plurality}{transitivity}   {prep}Takers{PP}{person}{plurality}{transitivity}                             {prep}Ending
 	1   SimpleVerbPhrase{PP}{person}{plurality}{transitivity}   {prep}Takers{PP}{person}{plurality}{transitivity}              IndirectObject {prep}Ending
+
+	# Same as above, but followed by 'for'.  All verbs can do this, if it is "for [quantity of time]"
+	1   SimpleVerbPhrase{PP}{person}{plurality}_Transitive      Verb{PP}{person}{plurality}_Transitive            DirectObject                ForEnding
+	1   SimpleVerbPhrase{PP}{person}{plurality}_Transitive      Verb{PP}{person}{plurality}_Transitive            DirectObject IndirectObject ForEnding
+	1   SimpleVerbPhrase{PP}{person}{plurality}{transitivity}   Verb{PP}{person}{plurality}{transitivity}                                     ForEnding
+	1   SimpleVerbPhrase{PP}{person}{plurality}{transitivity}   Verb{PP}{person}{plurality}{transitivity}                      IndirectObject ForEnding
 
 	# Extremely Simple Version, just a verb and its modifier
 	1   NaiveVerbPhrase{PP}{person}{plurality}{transitivity}    VerbModifier Verb{PP}{person}{plurality}{transitivity}
@@ -377,9 +390,12 @@
 	1   VerbPhrase{PP}{person}{plurality}{transitivity}         ModalVerbPhrase{PP}{person}{plurality}{transitivity}
 	1   ModalVerbPhrase{person}{plurality}{transitivity}        FullModal VerbPhrase_inf{transitivity}
 	1   ModalVerbPhrase{person}{plurality}{transitivity}        FullModal PastPassiveVerbPhrase_2nd{plurality}{transitivity}
+
 	#after a modal, have & be are always the infinitive form (never is, has, are, etc)
-	1   ModalVerbPhrasePP{person}{plurality}{transitivity}      FullModal wrap_have PastParticiple{transitivity}
-	1   ModalVerbPhrase{person}{plurality}{transitivity}        FullModal wrap_be ContinuousVerbPhrase{transitivity}
+	1   ModalVerbPhrasePP{person}{plurality}{transitivity}      FullModal wrap_have           PastParticiple{transitivity}
+	1   ModalVerbPhrasePP{person}{plurality}{transitivity}      FullModal wrap_have wrap_been NounPhrase
+	1   ModalVerbPhrase{person}{plurality}{transitivity}        FullModal wrap_be             ContinuousVerbPhrase{transitivity}
+	1   ModalVerbPhrasePP{person}{plurality}{transitivity}      FullModal wrap_have wrap_been ContinuousVerbPhrase{transitivity}
 
 	###Infinite - the verb is in the infinitive (or subjunctive).
 	
@@ -418,8 +434,10 @@
 	1   ContinuousVerbPhrase                                    ContinuousVerbPhrase{transitivity}
 	1   ContinuousVerbPhrase{transitivity}                                   Gerund{transitivity}
 	1   ContinuousVerbPhrase{transitivity}                      VerbModifier Gerund{transitivity}
-	1   ContinuousVerbPhrase{transitivity}                                   WithTakersContinuous{transitivity} WithEnding
-	1   ContinuousVerbPhrase{transitivity}                      VerbModifier WithTakersContinuous{transitivity} WithEnding
+	1   ContinuousVerbPhrase{transitivity}                                   Gerund{transitivity}                  ForEnding
+	1   ContinuousVerbPhrase{transitivity}                      VerbModifier Gerund{transitivity}                  ForEnding
+	1   ContinuousVerbPhrase{transitivity}                                   {prep}TakersContinuous{transitivity}  {prep}Ending
+	1   ContinuousVerbPhrase{transitivity}                      VerbModifier {prep}TakersContinuous{transitivity}  {prep}Ending
 	1   ContinuousVerbPhrase{transitivity}                      PresentParticipleSubjunctive wrap_that             NounPhrase_Subj VerbPhrase_inf_Transitive
 	1   ContinuousVerbPhrase{transitivity}                      PresentParticipleSubjunctive                       NounPhrase_Subj VerbPhrase_inf_Transitive
 
@@ -429,8 +447,9 @@
 
 	###With-Takers - Certain verbs can be followed by 'with' "Speak with" "Ride with" "Drink with" etc
 	###From-Takers - same thing. {prep} domain is with and from.
-	1   {prep}Ending                                              wrap_$prep=With?with:from$ NounPhrase_IndObj
-
+	1   {prep}Ending                                            wrap_$prep=With?with:from$ NounPhrase_IndObj
+	1   ForEnding                                               wrap_for quant{plurality} time{plurality}
+	1   ForEnding                                               wrap_for time{plurality}
 
 
 	########Types of Verb Phrases ^^^
