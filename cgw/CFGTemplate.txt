@@ -2,7 +2,8 @@
 {
 	<wordlist1 is of to the does do what who whose how when where why>
 	<wordlist2 that so either neither or nor are at have has than am>
-	<wordlist3 be ought with which speak speaks was were by been>
+	<wordlist3 be ought with which speak speaks was were by been and>
+	<wordlist4 from because>
 	<questionWords where when why how>
 	<qwt who what>
 
@@ -20,6 +21,7 @@
 	1   wrap_{wordlist1}        {wordlist1}
 	1   wrap_{wordlist2}        {wordlist2}
 	1   wrap_{wordlist3}        {wordlist3}
+	1   wrap_{wordlist4}        {wordlist4}
 	1   QuestionWord            {questionWords}
 	1   QuestionWord_Transitive {qwt}
 }
@@ -70,7 +72,8 @@
 	1   CompoundStatement                  SimpleClause Comma CoordConj                SimpleClause
 
 		#If complex it works the same way except we use subordinating conjunctions
-	50  ComplexStatement                   SimpleClause SubordConj SimpleClause
+	50  ComplexStatement                   SimpleClause           SubordConj    SimpleClause
+	1   ComplexStatement                   SimpleClause Adv_cmadj wrap_because SimpleClause
 
 		#CompoundComplex merges the two, complex head compounded with a simple clause or vice versa or everything can be complicated too...
 		#"[Bob hates Sally and Sally hates Bob] because they suck"
@@ -79,6 +82,10 @@
 	5   ComplexStatement                   CompoundStatement SubordConj SimpleClause
 	5   ComplexStatement                   SimpleClause      SubordConj CompoundStatement
 	1   ComplexStatement                   CompoundStatement SubordConj CompoundStatement
+
+	#There is another type of compound statement - "Arthur rode to Camelot and drank from his chalice ."
+	#Instead of Clause and Clause, like above, this is NP VP and VP
+	1   CompoundStatement                  NounPhrase{person}{plurality}_Subj VerbPhrase{person}{plurality} wrap_and VerbPhrase{person}{plurality} 
 
 
 	############Questions#############
@@ -220,10 +227,10 @@
 	1   NounPhrase{person}{plurality}{role}            SimpleNounPhrase{person}{plurality}{role}
 
 	#Naive Noun Phrase - either [Determiner Noun] or [Pronoun] or [Proper Noun]
-	1   SimpleNounPhrase_3rd{plurality}{role}          Determiner_3rd{plurality}              Noun_3rd{plurality}
-	1   SimpleNounPhrase_3rd{plurality}{role}          Determiner_3rd{plurality} NounModifier Noun_3rd{plurality}
-	1   SimpleNounPhrase_3rd{plurality}{role}          Determiner_3rd{plurality}              Noun_3rd{plurality} ObjectClause_3rd{plurality}
-	1   SimpleNounPhrase_3rd{plurality}{role}          Determiner_3rd{plurality} NounModifier Noun_3rd{plurality} ObjectClause_3rd{plurality}
+	1   SimpleNounPhrase{person}{plurality}{role}      Determiner{person}{plurality}              Noun{person}{plurality}
+	1   SimpleNounPhrase{person}{plurality}{role}      Determiner{person}{plurality} NounModifier Noun{person}{plurality}
+	1   SimpleNounPhrase{person}{plurality}{role}      Determiner{person}{plurality}              Noun{person}{plurality} ObjectClause{person}{plurality}
+	1   SimpleNounPhrase{person}{plurality}{role}      Determiner{person}{plurality} NounModifier Noun{person}{plurality} ObjectClause{person}{plurality}
 	1   SimpleNounPhrase{person}{plurality}{role}      Pronoun{person}{plurality}{role}
 	1   SimpleNounPhrase{person}{plurality}{role}      Pronoun{person}{plurality}{role} ObjectClause{person}{plurality}
 	1   SimpleNounPhrase_3rd_Sng{role}                 ProperStuffs_Sng
@@ -284,8 +291,10 @@
 	<transitivity _Transitive _Intransitive>
 	<PP PP ε>
 	<extrapasty Past ε>
+	<prep With From>
 	#PP is past participle
 	#extrapasty toggles between Passive and PastPassive
+	#prep is used to toggle WithTaker and FromTaker
 
 	##############################################################################
 	#									                                         #
@@ -316,6 +325,7 @@
 	###############################################################
 
 	1   VerbPhrase                                                   VerbPhrase{person}{plurality}
+	1   VerbPhrase{transitivity}                                     VerbPhrase{person}{plurality}{transitivity}
 	1   VerbPhrase{person}{plurality}                                VerbPhrase{person}{plurality}{transitivity}
 	1   VerbPhrase{person}{plurality}{transitivity}                  VerbPhrase{PP}{person}{plurality}{transitivity}
 
@@ -329,10 +339,10 @@
 	1   VerbPhrase{PP}{person}{plurality}{transitivity}         NaiveVerbPhrase{PP}{person}{plurality}{transitivity}
 
 	# Verb + (optional DirecObj only if transitive) + (optional IndirecObj) 
-	1   SimpleVerbPhrase{PP}{person}{plurality}{transitivity}   Verb{PP}{person}{plurality}{transitivity} $transitivity=_Transitive?DirectObject:$
-	1   SimpleVerbPhrase{PP}{person}{plurality}{transitivity}   Verb{PP}{person}{plurality}{transitivity} $transitivity=_Transitive?DirectObject:$ IndirectObject
+	1   SimpleVerbPhrase{PP}{person}{plurality}_Transitive      Verb{PP}{person}{plurality}_Transitive    DirectObject
+	1   SimpleVerbPhrase{PP}{person}{plurality}_Transitive      Verb{PP}{person}{plurality}_Transitive    DirectObject IndirectObject
 	1   SimpleVerbPhrase{PP}{person}{plurality}{transitivity}   Verb{PP}{person}{plurality}{transitivity}
-	1   SimpleVerbPhrase{PP}{person}{plurality}{transitivity}   Verb{PP}{person}{plurality}{transitivity} IndirectObject
+	1   SimpleVerbPhrase{PP}{person}{plurality}{transitivity}   Verb{PP}{person}{plurality}{transitivity}              IndirectObject
 
 	# Same as above but in the passive voice
 	1   SimpleVerbPhrase{person}{plurality}{transitivity}                    {extrapasty}PassiveVerbPhrase{person}{plurality}{transitivity}
@@ -346,13 +356,15 @@
 	1   {extrapasty}PassiveVerbPhrase{person}{plurality}_Transitive          Verb{extrapasty}Passive{person}{plurality}_Transitive DirectObject IndirectObject  wrap_by SimpleNounPhrase_DirObj
 
 	# Same as above, but in this case the verb might be followed by 'with': I ride the horse to town with you.
-	1   SimpleVerbPhrase{PP}{person}{plurality}{transitivity}   WithTakers{PP}{person}{plurality}{transitivity} $transitivity=_Transitive?DirectObject:$ WithEnding
-	1   SimpleVerbPhrase{PP}{person}{plurality}{transitivity}   WithTakers{PP}{person}{plurality}{transitivity} $transitivity=_Transitive?DirectObject:$ IndirectObject WithEnding
-	1   SimpleVerbPhrase{PP}{person}{plurality}{transitivity}   WithTakers{PP}{person}{plurality}{transitivity} WithEnding
-	1   SimpleVerbPhrase{PP}{person}{plurality}{transitivity}   WithTakers{PP}{person}{plurality}{transitivity} IndirectObject WithEnding
+	1   SimpleVerbPhrase{PP}{person}{plurality}_Transitive      {prep}Takers{PP}{person}{plurality}_Transitive    DirectObject                {prep}Ending
+	1   SimpleVerbPhrase{PP}{person}{plurality}_Transitive      {prep}Takers{PP}{person}{plurality}_Transitive    DirectObject IndirectObject {prep}Ending
+	1   SimpleVerbPhrase{PP}{person}{plurality}{transitivity}   {prep}Takers{PP}{person}{plurality}{transitivity}                             {prep}Ending
+	1   SimpleVerbPhrase{PP}{person}{plurality}{transitivity}   {prep}Takers{PP}{person}{plurality}{transitivity}              IndirectObject {prep}Ending
+
 	# Extremely Simple Version, just a verb and its modifier
 	1   NaiveVerbPhrase{PP}{person}{plurality}{transitivity}    VerbModifier Verb{PP}{person}{plurality}{transitivity}
-	1   NaiveVerbPhrase{PP}{person}{plurality}{transitivity}    Verb{PP}{person}{plurality}{transitivity}
+	1   NaiveVerbPhrase{PP}{person}{plurality}{transitivity}                 Verb{PP}{person}{plurality}{transitivity}
+
 	# To speak of something
 	1   NaiveVerbPhrase{person}{plurality}_Intransitive         $person=_3rd,plurality=_Sng?wrap_speaks:wrap_speak$ wrap_of SimpleNounPhrase{person}{plurality}_IndObj
 	1   NaiveVerbPhrase{person}{plurality}_Intransitive         VerbModifier $person=_3rd,plurality=_Sng?wrap_speaks:wrap_speak$ wrap_of SimpleNounPhrase{person}{plurality}_IndObj
@@ -375,6 +387,7 @@
 	10  VerbPhrase_inf{transitivity}                            VerbModifier Verb_inf{transitivity}
 	10  VerbPhrase_inf{transitivity}                            Verb_inf{transitivity}
 	1   VerbPhrase_inf{transitivity}                            wrap_speak wrap_of SimpleNounPhrase{person}{plurality}_IndObj
+
 	#vvvvv Subjunctive_1st_Sng is only 'suggest', so this line is saying that an allowable infinitive is 'I ought to suggest that [subjunctive clause]'
 	1   VerbPhrase_inf{transitivity}                            Subjunctive_1st_Sng wrap_that NounPhrase_Subj VerbPhrase_inf_Transitive
 	1   VerbPhrase_inf{transitivity}                            Subjunctive_1st_Sng           NounPhrase_Subj VerbPhrase_inf_Transitive
@@ -384,12 +397,19 @@
 	1   VerbPhrase_inf{transitivity}   		    				Verb_inf{transitivity} IndirectObject
 
 	###Subjunctifier - the verb can take a subjunctive clause.
-	#  The only verb like this we have is suggest, which is intransitive 
-	1   VerbPhrase{person}{plurality}{transitivity}             SubjunctiveVerbPhrase{person}{plurality}
-	1   SubjunctiveVerbPhrase{person}{plurality}                Subjunctive{person}{plurality}   wrap_that NounPhrase_Subj VerbPhrase_inf_Transitive
-	1   SubjunctiveVerbPhrase{person}{plurality}                PPSubjunctive{person}{plurality} wrap_that NounPhrase_Subj VerbPhrase_inf_Transitive
-	1   SubjunctiveVerbPhrase{person}{plurality}                Subjunctive{person}{plurality}             NounPhrase_Subj VerbPhrase_inf_Transitive
-	1   SubjunctiveVerbPhrase{person}{plurality}                PPSubjunctive{person}{plurality}           NounPhrase_Subj VerbPhrase_inf_Transitive
+	#  The only verb like this we have is suggest, which is transitive 
+	1   VerbPhrase{person}{plurality}_Transitive                SubjunctiveVerbPhrase{person}{plurality}
+	1   SubjunctiveVerbPhrase{person}{plurality}                Subjunctive{person}{plurality}         wrap_that NounPhrase_Subj VerbPhrase_inf_Transitive
+	1   SubjunctiveVerbPhrase{person}{plurality}                PPSubjunctive{person}{plurality}       wrap_that NounPhrase_Subj VerbPhrase_inf_Transitive
+	1   SubjunctiveVerbPhrase{person}{plurality}                Subjunctive{person}{plurality}                   NounPhrase_Subj VerbPhrase_inf_Transitive
+	1   SubjunctiveVerbPhrase{person}{plurality}                PPSubjunctive{person}{plurality}                 NounPhrase_Subj VerbPhrase_inf_Transitive
+
+	# "know" is like suggest but it does not take the subjunctive, just normal verbing
+	1   VerbPhrase{person}{plurality}_Transitive                PseudoSubjunctiveVerbPhrase{person}{plurality}
+	1   PseudoSubjunctiveVerbPhrase{person}{plurality}          PseudoSubjunctive{person}{plurality}   wrap_that NounPhrase_Subj VerbPhrase
+	1   PseudoSubjunctiveVerbPhrase{person}{plurality}          PseudoPPSubjunctive{person}{plurality} wrap_that NounPhrase_Subj VerbPhrase
+	1   PseudoSubjunctiveVerbPhrase{person}{plurality}          PseudoSubjunctive{person}{plurality}             NounPhrase_Subj VerbPhrase
+	1   PseudoSubjunctiveVerbPhrase{person}{plurality}          PseudoPPSubjunctive{person}{plurality}           NounPhrase_Subj VerbPhrase
 
 	###Present Participle - the verb is conjugated like a present participle
 	#  We will only handle simple cases with this, analagously to the Naive case
@@ -408,7 +428,8 @@
 	1   IndirectObject                                          Prep NounPhrase_IndObj
 
 	###With-Takers - Certain verbs can be followed by 'with' "Speak with" "Ride with" "Drink with" etc
-	1   WithEnding                                              wrap_with NounPhrase_IndObj
+	###From-Takers - same thing. {prep} domain is with and from.
+	1   {prep}Ending                                              wrap_$prep=With?with:from$ NounPhrase_IndObj
 
 
 
@@ -496,13 +517,20 @@
 
 
 #Dealing with person and plurality
-#Not templated - this is grabbing stuff from Vocab.gr
+#A lot of this is just grabbing stuff from Vocab.gr
 1   Determiner_3rd_Sng      Det_s
 1   Determiner_3rd_Sng      Det_a
 1   Determiner_3rd_Plr      Det_a
 1   Determiner_3rd_Plr      Detpl
 1   Noun_3rd_Sng            Noun
 1   Noun_3rd_Plr            Noun_p
+
+#Possessives
+{
+	<person _1st _2nd _3rd>
+	<plurality _Sng _Plr>
+	1   Determiner{person}{plurality} Possessive{person}{plurality}
+}
 
 #cmadj = can modify adjectives
 #such as "the unfortunately green eyes"
@@ -547,17 +575,32 @@
 1   Withtakers_inf_Intransitive       speak
 1   WithTakers_inf_Transitive         drink
 1   WithTakers_3rd_Plr_Transitive     ride
+1   WithTakers_3rd_Plr_Transitive     rode
 1   WithTakers_3rd_Plr_Intransitive   speak
+1   WithTakers_3rd_Plr_Intransitive   spoke
 1   WithTakers_3rd_Plr_Transitive     drink
+1   WithTakers_3rd_Plr_Transitive     drank
 1   WithTakers_3rd_Sng_Transitive     rides
+1   WithTakers_3rd_Sng_Transitive     rode
 1   WithTakers_3rd_Sng_Intransitive   speaks
+1   WithTakers_3rd_Sng_Intransitive   spoke
 1   WithTakers_3rd_Sng_Transitive     drinks
+1   WithTakers_3rd_Sng_Transitive     drank
 1   WithTakersPP_Transitive           ridden
 1   WithTakersPP_Intransitive         spoken
 1   WithTakersPP_Transitive           drunk
 1   WithTakersContinuous_Transitive   riding
 1   WithTakersContinuous_Intransitive speaking
 1   WithTakersContinuous_Transitive   drinking
+
+#Verbs that take from as a preposition
+1   FromTakers_inf_Transitive         drink
+1   FromTakers_3rd_Plr_Transitive     drink
+1   FromTakers_3rd_Plr_Transitive     drank
+1   FromTakers_3rd_Sng_Transitive     drinks
+1   FromTakers_3rd_Sng_Transitive     drank
+1   FromTakersPP_Transitive           drunk
+1   FromTaketsContinuous_Transitive   drinking
 
 #All withtakers and totakers act regular so we can use this template trick
 {
@@ -621,7 +664,7 @@
 	1   VerbPastPassive{person}_Plr_Intransitive        wrap_have wrap_been wrap_{passivetenseableI}
 }
 
-#Verbs that can take the subjunctive
+#Verbs that can take the subjunctive (just suggest)
 {
 	<person _1st _2nd _3rd>
 	<plurality _Sng _Plr>
@@ -629,10 +672,28 @@
 
 	1   wrap_suggested                        suggested
 	1   Subjunctive{person}{plurality}        suggest
+	1   Subjunctive{person}{plurality}        suggested
 	1   Subjunctive_3rd_Sng                   suggests
+	1   Subjunctive_3rd_Sng                   suggested
 	1   PPSubjunctive{person}{plurality}      wrap_have wrap_suggested
 	1   PPSubjunctive_3rd_Sng                 wrap_has wrap_suggested
 	1   PresentParticipleSubjunctive          suggesting
+}
+
+#Verbs that are 'pseudosubjunctive' (just know) [pseudosubjunctive = take dependent clause not in the subjunctive]
+{
+	<person _1st _2nd _3rd>
+	<plurality _Sng _Plr>
+	|IGNORE person:_3rd plurality:_Sng|
+
+	1   wrap_known                                  known
+	1   PseudoSubjunctive{person}{plurality}        know
+	1   PseudoSubjunctive{person}{plurality}        knew
+	1   PseudoSubjunctive_3rd_Sng                   knows
+	1   PseudoSubjunctive_3rd_Sng                   knew
+	1   PseudoPPSubjunctive{person}{plurality}      wrap_have wrap_known
+	1   PseudoPPSubjunctive_3rd_Sng                 wrap_has wrap_known
+	1   PseudoPresentParticipleSubjunctive          knowing
 }
 
 #Past tense (we treat them like normal verbs)
