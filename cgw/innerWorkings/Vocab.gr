@@ -235,10 +235,14 @@
 
 
 # Possessive personal pronouns
-1    Misc    her
-1    Misc    his
-1    Misc    its
-1    Misc    their
+# We don't care for gender
+# If we tried to match gender it'd double the size of our grammar
+# (potentially triple if we want to keep track of when it can be either)
+# and make it a lot more complex.
+1    Possessive_3rd_Sng    her
+1    Possessive_3rd_Sng    his
+1    Possessive_3rd_Sng    its
+1    Possessive_3rd_Plr    their
 
 # Adverbs.
 1    Adv_time     again
@@ -354,7 +358,7 @@
 
 
 # Possessive marker.
-1    Misc    's
+1    PossessiveMarker    's
 
 # Some additional words from Monty Python
 1    Misc    pull
@@ -496,19 +500,19 @@
 1    Misc    Quest
 1    Misc    go
 1    Misc    tell
-1    Misc    your
+1    Possessive_2nd_Plr    your
 1    Misc    we
 1    Misc    charged
 1    Misc    God
 1    Misc    blow
-1    Misc    my
+1    Possessive_1st_Sng    my
 1    Misc    nose
 1    Pronoun_2nd_Sng_IndObj    you
 1    Misc    so-called
 1    Misc    Arthur-king
 1    Misc    you
 1    Misc    all
-1    Misc    your
+1    Possessive_2nd_Sng    your
 1    Misc    silly
 1    Misc    English
 1    Misc    knnnniggets
