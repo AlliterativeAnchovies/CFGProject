@@ -84,10 +84,6 @@
 	5   ComplexStatement                   SimpleClause      SubordConj CompoundStatement
 	1   ComplexStatement                   CompoundStatement SubordConj CompoundStatement
 
-	#There is another type of compound statement - "Arthur rode to Camelot and drank from his chalice ."
-	#Instead of Clause and Clause, like above, this is NP VP and VP
-	1   CompoundStatement                  NounPhrase{person}{plurality}_Subj VerbPhrase{person}{plurality} wrap_and VerbPhrase{person}{plurality} 
-
 
 	############Questions#############
 	
@@ -129,7 +125,7 @@
 	1   ImperativeClause                   wrap_do wrap_not VerbPhrase_inf
 
 }
-### Clauses continued: Either/Neither ###=====================================================================================
+### Clauses continued: Either/Neither, and And ###=====================================================================================
 {
 	<person_phrase1 _1st _2nd _3rd>
 	<person_phrase2 _1st _2nd _3rd>
@@ -193,7 +189,22 @@
 	#2nd type:
 	1   {ne/e}eitherType2        wrap_{ne/e}either SimpleClause wrap_{ne/e}or SimpleClause
 		#"either Arthur knows or Patsy does ." normally 'does' isn't allowed there, it's kind of like a proverb (like 'pronoun') here.
-	1   {ne/e}eitherType2        wrap_{ne/e}either SimpleClause wrap_{ne/e}or SimpleNounPhrase{person_phrase2}{plurality2}_Subj $person_phrase2=_3rd,plurality2=_Sng?wrap_does:wrap_do$    
+	1   {ne/e}eitherType2        wrap_{ne/e}either SimpleClause wrap_{ne/e}or SimpleNounPhrase{person_phrase2}{plurality2}_Subj $person_phrase2=_3rd,plurality2=_Sng?wrap_does:wrap_do$   
+
+	###There is another type of compound statement - "Arthur rode to Camelot and drank from his chalice ."
+	# Instead of Clause and Clause, like above, this is NP VP and VP
+	# NP and NP VP is good too.  But this causes problems with pronouns (see the either/neither section for a full explanation)
+	# So the second type is much more complicated.
+
+	1   CompoundStatement        NounPhrase{person_phrase1}{plurality1}_Subj VerbPhrase{person_phrase1}{plurality1} wrap_and VerbPhrase{person_phrase1}{plurality1} 
+
+	# 'And' Type 2 (analagous to 'Either' 1st type)
+	1   CompoundStatement        NounPhrase{person_phrase1}{plurality1}$person_phrase1,plurality1=_1st,_Sng?_DirObj:_Subj$ wrap_and andStatementEnd 
+	1   andStatementEnd          NounPhrase{person_phrase2}{plurality2}_DirObj VerbPhrase{person_phrase2}_Plr
+	1   andStatementEnd          NounPhrase_1st_Sng_Subj VerbPhrase_1st_Plr
+	
+	
+	 
 
 }
 ### Noun Phrases ###=====================================================================================
@@ -244,6 +255,14 @@
 	1   SimpleNounPhrase_3rd_Sng{role}                 ProperStuffs_Sng ObjectClause{person}{plurality}
 	1   SimpleNounPhrase_3rd_Plr{role}                 ProperStuffs_Plr
 	1   SimpleNounPhrase_3rd_Plr{role}                 ProperStuffs_Plr ObjectClause{person}{plurality}
+
+	#Parenthetical Expression - "Arthur [, the king ,] likes tiny men ." Brackets indicate the expression
+	#Note - the placement of commas actually requires a good understanding of context. We can't place a comma at the end of the sentence!
+	#But there is absolutely no way we could keep track of the end of the sentence.
+	#It would mean adding a template {at_end} to EVERY SINGLY PRODUCTION RULE (not exactly every, but any that can come before EOS_Statement, which is virtually everything)
+	#So here we cheat and make the comma only come after subject parenthetical expressions, and we cross our fingers that it does not get placed before a period.
+	#I don't think it will create ungrammatical sentences often, instead it is likely to change the meaning of the sentence in a way the parse tree does not reflect.
+	1   NounPhrase{person}{plurality}{role}            SimpleNounPhrase{person}{plurality}{role} Comma SimpleNounPhrase $role=_Subj?Comma:$
 
 	#Proper Noun Stuffs
 	1   ProperStuffs_Sng                               ProperAll_notthing
@@ -341,26 +360,33 @@
 
 	###Naive - just a single verb - adverbs allowed, past participles allowed, and can be followed with 'with' ("ride with the horse")
 
-	1   VerbPhrase{PP}{person}{plurality}{transitivity}         VerbModifier SimpleVerbPhrase{PP}{person}{plurality}{transitivity}
-	1   VerbPhrase{PP}{person}{plurality}{transitivity}         SimpleVerbPhrase{PP}{person}{plurality}{transitivity}
-	1   VerbPhrase{PP}{person}{plurality}{transitivity}         NaiveVerbPhrase{PP}{person}{plurality}{transitivity}
+	1   VerbPhrase{PP}{person}{plurality}{transitivity}            VerbModifier SimpleVerbPhrase{PP}{person}{plurality}{transitivity}
+	1   VerbPhrase{PP}{person}{plurality}{transitivity}                         SimpleVerbPhrase{PP}{person}{plurality}{transitivity}
+	1   VerbPhrase{PP}{person}{plurality}{transitivity}                         BackwardsVerbPhrase{PP}{person}{plurality}{transitivity}
+	1   VerbPhrase{PP}{person}{plurality}{transitivity}                         NaiveVerbPhrase{PP}{person}{plurality}{transitivity}
 
 	# Verb + (optional DirecObj only if transitive) + (optional IndirecObj) 
-	1   SimpleVerbPhrase{PP}{person}{plurality}_Transitive      Verb{PP}{person}{plurality}_Transitive    DirectObject
-	1   SimpleVerbPhrase{PP}{person}{plurality}_Transitive      Verb{PP}{person}{plurality}_Transitive    DirectObject IndirectObject
-	1   SimpleVerbPhrase{PP}{person}{plurality}{transitivity}   Verb{PP}{person}{plurality}{transitivity}
-	1   SimpleVerbPhrase{PP}{person}{plurality}{transitivity}   Verb{PP}{person}{plurality}{transitivity}              IndirectObject
+	1   SimpleVerbPhrase{PP}{person}{plurality}_Transitive         Verb{PP}{person}{plurality}_Transitive    DirectObject
+	1   SimpleVerbPhrase{PP}{person}{plurality}_Transitive         Verb{PP}{person}{plurality}_Transitive    DirectObject IndirectObject
+	1   SimpleVerbPhrase{PP}{person}{plurality}{transitivity}      Verb{PP}{person}{plurality}{transitivity}
+	1   SimpleVerbPhrase{PP}{person}{plurality}{transitivity}      Verb{PP}{person}{plurality}{transitivity}              IndirectObject
+
+	# Simple Verb Phrase but with VerbModifier coming after the verb.
+	1   BackwardsVerbPhrase{PP}{person}{plurality}_Transitive      Verb{PP}{person}{plurality}_Transitive    VerbModifier DirectObject
+	1   BackwardsVerbPhrase{PP}{person}{plurality}_Transitive      Verb{PP}{person}{plurality}_Transitive    VerbModifier DirectObject IndirectObject
+	1   BackwardsVerbPhrase{PP}{person}{plurality}{transitivity}   Verb{PP}{person}{plurality}{transitivity} VerbModifier
+	1   BackwardsVerbPhrase{PP}{person}{plurality}{transitivity}   Verb{PP}{person}{plurality}{transitivity} VerbModifier             IndirectObject
 
 	# Same as above but in the passive voice
 	1   SimpleVerbPhrase{person}{plurality}{transitivity}                    {extrapasty}PassiveVerbPhrase{person}{plurality}{transitivity}
 	1   {extrapasty}PassiveVerbPhrase{person}{plurality}{transitivity}       Verb{extrapasty}Passive{person}{plurality}{transitivity}
-	1   {extrapasty}PassiveVerbPhrase{person}{plurality}{transitivity}       Verb{extrapasty}Passive{person}{plurality}{transitivity} IndirectObject
-	1   {extrapasty}PassiveVerbPhrase{person}{plurality}_Transitive          Verb{extrapasty}Passive{person}{plurality}_Transitive DirectObject
-	1   {extrapasty}PassiveVerbPhrase{person}{plurality}_Transitive          Verb{extrapasty}Passive{person}{plurality}_Transitive DirectObject IndirectObject
-	1   {extrapasty}PassiveVerbPhrase{person}{plurality}{transitivity}       Verb{extrapasty}Passive{person}{plurality}{transitivity}                           wrap_by SimpleNounPhrase_DirObj
-	1   {extrapasty}PassiveVerbPhrase{person}{plurality}{transitivity}       Verb{extrapasty}Passive{person}{plurality}{transitivity} IndirectObject            wrap_by SimpleNounPhrase_DirObj
-	1   {extrapasty}PassiveVerbPhrase{person}{plurality}_Transitive          Verb{extrapasty}Passive{person}{plurality}_Transitive DirectObject                 wrap_by SimpleNounPhrase_DirObj
-	1   {extrapasty}PassiveVerbPhrase{person}{plurality}_Transitive          Verb{extrapasty}Passive{person}{plurality}_Transitive DirectObject IndirectObject  wrap_by SimpleNounPhrase_DirObj
+	1   {extrapasty}PassiveVerbPhrase{person}{plurality}{transitivity}       Verb{extrapasty}Passive{person}{plurality}{transitivity}              IndirectObject
+	1   {extrapasty}PassiveVerbPhrase{person}{plurality}_Transitive          Verb{extrapasty}Passive{person}{plurality}_Transitive    DirectObject
+	1   {extrapasty}PassiveVerbPhrase{person}{plurality}_Transitive          Verb{extrapasty}Passive{person}{plurality}_Transitive    DirectObject IndirectObject
+	1   {extrapasty}PassiveVerbPhrase{person}{plurality}{transitivity}       Verb{extrapasty}Passive{person}{plurality}{transitivity}                              wrap_by SimpleNounPhrase_DirObj
+	1   {extrapasty}PassiveVerbPhrase{person}{plurality}{transitivity}       Verb{extrapasty}Passive{person}{plurality}{transitivity}              IndirectObject  wrap_by SimpleNounPhrase_DirObj
+	1   {extrapasty}PassiveVerbPhrase{person}{plurality}_Transitive          Verb{extrapasty}Passive{person}{plurality}_Transitive    DirectObject                 wrap_by SimpleNounPhrase_DirObj
+	1   {extrapasty}PassiveVerbPhrase{person}{plurality}_Transitive          Verb{extrapasty}Passive{person}{plurality}_Transitive    DirectObject IndirectObject  wrap_by SimpleNounPhrase_DirObj
 
 	# Same as above, but in this case the verb might be followed by 'with' or 'from': I ride the horse to town with you.
 	1   SimpleVerbPhrase{PP}{person}{plurality}_Transitive      {prep}Takers{PP}{person}{plurality}_Transitive    DirectObject                {prep}Ending
