@@ -44,11 +44,13 @@
 	#	if no arguments, it will pick an arbitrary (person,plurality) pair.  #
 	##########################################################################
 
-	1   S1               StatementClause
-	1   S1               QuestionClause
+	1   S1               StatementClause EOS_Statement
+	1   S1               QuestionClause  EOS_Question
+
+	############Statements############
 
 	#Here we handle the most naive statement clause:
-	1   StatementClause                    SimpleClause{person}{plurality} EOS_Statement
+	1   StatementClause                    SimpleClause{person}{plurality}
 	1   SimpleClause{person}{plurality}    NounPhrase{person}{plurality}_Subj VerbPhrase{person}{plurality}
 	1   SimpleClause                       SimpleClause{person}{plurality}
 
@@ -59,25 +61,30 @@
 	#A compound statement contains 2 independent (read: simple) clauses.
 	#A complex statement is similar but uses SubordConj instead.
 	#For compound-complex statements, the most prevalent case in english is just a complex statement joined to a compound one.
-	1   StatementClause                    CompoundStatement EOS_Statement
-	1   StatementClause                    ComplexStatement EOS_Statement
-	1   StatementClause                    CompoundComplexStatement EOS_Statement
-	1   CompoundStatement                  SimpleClause CompoundStatement1
+	1   StatementClause                    CompoundStatement
+	1   StatementClause                    ComplexStatement
+	1   StatementClause                    CompoundComplexStatement
 
 		#Compound Statements can be joined with a coordinating conjunction or , ; : --
-	1   CompoundStatement1                 CoordConj{ispunctuation} SimpleClause
-		
 		#They can also be joined with , + coordinating conjunction
-	1   CompoundStatement1                 Comma CompoundStatement2
-	1   CompoundStatement2                 CoordConj SimpleClause
+	1   CompoundStatement                  SimpleClause       CoordConj{ispunctuation} SimpleClause
+	1   CompoundStatement                  SimpleClause Comma CoordConj                SimpleClause
 
-		#If complex it works the same way
-	1   ComplexStatement                   SimpleClause ComplexStatement1
-	1   ComplexStatement1                  SubordConj SimpleClause
+		#If complex it works the same way except we use subordinating conjunctions
+	50  ComplexStatement                   SimpleClause SubordConj SimpleClause
 
-		#CompoundComplex merges the two, complex head compounded with a simple clause
-	1   CompoundComplexStatement           ComplexStatement CompoundStatement1
+		#CompoundComplex merges the two, complex head compounded with a simple clause or vice versa or everything can be complicated too...
+		#"[Bob hates Sally and Sally hates Bob] because they suck"
+		#"Bob hates Sally because [Sally hates Bob and Bob hates haters]"
+		#Bracketed bit was compound sentence
+	5   ComplexStatement                   CompoundStatement SubordConj SimpleClause
+	5   ComplexStatement                   SimpleClause      SubordConj CompoundStatement
+	1   ComplexStatement                   CompoundStatement SubordConj CompoundStatement
 
+	###Object Clauses
+	#It is Sir Lancelot [who knows Zoot],[that knows Zoot],[which knows Zoot]
+
+	############Questions#############
 	
 	#There are 2 main ways to ask questions in english:
 	#"Do-Construction": We run. -> Do we run?
@@ -90,31 +97,24 @@
 	#Currently I do not try to handle QuestionWord_Transitive
 
 	#Add question words:
-	1   QuestionClause                     QuestionClauseInner EOS_Question
-	1   QuestionClauseInner                QuestionWord QuestionClause1{transitivity}
-	1   QuestionClauseInner                QuestionWord_Transitive QuestionClause1_Transitive
-	1   QuestionClauseInner                QuestionClause1{transitivity}
-	1   QuestionClauseInner                QuestionWord
-	1   QuestionClauseInner                QuestionWord_Transitive
+	1   QuestionClause                     QuestionWord
+	1   QuestionClause                     QuestionWord_Transitive
+	1   QuestionClause                     QuestionWord            QuestionClauseHead{transitivity}
+	1   QuestionClause                     QuestionWord_Transitive QuestionClauseHead_Transitive
 
 	#Do-Construction:
 	#[do/does] NounPhrase VerbPhrase_inf
-	5   QuestionClause1{transitivity}      wrap_do DoConstruction{transitivity}
-	1   QuestionClause1{transitivity}      wrap_does DoesConstruction{transitivity}
-	1   DoConstruction{transitivity}       NounPhrase_1st{plurality}_Subj VerbPhrase_inf{transitivity}
-	1   DoConstruction{transitivity}       NounPhrase_2nd{plurality}_Subj VerbPhrase_inf{transitivity}
-	1   DoConstruction{transitivity}       NounPhrase_3rd_Plr_Subj VerbPhrase_inf{transitivity}
-	1   DoesConstruction{transitivity}     NounPhrase_3rd_Sng_Subj VerbPhrase_inf{transitivity}
+	2   QuestionClauseHead{transitivity}   wrap_do   NounPhrase_1st{plurality}_Subj VerbPhrase_inf{transitivity}
+	2   QuestionClauseHead{transitivity}   wrap_do   NounPhrase_2nd{plurality}_Subj VerbPhrase_inf{transitivity}
+	1   QuestionClauseHead{transitivity}   wrap_do   NounPhrase_3rd_Plr_Subj        VerbPhrase_inf{transitivity} 
+	1   QuestionClauseHead{transitivity}   wrap_does NounPhrase_3rd_Sng_Subj        VerbPhrase_inf{transitivity}
 
 	#Inversion question:
 	#[is/are/am] NounPhrase GerundPhrase
-	1   QuestionClause1{transitivity}      wrap_am InversionAm{transitivity}
-	1   QuestionClause1{transitivity}      wrap_are InversionAre{transitivity}
-	1   QuestionClause1{transitivity}      wrap_is InversionIs{transitivity}
-	1   InversionAm{transitivity}          NounPhrase_1st_Sng_Subj ContinuousVerbPhrase{transitivity}
-	1   InversionIs{transitivity}          NounPhrase_3rd_Sng_Subj ContinuousVerbPhrase{transitivity}
-	1   InversionAre{transitivity}         NounPhrase_2nd_Sng_Subj ContinuousVerbPhrase{transitivity}
-	1   InversionAre{transitivity}         NounPhrase{person}_Plr_Subj ContinuousVerbPhrase{transitivity}
+	1   QuestionClauseHead{transitivity}   wrap_am   NounPhrase_1st_Sng_Subj        ContinuousVerbPhrase{transitivity}
+	1   QuestionClauseHead{transitivity}   wrap_are  NounPhrase_2nd_Sng_Subj        ContinuousVerbPhrase{transitivity}
+	1   QuestionClauseHead{transitivity}   wrap_are  NounPhrase{person}_Plr_Subj    ContinuousVerbPhrase{transitivity}
+	1   QuestionClauseHead{transitivity}   wrap_is   NounPhrase_3rd_Sng_Subj        ContinuousVerbPhrase{transitivity}
 
 }
 ### Clauses continued: Either/Neither ###=====================================================================================
@@ -206,10 +206,8 @@
 	#Note: only 3rd person can use determiners.  In fact only 3rd person can do most of this stuff, since
 	#the other persons only show up as pronouns.  So you will probably see a lot of explicit '_3rd's here.
 
-	#Note 2: 'us' is not in our vocabulary.  Literally every other verb is, but 'us' is not...  Which is a pain because
-	#it breaks part of the template.  I'm leaving it as is for now and next lecture I will go talk to the lecturer and ask
-	#if we can add 'us'.  In the meantime, if you see Pronoun_1st_Plr_IndObj or Pronoun_1st_Plr_DirObj in a generated
-	#sentence, ignore it and mentally replace it with 'us'.
+	#Note 2: 'us' is not in our vocabulary.  Literally every other pronoun is, but 'us' is not...
+	#TODO: Remove all things that involve 'us'
 
 	1   NounPhrase                                     NounPhrase{role}
 	1   NounPhrase{person}{plurality}                  NounPhrase{person}{plurality}{role}
@@ -238,12 +236,9 @@
 	1   NounPhrase_3rd_Sng_Subj                        GerundPhrase
 	1   GerundPhrase                                   GerundPhrase{transitivity}
 	1   GerundPhrase{transitivity}                     Gerund{transitivity}
-	1   GerundPhrase{transitivity}                     Gerund_to{transitivity} to{person}{plurality}+
-	1   GerundPhrase{transitivity}                     Gerund_of{transitivity} of{person}{plurality}+
-	1   GerundPhrase_Transitive                        Gerund_Transitive obj{person}{plurality}+
-	1   of{person}{plurality}+                         wrap_of SimpleNounPhrase{person}{plurality}_IndObj
-	1   to{person}{plurality}+                         wrap_to SimpleNounPhrase{person}{plurality}_IndObj
-	1   obj{person}{plurality}+                        SimpleNounPhrase{person}{plurality}_DirObj
+	1   GerundPhrase{transitivity}                     Gerund_to{transitivity} wrap_to SimpleNounPhrase{person}{plurality}_IndObj
+	1   GerundPhrase{transitivity}                     Gerund_of{transitivity} wrap_of SimpleNounPhrase{person}{plurality}_IndObj
+	1   GerundPhrase_Transitive                        Gerund_Transitive SimpleNounPhrase{person}{plurality}_DirObj
 
 	#Less Naive Noun Phrase
 	#Nouns can be modified with adjectives in this less naive version
@@ -253,7 +248,7 @@
 	1   NounPhraseSmart{person}{plurality}{role}       Noun+Prep{person}{plurality}
 
 	#"The carrot of doom" - Noun+Prep is what is responsible for the "of doom" part.
-	1   Noun+Prep{person}{plurality}                   Noun{person}{plurality} of{person}{plurality}+
+	1   Noun+Prep{person}{plurality}                   Noun{person}{plurality} wrap_of SimpleNounPhrase{person}{plurality}_IndObj
 
 
 	#Noun modifiers go in front of a noun (but before the determiner)

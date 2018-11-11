@@ -66,16 +66,16 @@
 	#	if no arguments, it will pick an arbitrary (person,plurality) pair.  #
 	##########################################################################
 
-	1   S1               StatementClause
-	1   S1               QuestionClause
+	1   S1               StatementClause EOS_Statement
+	1   S1               QuestionClause  EOS_Question
 
 	#Here we handle the most naive statement clause:
-	1   StatementClause                    SimpleClause_1st_Sng EOS_Statement
-	1   StatementClause                    SimpleClause_1st_Plr EOS_Statement
-	1   StatementClause                    SimpleClause_2nd_Sng EOS_Statement
-	1   StatementClause                    SimpleClause_2nd_Plr EOS_Statement
-	1   StatementClause                    SimpleClause_3rd_Sng EOS_Statement
-	1   StatementClause                    SimpleClause_3rd_Plr EOS_Statement
+	1   StatementClause                    SimpleClause_1st_Sng
+	1   StatementClause                    SimpleClause_1st_Plr
+	1   StatementClause                    SimpleClause_2nd_Sng
+	1   StatementClause                    SimpleClause_2nd_Plr
+	1   StatementClause                    SimpleClause_3rd_Sng
+	1   StatementClause                    SimpleClause_3rd_Plr
 	1   SimpleClause_1st_Sng    NounPhrase_1st_Sng_Subj VerbPhrase_1st_Sng
 	1   SimpleClause_1st_Plr    NounPhrase_1st_Plr_Subj VerbPhrase_1st_Plr
 	1   SimpleClause_2nd_Sng    NounPhrase_2nd_Sng_Subj VerbPhrase_2nd_Sng
@@ -96,26 +96,26 @@
 	#A compound statement contains 2 independent (read: simple) clauses.
 	#A complex statement is similar but uses SubordConj instead.
 	#For compound-complex statements, the most prevalent case in english is just a complex statement joined to a compound one.
-	1   StatementClause                    CompoundStatement EOS_Statement
-	1   StatementClause                    ComplexStatement EOS_Statement
-	1   StatementClause                    CompoundComplexStatement EOS_Statement
-	1   CompoundStatement                  SimpleClause CompoundStatement1
+	1   StatementClause                    CompoundStatement
+	1   StatementClause                    ComplexStatement
+	1   StatementClause                    CompoundComplexStatement
 
 		#Compound Statements can be joined with a coordinating conjunction or , ; : --
-	1   CompoundStatement1                 CoordConj SimpleClause
-	1   CompoundStatement1                 CoordConj_Punc SimpleClause
-
 		#They can also be joined with , + coordinating conjunction
-	1   CompoundStatement1                 Comma CompoundStatement2
-	1   CompoundStatement2                 CoordConj SimpleClause
+	1   CompoundStatement                  SimpleClause       CoordConj SimpleClause
+	1   CompoundStatement                  SimpleClause       CoordConj_Punc SimpleClause
+	1   CompoundStatement                  SimpleClause Comma CoordConj                SimpleClause
 
-		#If complex it works the same way
-	1   ComplexStatement                   SimpleClause ComplexStatement1
-	1   ComplexStatement1                  SubordConj SimpleClause
+		#If complex it works the same way except we use subordinating conjunctions
+	50  ComplexStatement                   SimpleClause SubordConj SimpleClause
 
-		#CompoundComplex merges the two, complex head compounded with a simple clause
-	1   CompoundComplexStatement           ComplexStatement CompoundStatement1
-
+		#CompoundComplex merges the two, complex head compounded with a simple clause or vice versa or everything can be complicated too...
+		#"[Bob hates Sally and Sally hates Bob] because they suck"
+		#"Bob hates Sally because [Sally hates Bob and Bob hates haters]"
+		#Bracketed bit was compound sentence
+	5   ComplexStatement                   CompoundStatement SubordConj SimpleClause
+	5   ComplexStatement                   SimpleClause      SubordConj CompoundStatement
+	1   ComplexStatement                   CompoundStatement SubordConj CompoundStatement
 
 	#There are 2 main ways to ask questions in english:
 	#"Do-Construction": We run. -> Do we run?
@@ -128,54 +128,41 @@
 	#Currently I do not try to handle QuestionWord_Transitive
 
 	#Add question words:
-	1   QuestionClause                     QuestionClauseInner EOS_Question
-	1   QuestionClauseInner                QuestionWord QuestionClause1_Transitive
-	1   QuestionClauseInner                QuestionWord QuestionClause1_Intransitive
-	1   QuestionClauseInner                QuestionWord_Transitive QuestionClause1_Transitive
-	1   QuestionClauseInner                QuestionClause1_Transitive
-	1   QuestionClauseInner                QuestionClause1_Intransitive
-	1   QuestionClauseInner                QuestionWord
-	1   QuestionClauseInner                QuestionWord_Transitive
+	1   QuestionClause                     QuestionWord
+	1   QuestionClause                     QuestionWord_Transitive
+	1   QuestionClause                     QuestionWord            QuestionClauseHead_Transitive
+	1   QuestionClause                     QuestionWord            QuestionClauseHead_Intransitive
+	1   QuestionClause                     QuestionWord_Transitive QuestionClauseHead_Transitive
 
 	#Do-Construction:
 	#[do/does] NounPhrase VerbPhrase_inf
-	5   QuestionClause1_Transitive      wrap_do DoConstruction_Transitive
-	5   QuestionClause1_Intransitive      wrap_do DoConstruction_Intransitive
-	1   QuestionClause1_Transitive      wrap_does DoesConstruction_Transitive
-	1   QuestionClause1_Intransitive      wrap_does DoesConstruction_Intransitive
-	1   DoConstruction_Transitive       NounPhrase_1st_Sng_Subj VerbPhrase_inf_Transitive
-	1   DoConstruction_Intransitive       NounPhrase_1st_Sng_Subj VerbPhrase_inf_Intransitive
-	1   DoConstruction_Transitive       NounPhrase_1st_Plr_Subj VerbPhrase_inf_Transitive
-	1   DoConstruction_Intransitive       NounPhrase_1st_Plr_Subj VerbPhrase_inf_Intransitive
-	1   DoConstruction_Transitive       NounPhrase_2nd_Sng_Subj VerbPhrase_inf_Transitive
-	1   DoConstruction_Intransitive       NounPhrase_2nd_Sng_Subj VerbPhrase_inf_Intransitive
-	1   DoConstruction_Transitive       NounPhrase_2nd_Plr_Subj VerbPhrase_inf_Transitive
-	1   DoConstruction_Intransitive       NounPhrase_2nd_Plr_Subj VerbPhrase_inf_Intransitive
-	1   DoConstruction_Transitive       NounPhrase_3rd_Plr_Subj VerbPhrase_inf_Transitive
-	1   DoConstruction_Intransitive       NounPhrase_3rd_Plr_Subj VerbPhrase_inf_Intransitive
-	1   DoesConstruction_Transitive     NounPhrase_3rd_Sng_Subj VerbPhrase_inf_Transitive
-	1   DoesConstruction_Intransitive     NounPhrase_3rd_Sng_Subj VerbPhrase_inf_Intransitive
+	2   QuestionClauseHead_Transitive   wrap_do   NounPhrase_1st_Sng_Subj VerbPhrase_inf_Transitive
+	2   QuestionClauseHead_Intransitive   wrap_do   NounPhrase_1st_Sng_Subj VerbPhrase_inf_Intransitive
+	2   QuestionClauseHead_Transitive   wrap_do   NounPhrase_1st_Plr_Subj VerbPhrase_inf_Transitive
+	2   QuestionClauseHead_Intransitive   wrap_do   NounPhrase_1st_Plr_Subj VerbPhrase_inf_Intransitive
+	2   QuestionClauseHead_Transitive   wrap_do   NounPhrase_2nd_Sng_Subj VerbPhrase_inf_Transitive
+	2   QuestionClauseHead_Intransitive   wrap_do   NounPhrase_2nd_Sng_Subj VerbPhrase_inf_Intransitive
+	2   QuestionClauseHead_Transitive   wrap_do   NounPhrase_2nd_Plr_Subj VerbPhrase_inf_Transitive
+	2   QuestionClauseHead_Intransitive   wrap_do   NounPhrase_2nd_Plr_Subj VerbPhrase_inf_Intransitive
+	1   QuestionClauseHead_Transitive   wrap_do   NounPhrase_3rd_Plr_Subj        VerbPhrase_inf_Transitive 
+	1   QuestionClauseHead_Intransitive   wrap_do   NounPhrase_3rd_Plr_Subj        VerbPhrase_inf_Intransitive 
+	1   QuestionClauseHead_Transitive   wrap_does NounPhrase_3rd_Sng_Subj        VerbPhrase_inf_Transitive
+	1   QuestionClauseHead_Intransitive   wrap_does NounPhrase_3rd_Sng_Subj        VerbPhrase_inf_Intransitive
 
 	#Inversion question:
 	#[is/are/am] NounPhrase GerundPhrase
-	1   QuestionClause1_Transitive      wrap_am InversionAm_Transitive
-	1   QuestionClause1_Intransitive      wrap_am InversionAm_Intransitive
-	1   QuestionClause1_Transitive      wrap_are InversionAre_Transitive
-	1   QuestionClause1_Intransitive      wrap_are InversionAre_Intransitive
-	1   QuestionClause1_Transitive      wrap_is InversionIs_Transitive
-	1   QuestionClause1_Intransitive      wrap_is InversionIs_Intransitive
-	1   InversionAm_Transitive          NounPhrase_1st_Sng_Subj ContinuousVerbPhrase_Transitive
-	1   InversionAm_Intransitive          NounPhrase_1st_Sng_Subj ContinuousVerbPhrase_Intransitive
-	1   InversionIs_Transitive          NounPhrase_3rd_Sng_Subj ContinuousVerbPhrase_Transitive
-	1   InversionIs_Intransitive          NounPhrase_3rd_Sng_Subj ContinuousVerbPhrase_Intransitive
-	1   InversionAre_Transitive         NounPhrase_2nd_Sng_Subj ContinuousVerbPhrase_Transitive
-	1   InversionAre_Intransitive         NounPhrase_2nd_Sng_Subj ContinuousVerbPhrase_Intransitive
-	1   InversionAre_Transitive         NounPhrase_1st_Plr_Subj ContinuousVerbPhrase_Transitive
-	1   InversionAre_Intransitive         NounPhrase_1st_Plr_Subj ContinuousVerbPhrase_Intransitive
-	1   InversionAre_Transitive         NounPhrase_2nd_Plr_Subj ContinuousVerbPhrase_Transitive
-	1   InversionAre_Intransitive         NounPhrase_2nd_Plr_Subj ContinuousVerbPhrase_Intransitive
-	1   InversionAre_Transitive         NounPhrase_3rd_Plr_Subj ContinuousVerbPhrase_Transitive
-	1   InversionAre_Intransitive         NounPhrase_3rd_Plr_Subj ContinuousVerbPhrase_Intransitive
+	1   QuestionClauseHead_Transitive   wrap_am   NounPhrase_1st_Sng_Subj        ContinuousVerbPhrase_Transitive
+	1   QuestionClauseHead_Intransitive   wrap_am   NounPhrase_1st_Sng_Subj        ContinuousVerbPhrase_Intransitive
+	1   QuestionClauseHead_Transitive   wrap_are  NounPhrase_2nd_Sng_Subj        ContinuousVerbPhrase_Transitive
+	1   QuestionClauseHead_Intransitive   wrap_are  NounPhrase_2nd_Sng_Subj        ContinuousVerbPhrase_Intransitive
+	1   QuestionClauseHead_Transitive   wrap_are  NounPhrase_1st_Plr_Subj    ContinuousVerbPhrase_Transitive
+	1   QuestionClauseHead_Intransitive   wrap_are  NounPhrase_1st_Plr_Subj    ContinuousVerbPhrase_Intransitive
+	1   QuestionClauseHead_Transitive   wrap_are  NounPhrase_2nd_Plr_Subj    ContinuousVerbPhrase_Transitive
+	1   QuestionClauseHead_Intransitive   wrap_are  NounPhrase_2nd_Plr_Subj    ContinuousVerbPhrase_Intransitive
+	1   QuestionClauseHead_Transitive   wrap_are  NounPhrase_3rd_Plr_Subj    ContinuousVerbPhrase_Transitive
+	1   QuestionClauseHead_Intransitive   wrap_are  NounPhrase_3rd_Plr_Subj    ContinuousVerbPhrase_Intransitive
+	1   QuestionClauseHead_Transitive   wrap_is   NounPhrase_3rd_Sng_Subj        ContinuousVerbPhrase_Transitive
+	1   QuestionClauseHead_Intransitive   wrap_is   NounPhrase_3rd_Sng_Subj        ContinuousVerbPhrase_Intransitive
 
 ### Clauses continued: Either/Neither ###=====================================================================================
 
@@ -284,10 +271,8 @@
 	#Note: only 3rd person can use determiners.  In fact only 3rd person can do most of this stuff, since
 	#the other persons only show up as pronouns.  So you will probably see a lot of explicit '_3rd's here.
 
-	#Note 2: 'us' is not in our vocabulary.  Literally every other verb is, but 'us' is not...  Which is a pain because
-	#it breaks part of the template.  I'm leaving it as is for now and next lecture I will go talk to the lecturer and ask
-	#if we can add 'us'.  In the meantime, if you see Pronoun_1st_Plr_IndObj or Pronoun_1st_Plr_DirObj in a generated
-	#sentence, ignore it and mentally replace it with 'us'.
+	#Note 2: 'us' is not in our vocabulary.  Literally every other pronoun is, but 'us' is not...
+	#TODO: Remove all things that involve 'us'
 
 	1   NounPhrase                                     NounPhrase_Subj
 	1   NounPhrase                                     NounPhrase_DirObj
@@ -421,54 +406,36 @@
 	1   GerundPhrase                                   GerundPhrase_Intransitive
 	1   GerundPhrase_Transitive                     Gerund_Transitive
 	1   GerundPhrase_Intransitive                     Gerund_Intransitive
-	1   GerundPhrase_Transitive                     Gerund_to_Transitive to_1st_Sng+
-	1   GerundPhrase_Intransitive                     Gerund_to_Intransitive to_1st_Sng+
-	1   GerundPhrase_Transitive                     Gerund_to_Transitive to_1st_Plr+
-	1   GerundPhrase_Intransitive                     Gerund_to_Intransitive to_1st_Plr+
-	1   GerundPhrase_Transitive                     Gerund_to_Transitive to_2nd_Sng+
-	1   GerundPhrase_Intransitive                     Gerund_to_Intransitive to_2nd_Sng+
-	1   GerundPhrase_Transitive                     Gerund_to_Transitive to_2nd_Plr+
-	1   GerundPhrase_Intransitive                     Gerund_to_Intransitive to_2nd_Plr+
-	1   GerundPhrase_Transitive                     Gerund_to_Transitive to_3rd_Sng+
-	1   GerundPhrase_Intransitive                     Gerund_to_Intransitive to_3rd_Sng+
-	1   GerundPhrase_Transitive                     Gerund_to_Transitive to_3rd_Plr+
-	1   GerundPhrase_Intransitive                     Gerund_to_Intransitive to_3rd_Plr+
-	1   GerundPhrase_Transitive                     Gerund_of_Transitive of_1st_Sng+
-	1   GerundPhrase_Intransitive                     Gerund_of_Intransitive of_1st_Sng+
-	1   GerundPhrase_Transitive                     Gerund_of_Transitive of_1st_Plr+
-	1   GerundPhrase_Intransitive                     Gerund_of_Intransitive of_1st_Plr+
-	1   GerundPhrase_Transitive                     Gerund_of_Transitive of_2nd_Sng+
-	1   GerundPhrase_Intransitive                     Gerund_of_Intransitive of_2nd_Sng+
-	1   GerundPhrase_Transitive                     Gerund_of_Transitive of_2nd_Plr+
-	1   GerundPhrase_Intransitive                     Gerund_of_Intransitive of_2nd_Plr+
-	1   GerundPhrase_Transitive                     Gerund_of_Transitive of_3rd_Sng+
-	1   GerundPhrase_Intransitive                     Gerund_of_Intransitive of_3rd_Sng+
-	1   GerundPhrase_Transitive                     Gerund_of_Transitive of_3rd_Plr+
-	1   GerundPhrase_Intransitive                     Gerund_of_Intransitive of_3rd_Plr+
-	1   GerundPhrase_Transitive                        Gerund_Transitive obj_1st_Sng+
-	1   GerundPhrase_Transitive                        Gerund_Transitive obj_1st_Plr+
-	1   GerundPhrase_Transitive                        Gerund_Transitive obj_2nd_Sng+
-	1   GerundPhrase_Transitive                        Gerund_Transitive obj_2nd_Plr+
-	1   GerundPhrase_Transitive                        Gerund_Transitive obj_3rd_Sng+
-	1   GerundPhrase_Transitive                        Gerund_Transitive obj_3rd_Plr+
-	1   of_1st_Sng+                         wrap_of SimpleNounPhrase_1st_Sng_IndObj
-	1   of_1st_Plr+                         wrap_of SimpleNounPhrase_1st_Plr_IndObj
-	1   of_2nd_Sng+                         wrap_of SimpleNounPhrase_2nd_Sng_IndObj
-	1   of_2nd_Plr+                         wrap_of SimpleNounPhrase_2nd_Plr_IndObj
-	1   of_3rd_Sng+                         wrap_of SimpleNounPhrase_3rd_Sng_IndObj
-	1   of_3rd_Plr+                         wrap_of SimpleNounPhrase_3rd_Plr_IndObj
-	1   to_1st_Sng+                         wrap_to SimpleNounPhrase_1st_Sng_IndObj
-	1   to_1st_Plr+                         wrap_to SimpleNounPhrase_1st_Plr_IndObj
-	1   to_2nd_Sng+                         wrap_to SimpleNounPhrase_2nd_Sng_IndObj
-	1   to_2nd_Plr+                         wrap_to SimpleNounPhrase_2nd_Plr_IndObj
-	1   to_3rd_Sng+                         wrap_to SimpleNounPhrase_3rd_Sng_IndObj
-	1   to_3rd_Plr+                         wrap_to SimpleNounPhrase_3rd_Plr_IndObj
-	1   obj_1st_Sng+                        SimpleNounPhrase_1st_Sng_DirObj
-	1   obj_1st_Plr+                        SimpleNounPhrase_1st_Plr_DirObj
-	1   obj_2nd_Sng+                        SimpleNounPhrase_2nd_Sng_DirObj
-	1   obj_2nd_Plr+                        SimpleNounPhrase_2nd_Plr_DirObj
-	1   obj_3rd_Sng+                        SimpleNounPhrase_3rd_Sng_DirObj
-	1   obj_3rd_Plr+                        SimpleNounPhrase_3rd_Plr_DirObj
+	1   GerundPhrase_Transitive                     Gerund_to_Transitive wrap_to SimpleNounPhrase_1st_Sng_IndObj
+	1   GerundPhrase_Intransitive                     Gerund_to_Intransitive wrap_to SimpleNounPhrase_1st_Sng_IndObj
+	1   GerundPhrase_Transitive                     Gerund_to_Transitive wrap_to SimpleNounPhrase_1st_Plr_IndObj
+	1   GerundPhrase_Intransitive                     Gerund_to_Intransitive wrap_to SimpleNounPhrase_1st_Plr_IndObj
+	1   GerundPhrase_Transitive                     Gerund_to_Transitive wrap_to SimpleNounPhrase_2nd_Sng_IndObj
+	1   GerundPhrase_Intransitive                     Gerund_to_Intransitive wrap_to SimpleNounPhrase_2nd_Sng_IndObj
+	1   GerundPhrase_Transitive                     Gerund_to_Transitive wrap_to SimpleNounPhrase_2nd_Plr_IndObj
+	1   GerundPhrase_Intransitive                     Gerund_to_Intransitive wrap_to SimpleNounPhrase_2nd_Plr_IndObj
+	1   GerundPhrase_Transitive                     Gerund_to_Transitive wrap_to SimpleNounPhrase_3rd_Sng_IndObj
+	1   GerundPhrase_Intransitive                     Gerund_to_Intransitive wrap_to SimpleNounPhrase_3rd_Sng_IndObj
+	1   GerundPhrase_Transitive                     Gerund_to_Transitive wrap_to SimpleNounPhrase_3rd_Plr_IndObj
+	1   GerundPhrase_Intransitive                     Gerund_to_Intransitive wrap_to SimpleNounPhrase_3rd_Plr_IndObj
+	1   GerundPhrase_Transitive                     Gerund_of_Transitive wrap_of SimpleNounPhrase_1st_Sng_IndObj
+	1   GerundPhrase_Intransitive                     Gerund_of_Intransitive wrap_of SimpleNounPhrase_1st_Sng_IndObj
+	1   GerundPhrase_Transitive                     Gerund_of_Transitive wrap_of SimpleNounPhrase_1st_Plr_IndObj
+	1   GerundPhrase_Intransitive                     Gerund_of_Intransitive wrap_of SimpleNounPhrase_1st_Plr_IndObj
+	1   GerundPhrase_Transitive                     Gerund_of_Transitive wrap_of SimpleNounPhrase_2nd_Sng_IndObj
+	1   GerundPhrase_Intransitive                     Gerund_of_Intransitive wrap_of SimpleNounPhrase_2nd_Sng_IndObj
+	1   GerundPhrase_Transitive                     Gerund_of_Transitive wrap_of SimpleNounPhrase_2nd_Plr_IndObj
+	1   GerundPhrase_Intransitive                     Gerund_of_Intransitive wrap_of SimpleNounPhrase_2nd_Plr_IndObj
+	1   GerundPhrase_Transitive                     Gerund_of_Transitive wrap_of SimpleNounPhrase_3rd_Sng_IndObj
+	1   GerundPhrase_Intransitive                     Gerund_of_Intransitive wrap_of SimpleNounPhrase_3rd_Sng_IndObj
+	1   GerundPhrase_Transitive                     Gerund_of_Transitive wrap_of SimpleNounPhrase_3rd_Plr_IndObj
+	1   GerundPhrase_Intransitive                     Gerund_of_Intransitive wrap_of SimpleNounPhrase_3rd_Plr_IndObj
+	1   GerundPhrase_Transitive                        Gerund_Transitive SimpleNounPhrase_1st_Sng_DirObj
+	1   GerundPhrase_Transitive                        Gerund_Transitive SimpleNounPhrase_1st_Plr_DirObj
+	1   GerundPhrase_Transitive                        Gerund_Transitive SimpleNounPhrase_2nd_Sng_DirObj
+	1   GerundPhrase_Transitive                        Gerund_Transitive SimpleNounPhrase_2nd_Plr_DirObj
+	1   GerundPhrase_Transitive                        Gerund_Transitive SimpleNounPhrase_3rd_Sng_DirObj
+	1   GerundPhrase_Transitive                        Gerund_Transitive SimpleNounPhrase_3rd_Plr_DirObj
 
 	#Less Naive Noun Phrase
 	#Nouns can be modified with adjectives in this less naive version
@@ -546,12 +513,12 @@
 	1   NounPhraseSmart_3rd_Plr_IndObj       Noun+Prep_3rd_Plr
 
 	#"The carrot of doom" - Noun+Prep is what is responsible for the "of doom" part.
-	1   Noun+Prep_1st_Sng                   Noun_1st_Sng of_1st_Sng+
-	1   Noun+Prep_1st_Plr                   Noun_1st_Plr of_1st_Plr+
-	1   Noun+Prep_2nd_Sng                   Noun_2nd_Sng of_2nd_Sng+
-	1   Noun+Prep_2nd_Plr                   Noun_2nd_Plr of_2nd_Plr+
-	1   Noun+Prep_3rd_Sng                   Noun_3rd_Sng of_3rd_Sng+
-	1   Noun+Prep_3rd_Plr                   Noun_3rd_Plr of_3rd_Plr+
+	1   Noun+Prep_1st_Sng                   Noun_1st_Sng wrap_of SimpleNounPhrase_1st_Sng_IndObj
+	1   Noun+Prep_1st_Plr                   Noun_1st_Plr wrap_of SimpleNounPhrase_1st_Plr_IndObj
+	1   Noun+Prep_2nd_Sng                   Noun_2nd_Sng wrap_of SimpleNounPhrase_2nd_Sng_IndObj
+	1   Noun+Prep_2nd_Plr                   Noun_2nd_Plr wrap_of SimpleNounPhrase_2nd_Plr_IndObj
+	1   Noun+Prep_3rd_Sng                   Noun_3rd_Sng wrap_of SimpleNounPhrase_3rd_Sng_IndObj
+	1   Noun+Prep_3rd_Plr                   Noun_3rd_Plr wrap_of SimpleNounPhrase_3rd_Plr_IndObj
 
 
 	#Noun modifiers go in front of a noun (but before the determiner)
