@@ -26,6 +26,7 @@ elif sys.argv[1] == "compile":
 	call(["python","toCNF.py","contextExpanderOutput.txt"])
 elif sys.argv[1] == "getUnknown":
 	#Returns a list of all unknown things
+	#Doesn't actually need to be stored in out (in fact out is NOT what we want, out is everything but what we want XD)
 	out = getCheckOutput("innerWorkings/example_sentences.txt")
 elif sys.argv[1] == "niceParseTree":
 	if len(sys.argv) == 3:
