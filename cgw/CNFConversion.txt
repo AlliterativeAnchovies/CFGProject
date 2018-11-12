@@ -835,27 +835,27 @@
 	1   NounPhraseSmart_3rd_Plr_Subj       Noun_3rd_Plr
 	1   NounPhraseSmart_3rd_Plr_DirObj       Noun_3rd_Plr
 	1   NounPhraseSmart_3rd_Plr_IndObj       Noun_3rd_Plr
-	1   NounPhraseSmart_3rd_Sng_Subj       NounModifier Noun+Prep_3rd_Sng
-	1   NounPhraseSmart_3rd_Sng_DirObj       NounModifier Noun+Prep_3rd_Sng
-	1   NounPhraseSmart_3rd_Sng_IndObj       NounModifier Noun+Prep_3rd_Sng
-	1   NounPhraseSmart_3rd_Plr_Subj       NounModifier Noun+Prep_3rd_Plr
-	1   NounPhraseSmart_3rd_Plr_DirObj       NounModifier Noun+Prep_3rd_Plr
-	1   NounPhraseSmart_3rd_Plr_IndObj       NounModifier Noun+Prep_3rd_Plr
-	1   NounPhraseSmart_3rd_Sng_Subj       Noun+Prep_3rd_Sng
-	1   NounPhraseSmart_3rd_Sng_DirObj       Noun+Prep_3rd_Sng
-	1   NounPhraseSmart_3rd_Sng_IndObj       Noun+Prep_3rd_Sng
-	1   NounPhraseSmart_3rd_Plr_Subj       Noun+Prep_3rd_Plr
-	1   NounPhraseSmart_3rd_Plr_DirObj       Noun+Prep_3rd_Plr
-	1   NounPhraseSmart_3rd_Plr_IndObj       Noun+Prep_3rd_Plr
+	1   NounPhraseSmart_3rd_Sng_Subj       NounModifier NounPlusPrep_3rd_Sng
+	1   NounPhraseSmart_3rd_Sng_DirObj       NounModifier NounPlusPrep_3rd_Sng
+	1   NounPhraseSmart_3rd_Sng_IndObj       NounModifier NounPlusPrep_3rd_Sng
+	1   NounPhraseSmart_3rd_Plr_Subj       NounModifier NounPlusPrep_3rd_Plr
+	1   NounPhraseSmart_3rd_Plr_DirObj       NounModifier NounPlusPrep_3rd_Plr
+	1   NounPhraseSmart_3rd_Plr_IndObj       NounModifier NounPlusPrep_3rd_Plr
+	1   NounPhraseSmart_3rd_Sng_Subj       NounPlusPrep_3rd_Sng
+	1   NounPhraseSmart_3rd_Sng_DirObj       NounPlusPrep_3rd_Sng
+	1   NounPhraseSmart_3rd_Sng_IndObj       NounPlusPrep_3rd_Sng
+	1   NounPhraseSmart_3rd_Plr_Subj       NounPlusPrep_3rd_Plr
+	1   NounPhraseSmart_3rd_Plr_DirObj       NounPlusPrep_3rd_Plr
+	1   NounPhraseSmart_3rd_Plr_IndObj       NounPlusPrep_3rd_Plr
 
-	#"The carrot of doom" - Noun+Prep is what is responsible for the "of doom" part.
+	#"The carrot of doom" - NounPlusPrep is what is responsible for the "of doom" part.
 1 wrap_of|SimpleNounPhrase_1st_Sng_IndObj wrap_of SimpleNounPhrase_1st_Sng_IndObj
 1 wrap_of|SimpleNounPhrase_1st_Plr_IndObj wrap_of SimpleNounPhrase_1st_Plr_IndObj
 1 wrap_of|SimpleNounPhrase_2nd_Sng_IndObj wrap_of SimpleNounPhrase_2nd_Sng_IndObj
 1 wrap_of|SimpleNounPhrase_2nd_Plr_IndObj wrap_of SimpleNounPhrase_2nd_Plr_IndObj
-1 Noun+Prep_3rd_Sng Noun_3rd_Sng wrap_of|SimpleNounPhrase_3rd_Sng_IndObj
+1 NounPlusPrep_3rd_Sng Noun_3rd_Sng wrap_of|SimpleNounPhrase_3rd_Sng_IndObj
 1 wrap_of|SimpleNounPhrase_3rd_Sng_IndObj wrap_of SimpleNounPhrase_3rd_Sng_IndObj
-1 Noun+Prep_3rd_Plr Noun_3rd_Plr wrap_of|SimpleNounPhrase_3rd_Plr_IndObj
+1 NounPlusPrep_3rd_Plr Noun_3rd_Plr wrap_of|SimpleNounPhrase_3rd_Plr_IndObj
 1 wrap_of|SimpleNounPhrase_3rd_Plr_IndObj wrap_of SimpleNounPhrase_3rd_Plr_IndObj
 
 

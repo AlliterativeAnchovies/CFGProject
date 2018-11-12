@@ -708,50 +708,50 @@
 	1   NounPhraseSmart_3rd_Plr_Subj       Noun_3rd_Plr
 	1   NounPhraseSmart_3rd_Plr_DirObj       Noun_3rd_Plr
 	1   NounPhraseSmart_3rd_Plr_IndObj       Noun_3rd_Plr
-	1   NounPhraseSmart_1st_Sng_Subj       NounModifier Noun+Prep_1st_Sng
-	1   NounPhraseSmart_1st_Sng_DirObj       NounModifier Noun+Prep_1st_Sng
-	1   NounPhraseSmart_1st_Sng_IndObj       NounModifier Noun+Prep_1st_Sng
-	1   NounPhraseSmart_1st_Plr_Subj       NounModifier Noun+Prep_1st_Plr
-	1   NounPhraseSmart_1st_Plr_DirObj       NounModifier Noun+Prep_1st_Plr
-	1   NounPhraseSmart_1st_Plr_IndObj       NounModifier Noun+Prep_1st_Plr
-	1   NounPhraseSmart_2nd_Sng_Subj       NounModifier Noun+Prep_2nd_Sng
-	1   NounPhraseSmart_2nd_Sng_DirObj       NounModifier Noun+Prep_2nd_Sng
-	1   NounPhraseSmart_2nd_Sng_IndObj       NounModifier Noun+Prep_2nd_Sng
-	1   NounPhraseSmart_2nd_Plr_Subj       NounModifier Noun+Prep_2nd_Plr
-	1   NounPhraseSmart_2nd_Plr_DirObj       NounModifier Noun+Prep_2nd_Plr
-	1   NounPhraseSmart_2nd_Plr_IndObj       NounModifier Noun+Prep_2nd_Plr
-	1   NounPhraseSmart_3rd_Sng_Subj       NounModifier Noun+Prep_3rd_Sng
-	1   NounPhraseSmart_3rd_Sng_DirObj       NounModifier Noun+Prep_3rd_Sng
-	1   NounPhraseSmart_3rd_Sng_IndObj       NounModifier Noun+Prep_3rd_Sng
-	1   NounPhraseSmart_3rd_Plr_Subj       NounModifier Noun+Prep_3rd_Plr
-	1   NounPhraseSmart_3rd_Plr_DirObj       NounModifier Noun+Prep_3rd_Plr
-	1   NounPhraseSmart_3rd_Plr_IndObj       NounModifier Noun+Prep_3rd_Plr
-	1   NounPhraseSmart_1st_Sng_Subj       Noun+Prep_1st_Sng
-	1   NounPhraseSmart_1st_Sng_DirObj       Noun+Prep_1st_Sng
-	1   NounPhraseSmart_1st_Sng_IndObj       Noun+Prep_1st_Sng
-	1   NounPhraseSmart_1st_Plr_Subj       Noun+Prep_1st_Plr
-	1   NounPhraseSmart_1st_Plr_DirObj       Noun+Prep_1st_Plr
-	1   NounPhraseSmart_1st_Plr_IndObj       Noun+Prep_1st_Plr
-	1   NounPhraseSmart_2nd_Sng_Subj       Noun+Prep_2nd_Sng
-	1   NounPhraseSmart_2nd_Sng_DirObj       Noun+Prep_2nd_Sng
-	1   NounPhraseSmart_2nd_Sng_IndObj       Noun+Prep_2nd_Sng
-	1   NounPhraseSmart_2nd_Plr_Subj       Noun+Prep_2nd_Plr
-	1   NounPhraseSmart_2nd_Plr_DirObj       Noun+Prep_2nd_Plr
-	1   NounPhraseSmart_2nd_Plr_IndObj       Noun+Prep_2nd_Plr
-	1   NounPhraseSmart_3rd_Sng_Subj       Noun+Prep_3rd_Sng
-	1   NounPhraseSmart_3rd_Sng_DirObj       Noun+Prep_3rd_Sng
-	1   NounPhraseSmart_3rd_Sng_IndObj       Noun+Prep_3rd_Sng
-	1   NounPhraseSmart_3rd_Plr_Subj       Noun+Prep_3rd_Plr
-	1   NounPhraseSmart_3rd_Plr_DirObj       Noun+Prep_3rd_Plr
-	1   NounPhraseSmart_3rd_Plr_IndObj       Noun+Prep_3rd_Plr
+	1   NounPhraseSmart_1st_Sng_Subj       NounModifier NounPlusPrep_1st_Sng
+	1   NounPhraseSmart_1st_Sng_DirObj       NounModifier NounPlusPrep_1st_Sng
+	1   NounPhraseSmart_1st_Sng_IndObj       NounModifier NounPlusPrep_1st_Sng
+	1   NounPhraseSmart_1st_Plr_Subj       NounModifier NounPlusPrep_1st_Plr
+	1   NounPhraseSmart_1st_Plr_DirObj       NounModifier NounPlusPrep_1st_Plr
+	1   NounPhraseSmart_1st_Plr_IndObj       NounModifier NounPlusPrep_1st_Plr
+	1   NounPhraseSmart_2nd_Sng_Subj       NounModifier NounPlusPrep_2nd_Sng
+	1   NounPhraseSmart_2nd_Sng_DirObj       NounModifier NounPlusPrep_2nd_Sng
+	1   NounPhraseSmart_2nd_Sng_IndObj       NounModifier NounPlusPrep_2nd_Sng
+	1   NounPhraseSmart_2nd_Plr_Subj       NounModifier NounPlusPrep_2nd_Plr
+	1   NounPhraseSmart_2nd_Plr_DirObj       NounModifier NounPlusPrep_2nd_Plr
+	1   NounPhraseSmart_2nd_Plr_IndObj       NounModifier NounPlusPrep_2nd_Plr
+	1   NounPhraseSmart_3rd_Sng_Subj       NounModifier NounPlusPrep_3rd_Sng
+	1   NounPhraseSmart_3rd_Sng_DirObj       NounModifier NounPlusPrep_3rd_Sng
+	1   NounPhraseSmart_3rd_Sng_IndObj       NounModifier NounPlusPrep_3rd_Sng
+	1   NounPhraseSmart_3rd_Plr_Subj       NounModifier NounPlusPrep_3rd_Plr
+	1   NounPhraseSmart_3rd_Plr_DirObj       NounModifier NounPlusPrep_3rd_Plr
+	1   NounPhraseSmart_3rd_Plr_IndObj       NounModifier NounPlusPrep_3rd_Plr
+	1   NounPhraseSmart_1st_Sng_Subj       NounPlusPrep_1st_Sng
+	1   NounPhraseSmart_1st_Sng_DirObj       NounPlusPrep_1st_Sng
+	1   NounPhraseSmart_1st_Sng_IndObj       NounPlusPrep_1st_Sng
+	1   NounPhraseSmart_1st_Plr_Subj       NounPlusPrep_1st_Plr
+	1   NounPhraseSmart_1st_Plr_DirObj       NounPlusPrep_1st_Plr
+	1   NounPhraseSmart_1st_Plr_IndObj       NounPlusPrep_1st_Plr
+	1   NounPhraseSmart_2nd_Sng_Subj       NounPlusPrep_2nd_Sng
+	1   NounPhraseSmart_2nd_Sng_DirObj       NounPlusPrep_2nd_Sng
+	1   NounPhraseSmart_2nd_Sng_IndObj       NounPlusPrep_2nd_Sng
+	1   NounPhraseSmart_2nd_Plr_Subj       NounPlusPrep_2nd_Plr
+	1   NounPhraseSmart_2nd_Plr_DirObj       NounPlusPrep_2nd_Plr
+	1   NounPhraseSmart_2nd_Plr_IndObj       NounPlusPrep_2nd_Plr
+	1   NounPhraseSmart_3rd_Sng_Subj       NounPlusPrep_3rd_Sng
+	1   NounPhraseSmart_3rd_Sng_DirObj       NounPlusPrep_3rd_Sng
+	1   NounPhraseSmart_3rd_Sng_IndObj       NounPlusPrep_3rd_Sng
+	1   NounPhraseSmart_3rd_Plr_Subj       NounPlusPrep_3rd_Plr
+	1   NounPhraseSmart_3rd_Plr_DirObj       NounPlusPrep_3rd_Plr
+	1   NounPhraseSmart_3rd_Plr_IndObj       NounPlusPrep_3rd_Plr
 
-	#"The carrot of doom" - Noun+Prep is what is responsible for the "of doom" part.
-	1   Noun+Prep_1st_Sng                   Noun_1st_Sng wrap_of SimpleNounPhrase_1st_Sng_IndObj
-	1   Noun+Prep_1st_Plr                   Noun_1st_Plr wrap_of SimpleNounPhrase_1st_Plr_IndObj
-	1   Noun+Prep_2nd_Sng                   Noun_2nd_Sng wrap_of SimpleNounPhrase_2nd_Sng_IndObj
-	1   Noun+Prep_2nd_Plr                   Noun_2nd_Plr wrap_of SimpleNounPhrase_2nd_Plr_IndObj
-	1   Noun+Prep_3rd_Sng                   Noun_3rd_Sng wrap_of SimpleNounPhrase_3rd_Sng_IndObj
-	1   Noun+Prep_3rd_Plr                   Noun_3rd_Plr wrap_of SimpleNounPhrase_3rd_Plr_IndObj
+	#"The carrot of doom" - NounPlusPrep is what is responsible for the "of doom" part.
+	1   NounPlusPrep_1st_Sng                   Noun_1st_Sng wrap_of SimpleNounPhrase_1st_Sng_IndObj
+	1   NounPlusPrep_1st_Plr                   Noun_1st_Plr wrap_of SimpleNounPhrase_1st_Plr_IndObj
+	1   NounPlusPrep_2nd_Sng                   Noun_2nd_Sng wrap_of SimpleNounPhrase_2nd_Sng_IndObj
+	1   NounPlusPrep_2nd_Plr                   Noun_2nd_Plr wrap_of SimpleNounPhrase_2nd_Plr_IndObj
+	1   NounPlusPrep_3rd_Sng                   Noun_3rd_Sng wrap_of SimpleNounPhrase_3rd_Sng_IndObj
+	1   NounPlusPrep_3rd_Plr                   Noun_3rd_Plr wrap_of SimpleNounPhrase_3rd_Plr_IndObj
 
 
 	#Noun modifiers go in front of a noun (but before the determiner)

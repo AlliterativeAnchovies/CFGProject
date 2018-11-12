@@ -298,11 +298,11 @@
 	#Nouns can be modified with adjectives in this less naive version
 	1   NounPhraseSmart{person}{plurality}{role}       NounModifier Noun{person}{plurality}
 	1   NounPhraseSmart{person}{plurality}{role}       Noun{person}{plurality}
-	1   NounPhraseSmart{person}{plurality}{role}       NounModifier Noun+Prep{person}{plurality}
-	1   NounPhraseSmart{person}{plurality}{role}       Noun+Prep{person}{plurality}
+	1   NounPhraseSmart{person}{plurality}{role}       NounModifier NounPlusPrep{person}{plurality}
+	1   NounPhraseSmart{person}{plurality}{role}       NounPlusPrep{person}{plurality}
 
-	#"The carrot of doom" - Noun+Prep is what is responsible for the "of doom" part.
-	1   Noun+Prep{person}{plurality}                   Noun{person}{plurality} wrap_of SimpleNounPhrase{person}{plurality}_IndObj
+	#"The carrot of doom" - NounPlusPrep is what is responsible for the "of doom" part.
+	1   NounPlusPrep{person}{plurality}                   Noun{person}{plurality} wrap_of SimpleNounPhrase{person}{plurality}_IndObj
 
 
 	#Noun modifiers go in front of a noun (but before the determiner)
