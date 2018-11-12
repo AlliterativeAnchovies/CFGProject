@@ -21,8 +21,8 @@ if (len(sys.argv) == 2):
 		
 		if len(split) > 4 and split[0].isdigit():		# This is a rule that's too big
 			for i, val in enumerate(split[2:-1]):		# Loop over the parts of it that are too big
-				nextRuleName = "∂".join(split[(i+3):])
-				ruleName = split[1] if i == 0 else "∂".join(split[(i+2):])
+				nextRuleName = "|".join(split[(i+3):])
+				ruleName = split[1] if i == 0 else "|".join(split[(i+2):])
 				output.append(split[0] + " " + ruleName + " " + val + " " + nextRuleName + "\n") 
 		else:
 			output.append(line)

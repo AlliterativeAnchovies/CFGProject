@@ -68,8 +68,9 @@ def treeToHorizontal(inTree):
 	toReturn = [ [inTree] ]
 	#theLambda = lambda x : filter(None,x.children)
 	while True:
-		nextLayer = filter(None, compressList( map(lambda x:x.children,toReturn[-1]) ))
-		if len(nextLayer)==0: break #No more children to add
+		nextLayer = compressList( map(lambda x: [None] if len(x.children)==0 else x.children,filter(None,toReturn[-1])) )
+		#filter(None, compressList( map(lambda x:x.children,toReturn[-1]) )) #^^^
+		if len(filter(None,nextLayer))==0: break #No more children to add
 		else: toReturn.append(nextLayer)
 	return toReturn
 
@@ -77,12 +78,16 @@ def treeToHorizontal(inTree):
 def printTree(inTree):
 	if inTree == None: return
 	horiz = treeToHorizontal(inTree)
-	maxSize = max(map(lambda x : len(x.value),compressList(horiz)))+5
+	maxSize = max(map(lambda x : len(x.value) if x is not None else 0,compressList(horiz)))+5
 	for h in horiz:
 		toPrint = ""
 		prevT = None #we'll link children of the same parents with dots instead of parents to emphasize relations.
 		curSpaces = 0
 		for t in h:
+			if t is None:
+				#print("YOWZA")
+				toPrint = toPrint + nSpaces(maxSize,False)
+				continue
 			useDots = prevT is not None and t.parent==prevT.parent
 			startingSpaces = maxSize - len(t.value)
 			toPrint = toPrint + nSpaces(startingSpaces,useDots) + t.value
