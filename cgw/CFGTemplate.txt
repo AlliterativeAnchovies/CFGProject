@@ -245,8 +245,8 @@
 	1   SimpleNounPhrase                               SimpleNounPhrase{role}
 
 	#Entering Noun Phrase
-	1   NounPhrase_3rd{plurality}{role}                Determiner_3rd{plurality} NounPhraseSmart_3rd{plurality}{role}
-	1   NounPhrase{person}{plurality}{role}            SimpleNounPhrase{person}{plurality}{role}
+	50   NounPhrase_3rd{plurality}{role}                Determiner_3rd{plurality} NounPhraseSmart_3rd{plurality}{role}
+	50   NounPhrase{person}{plurality}{role}            SimpleNounPhrase{person}{plurality}{role}
 
 	#Naive Noun Phrase - either [Determiner Noun] or [Pronoun] or [Proper Noun]
 	1   SimpleNounPhrase{person}{plurality}{role}      Determiner{person}{plurality}              Noun{person}{plurality}
@@ -286,8 +286,8 @@
 	#"He likes running", "He hates running", etc.  This is worth looking into, however I bet that every time -ing can be used
 	#in this context, we could use the infinitive instead - "He likes to run", "He hates to run".  So it would probably be best to handle
 	#that by having infinitives have a chance to evaluate to a gerund instead.
-	1   NounPhrase_3rd_Sng_Subj                        Adv_cmadj GerundPhrase
-	1   NounPhrase_3rd_Sng_Subj                        GerundPhrase
+	50   NounPhrase_3rd_Sng_Subj                        Adv_cmadj GerundPhrase
+	50   NounPhrase_3rd_Sng_Subj                        GerundPhrase
 	1   GerundPhrase                                   GerundPhrase{transitivity}
 	1   GerundPhrase{transitivity}                     Gerund{transitivity}
 	1   GerundPhrase{transitivity}                     Gerund_to{transitivity} wrap_to SimpleNounPhrase{person}{plurality}_IndObj

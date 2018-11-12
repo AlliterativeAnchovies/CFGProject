@@ -514,29 +514,29 @@
 	1   SimpleNounPhrase                               SimpleNounPhrase_IndObj
 
 	#Entering Noun Phrase
-	1   NounPhrase_3rd_Sng_Subj                Determiner_3rd_Sng NounPhraseSmart_3rd_Sng_Subj
-	1   NounPhrase_3rd_Sng_DirObj                Determiner_3rd_Sng NounPhraseSmart_3rd_Sng_DirObj
-	1   NounPhrase_3rd_Sng_IndObj                Determiner_3rd_Sng NounPhraseSmart_3rd_Sng_IndObj
-	1   NounPhrase_3rd_Plr_Subj                Determiner_3rd_Plr NounPhraseSmart_3rd_Plr_Subj
-	1   NounPhrase_3rd_Plr_DirObj                Determiner_3rd_Plr NounPhraseSmart_3rd_Plr_DirObj
-	1   NounPhrase_3rd_Plr_IndObj                Determiner_3rd_Plr NounPhraseSmart_3rd_Plr_IndObj
-	1   NounPhrase_1st_Sng_Subj            SimpleNounPhrase_1st_Sng_Subj
-	1   NounPhrase_1st_Sng_DirObj            SimpleNounPhrase_1st_Sng_DirObj
-	1   NounPhrase_1st_Sng_IndObj            SimpleNounPhrase_1st_Sng_IndObj
-	1   NounPhrase_1st_Plr_Subj            SimpleNounPhrase_1st_Plr_Subj
-	1   NounPhrase_1st_Plr_IndObj            SimpleNounPhrase_1st_Plr_IndObj
-	1   NounPhrase_2nd_Sng_Subj            SimpleNounPhrase_2nd_Sng_Subj
-	1   NounPhrase_2nd_Sng_DirObj            SimpleNounPhrase_2nd_Sng_DirObj
-	1   NounPhrase_2nd_Sng_IndObj            SimpleNounPhrase_2nd_Sng_IndObj
-	1   NounPhrase_2nd_Plr_Subj            SimpleNounPhrase_2nd_Plr_Subj
-	1   NounPhrase_2nd_Plr_DirObj            SimpleNounPhrase_2nd_Plr_DirObj
-	1   NounPhrase_2nd_Plr_IndObj            SimpleNounPhrase_2nd_Plr_IndObj
-	1   NounPhrase_3rd_Sng_Subj            SimpleNounPhrase_3rd_Sng_Subj
-	1   NounPhrase_3rd_Sng_DirObj            SimpleNounPhrase_3rd_Sng_DirObj
-	1   NounPhrase_3rd_Sng_IndObj            SimpleNounPhrase_3rd_Sng_IndObj
-	1   NounPhrase_3rd_Plr_Subj            SimpleNounPhrase_3rd_Plr_Subj
-	1   NounPhrase_3rd_Plr_DirObj            SimpleNounPhrase_3rd_Plr_DirObj
-	1   NounPhrase_3rd_Plr_IndObj            SimpleNounPhrase_3rd_Plr_IndObj
+	50   NounPhrase_3rd_Sng_Subj                Determiner_3rd_Sng NounPhraseSmart_3rd_Sng_Subj
+	50   NounPhrase_3rd_Sng_DirObj                Determiner_3rd_Sng NounPhraseSmart_3rd_Sng_DirObj
+	50   NounPhrase_3rd_Sng_IndObj                Determiner_3rd_Sng NounPhraseSmart_3rd_Sng_IndObj
+	50   NounPhrase_3rd_Plr_Subj                Determiner_3rd_Plr NounPhraseSmart_3rd_Plr_Subj
+	50   NounPhrase_3rd_Plr_DirObj                Determiner_3rd_Plr NounPhraseSmart_3rd_Plr_DirObj
+	50   NounPhrase_3rd_Plr_IndObj                Determiner_3rd_Plr NounPhraseSmart_3rd_Plr_IndObj
+	50   NounPhrase_1st_Sng_Subj            SimpleNounPhrase_1st_Sng_Subj
+	50   NounPhrase_1st_Sng_DirObj            SimpleNounPhrase_1st_Sng_DirObj
+	50   NounPhrase_1st_Sng_IndObj            SimpleNounPhrase_1st_Sng_IndObj
+	50   NounPhrase_1st_Plr_Subj            SimpleNounPhrase_1st_Plr_Subj
+	50   NounPhrase_1st_Plr_IndObj            SimpleNounPhrase_1st_Plr_IndObj
+	50   NounPhrase_2nd_Sng_Subj            SimpleNounPhrase_2nd_Sng_Subj
+	50   NounPhrase_2nd_Sng_DirObj            SimpleNounPhrase_2nd_Sng_DirObj
+	50   NounPhrase_2nd_Sng_IndObj            SimpleNounPhrase_2nd_Sng_IndObj
+	50   NounPhrase_2nd_Plr_Subj            SimpleNounPhrase_2nd_Plr_Subj
+	50   NounPhrase_2nd_Plr_DirObj            SimpleNounPhrase_2nd_Plr_DirObj
+	50   NounPhrase_2nd_Plr_IndObj            SimpleNounPhrase_2nd_Plr_IndObj
+	50   NounPhrase_3rd_Sng_Subj            SimpleNounPhrase_3rd_Sng_Subj
+	50   NounPhrase_3rd_Sng_DirObj            SimpleNounPhrase_3rd_Sng_DirObj
+	50   NounPhrase_3rd_Sng_IndObj            SimpleNounPhrase_3rd_Sng_IndObj
+	50   NounPhrase_3rd_Plr_Subj            SimpleNounPhrase_3rd_Plr_Subj
+	50   NounPhrase_3rd_Plr_DirObj            SimpleNounPhrase_3rd_Plr_DirObj
+	50   NounPhrase_3rd_Plr_IndObj            SimpleNounPhrase_3rd_Plr_IndObj
 
 	#Naive Noun Phrase - either [Determiner Noun] or [Pronoun] or [Proper Noun]
 	1   SimpleNounPhrase_1st_Sng_DirObj      Determiner_1st_Sng              Noun_1st_Sng
@@ -749,8 +749,8 @@
 	#"He likes running", "He hates running", etc.  This is worth looking into, however I bet that every time -ing can be used
 	#in this context, we could use the infinitive instead - "He likes to run", "He hates to run".  So it would probably be best to handle
 	#that by having infinitives have a chance to evaluate to a gerund instead.
-	1   NounPhrase_3rd_Sng_Subj                        Adv_cmadj GerundPhrase
-	1   NounPhrase_3rd_Sng_Subj                        GerundPhrase
+	50   NounPhrase_3rd_Sng_Subj                        Adv_cmadj GerundPhrase
+	50   NounPhrase_3rd_Sng_Subj                        GerundPhrase
 	1   GerundPhrase                                   GerundPhrase_Transitive
 	1   GerundPhrase                                   GerundPhrase_Intransitive
 	1   GerundPhrase_Transitive                     Gerund_Transitive
