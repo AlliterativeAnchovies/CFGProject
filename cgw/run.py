@@ -68,7 +68,7 @@ def treeToHorizontal(inTree):
 	toReturn = [ [inTree] ]
 	#theLambda = lambda x : filter(None,x.children)
 	while True:
-		nextLayer = compressList( map(lambda x: [None] if len(x.children)==0 else x.children,filter(None,toReturn[-1])) )
+		nextLayer = compressList( map(lambda x: [None] if x is None or len(x.children)==0 else x.children,toReturn[-1]) )
 		#filter(None, compressList( map(lambda x:x.children,toReturn[-1]) )) #^^^
 		if len(filter(None,nextLayer))==0: break #No more children to add
 		else: toReturn.append(nextLayer)
@@ -93,6 +93,10 @@ def printTree(inTree):
 			toPrint = toPrint + nSpaces(startingSpaces,useDots) + t.value
 			prevT = t
 		print(toPrint)
+	print("$$$$$ IF IT LOOKS WEIRD, TRY THE FOLLOWING COMMAND: ")
+	print("$$$$$ python run.py niceParseTree \"your string\" | less -S")
+	print("$$$$$ This pipes the output into a scrolleable interface.")
+	print("$$$$$ TO QUIT THE INTERFACE, TYPE ':q' - it is like vim.")
 
 class Tree(object):
 	def __init__(self,val):
