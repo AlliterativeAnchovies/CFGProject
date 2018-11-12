@@ -1,9 +1,107 @@
-#python pcfg_parse_gen.py -o 20 -g S1.gr,Vocab.gr
+# -*- coding: utf-8 -*-
 from subprocess import call
 from subprocess import check_output, CalledProcessError
 import sys
+import re
 
 checkCommand = "python "+"innerWorkings/pcfg_parse_gen.py "+"-i "+"-g "+'"innerWorkings/*.gr" < '#'innerWorkings/example_sentences.txt'
+
+def createTreeFromOutputPrint(out):
+	#print ("Enter: "+out)
+	input = out.strip()
+	foundParen = False
+	if input[0] == "(":
+		foundParen = True
+		input = input[1:]
+	if len(input) > 0 and input[-1] == ")":
+		foundParen = True
+		input = input[:-1]
+	if not foundParen:
+		#print ("Exit")
+		return Tree(input)
+	inputs = splitInputAtSpaceNotWithinParenthesis(input)
+	if len(inputs) == 0: return None
+	toReturn = Tree(inputs[0])
+	for a in inputs[1:]:
+		toAdd = createTreeFromOutputPrint(a)
+		toReturn.addChild(toAdd)
+	#print("Exit")
+	return toReturn
+
+def splitInputAtSpaceNotWithinParenthesis(input):
+	toReturn = []
+	curString = ""
+	parenCount = 0
+	for a in input:
+		curString += a
+		if a == "(": parenCount+=1
+		elif a == ")": parenCount-=1
+		elif a.isspace():
+			if parenCount == 0:
+				curString = curString.strip()
+				if len(curString) > 0:
+					toReturn.append(curString)
+					curString = ""
+	return toReturn
+
+def countSize(inTree):
+	if inTree == None: return 0
+	if len(inTree.children) == 0:
+		toReturn = len(inTree.value) + 1
+		inTree.size = toReturn
+		return toReturn
+	else:
+		toReturn = max(len(inTree.value), sum( map(countSize,inTree.children)  ) )
+		inTree.size = toReturn
+		return toReturn
+
+def nSpaces(n,dots=False):
+	toReturn = ""
+	for a in range(n):
+		toReturn = toReturn + ("≈" if dots else " ")
+	return toReturn
+
+def compressList(l):
+	return [item for sublist in l for item in sublist] #this apparently turns [[a],[b,c]] -> [a,b,c]
+
+def treeToHorizontal(inTree):
+	toReturn = [ [inTree] ]
+	#theLambda = lambda x : filter(None,x.children)
+	while True:
+		nextLayer = filter(None, compressList( map(lambda x:x.children,toReturn[-1]) ))
+		if len(nextLayer)==0: break #No more children to add
+		else: toReturn.append(nextLayer)
+	return toReturn
+
+
+def printTree(inTree):
+	if inTree == None: return
+	horiz = treeToHorizontal(inTree)
+	maxSize = max(map(lambda x : len(x.value),compressList(horiz)))+5
+	for h in horiz:
+		toPrint = ""
+		prevT = None #we'll link children of the same parents with dots instead of parents to emphasize relations.
+		curSpaces = 0
+		for t in h:
+			useDots = prevT is not None and t.parent==prevT.parent
+			startingSpaces = maxSize - len(t.value)
+			toPrint = toPrint + nSpaces(startingSpaces,useDots) + t.value
+			prevT = t
+		print(toPrint)
+
+class Tree(object):
+	def __init__(self,val):
+		self.value = val
+		self.children = []
+		self.size = 0
+		self.parent = None
+
+	def addChild(self,val):
+		self.children.append(val)
+		if val is not None:
+			val.parent = self
+
+
 
 def getCheckOutput(input = 'innerWorkings/stringWrapper.txt'):
 	#For some reason, check_output does not capture all outputs.  In particular, it does not capture the "#No Parses Found For..." suff.
@@ -49,13 +147,11 @@ elif sys.argv[1] == "niceParseTree":
 			fout.close()
 			out = getCheckOutput("innerWorkings/stringWrapper.txt")[0]
 		print("^^^ I can't stop the above output from running, sorry. ^^^")
-		#Harry, 'out' contains exactly one string of an ugly parse tree.  This is a good starting point for you if you want.
-		#Run "python run.py niceParseTree "Arthur speaks." in your console to see what is currently outputted.  Believe it
-		#or not, that ungodly mess is the parse tree for that simple sentence.  A really simple example of the format would be:
-		# (TOP (NP Arthur) (END (VP speaks) (PUNCTUATION .)))
-		#If the rules were TOP -> NP END, NP -> Arthur, END -> VP PUNCTUATION, VP -> speaks, PUNCTUATION -> .
-		#I hope that makes sense!
-		print(out)
+		out = out.replace("("," ( ").replace(")"," ) ")
+		treeForm = createTreeFromOutputPrint(out)
+		countSize(treeForm)
+		printTree(treeForm)
+
 	else:
 		print("Please supply an argument, either as an index into the array of example sentences, or the example sentence itself.")
 		print("Example: 'python run.py niceParseTree 1' will print a nice parse tree for the example sentence at index 1.")

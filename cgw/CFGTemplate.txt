@@ -3,7 +3,7 @@
 	<wordlist1 is of to the does do what who whose how when where why>
 	<wordlist2 that so either neither or nor are at have has than am>
 	<wordlist3 be ought with which speak speaks was were by been and>
-	<wordlist4 from because not for>
+	<wordlist4 from because not for if>
 	<questionWords where when why how>
 	<qwt who what>
 
