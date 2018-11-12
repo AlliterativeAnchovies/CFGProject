@@ -28,7 +28,7 @@ if (len(sys.argv) == 2):
 			output.append(line)
 			
 	
-	disallowedMatches = ["FromTakersPP_1st_Sng_Transitive", "Noun_2nd_Plr", "Possessive_1st_Plr", "Noun_1st_Plr", "Noun_2nd_Sng", "Pronoun_1st_Plr_IndObj", "Noun_1st_Sng", "Determiner_1st_Plr", "FromTakersContinuous_Intransitive", "time_Sng"]
+	disallowedMatches = ["FromTakersPP_1st_Sng_Transitive", "Noun_2nd_Plr", "Possessive_1st_Plr", "Noun_1st_Plr", "Noun_2nd_Sng", "Pronoun_1st_Plr_IndObj", "Noun_1st_Sng", "Determiner_1st_Plr", "FromTakersContinuous_Intransitive", "time_Sng","FromTakers_1st_Sng_Intransitive","Noun_2nd_Plr","FromTakersContinuous_Transitive","FromTakers_3rd_Plr_Intransitive","Pronoun_1st_Plr_DirObj","FromTakers_2nd_Plr_Transitive","Noun_2nd_Sng","FromTakers_2nd_Plr_Intransitive","FromTakers_1st_Plr_Intransitive","FromTakers_1st_Sng_Transitive","FromTakers_1st_Plr_Transitive"]
 			
 	disallowedRemoved = 0
 	lhsRemoved = set([])
