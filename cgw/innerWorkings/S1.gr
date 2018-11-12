@@ -464,7 +464,6 @@
 	1   NounPhrase_1st_Sng                  NounPhrase_1st_Sng_IndObj
 	1   NounPhrase_1st_Plr                  NounPhrase_1st_Plr_Subj
 	1   NounPhrase_1st_Plr                  NounPhrase_1st_Plr_DirObj
-	1   NounPhrase_1st_Plr                  NounPhrase_1st_Plr_IndObj
 	1   NounPhrase_2nd_Sng                  NounPhrase_2nd_Sng_Subj
 	1   NounPhrase_2nd_Sng                  NounPhrase_2nd_Sng_DirObj
 	1   NounPhrase_2nd_Sng                  NounPhrase_2nd_Sng_IndObj
@@ -482,7 +481,6 @@
 	1   NounPhrase_IndObj                               NounPhrase_1st_Sng_IndObj
 	1   NounPhrase_Subj                               NounPhrase_1st_Plr_Subj
 	1   NounPhrase_DirObj                               NounPhrase_1st_Plr_DirObj
-	1   NounPhrase_IndObj                               NounPhrase_1st_Plr_IndObj
 	1   NounPhrase_Subj                               NounPhrase_2nd_Sng_Subj
 	1   NounPhrase_DirObj                               NounPhrase_2nd_Sng_DirObj
 	1   NounPhrase_IndObj                               NounPhrase_2nd_Sng_IndObj
@@ -500,7 +498,6 @@
 	1   SimpleNounPhrase_IndObj                         SimpleNounPhrase_1st_Sng_IndObj
 	1   SimpleNounPhrase_Subj                         SimpleNounPhrase_1st_Plr_Subj
 	1   SimpleNounPhrase_DirObj                         SimpleNounPhrase_1st_Plr_DirObj
-	1   SimpleNounPhrase_IndObj                         SimpleNounPhrase_1st_Plr_IndObj
 	1   SimpleNounPhrase_Subj                         SimpleNounPhrase_2nd_Sng_Subj
 	1   SimpleNounPhrase_DirObj                         SimpleNounPhrase_2nd_Sng_DirObj
 	1   SimpleNounPhrase_IndObj                         SimpleNounPhrase_2nd_Sng_IndObj
@@ -515,7 +512,6 @@
 	1   SimpleNounPhrase_IndObj                         SimpleNounPhrase_3rd_Plr_IndObj
 	1   SimpleNounPhrase                               SimpleNounPhrase_Subj
 	1   SimpleNounPhrase                               SimpleNounPhrase_DirObj
-	1   SimpleNounPhrase                               SimpleNounPhrase_IndObj
 
 	#Entering Noun Phrase
 	1   NounPhrase_3rd_Sng_Subj                Determiner_3rd_Sng NounPhraseSmart_3rd_Sng_Subj
@@ -529,7 +525,6 @@
 	1   NounPhrase_1st_Sng_IndObj            SimpleNounPhrase_1st_Sng_IndObj
 	1   NounPhrase_1st_Plr_Subj            SimpleNounPhrase_1st_Plr_Subj
 	1   NounPhrase_1st_Plr_DirObj            SimpleNounPhrase_1st_Plr_DirObj
-	1   NounPhrase_1st_Plr_IndObj            SimpleNounPhrase_1st_Plr_IndObj
 	1   NounPhrase_2nd_Sng_Subj            SimpleNounPhrase_2nd_Sng_Subj
 	1   NounPhrase_2nd_Sng_DirObj            SimpleNounPhrase_2nd_Sng_DirObj
 	1   NounPhrase_2nd_Sng_IndObj            SimpleNounPhrase_2nd_Sng_IndObj
@@ -544,17 +539,9 @@
 	1   NounPhrase_3rd_Plr_IndObj            SimpleNounPhrase_3rd_Plr_IndObj
 
 	#Naive Noun Phrase - either [Determiner Noun] or [Pronoun] or [Proper Noun]
-	1   SimpleNounPhrase_1st_Sng_Subj      Determiner_1st_Sng              Noun_1st_Sng
 	1   SimpleNounPhrase_1st_Sng_DirObj      Determiner_1st_Sng              Noun_1st_Sng
-	1   SimpleNounPhrase_1st_Sng_IndObj      Determiner_1st_Sng              Noun_1st_Sng
-	1   SimpleNounPhrase_1st_Plr_Subj      Determiner_1st_Plr              Noun_1st_Plr
-	1   SimpleNounPhrase_1st_Plr_DirObj      Determiner_1st_Plr              Noun_1st_Plr
-	1   SimpleNounPhrase_1st_Plr_IndObj      Determiner_1st_Plr              Noun_1st_Plr
-	1   SimpleNounPhrase_2nd_Sng_Subj      Determiner_2nd_Sng              Noun_2nd_Sng
 	1   SimpleNounPhrase_2nd_Sng_DirObj      Determiner_2nd_Sng              Noun_2nd_Sng
-	1   SimpleNounPhrase_2nd_Sng_IndObj      Determiner_2nd_Sng              Noun_2nd_Sng
 	1   SimpleNounPhrase_2nd_Plr_Subj      Determiner_2nd_Plr              Noun_2nd_Plr
-	1   SimpleNounPhrase_2nd_Plr_DirObj      Determiner_2nd_Plr              Noun_2nd_Plr
 	1   SimpleNounPhrase_2nd_Plr_IndObj      Determiner_2nd_Plr              Noun_2nd_Plr
 	1   SimpleNounPhrase_3rd_Sng_Subj      Determiner_3rd_Sng              Noun_3rd_Sng
 	1   SimpleNounPhrase_3rd_Sng_DirObj      Determiner_3rd_Sng              Noun_3rd_Sng
@@ -562,30 +549,6 @@
 	1   SimpleNounPhrase_3rd_Plr_Subj      Determiner_3rd_Plr              Noun_3rd_Plr
 	1   SimpleNounPhrase_3rd_Plr_DirObj      Determiner_3rd_Plr              Noun_3rd_Plr
 	1   SimpleNounPhrase_3rd_Plr_IndObj      Determiner_3rd_Plr              Noun_3rd_Plr
-1 SimpleNounPhrase_1st_Sng_Subj Determiner_1st_Sng NounModifier∂Noun_1st_Sng
-1 NounModifier∂Noun_1st_Sng NounModifier Noun_1st_Sng
-1 SimpleNounPhrase_1st_Sng_DirObj Determiner_1st_Sng NounModifier∂Noun_1st_Sng
-1 NounModifier∂Noun_1st_Sng NounModifier Noun_1st_Sng
-1 SimpleNounPhrase_1st_Sng_IndObj Determiner_1st_Sng NounModifier∂Noun_1st_Sng
-1 NounModifier∂Noun_1st_Sng NounModifier Noun_1st_Sng
-1 SimpleNounPhrase_1st_Plr_Subj Determiner_1st_Plr NounModifier∂Noun_1st_Plr
-1 NounModifier∂Noun_1st_Plr NounModifier Noun_1st_Plr
-1 SimpleNounPhrase_1st_Plr_DirObj Determiner_1st_Plr NounModifier∂Noun_1st_Plr
-1 NounModifier∂Noun_1st_Plr NounModifier Noun_1st_Plr
-1 SimpleNounPhrase_1st_Plr_IndObj Determiner_1st_Plr NounModifier∂Noun_1st_Plr
-1 NounModifier∂Noun_1st_Plr NounModifier Noun_1st_Plr
-1 SimpleNounPhrase_2nd_Sng_Subj Determiner_2nd_Sng NounModifier∂Noun_2nd_Sng
-1 NounModifier∂Noun_2nd_Sng NounModifier Noun_2nd_Sng
-1 SimpleNounPhrase_2nd_Sng_DirObj Determiner_2nd_Sng NounModifier∂Noun_2nd_Sng
-1 NounModifier∂Noun_2nd_Sng NounModifier Noun_2nd_Sng
-1 SimpleNounPhrase_2nd_Sng_IndObj Determiner_2nd_Sng NounModifier∂Noun_2nd_Sng
-1 NounModifier∂Noun_2nd_Sng NounModifier Noun_2nd_Sng
-1 SimpleNounPhrase_2nd_Plr_Subj Determiner_2nd_Plr NounModifier∂Noun_2nd_Plr
-1 NounModifier∂Noun_2nd_Plr NounModifier Noun_2nd_Plr
-1 SimpleNounPhrase_2nd_Plr_DirObj Determiner_2nd_Plr NounModifier∂Noun_2nd_Plr
-1 NounModifier∂Noun_2nd_Plr NounModifier Noun_2nd_Plr
-1 SimpleNounPhrase_2nd_Plr_IndObj Determiner_2nd_Plr NounModifier∂Noun_2nd_Plr
-1 NounModifier∂Noun_2nd_Plr NounModifier Noun_2nd_Plr
 1 SimpleNounPhrase_3rd_Sng_Subj Determiner_3rd_Sng NounModifier∂Noun_3rd_Sng
 1 NounModifier∂Noun_3rd_Sng NounModifier Noun_3rd_Sng
 1 SimpleNounPhrase_3rd_Sng_DirObj Determiner_3rd_Sng NounModifier∂Noun_3rd_Sng
@@ -598,30 +561,6 @@
 1 NounModifier∂Noun_3rd_Plr NounModifier Noun_3rd_Plr
 1 SimpleNounPhrase_3rd_Plr_IndObj Determiner_3rd_Plr NounModifier∂Noun_3rd_Plr
 1 NounModifier∂Noun_3rd_Plr NounModifier Noun_3rd_Plr
-1 SimpleNounPhrase_1st_Sng_Subj Determiner_1st_Sng Noun_1st_Sng∂ObjectClause_1st_Sng
-1 Noun_1st_Sng∂ObjectClause_1st_Sng Noun_1st_Sng ObjectClause_1st_Sng
-1 SimpleNounPhrase_1st_Sng_DirObj Determiner_1st_Sng Noun_1st_Sng∂ObjectClause_1st_Sng
-1 Noun_1st_Sng∂ObjectClause_1st_Sng Noun_1st_Sng ObjectClause_1st_Sng
-1 SimpleNounPhrase_1st_Sng_IndObj Determiner_1st_Sng Noun_1st_Sng∂ObjectClause_1st_Sng
-1 Noun_1st_Sng∂ObjectClause_1st_Sng Noun_1st_Sng ObjectClause_1st_Sng
-1 SimpleNounPhrase_1st_Plr_Subj Determiner_1st_Plr Noun_1st_Plr∂ObjectClause_1st_Plr
-1 Noun_1st_Plr∂ObjectClause_1st_Plr Noun_1st_Plr ObjectClause_1st_Plr
-1 SimpleNounPhrase_1st_Plr_DirObj Determiner_1st_Plr Noun_1st_Plr∂ObjectClause_1st_Plr
-1 Noun_1st_Plr∂ObjectClause_1st_Plr Noun_1st_Plr ObjectClause_1st_Plr
-1 SimpleNounPhrase_1st_Plr_IndObj Determiner_1st_Plr Noun_1st_Plr∂ObjectClause_1st_Plr
-1 Noun_1st_Plr∂ObjectClause_1st_Plr Noun_1st_Plr ObjectClause_1st_Plr
-1 SimpleNounPhrase_2nd_Sng_Subj Determiner_2nd_Sng Noun_2nd_Sng∂ObjectClause_2nd_Sng
-1 Noun_2nd_Sng∂ObjectClause_2nd_Sng Noun_2nd_Sng ObjectClause_2nd_Sng
-1 SimpleNounPhrase_2nd_Sng_DirObj Determiner_2nd_Sng Noun_2nd_Sng∂ObjectClause_2nd_Sng
-1 Noun_2nd_Sng∂ObjectClause_2nd_Sng Noun_2nd_Sng ObjectClause_2nd_Sng
-1 SimpleNounPhrase_2nd_Sng_IndObj Determiner_2nd_Sng Noun_2nd_Sng∂ObjectClause_2nd_Sng
-1 Noun_2nd_Sng∂ObjectClause_2nd_Sng Noun_2nd_Sng ObjectClause_2nd_Sng
-1 SimpleNounPhrase_2nd_Plr_Subj Determiner_2nd_Plr Noun_2nd_Plr∂ObjectClause_2nd_Plr
-1 Noun_2nd_Plr∂ObjectClause_2nd_Plr Noun_2nd_Plr ObjectClause_2nd_Plr
-1 SimpleNounPhrase_2nd_Plr_DirObj Determiner_2nd_Plr Noun_2nd_Plr∂ObjectClause_2nd_Plr
-1 Noun_2nd_Plr∂ObjectClause_2nd_Plr Noun_2nd_Plr ObjectClause_2nd_Plr
-1 SimpleNounPhrase_2nd_Plr_IndObj Determiner_2nd_Plr Noun_2nd_Plr∂ObjectClause_2nd_Plr
-1 Noun_2nd_Plr∂ObjectClause_2nd_Plr Noun_2nd_Plr ObjectClause_2nd_Plr
 1 SimpleNounPhrase_3rd_Sng_Subj Determiner_3rd_Sng Noun_3rd_Sng∂ObjectClause_3rd_Sng
 1 Noun_3rd_Sng∂ObjectClause_3rd_Sng Noun_3rd_Sng ObjectClause_3rd_Sng
 1 SimpleNounPhrase_3rd_Sng_DirObj Determiner_3rd_Sng Noun_3rd_Sng∂ObjectClause_3rd_Sng
@@ -634,42 +573,6 @@
 1 Noun_3rd_Plr∂ObjectClause_3rd_Plr Noun_3rd_Plr ObjectClause_3rd_Plr
 1 SimpleNounPhrase_3rd_Plr_IndObj Determiner_3rd_Plr Noun_3rd_Plr∂ObjectClause_3rd_Plr
 1 Noun_3rd_Plr∂ObjectClause_3rd_Plr Noun_3rd_Plr ObjectClause_3rd_Plr
-1 SimpleNounPhrase_1st_Sng_Subj Determiner_1st_Sng NounModifier∂Noun_1st_Sng∂ObjectClause_1st_Sng
-1 NounModifier∂Noun_1st_Sng∂ObjectClause_1st_Sng NounModifier Noun_1st_Sng∂ObjectClause_1st_Sng
-1 Noun_1st_Sng∂ObjectClause_1st_Sng Noun_1st_Sng ObjectClause_1st_Sng
-1 SimpleNounPhrase_1st_Sng_DirObj Determiner_1st_Sng NounModifier∂Noun_1st_Sng∂ObjectClause_1st_Sng
-1 NounModifier∂Noun_1st_Sng∂ObjectClause_1st_Sng NounModifier Noun_1st_Sng∂ObjectClause_1st_Sng
-1 Noun_1st_Sng∂ObjectClause_1st_Sng Noun_1st_Sng ObjectClause_1st_Sng
-1 SimpleNounPhrase_1st_Sng_IndObj Determiner_1st_Sng NounModifier∂Noun_1st_Sng∂ObjectClause_1st_Sng
-1 NounModifier∂Noun_1st_Sng∂ObjectClause_1st_Sng NounModifier Noun_1st_Sng∂ObjectClause_1st_Sng
-1 Noun_1st_Sng∂ObjectClause_1st_Sng Noun_1st_Sng ObjectClause_1st_Sng
-1 SimpleNounPhrase_1st_Plr_Subj Determiner_1st_Plr NounModifier∂Noun_1st_Plr∂ObjectClause_1st_Plr
-1 NounModifier∂Noun_1st_Plr∂ObjectClause_1st_Plr NounModifier Noun_1st_Plr∂ObjectClause_1st_Plr
-1 Noun_1st_Plr∂ObjectClause_1st_Plr Noun_1st_Plr ObjectClause_1st_Plr
-1 SimpleNounPhrase_1st_Plr_DirObj Determiner_1st_Plr NounModifier∂Noun_1st_Plr∂ObjectClause_1st_Plr
-1 NounModifier∂Noun_1st_Plr∂ObjectClause_1st_Plr NounModifier Noun_1st_Plr∂ObjectClause_1st_Plr
-1 Noun_1st_Plr∂ObjectClause_1st_Plr Noun_1st_Plr ObjectClause_1st_Plr
-1 SimpleNounPhrase_1st_Plr_IndObj Determiner_1st_Plr NounModifier∂Noun_1st_Plr∂ObjectClause_1st_Plr
-1 NounModifier∂Noun_1st_Plr∂ObjectClause_1st_Plr NounModifier Noun_1st_Plr∂ObjectClause_1st_Plr
-1 Noun_1st_Plr∂ObjectClause_1st_Plr Noun_1st_Plr ObjectClause_1st_Plr
-1 SimpleNounPhrase_2nd_Sng_Subj Determiner_2nd_Sng NounModifier∂Noun_2nd_Sng∂ObjectClause_2nd_Sng
-1 NounModifier∂Noun_2nd_Sng∂ObjectClause_2nd_Sng NounModifier Noun_2nd_Sng∂ObjectClause_2nd_Sng
-1 Noun_2nd_Sng∂ObjectClause_2nd_Sng Noun_2nd_Sng ObjectClause_2nd_Sng
-1 SimpleNounPhrase_2nd_Sng_DirObj Determiner_2nd_Sng NounModifier∂Noun_2nd_Sng∂ObjectClause_2nd_Sng
-1 NounModifier∂Noun_2nd_Sng∂ObjectClause_2nd_Sng NounModifier Noun_2nd_Sng∂ObjectClause_2nd_Sng
-1 Noun_2nd_Sng∂ObjectClause_2nd_Sng Noun_2nd_Sng ObjectClause_2nd_Sng
-1 SimpleNounPhrase_2nd_Sng_IndObj Determiner_2nd_Sng NounModifier∂Noun_2nd_Sng∂ObjectClause_2nd_Sng
-1 NounModifier∂Noun_2nd_Sng∂ObjectClause_2nd_Sng NounModifier Noun_2nd_Sng∂ObjectClause_2nd_Sng
-1 Noun_2nd_Sng∂ObjectClause_2nd_Sng Noun_2nd_Sng ObjectClause_2nd_Sng
-1 SimpleNounPhrase_2nd_Plr_Subj Determiner_2nd_Plr NounModifier∂Noun_2nd_Plr∂ObjectClause_2nd_Plr
-1 NounModifier∂Noun_2nd_Plr∂ObjectClause_2nd_Plr NounModifier Noun_2nd_Plr∂ObjectClause_2nd_Plr
-1 Noun_2nd_Plr∂ObjectClause_2nd_Plr Noun_2nd_Plr ObjectClause_2nd_Plr
-1 SimpleNounPhrase_2nd_Plr_DirObj Determiner_2nd_Plr NounModifier∂Noun_2nd_Plr∂ObjectClause_2nd_Plr
-1 NounModifier∂Noun_2nd_Plr∂ObjectClause_2nd_Plr NounModifier Noun_2nd_Plr∂ObjectClause_2nd_Plr
-1 Noun_2nd_Plr∂ObjectClause_2nd_Plr Noun_2nd_Plr ObjectClause_2nd_Plr
-1 SimpleNounPhrase_2nd_Plr_IndObj Determiner_2nd_Plr NounModifier∂Noun_2nd_Plr∂ObjectClause_2nd_Plr
-1 NounModifier∂Noun_2nd_Plr∂ObjectClause_2nd_Plr NounModifier Noun_2nd_Plr∂ObjectClause_2nd_Plr
-1 Noun_2nd_Plr∂ObjectClause_2nd_Plr Noun_2nd_Plr ObjectClause_2nd_Plr
 1 SimpleNounPhrase_3rd_Sng_Subj Determiner_3rd_Sng NounModifier∂Noun_3rd_Sng∂ObjectClause_3rd_Sng
 1 NounModifier∂Noun_3rd_Sng∂ObjectClause_3rd_Sng NounModifier Noun_3rd_Sng∂ObjectClause_3rd_Sng
 1 Noun_3rd_Sng∂ObjectClause_3rd_Sng Noun_3rd_Sng ObjectClause_3rd_Sng
@@ -693,7 +596,6 @@
 	1   SimpleNounPhrase_1st_Sng_IndObj      Pronoun_1st_Sng_IndObj
 	1   SimpleNounPhrase_1st_Plr_Subj      Pronoun_1st_Plr_Subj
 	1   SimpleNounPhrase_1st_Plr_DirObj      Pronoun_1st_Plr_DirObj
-	1   SimpleNounPhrase_1st_Plr_IndObj      Pronoun_1st_Plr_IndObj
 	1   SimpleNounPhrase_2nd_Sng_Subj      Pronoun_2nd_Sng_Subj
 	1   SimpleNounPhrase_2nd_Sng_DirObj      Pronoun_2nd_Sng_DirObj
 	1   SimpleNounPhrase_2nd_Sng_IndObj      Pronoun_2nd_Sng_IndObj
@@ -711,7 +613,6 @@
 	1   SimpleNounPhrase_1st_Sng_IndObj      Pronoun_1st_Sng_IndObj ObjectClause_1st_Sng
 	1   SimpleNounPhrase_1st_Plr_Subj      Pronoun_1st_Plr_Subj ObjectClause_1st_Plr
 	1   SimpleNounPhrase_1st_Plr_DirObj      Pronoun_1st_Plr_DirObj ObjectClause_1st_Plr
-	1   SimpleNounPhrase_1st_Plr_IndObj      Pronoun_1st_Plr_IndObj ObjectClause_1st_Plr
 	1   SimpleNounPhrase_2nd_Sng_Subj      Pronoun_2nd_Sng_Subj ObjectClause_2nd_Sng
 	1   SimpleNounPhrase_2nd_Sng_DirObj      Pronoun_2nd_Sng_DirObj ObjectClause_2nd_Sng
 	1   SimpleNounPhrase_2nd_Sng_IndObj      Pronoun_2nd_Sng_IndObj ObjectClause_2nd_Sng
@@ -773,35 +674,10 @@
 	#It would mean adding a template {at_end} to EVERY SINGLY PRODUCTION RULE (not exactly every, but any that can come before EOS_Statement, which is virtually everything)
 	#So here we cheat and make the comma only come after subject parenthetical expressions, and we cross our fingers that it does not get placed before a period.
 	#I don't think it will create ungrammatical sentences often, instead it is likely to change the meaning of the sentence in a way the parse tree does not reflect.
-1 NounPhrase_1st_Sng_Subj SimpleNounPhrase_1st_Sng_Subj Comma∂SimpleNounPhrase∂Comma
 1 Comma∂SimpleNounPhrase∂Comma Comma SimpleNounPhrase∂Comma
-1 SimpleNounPhrase∂Comma SimpleNounPhrase Comma
-1 NounPhrase_1st_Sng_DirObj SimpleNounPhrase_1st_Sng_DirObj Comma∂SimpleNounPhrase
-1 Comma∂SimpleNounPhrase Comma SimpleNounPhrase
-1 NounPhrase_1st_Sng_IndObj SimpleNounPhrase_1st_Sng_IndObj Comma∂SimpleNounPhrase
-1 Comma∂SimpleNounPhrase Comma SimpleNounPhrase
-1 NounPhrase_1st_Plr_Subj SimpleNounPhrase_1st_Plr_Subj Comma∂SimpleNounPhrase∂Comma
 1 Comma∂SimpleNounPhrase∂Comma Comma SimpleNounPhrase∂Comma
-1 SimpleNounPhrase∂Comma SimpleNounPhrase Comma
-1 NounPhrase_1st_Plr_DirObj SimpleNounPhrase_1st_Plr_DirObj Comma∂SimpleNounPhrase
 1 Comma∂SimpleNounPhrase Comma SimpleNounPhrase
-1 NounPhrase_1st_Plr_IndObj SimpleNounPhrase_1st_Plr_IndObj Comma∂SimpleNounPhrase
 1 Comma∂SimpleNounPhrase Comma SimpleNounPhrase
-1 NounPhrase_2nd_Sng_Subj SimpleNounPhrase_2nd_Sng_Subj Comma∂SimpleNounPhrase∂Comma
-1 Comma∂SimpleNounPhrase∂Comma Comma SimpleNounPhrase∂Comma
-1 SimpleNounPhrase∂Comma SimpleNounPhrase Comma
-1 NounPhrase_2nd_Sng_DirObj SimpleNounPhrase_2nd_Sng_DirObj Comma∂SimpleNounPhrase
-1 Comma∂SimpleNounPhrase Comma SimpleNounPhrase
-1 NounPhrase_2nd_Sng_IndObj SimpleNounPhrase_2nd_Sng_IndObj Comma∂SimpleNounPhrase
-1 Comma∂SimpleNounPhrase Comma SimpleNounPhrase
-1 NounPhrase_2nd_Plr_Subj SimpleNounPhrase_2nd_Plr_Subj Comma∂SimpleNounPhrase∂Comma
-1 Comma∂SimpleNounPhrase∂Comma Comma SimpleNounPhrase∂Comma
-1 SimpleNounPhrase∂Comma SimpleNounPhrase Comma
-1 NounPhrase_2nd_Plr_DirObj SimpleNounPhrase_2nd_Plr_DirObj Comma∂SimpleNounPhrase
-1 Comma∂SimpleNounPhrase Comma SimpleNounPhrase
-1 NounPhrase_2nd_Plr_IndObj SimpleNounPhrase_2nd_Plr_IndObj Comma∂SimpleNounPhrase
-1 Comma∂SimpleNounPhrase Comma SimpleNounPhrase
-1 NounPhrase_3rd_Sng_Subj SimpleNounPhrase_3rd_Sng_Subj Comma∂SimpleNounPhrase∂Comma
 1 Comma∂SimpleNounPhrase∂Comma Comma SimpleNounPhrase∂Comma
 1 SimpleNounPhrase∂Comma SimpleNounPhrase Comma
 1 NounPhrase_3rd_Sng_DirObj SimpleNounPhrase_3rd_Sng_DirObj Comma∂SimpleNounPhrase
@@ -811,9 +687,7 @@
 1 NounPhrase_3rd_Plr_Subj SimpleNounPhrase_3rd_Plr_Subj Comma∂SimpleNounPhrase∂Comma
 1 Comma∂SimpleNounPhrase∂Comma Comma SimpleNounPhrase∂Comma
 1 SimpleNounPhrase∂Comma SimpleNounPhrase Comma
-1 NounPhrase_3rd_Plr_DirObj SimpleNounPhrase_3rd_Plr_DirObj Comma∂SimpleNounPhrase
 1 Comma∂SimpleNounPhrase Comma SimpleNounPhrase
-1 NounPhrase_3rd_Plr_IndObj SimpleNounPhrase_3rd_Plr_IndObj Comma∂SimpleNounPhrase
 1 Comma∂SimpleNounPhrase Comma SimpleNounPhrase
 
 	#Proper Noun Stuffs
@@ -855,22 +729,6 @@
 	1   GerundPhrase                                   GerundPhrase_Intransitive
 	1   GerundPhrase_Transitive                     Gerund_Transitive
 	1   GerundPhrase_Intransitive                     Gerund_Intransitive
-1 GerundPhrase_Transitive Gerund_to_Transitive wrap_to∂SimpleNounPhrase_1st_Sng_IndObj
-1 wrap_to∂SimpleNounPhrase_1st_Sng_IndObj wrap_to SimpleNounPhrase_1st_Sng_IndObj
-1 GerundPhrase_Intransitive Gerund_to_Intransitive wrap_to∂SimpleNounPhrase_1st_Sng_IndObj
-1 wrap_to∂SimpleNounPhrase_1st_Sng_IndObj wrap_to SimpleNounPhrase_1st_Sng_IndObj
-1 GerundPhrase_Transitive Gerund_to_Transitive wrap_to∂SimpleNounPhrase_1st_Plr_IndObj
-1 wrap_to∂SimpleNounPhrase_1st_Plr_IndObj wrap_to SimpleNounPhrase_1st_Plr_IndObj
-1 GerundPhrase_Intransitive Gerund_to_Intransitive wrap_to∂SimpleNounPhrase_1st_Plr_IndObj
-1 wrap_to∂SimpleNounPhrase_1st_Plr_IndObj wrap_to SimpleNounPhrase_1st_Plr_IndObj
-1 GerundPhrase_Transitive Gerund_to_Transitive wrap_to∂SimpleNounPhrase_2nd_Sng_IndObj
-1 wrap_to∂SimpleNounPhrase_2nd_Sng_IndObj wrap_to SimpleNounPhrase_2nd_Sng_IndObj
-1 GerundPhrase_Intransitive Gerund_to_Intransitive wrap_to∂SimpleNounPhrase_2nd_Sng_IndObj
-1 wrap_to∂SimpleNounPhrase_2nd_Sng_IndObj wrap_to SimpleNounPhrase_2nd_Sng_IndObj
-1 GerundPhrase_Transitive Gerund_to_Transitive wrap_to∂SimpleNounPhrase_2nd_Plr_IndObj
-1 wrap_to∂SimpleNounPhrase_2nd_Plr_IndObj wrap_to SimpleNounPhrase_2nd_Plr_IndObj
-1 GerundPhrase_Intransitive Gerund_to_Intransitive wrap_to∂SimpleNounPhrase_2nd_Plr_IndObj
-1 wrap_to∂SimpleNounPhrase_2nd_Plr_IndObj wrap_to SimpleNounPhrase_2nd_Plr_IndObj
 1 GerundPhrase_Transitive Gerund_to_Transitive wrap_to∂SimpleNounPhrase_3rd_Sng_IndObj
 1 wrap_to∂SimpleNounPhrase_3rd_Sng_IndObj wrap_to SimpleNounPhrase_3rd_Sng_IndObj
 1 GerundPhrase_Intransitive Gerund_to_Intransitive wrap_to∂SimpleNounPhrase_3rd_Sng_IndObj
@@ -880,21 +738,11 @@
 1 GerundPhrase_Intransitive Gerund_to_Intransitive wrap_to∂SimpleNounPhrase_3rd_Plr_IndObj
 1 wrap_to∂SimpleNounPhrase_3rd_Plr_IndObj wrap_to SimpleNounPhrase_3rd_Plr_IndObj
 1 GerundPhrase_Transitive Gerund_of_Transitive wrap_of∂SimpleNounPhrase_1st_Sng_IndObj
-1 wrap_of∂SimpleNounPhrase_1st_Sng_IndObj wrap_of SimpleNounPhrase_1st_Sng_IndObj
 1 GerundPhrase_Intransitive Gerund_of_Intransitive wrap_of∂SimpleNounPhrase_1st_Sng_IndObj
-1 wrap_of∂SimpleNounPhrase_1st_Sng_IndObj wrap_of SimpleNounPhrase_1st_Sng_IndObj
-1 GerundPhrase_Transitive Gerund_of_Transitive wrap_of∂SimpleNounPhrase_1st_Plr_IndObj
-1 wrap_of∂SimpleNounPhrase_1st_Plr_IndObj wrap_of SimpleNounPhrase_1st_Plr_IndObj
-1 GerundPhrase_Intransitive Gerund_of_Intransitive wrap_of∂SimpleNounPhrase_1st_Plr_IndObj
-1 wrap_of∂SimpleNounPhrase_1st_Plr_IndObj wrap_of SimpleNounPhrase_1st_Plr_IndObj
 1 GerundPhrase_Transitive Gerund_of_Transitive wrap_of∂SimpleNounPhrase_2nd_Sng_IndObj
-1 wrap_of∂SimpleNounPhrase_2nd_Sng_IndObj wrap_of SimpleNounPhrase_2nd_Sng_IndObj
 1 GerundPhrase_Intransitive Gerund_of_Intransitive wrap_of∂SimpleNounPhrase_2nd_Sng_IndObj
-1 wrap_of∂SimpleNounPhrase_2nd_Sng_IndObj wrap_of SimpleNounPhrase_2nd_Sng_IndObj
 1 GerundPhrase_Transitive Gerund_of_Transitive wrap_of∂SimpleNounPhrase_2nd_Plr_IndObj
-1 wrap_of∂SimpleNounPhrase_2nd_Plr_IndObj wrap_of SimpleNounPhrase_2nd_Plr_IndObj
 1 GerundPhrase_Intransitive Gerund_of_Intransitive wrap_of∂SimpleNounPhrase_2nd_Plr_IndObj
-1 wrap_of∂SimpleNounPhrase_2nd_Plr_IndObj wrap_of SimpleNounPhrase_2nd_Plr_IndObj
 1 GerundPhrase_Transitive Gerund_of_Transitive wrap_of∂SimpleNounPhrase_3rd_Sng_IndObj
 1 wrap_of∂SimpleNounPhrase_3rd_Sng_IndObj wrap_of SimpleNounPhrase_3rd_Sng_IndObj
 1 GerundPhrase_Intransitive Gerund_of_Intransitive wrap_of∂SimpleNounPhrase_3rd_Sng_IndObj
@@ -903,26 +751,16 @@
 1 wrap_of∂SimpleNounPhrase_3rd_Plr_IndObj wrap_of SimpleNounPhrase_3rd_Plr_IndObj
 1 GerundPhrase_Intransitive Gerund_of_Intransitive wrap_of∂SimpleNounPhrase_3rd_Plr_IndObj
 1 wrap_of∂SimpleNounPhrase_3rd_Plr_IndObj wrap_of SimpleNounPhrase_3rd_Plr_IndObj
-	1   GerundPhrase_Transitive                        Gerund_Transitive SimpleNounPhrase_1st_Sng_DirObj
-	1   GerundPhrase_Transitive                        Gerund_Transitive SimpleNounPhrase_1st_Plr_DirObj
-	1   GerundPhrase_Transitive                        Gerund_Transitive SimpleNounPhrase_2nd_Sng_DirObj
-	1   GerundPhrase_Transitive                        Gerund_Transitive SimpleNounPhrase_2nd_Plr_DirObj
 	1   GerundPhrase_Transitive                        Gerund_Transitive SimpleNounPhrase_3rd_Sng_DirObj
 	1   GerundPhrase_Transitive                        Gerund_Transitive SimpleNounPhrase_3rd_Plr_DirObj
 
 	#Less Naive Noun Phrase
 	#Nouns can be modified with adjectives in this less naive version
-	1   NounPhraseSmart_1st_Sng_Subj       NounModifier Noun_1st_Sng
 	1   NounPhraseSmart_1st_Sng_DirObj       NounModifier Noun_1st_Sng
-	1   NounPhraseSmart_1st_Sng_IndObj       NounModifier Noun_1st_Sng
 	1   NounPhraseSmart_1st_Plr_Subj       NounModifier Noun_1st_Plr
-	1   NounPhraseSmart_1st_Plr_DirObj       NounModifier Noun_1st_Plr
 	1   NounPhraseSmart_1st_Plr_IndObj       NounModifier Noun_1st_Plr
-	1   NounPhraseSmart_2nd_Sng_Subj       NounModifier Noun_2nd_Sng
 	1   NounPhraseSmart_2nd_Sng_DirObj       NounModifier Noun_2nd_Sng
-	1   NounPhraseSmart_2nd_Sng_IndObj       NounModifier Noun_2nd_Sng
 	1   NounPhraseSmart_2nd_Plr_Subj       NounModifier Noun_2nd_Plr
-	1   NounPhraseSmart_2nd_Plr_DirObj       NounModifier Noun_2nd_Plr
 	1   NounPhraseSmart_2nd_Plr_IndObj       NounModifier Noun_2nd_Plr
 	1   NounPhraseSmart_3rd_Sng_Subj       NounModifier Noun_3rd_Sng
 	1   NounPhraseSmart_3rd_Sng_DirObj       NounModifier Noun_3rd_Sng
@@ -930,17 +768,11 @@
 	1   NounPhraseSmart_3rd_Plr_Subj       NounModifier Noun_3rd_Plr
 	1   NounPhraseSmart_3rd_Plr_DirObj       NounModifier Noun_3rd_Plr
 	1   NounPhraseSmart_3rd_Plr_IndObj       NounModifier Noun_3rd_Plr
-	1   NounPhraseSmart_1st_Sng_Subj       Noun_1st_Sng
 	1   NounPhraseSmart_1st_Sng_DirObj       Noun_1st_Sng
-	1   NounPhraseSmart_1st_Sng_IndObj       Noun_1st_Sng
 	1   NounPhraseSmart_1st_Plr_Subj       Noun_1st_Plr
-	1   NounPhraseSmart_1st_Plr_DirObj       Noun_1st_Plr
 	1   NounPhraseSmart_1st_Plr_IndObj       Noun_1st_Plr
-	1   NounPhraseSmart_2nd_Sng_Subj       Noun_2nd_Sng
 	1   NounPhraseSmart_2nd_Sng_DirObj       Noun_2nd_Sng
-	1   NounPhraseSmart_2nd_Sng_IndObj       Noun_2nd_Sng
 	1   NounPhraseSmart_2nd_Plr_Subj       Noun_2nd_Plr
-	1   NounPhraseSmart_2nd_Plr_DirObj       Noun_2nd_Plr
 	1   NounPhraseSmart_2nd_Plr_IndObj       Noun_2nd_Plr
 	1   NounPhraseSmart_3rd_Sng_Subj       Noun_3rd_Sng
 	1   NounPhraseSmart_3rd_Sng_DirObj       Noun_3rd_Sng
@@ -948,36 +780,12 @@
 	1   NounPhraseSmart_3rd_Plr_Subj       Noun_3rd_Plr
 	1   NounPhraseSmart_3rd_Plr_DirObj       Noun_3rd_Plr
 	1   NounPhraseSmart_3rd_Plr_IndObj       Noun_3rd_Plr
-	1   NounPhraseSmart_1st_Sng_Subj       NounModifier Noun+Prep_1st_Sng
-	1   NounPhraseSmart_1st_Sng_DirObj       NounModifier Noun+Prep_1st_Sng
-	1   NounPhraseSmart_1st_Sng_IndObj       NounModifier Noun+Prep_1st_Sng
-	1   NounPhraseSmart_1st_Plr_Subj       NounModifier Noun+Prep_1st_Plr
-	1   NounPhraseSmart_1st_Plr_DirObj       NounModifier Noun+Prep_1st_Plr
-	1   NounPhraseSmart_1st_Plr_IndObj       NounModifier Noun+Prep_1st_Plr
-	1   NounPhraseSmart_2nd_Sng_Subj       NounModifier Noun+Prep_2nd_Sng
-	1   NounPhraseSmart_2nd_Sng_DirObj       NounModifier Noun+Prep_2nd_Sng
-	1   NounPhraseSmart_2nd_Sng_IndObj       NounModifier Noun+Prep_2nd_Sng
-	1   NounPhraseSmart_2nd_Plr_Subj       NounModifier Noun+Prep_2nd_Plr
-	1   NounPhraseSmart_2nd_Plr_DirObj       NounModifier Noun+Prep_2nd_Plr
-	1   NounPhraseSmart_2nd_Plr_IndObj       NounModifier Noun+Prep_2nd_Plr
 	1   NounPhraseSmart_3rd_Sng_Subj       NounModifier Noun+Prep_3rd_Sng
 	1   NounPhraseSmart_3rd_Sng_DirObj       NounModifier Noun+Prep_3rd_Sng
 	1   NounPhraseSmart_3rd_Sng_IndObj       NounModifier Noun+Prep_3rd_Sng
 	1   NounPhraseSmart_3rd_Plr_Subj       NounModifier Noun+Prep_3rd_Plr
 	1   NounPhraseSmart_3rd_Plr_DirObj       NounModifier Noun+Prep_3rd_Plr
 	1   NounPhraseSmart_3rd_Plr_IndObj       NounModifier Noun+Prep_3rd_Plr
-	1   NounPhraseSmart_1st_Sng_Subj       Noun+Prep_1st_Sng
-	1   NounPhraseSmart_1st_Sng_DirObj       Noun+Prep_1st_Sng
-	1   NounPhraseSmart_1st_Sng_IndObj       Noun+Prep_1st_Sng
-	1   NounPhraseSmart_1st_Plr_Subj       Noun+Prep_1st_Plr
-	1   NounPhraseSmart_1st_Plr_DirObj       Noun+Prep_1st_Plr
-	1   NounPhraseSmart_1st_Plr_IndObj       Noun+Prep_1st_Plr
-	1   NounPhraseSmart_2nd_Sng_Subj       Noun+Prep_2nd_Sng
-	1   NounPhraseSmart_2nd_Sng_DirObj       Noun+Prep_2nd_Sng
-	1   NounPhraseSmart_2nd_Sng_IndObj       Noun+Prep_2nd_Sng
-	1   NounPhraseSmart_2nd_Plr_Subj       Noun+Prep_2nd_Plr
-	1   NounPhraseSmart_2nd_Plr_DirObj       Noun+Prep_2nd_Plr
-	1   NounPhraseSmart_2nd_Plr_IndObj       Noun+Prep_2nd_Plr
 	1   NounPhraseSmart_3rd_Sng_Subj       Noun+Prep_3rd_Sng
 	1   NounPhraseSmart_3rd_Sng_DirObj       Noun+Prep_3rd_Sng
 	1   NounPhraseSmart_3rd_Sng_IndObj       Noun+Prep_3rd_Sng
@@ -986,14 +794,6 @@
 	1   NounPhraseSmart_3rd_Plr_IndObj       Noun+Prep_3rd_Plr
 
 	#"The carrot of doom" - Noun+Prep is what is responsible for the "of doom" part.
-1 Noun+Prep_1st_Sng Noun_1st_Sng wrap_of∂SimpleNounPhrase_1st_Sng_IndObj
-1 wrap_of∂SimpleNounPhrase_1st_Sng_IndObj wrap_of SimpleNounPhrase_1st_Sng_IndObj
-1 Noun+Prep_1st_Plr Noun_1st_Plr wrap_of∂SimpleNounPhrase_1st_Plr_IndObj
-1 wrap_of∂SimpleNounPhrase_1st_Plr_IndObj wrap_of SimpleNounPhrase_1st_Plr_IndObj
-1 Noun+Prep_2nd_Sng Noun_2nd_Sng wrap_of∂SimpleNounPhrase_2nd_Sng_IndObj
-1 wrap_of∂SimpleNounPhrase_2nd_Sng_IndObj wrap_of SimpleNounPhrase_2nd_Sng_IndObj
-1 Noun+Prep_2nd_Plr Noun_2nd_Plr wrap_of∂SimpleNounPhrase_2nd_Plr_IndObj
-1 wrap_of∂SimpleNounPhrase_2nd_Plr_IndObj wrap_of SimpleNounPhrase_2nd_Plr_IndObj
 1 Noun+Prep_3rd_Sng Noun_3rd_Sng wrap_of∂SimpleNounPhrase_3rd_Sng_IndObj
 1 wrap_of∂SimpleNounPhrase_3rd_Sng_IndObj wrap_of SimpleNounPhrase_3rd_Sng_IndObj
 1 Noun+Prep_3rd_Plr Noun_3rd_Plr wrap_of∂SimpleNounPhrase_3rd_Plr_IndObj
@@ -1211,30 +1011,6 @@
 	1   SimpleVerbPhrase_2nd_Plr_Transitive         Verb_2nd_Plr_Transitive    DirectObject
 	1   SimpleVerbPhrase_3rd_Sng_Transitive         Verb_3rd_Sng_Transitive    DirectObject
 	1   SimpleVerbPhrase_3rd_Plr_Transitive         Verb_3rd_Plr_Transitive    DirectObject
-1 SimpleVerbPhrasePP_1st_Sng_Transitive VerbPP_1st_Sng_Transitive DirectObject∂IndirectObject
-1 DirectObject∂IndirectObject DirectObject IndirectObject
-1 SimpleVerbPhrasePP_1st_Plr_Transitive VerbPP_1st_Plr_Transitive DirectObject∂IndirectObject
-1 DirectObject∂IndirectObject DirectObject IndirectObject
-1 SimpleVerbPhrasePP_2nd_Sng_Transitive VerbPP_2nd_Sng_Transitive DirectObject∂IndirectObject
-1 DirectObject∂IndirectObject DirectObject IndirectObject
-1 SimpleVerbPhrasePP_2nd_Plr_Transitive VerbPP_2nd_Plr_Transitive DirectObject∂IndirectObject
-1 DirectObject∂IndirectObject DirectObject IndirectObject
-1 SimpleVerbPhrasePP_3rd_Sng_Transitive VerbPP_3rd_Sng_Transitive DirectObject∂IndirectObject
-1 DirectObject∂IndirectObject DirectObject IndirectObject
-1 SimpleVerbPhrasePP_3rd_Plr_Transitive VerbPP_3rd_Plr_Transitive DirectObject∂IndirectObject
-1 DirectObject∂IndirectObject DirectObject IndirectObject
-1 SimpleVerbPhrase_1st_Sng_Transitive Verb_1st_Sng_Transitive DirectObject∂IndirectObject
-1 DirectObject∂IndirectObject DirectObject IndirectObject
-1 SimpleVerbPhrase_1st_Plr_Transitive Verb_1st_Plr_Transitive DirectObject∂IndirectObject
-1 DirectObject∂IndirectObject DirectObject IndirectObject
-1 SimpleVerbPhrase_2nd_Sng_Transitive Verb_2nd_Sng_Transitive DirectObject∂IndirectObject
-1 DirectObject∂IndirectObject DirectObject IndirectObject
-1 SimpleVerbPhrase_2nd_Plr_Transitive Verb_2nd_Plr_Transitive DirectObject∂IndirectObject
-1 DirectObject∂IndirectObject DirectObject IndirectObject
-1 SimpleVerbPhrase_3rd_Sng_Transitive Verb_3rd_Sng_Transitive DirectObject∂IndirectObject
-1 DirectObject∂IndirectObject DirectObject IndirectObject
-1 SimpleVerbPhrase_3rd_Plr_Transitive Verb_3rd_Plr_Transitive DirectObject∂IndirectObject
-1 DirectObject∂IndirectObject DirectObject IndirectObject
 	1   SimpleVerbPhrasePP_1st_Sng_Transitive      VerbPP_1st_Sng_Transitive
 	1   SimpleVerbPhrasePP_1st_Sng_Intransitive      VerbPP_1st_Sng_Intransitive
 	1   SimpleVerbPhrasePP_1st_Plr_Transitive      VerbPP_1st_Plr_Transitive
@@ -1259,30 +1035,6 @@
 	1   SimpleVerbPhrase_3rd_Sng_Intransitive      Verb_3rd_Sng_Intransitive
 	1   SimpleVerbPhrase_3rd_Plr_Transitive      Verb_3rd_Plr_Transitive
 	1   SimpleVerbPhrase_3rd_Plr_Intransitive      Verb_3rd_Plr_Intransitive
-	1   SimpleVerbPhrasePP_1st_Sng_Transitive      VerbPP_1st_Sng_Transitive              IndirectObject
-	1   SimpleVerbPhrasePP_1st_Sng_Intransitive      VerbPP_1st_Sng_Intransitive              IndirectObject
-	1   SimpleVerbPhrasePP_1st_Plr_Transitive      VerbPP_1st_Plr_Transitive              IndirectObject
-	1   SimpleVerbPhrasePP_1st_Plr_Intransitive      VerbPP_1st_Plr_Intransitive              IndirectObject
-	1   SimpleVerbPhrasePP_2nd_Sng_Transitive      VerbPP_2nd_Sng_Transitive              IndirectObject
-	1   SimpleVerbPhrasePP_2nd_Sng_Intransitive      VerbPP_2nd_Sng_Intransitive              IndirectObject
-	1   SimpleVerbPhrasePP_2nd_Plr_Transitive      VerbPP_2nd_Plr_Transitive              IndirectObject
-	1   SimpleVerbPhrasePP_2nd_Plr_Intransitive      VerbPP_2nd_Plr_Intransitive              IndirectObject
-	1   SimpleVerbPhrasePP_3rd_Sng_Transitive      VerbPP_3rd_Sng_Transitive              IndirectObject
-	1   SimpleVerbPhrasePP_3rd_Sng_Intransitive      VerbPP_3rd_Sng_Intransitive              IndirectObject
-	1   SimpleVerbPhrasePP_3rd_Plr_Transitive      VerbPP_3rd_Plr_Transitive              IndirectObject
-	1   SimpleVerbPhrasePP_3rd_Plr_Intransitive      VerbPP_3rd_Plr_Intransitive              IndirectObject
-	1   SimpleVerbPhrase_1st_Sng_Transitive      Verb_1st_Sng_Transitive              IndirectObject
-	1   SimpleVerbPhrase_1st_Sng_Intransitive      Verb_1st_Sng_Intransitive              IndirectObject
-	1   SimpleVerbPhrase_1st_Plr_Transitive      Verb_1st_Plr_Transitive              IndirectObject
-	1   SimpleVerbPhrase_1st_Plr_Intransitive      Verb_1st_Plr_Intransitive              IndirectObject
-	1   SimpleVerbPhrase_2nd_Sng_Transitive      Verb_2nd_Sng_Transitive              IndirectObject
-	1   SimpleVerbPhrase_2nd_Sng_Intransitive      Verb_2nd_Sng_Intransitive              IndirectObject
-	1   SimpleVerbPhrase_2nd_Plr_Transitive      Verb_2nd_Plr_Transitive              IndirectObject
-	1   SimpleVerbPhrase_2nd_Plr_Intransitive      Verb_2nd_Plr_Intransitive              IndirectObject
-	1   SimpleVerbPhrase_3rd_Sng_Transitive      Verb_3rd_Sng_Transitive              IndirectObject
-	1   SimpleVerbPhrase_3rd_Sng_Intransitive      Verb_3rd_Sng_Intransitive              IndirectObject
-	1   SimpleVerbPhrase_3rd_Plr_Transitive      Verb_3rd_Plr_Transitive              IndirectObject
-	1   SimpleVerbPhrase_3rd_Plr_Intransitive      Verb_3rd_Plr_Intransitive              IndirectObject
 
 	# Simple Verb Phrase but with VerbModifier coming after the verb.
 1 BackwardsVerbPhrasePP_1st_Sng_Transitive VerbPP_1st_Sng_Transitive VerbModifier∂DirectObject
@@ -1309,42 +1061,6 @@
 1 VerbModifier∂DirectObject VerbModifier DirectObject
 1 BackwardsVerbPhrase_3rd_Plr_Transitive Verb_3rd_Plr_Transitive VerbModifier∂DirectObject
 1 VerbModifier∂DirectObject VerbModifier DirectObject
-1 BackwardsVerbPhrasePP_1st_Sng_Transitive VerbPP_1st_Sng_Transitive VerbModifier∂DirectObject∂IndirectObject
-1 VerbModifier∂DirectObject∂IndirectObject VerbModifier DirectObject∂IndirectObject
-1 DirectObject∂IndirectObject DirectObject IndirectObject
-1 BackwardsVerbPhrasePP_1st_Plr_Transitive VerbPP_1st_Plr_Transitive VerbModifier∂DirectObject∂IndirectObject
-1 VerbModifier∂DirectObject∂IndirectObject VerbModifier DirectObject∂IndirectObject
-1 DirectObject∂IndirectObject DirectObject IndirectObject
-1 BackwardsVerbPhrasePP_2nd_Sng_Transitive VerbPP_2nd_Sng_Transitive VerbModifier∂DirectObject∂IndirectObject
-1 VerbModifier∂DirectObject∂IndirectObject VerbModifier DirectObject∂IndirectObject
-1 DirectObject∂IndirectObject DirectObject IndirectObject
-1 BackwardsVerbPhrasePP_2nd_Plr_Transitive VerbPP_2nd_Plr_Transitive VerbModifier∂DirectObject∂IndirectObject
-1 VerbModifier∂DirectObject∂IndirectObject VerbModifier DirectObject∂IndirectObject
-1 DirectObject∂IndirectObject DirectObject IndirectObject
-1 BackwardsVerbPhrasePP_3rd_Sng_Transitive VerbPP_3rd_Sng_Transitive VerbModifier∂DirectObject∂IndirectObject
-1 VerbModifier∂DirectObject∂IndirectObject VerbModifier DirectObject∂IndirectObject
-1 DirectObject∂IndirectObject DirectObject IndirectObject
-1 BackwardsVerbPhrasePP_3rd_Plr_Transitive VerbPP_3rd_Plr_Transitive VerbModifier∂DirectObject∂IndirectObject
-1 VerbModifier∂DirectObject∂IndirectObject VerbModifier DirectObject∂IndirectObject
-1 DirectObject∂IndirectObject DirectObject IndirectObject
-1 BackwardsVerbPhrase_1st_Sng_Transitive Verb_1st_Sng_Transitive VerbModifier∂DirectObject∂IndirectObject
-1 VerbModifier∂DirectObject∂IndirectObject VerbModifier DirectObject∂IndirectObject
-1 DirectObject∂IndirectObject DirectObject IndirectObject
-1 BackwardsVerbPhrase_1st_Plr_Transitive Verb_1st_Plr_Transitive VerbModifier∂DirectObject∂IndirectObject
-1 VerbModifier∂DirectObject∂IndirectObject VerbModifier DirectObject∂IndirectObject
-1 DirectObject∂IndirectObject DirectObject IndirectObject
-1 BackwardsVerbPhrase_2nd_Sng_Transitive Verb_2nd_Sng_Transitive VerbModifier∂DirectObject∂IndirectObject
-1 VerbModifier∂DirectObject∂IndirectObject VerbModifier DirectObject∂IndirectObject
-1 DirectObject∂IndirectObject DirectObject IndirectObject
-1 BackwardsVerbPhrase_2nd_Plr_Transitive Verb_2nd_Plr_Transitive VerbModifier∂DirectObject∂IndirectObject
-1 VerbModifier∂DirectObject∂IndirectObject VerbModifier DirectObject∂IndirectObject
-1 DirectObject∂IndirectObject DirectObject IndirectObject
-1 BackwardsVerbPhrase_3rd_Sng_Transitive Verb_3rd_Sng_Transitive VerbModifier∂DirectObject∂IndirectObject
-1 VerbModifier∂DirectObject∂IndirectObject VerbModifier DirectObject∂IndirectObject
-1 DirectObject∂IndirectObject DirectObject IndirectObject
-1 BackwardsVerbPhrase_3rd_Plr_Transitive Verb_3rd_Plr_Transitive VerbModifier∂DirectObject∂IndirectObject
-1 VerbModifier∂DirectObject∂IndirectObject VerbModifier DirectObject∂IndirectObject
-1 DirectObject∂IndirectObject DirectObject IndirectObject
 	1   BackwardsVerbPhrasePP_1st_Sng_Transitive   VerbPP_1st_Sng_Transitive VerbModifier
 	1   BackwardsVerbPhrasePP_1st_Sng_Intransitive   VerbPP_1st_Sng_Intransitive VerbModifier
 	1   BackwardsVerbPhrasePP_1st_Plr_Transitive   VerbPP_1st_Plr_Transitive VerbModifier
@@ -1369,54 +1085,6 @@
 	1   BackwardsVerbPhrase_3rd_Sng_Intransitive   Verb_3rd_Sng_Intransitive VerbModifier
 	1   BackwardsVerbPhrase_3rd_Plr_Transitive   Verb_3rd_Plr_Transitive VerbModifier
 	1   BackwardsVerbPhrase_3rd_Plr_Intransitive   Verb_3rd_Plr_Intransitive VerbModifier
-1 BackwardsVerbPhrasePP_1st_Sng_Transitive VerbPP_1st_Sng_Transitive VerbModifier∂IndirectObject
-1 VerbModifier∂IndirectObject VerbModifier IndirectObject
-1 BackwardsVerbPhrasePP_1st_Sng_Intransitive VerbPP_1st_Sng_Intransitive VerbModifier∂IndirectObject
-1 VerbModifier∂IndirectObject VerbModifier IndirectObject
-1 BackwardsVerbPhrasePP_1st_Plr_Transitive VerbPP_1st_Plr_Transitive VerbModifier∂IndirectObject
-1 VerbModifier∂IndirectObject VerbModifier IndirectObject
-1 BackwardsVerbPhrasePP_1st_Plr_Intransitive VerbPP_1st_Plr_Intransitive VerbModifier∂IndirectObject
-1 VerbModifier∂IndirectObject VerbModifier IndirectObject
-1 BackwardsVerbPhrasePP_2nd_Sng_Transitive VerbPP_2nd_Sng_Transitive VerbModifier∂IndirectObject
-1 VerbModifier∂IndirectObject VerbModifier IndirectObject
-1 BackwardsVerbPhrasePP_2nd_Sng_Intransitive VerbPP_2nd_Sng_Intransitive VerbModifier∂IndirectObject
-1 VerbModifier∂IndirectObject VerbModifier IndirectObject
-1 BackwardsVerbPhrasePP_2nd_Plr_Transitive VerbPP_2nd_Plr_Transitive VerbModifier∂IndirectObject
-1 VerbModifier∂IndirectObject VerbModifier IndirectObject
-1 BackwardsVerbPhrasePP_2nd_Plr_Intransitive VerbPP_2nd_Plr_Intransitive VerbModifier∂IndirectObject
-1 VerbModifier∂IndirectObject VerbModifier IndirectObject
-1 BackwardsVerbPhrasePP_3rd_Sng_Transitive VerbPP_3rd_Sng_Transitive VerbModifier∂IndirectObject
-1 VerbModifier∂IndirectObject VerbModifier IndirectObject
-1 BackwardsVerbPhrasePP_3rd_Sng_Intransitive VerbPP_3rd_Sng_Intransitive VerbModifier∂IndirectObject
-1 VerbModifier∂IndirectObject VerbModifier IndirectObject
-1 BackwardsVerbPhrasePP_3rd_Plr_Transitive VerbPP_3rd_Plr_Transitive VerbModifier∂IndirectObject
-1 VerbModifier∂IndirectObject VerbModifier IndirectObject
-1 BackwardsVerbPhrasePP_3rd_Plr_Intransitive VerbPP_3rd_Plr_Intransitive VerbModifier∂IndirectObject
-1 VerbModifier∂IndirectObject VerbModifier IndirectObject
-1 BackwardsVerbPhrase_1st_Sng_Transitive Verb_1st_Sng_Transitive VerbModifier∂IndirectObject
-1 VerbModifier∂IndirectObject VerbModifier IndirectObject
-1 BackwardsVerbPhrase_1st_Sng_Intransitive Verb_1st_Sng_Intransitive VerbModifier∂IndirectObject
-1 VerbModifier∂IndirectObject VerbModifier IndirectObject
-1 BackwardsVerbPhrase_1st_Plr_Transitive Verb_1st_Plr_Transitive VerbModifier∂IndirectObject
-1 VerbModifier∂IndirectObject VerbModifier IndirectObject
-1 BackwardsVerbPhrase_1st_Plr_Intransitive Verb_1st_Plr_Intransitive VerbModifier∂IndirectObject
-1 VerbModifier∂IndirectObject VerbModifier IndirectObject
-1 BackwardsVerbPhrase_2nd_Sng_Transitive Verb_2nd_Sng_Transitive VerbModifier∂IndirectObject
-1 VerbModifier∂IndirectObject VerbModifier IndirectObject
-1 BackwardsVerbPhrase_2nd_Sng_Intransitive Verb_2nd_Sng_Intransitive VerbModifier∂IndirectObject
-1 VerbModifier∂IndirectObject VerbModifier IndirectObject
-1 BackwardsVerbPhrase_2nd_Plr_Transitive Verb_2nd_Plr_Transitive VerbModifier∂IndirectObject
-1 VerbModifier∂IndirectObject VerbModifier IndirectObject
-1 BackwardsVerbPhrase_2nd_Plr_Intransitive Verb_2nd_Plr_Intransitive VerbModifier∂IndirectObject
-1 VerbModifier∂IndirectObject VerbModifier IndirectObject
-1 BackwardsVerbPhrase_3rd_Sng_Transitive Verb_3rd_Sng_Transitive VerbModifier∂IndirectObject
-1 VerbModifier∂IndirectObject VerbModifier IndirectObject
-1 BackwardsVerbPhrase_3rd_Sng_Intransitive Verb_3rd_Sng_Intransitive VerbModifier∂IndirectObject
-1 VerbModifier∂IndirectObject VerbModifier IndirectObject
-1 BackwardsVerbPhrase_3rd_Plr_Transitive Verb_3rd_Plr_Transitive VerbModifier∂IndirectObject
-1 VerbModifier∂IndirectObject VerbModifier IndirectObject
-1 BackwardsVerbPhrase_3rd_Plr_Intransitive Verb_3rd_Plr_Intransitive VerbModifier∂IndirectObject
-1 VerbModifier∂IndirectObject VerbModifier IndirectObject
 
 	# Same as above but in the passive voice
 	1   SimpleVerbPhrase_1st_Sng_Transitive                    PastPassiveVerbPhrase_1st_Sng_Transitive
@@ -1467,30 +1135,6 @@
 	1   PassiveVerbPhrase_3rd_Plr_Transitive       VerbPassive_3rd_Plr_Transitive
 	1   PastPassiveVerbPhrase_3rd_Plr_Intransitive       VerbPastPassive_3rd_Plr_Intransitive
 	1   PassiveVerbPhrase_3rd_Plr_Intransitive       VerbPassive_3rd_Plr_Intransitive
-	1   PastPassiveVerbPhrase_1st_Sng_Transitive       VerbPastPassive_1st_Sng_Transitive              IndirectObject
-	1   PassiveVerbPhrase_1st_Sng_Transitive       VerbPassive_1st_Sng_Transitive              IndirectObject
-	1   PastPassiveVerbPhrase_1st_Sng_Intransitive       VerbPastPassive_1st_Sng_Intransitive              IndirectObject
-	1   PassiveVerbPhrase_1st_Sng_Intransitive       VerbPassive_1st_Sng_Intransitive              IndirectObject
-	1   PastPassiveVerbPhrase_1st_Plr_Transitive       VerbPastPassive_1st_Plr_Transitive              IndirectObject
-	1   PassiveVerbPhrase_1st_Plr_Transitive       VerbPassive_1st_Plr_Transitive              IndirectObject
-	1   PastPassiveVerbPhrase_1st_Plr_Intransitive       VerbPastPassive_1st_Plr_Intransitive              IndirectObject
-	1   PassiveVerbPhrase_1st_Plr_Intransitive       VerbPassive_1st_Plr_Intransitive              IndirectObject
-	1   PastPassiveVerbPhrase_2nd_Sng_Transitive       VerbPastPassive_2nd_Sng_Transitive              IndirectObject
-	1   PassiveVerbPhrase_2nd_Sng_Transitive       VerbPassive_2nd_Sng_Transitive              IndirectObject
-	1   PastPassiveVerbPhrase_2nd_Sng_Intransitive       VerbPastPassive_2nd_Sng_Intransitive              IndirectObject
-	1   PassiveVerbPhrase_2nd_Sng_Intransitive       VerbPassive_2nd_Sng_Intransitive              IndirectObject
-	1   PastPassiveVerbPhrase_2nd_Plr_Transitive       VerbPastPassive_2nd_Plr_Transitive              IndirectObject
-	1   PassiveVerbPhrase_2nd_Plr_Transitive       VerbPassive_2nd_Plr_Transitive              IndirectObject
-	1   PastPassiveVerbPhrase_2nd_Plr_Intransitive       VerbPastPassive_2nd_Plr_Intransitive              IndirectObject
-	1   PassiveVerbPhrase_2nd_Plr_Intransitive       VerbPassive_2nd_Plr_Intransitive              IndirectObject
-	1   PastPassiveVerbPhrase_3rd_Sng_Transitive       VerbPastPassive_3rd_Sng_Transitive              IndirectObject
-	1   PassiveVerbPhrase_3rd_Sng_Transitive       VerbPassive_3rd_Sng_Transitive              IndirectObject
-	1   PastPassiveVerbPhrase_3rd_Sng_Intransitive       VerbPastPassive_3rd_Sng_Intransitive              IndirectObject
-	1   PassiveVerbPhrase_3rd_Sng_Intransitive       VerbPassive_3rd_Sng_Intransitive              IndirectObject
-	1   PastPassiveVerbPhrase_3rd_Plr_Transitive       VerbPastPassive_3rd_Plr_Transitive              IndirectObject
-	1   PassiveVerbPhrase_3rd_Plr_Transitive       VerbPassive_3rd_Plr_Transitive              IndirectObject
-	1   PastPassiveVerbPhrase_3rd_Plr_Intransitive       VerbPastPassive_3rd_Plr_Intransitive              IndirectObject
-	1   PassiveVerbPhrase_3rd_Plr_Intransitive       VerbPassive_3rd_Plr_Intransitive              IndirectObject
 	1   PastPassiveVerbPhrase_1st_Sng_Transitive          VerbPastPassive_1st_Sng_Transitive    DirectObject
 	1   PassiveVerbPhrase_1st_Sng_Transitive          VerbPassive_1st_Sng_Transitive    DirectObject
 	1   PastPassiveVerbPhrase_1st_Plr_Transitive          VerbPastPassive_1st_Plr_Transitive    DirectObject
@@ -1503,30 +1147,6 @@
 	1   PassiveVerbPhrase_3rd_Sng_Transitive          VerbPassive_3rd_Sng_Transitive    DirectObject
 	1   PastPassiveVerbPhrase_3rd_Plr_Transitive          VerbPastPassive_3rd_Plr_Transitive    DirectObject
 	1   PassiveVerbPhrase_3rd_Plr_Transitive          VerbPassive_3rd_Plr_Transitive    DirectObject
-1 PastPassiveVerbPhrase_1st_Sng_Transitive VerbPastPassive_1st_Sng_Transitive DirectObject∂IndirectObject
-1 DirectObject∂IndirectObject DirectObject IndirectObject
-1 PassiveVerbPhrase_1st_Sng_Transitive VerbPassive_1st_Sng_Transitive DirectObject∂IndirectObject
-1 DirectObject∂IndirectObject DirectObject IndirectObject
-1 PastPassiveVerbPhrase_1st_Plr_Transitive VerbPastPassive_1st_Plr_Transitive DirectObject∂IndirectObject
-1 DirectObject∂IndirectObject DirectObject IndirectObject
-1 PassiveVerbPhrase_1st_Plr_Transitive VerbPassive_1st_Plr_Transitive DirectObject∂IndirectObject
-1 DirectObject∂IndirectObject DirectObject IndirectObject
-1 PastPassiveVerbPhrase_2nd_Sng_Transitive VerbPastPassive_2nd_Sng_Transitive DirectObject∂IndirectObject
-1 DirectObject∂IndirectObject DirectObject IndirectObject
-1 PassiveVerbPhrase_2nd_Sng_Transitive VerbPassive_2nd_Sng_Transitive DirectObject∂IndirectObject
-1 DirectObject∂IndirectObject DirectObject IndirectObject
-1 PastPassiveVerbPhrase_2nd_Plr_Transitive VerbPastPassive_2nd_Plr_Transitive DirectObject∂IndirectObject
-1 DirectObject∂IndirectObject DirectObject IndirectObject
-1 PassiveVerbPhrase_2nd_Plr_Transitive VerbPassive_2nd_Plr_Transitive DirectObject∂IndirectObject
-1 DirectObject∂IndirectObject DirectObject IndirectObject
-1 PastPassiveVerbPhrase_3rd_Sng_Transitive VerbPastPassive_3rd_Sng_Transitive DirectObject∂IndirectObject
-1 DirectObject∂IndirectObject DirectObject IndirectObject
-1 PassiveVerbPhrase_3rd_Sng_Transitive VerbPassive_3rd_Sng_Transitive DirectObject∂IndirectObject
-1 DirectObject∂IndirectObject DirectObject IndirectObject
-1 PastPassiveVerbPhrase_3rd_Plr_Transitive VerbPastPassive_3rd_Plr_Transitive DirectObject∂IndirectObject
-1 DirectObject∂IndirectObject DirectObject IndirectObject
-1 PassiveVerbPhrase_3rd_Plr_Transitive VerbPassive_3rd_Plr_Transitive DirectObject∂IndirectObject
-1 DirectObject∂IndirectObject DirectObject IndirectObject
 1 PastPassiveVerbPhrase_1st_Sng_Transitive VerbPastPassive_1st_Sng_Transitive wrap_by∂SimpleNounPhrase_DirObj
 1 wrap_by∂SimpleNounPhrase_DirObj wrap_by SimpleNounPhrase_DirObj
 1 PassiveVerbPhrase_1st_Sng_Transitive VerbPassive_1st_Sng_Transitive wrap_by∂SimpleNounPhrase_DirObj
@@ -1575,77 +1195,29 @@
 1 wrap_by∂SimpleNounPhrase_DirObj wrap_by SimpleNounPhrase_DirObj
 1 PassiveVerbPhrase_3rd_Plr_Intransitive VerbPassive_3rd_Plr_Intransitive wrap_by∂SimpleNounPhrase_DirObj
 1 wrap_by∂SimpleNounPhrase_DirObj wrap_by SimpleNounPhrase_DirObj
-1 PastPassiveVerbPhrase_1st_Sng_Transitive VerbPastPassive_1st_Sng_Transitive IndirectObject∂wrap_by∂SimpleNounPhrase_DirObj
-1 IndirectObject∂wrap_by∂SimpleNounPhrase_DirObj IndirectObject wrap_by∂SimpleNounPhrase_DirObj
 1 wrap_by∂SimpleNounPhrase_DirObj wrap_by SimpleNounPhrase_DirObj
-1 PassiveVerbPhrase_1st_Sng_Transitive VerbPassive_1st_Sng_Transitive IndirectObject∂wrap_by∂SimpleNounPhrase_DirObj
-1 IndirectObject∂wrap_by∂SimpleNounPhrase_DirObj IndirectObject wrap_by∂SimpleNounPhrase_DirObj
 1 wrap_by∂SimpleNounPhrase_DirObj wrap_by SimpleNounPhrase_DirObj
-1 PastPassiveVerbPhrase_1st_Sng_Intransitive VerbPastPassive_1st_Sng_Intransitive IndirectObject∂wrap_by∂SimpleNounPhrase_DirObj
-1 IndirectObject∂wrap_by∂SimpleNounPhrase_DirObj IndirectObject wrap_by∂SimpleNounPhrase_DirObj
 1 wrap_by∂SimpleNounPhrase_DirObj wrap_by SimpleNounPhrase_DirObj
-1 PassiveVerbPhrase_1st_Sng_Intransitive VerbPassive_1st_Sng_Intransitive IndirectObject∂wrap_by∂SimpleNounPhrase_DirObj
-1 IndirectObject∂wrap_by∂SimpleNounPhrase_DirObj IndirectObject wrap_by∂SimpleNounPhrase_DirObj
 1 wrap_by∂SimpleNounPhrase_DirObj wrap_by SimpleNounPhrase_DirObj
-1 PastPassiveVerbPhrase_1st_Plr_Transitive VerbPastPassive_1st_Plr_Transitive IndirectObject∂wrap_by∂SimpleNounPhrase_DirObj
-1 IndirectObject∂wrap_by∂SimpleNounPhrase_DirObj IndirectObject wrap_by∂SimpleNounPhrase_DirObj
 1 wrap_by∂SimpleNounPhrase_DirObj wrap_by SimpleNounPhrase_DirObj
-1 PassiveVerbPhrase_1st_Plr_Transitive VerbPassive_1st_Plr_Transitive IndirectObject∂wrap_by∂SimpleNounPhrase_DirObj
-1 IndirectObject∂wrap_by∂SimpleNounPhrase_DirObj IndirectObject wrap_by∂SimpleNounPhrase_DirObj
 1 wrap_by∂SimpleNounPhrase_DirObj wrap_by SimpleNounPhrase_DirObj
-1 PastPassiveVerbPhrase_1st_Plr_Intransitive VerbPastPassive_1st_Plr_Intransitive IndirectObject∂wrap_by∂SimpleNounPhrase_DirObj
-1 IndirectObject∂wrap_by∂SimpleNounPhrase_DirObj IndirectObject wrap_by∂SimpleNounPhrase_DirObj
 1 wrap_by∂SimpleNounPhrase_DirObj wrap_by SimpleNounPhrase_DirObj
-1 PassiveVerbPhrase_1st_Plr_Intransitive VerbPassive_1st_Plr_Intransitive IndirectObject∂wrap_by∂SimpleNounPhrase_DirObj
-1 IndirectObject∂wrap_by∂SimpleNounPhrase_DirObj IndirectObject wrap_by∂SimpleNounPhrase_DirObj
 1 wrap_by∂SimpleNounPhrase_DirObj wrap_by SimpleNounPhrase_DirObj
-1 PastPassiveVerbPhrase_2nd_Sng_Transitive VerbPastPassive_2nd_Sng_Transitive IndirectObject∂wrap_by∂SimpleNounPhrase_DirObj
-1 IndirectObject∂wrap_by∂SimpleNounPhrase_DirObj IndirectObject wrap_by∂SimpleNounPhrase_DirObj
 1 wrap_by∂SimpleNounPhrase_DirObj wrap_by SimpleNounPhrase_DirObj
-1 PassiveVerbPhrase_2nd_Sng_Transitive VerbPassive_2nd_Sng_Transitive IndirectObject∂wrap_by∂SimpleNounPhrase_DirObj
-1 IndirectObject∂wrap_by∂SimpleNounPhrase_DirObj IndirectObject wrap_by∂SimpleNounPhrase_DirObj
 1 wrap_by∂SimpleNounPhrase_DirObj wrap_by SimpleNounPhrase_DirObj
-1 PastPassiveVerbPhrase_2nd_Sng_Intransitive VerbPastPassive_2nd_Sng_Intransitive IndirectObject∂wrap_by∂SimpleNounPhrase_DirObj
-1 IndirectObject∂wrap_by∂SimpleNounPhrase_DirObj IndirectObject wrap_by∂SimpleNounPhrase_DirObj
 1 wrap_by∂SimpleNounPhrase_DirObj wrap_by SimpleNounPhrase_DirObj
-1 PassiveVerbPhrase_2nd_Sng_Intransitive VerbPassive_2nd_Sng_Intransitive IndirectObject∂wrap_by∂SimpleNounPhrase_DirObj
-1 IndirectObject∂wrap_by∂SimpleNounPhrase_DirObj IndirectObject wrap_by∂SimpleNounPhrase_DirObj
 1 wrap_by∂SimpleNounPhrase_DirObj wrap_by SimpleNounPhrase_DirObj
-1 PastPassiveVerbPhrase_2nd_Plr_Transitive VerbPastPassive_2nd_Plr_Transitive IndirectObject∂wrap_by∂SimpleNounPhrase_DirObj
-1 IndirectObject∂wrap_by∂SimpleNounPhrase_DirObj IndirectObject wrap_by∂SimpleNounPhrase_DirObj
 1 wrap_by∂SimpleNounPhrase_DirObj wrap_by SimpleNounPhrase_DirObj
-1 PassiveVerbPhrase_2nd_Plr_Transitive VerbPassive_2nd_Plr_Transitive IndirectObject∂wrap_by∂SimpleNounPhrase_DirObj
-1 IndirectObject∂wrap_by∂SimpleNounPhrase_DirObj IndirectObject wrap_by∂SimpleNounPhrase_DirObj
 1 wrap_by∂SimpleNounPhrase_DirObj wrap_by SimpleNounPhrase_DirObj
-1 PastPassiveVerbPhrase_2nd_Plr_Intransitive VerbPastPassive_2nd_Plr_Intransitive IndirectObject∂wrap_by∂SimpleNounPhrase_DirObj
-1 IndirectObject∂wrap_by∂SimpleNounPhrase_DirObj IndirectObject wrap_by∂SimpleNounPhrase_DirObj
 1 wrap_by∂SimpleNounPhrase_DirObj wrap_by SimpleNounPhrase_DirObj
-1 PassiveVerbPhrase_2nd_Plr_Intransitive VerbPassive_2nd_Plr_Intransitive IndirectObject∂wrap_by∂SimpleNounPhrase_DirObj
-1 IndirectObject∂wrap_by∂SimpleNounPhrase_DirObj IndirectObject wrap_by∂SimpleNounPhrase_DirObj
 1 wrap_by∂SimpleNounPhrase_DirObj wrap_by SimpleNounPhrase_DirObj
-1 PastPassiveVerbPhrase_3rd_Sng_Transitive VerbPastPassive_3rd_Sng_Transitive IndirectObject∂wrap_by∂SimpleNounPhrase_DirObj
-1 IndirectObject∂wrap_by∂SimpleNounPhrase_DirObj IndirectObject wrap_by∂SimpleNounPhrase_DirObj
 1 wrap_by∂SimpleNounPhrase_DirObj wrap_by SimpleNounPhrase_DirObj
-1 PassiveVerbPhrase_3rd_Sng_Transitive VerbPassive_3rd_Sng_Transitive IndirectObject∂wrap_by∂SimpleNounPhrase_DirObj
-1 IndirectObject∂wrap_by∂SimpleNounPhrase_DirObj IndirectObject wrap_by∂SimpleNounPhrase_DirObj
 1 wrap_by∂SimpleNounPhrase_DirObj wrap_by SimpleNounPhrase_DirObj
-1 PastPassiveVerbPhrase_3rd_Sng_Intransitive VerbPastPassive_3rd_Sng_Intransitive IndirectObject∂wrap_by∂SimpleNounPhrase_DirObj
-1 IndirectObject∂wrap_by∂SimpleNounPhrase_DirObj IndirectObject wrap_by∂SimpleNounPhrase_DirObj
 1 wrap_by∂SimpleNounPhrase_DirObj wrap_by SimpleNounPhrase_DirObj
-1 PassiveVerbPhrase_3rd_Sng_Intransitive VerbPassive_3rd_Sng_Intransitive IndirectObject∂wrap_by∂SimpleNounPhrase_DirObj
-1 IndirectObject∂wrap_by∂SimpleNounPhrase_DirObj IndirectObject wrap_by∂SimpleNounPhrase_DirObj
 1 wrap_by∂SimpleNounPhrase_DirObj wrap_by SimpleNounPhrase_DirObj
-1 PastPassiveVerbPhrase_3rd_Plr_Transitive VerbPastPassive_3rd_Plr_Transitive IndirectObject∂wrap_by∂SimpleNounPhrase_DirObj
-1 IndirectObject∂wrap_by∂SimpleNounPhrase_DirObj IndirectObject wrap_by∂SimpleNounPhrase_DirObj
 1 wrap_by∂SimpleNounPhrase_DirObj wrap_by SimpleNounPhrase_DirObj
-1 PassiveVerbPhrase_3rd_Plr_Transitive VerbPassive_3rd_Plr_Transitive IndirectObject∂wrap_by∂SimpleNounPhrase_DirObj
-1 IndirectObject∂wrap_by∂SimpleNounPhrase_DirObj IndirectObject wrap_by∂SimpleNounPhrase_DirObj
 1 wrap_by∂SimpleNounPhrase_DirObj wrap_by SimpleNounPhrase_DirObj
-1 PastPassiveVerbPhrase_3rd_Plr_Intransitive VerbPastPassive_3rd_Plr_Intransitive IndirectObject∂wrap_by∂SimpleNounPhrase_DirObj
-1 IndirectObject∂wrap_by∂SimpleNounPhrase_DirObj IndirectObject wrap_by∂SimpleNounPhrase_DirObj
 1 wrap_by∂SimpleNounPhrase_DirObj wrap_by SimpleNounPhrase_DirObj
-1 PassiveVerbPhrase_3rd_Plr_Intransitive VerbPassive_3rd_Plr_Intransitive IndirectObject∂wrap_by∂SimpleNounPhrase_DirObj
-1 IndirectObject∂wrap_by∂SimpleNounPhrase_DirObj IndirectObject wrap_by∂SimpleNounPhrase_DirObj
 1 wrap_by∂SimpleNounPhrase_DirObj wrap_by SimpleNounPhrase_DirObj
 1 PastPassiveVerbPhrase_1st_Sng_Transitive VerbPastPassive_1st_Sng_Transitive DirectObject∂wrap_by∂SimpleNounPhrase_DirObj
 1 DirectObject∂wrap_by∂SimpleNounPhrase_DirObj DirectObject wrap_by∂SimpleNounPhrase_DirObj
@@ -1683,69 +1255,20 @@
 1 PassiveVerbPhrase_3rd_Plr_Transitive VerbPassive_3rd_Plr_Transitive DirectObject∂wrap_by∂SimpleNounPhrase_DirObj
 1 DirectObject∂wrap_by∂SimpleNounPhrase_DirObj DirectObject wrap_by∂SimpleNounPhrase_DirObj
 1 wrap_by∂SimpleNounPhrase_DirObj wrap_by SimpleNounPhrase_DirObj
-1 PastPassiveVerbPhrase_1st_Sng_Transitive VerbPastPassive_1st_Sng_Transitive DirectObject∂IndirectObject∂wrap_by∂SimpleNounPhrase_DirObj
-1 DirectObject∂IndirectObject∂wrap_by∂SimpleNounPhrase_DirObj DirectObject IndirectObject∂wrap_by∂SimpleNounPhrase_DirObj
-1 IndirectObject∂wrap_by∂SimpleNounPhrase_DirObj IndirectObject wrap_by∂SimpleNounPhrase_DirObj
 1 wrap_by∂SimpleNounPhrase_DirObj wrap_by SimpleNounPhrase_DirObj
-1 PassiveVerbPhrase_1st_Sng_Transitive VerbPassive_1st_Sng_Transitive DirectObject∂IndirectObject∂wrap_by∂SimpleNounPhrase_DirObj
-1 DirectObject∂IndirectObject∂wrap_by∂SimpleNounPhrase_DirObj DirectObject IndirectObject∂wrap_by∂SimpleNounPhrase_DirObj
-1 IndirectObject∂wrap_by∂SimpleNounPhrase_DirObj IndirectObject wrap_by∂SimpleNounPhrase_DirObj
 1 wrap_by∂SimpleNounPhrase_DirObj wrap_by SimpleNounPhrase_DirObj
-1 PastPassiveVerbPhrase_1st_Plr_Transitive VerbPastPassive_1st_Plr_Transitive DirectObject∂IndirectObject∂wrap_by∂SimpleNounPhrase_DirObj
-1 DirectObject∂IndirectObject∂wrap_by∂SimpleNounPhrase_DirObj DirectObject IndirectObject∂wrap_by∂SimpleNounPhrase_DirObj
-1 IndirectObject∂wrap_by∂SimpleNounPhrase_DirObj IndirectObject wrap_by∂SimpleNounPhrase_DirObj
 1 wrap_by∂SimpleNounPhrase_DirObj wrap_by SimpleNounPhrase_DirObj
-1 PassiveVerbPhrase_1st_Plr_Transitive VerbPassive_1st_Plr_Transitive DirectObject∂IndirectObject∂wrap_by∂SimpleNounPhrase_DirObj
-1 DirectObject∂IndirectObject∂wrap_by∂SimpleNounPhrase_DirObj DirectObject IndirectObject∂wrap_by∂SimpleNounPhrase_DirObj
-1 IndirectObject∂wrap_by∂SimpleNounPhrase_DirObj IndirectObject wrap_by∂SimpleNounPhrase_DirObj
 1 wrap_by∂SimpleNounPhrase_DirObj wrap_by SimpleNounPhrase_DirObj
-1 PastPassiveVerbPhrase_2nd_Sng_Transitive VerbPastPassive_2nd_Sng_Transitive DirectObject∂IndirectObject∂wrap_by∂SimpleNounPhrase_DirObj
-1 DirectObject∂IndirectObject∂wrap_by∂SimpleNounPhrase_DirObj DirectObject IndirectObject∂wrap_by∂SimpleNounPhrase_DirObj
-1 IndirectObject∂wrap_by∂SimpleNounPhrase_DirObj IndirectObject wrap_by∂SimpleNounPhrase_DirObj
 1 wrap_by∂SimpleNounPhrase_DirObj wrap_by SimpleNounPhrase_DirObj
-1 PassiveVerbPhrase_2nd_Sng_Transitive VerbPassive_2nd_Sng_Transitive DirectObject∂IndirectObject∂wrap_by∂SimpleNounPhrase_DirObj
-1 DirectObject∂IndirectObject∂wrap_by∂SimpleNounPhrase_DirObj DirectObject IndirectObject∂wrap_by∂SimpleNounPhrase_DirObj
-1 IndirectObject∂wrap_by∂SimpleNounPhrase_DirObj IndirectObject wrap_by∂SimpleNounPhrase_DirObj
 1 wrap_by∂SimpleNounPhrase_DirObj wrap_by SimpleNounPhrase_DirObj
-1 PastPassiveVerbPhrase_2nd_Plr_Transitive VerbPastPassive_2nd_Plr_Transitive DirectObject∂IndirectObject∂wrap_by∂SimpleNounPhrase_DirObj
-1 DirectObject∂IndirectObject∂wrap_by∂SimpleNounPhrase_DirObj DirectObject IndirectObject∂wrap_by∂SimpleNounPhrase_DirObj
-1 IndirectObject∂wrap_by∂SimpleNounPhrase_DirObj IndirectObject wrap_by∂SimpleNounPhrase_DirObj
 1 wrap_by∂SimpleNounPhrase_DirObj wrap_by SimpleNounPhrase_DirObj
-1 PassiveVerbPhrase_2nd_Plr_Transitive VerbPassive_2nd_Plr_Transitive DirectObject∂IndirectObject∂wrap_by∂SimpleNounPhrase_DirObj
-1 DirectObject∂IndirectObject∂wrap_by∂SimpleNounPhrase_DirObj DirectObject IndirectObject∂wrap_by∂SimpleNounPhrase_DirObj
-1 IndirectObject∂wrap_by∂SimpleNounPhrase_DirObj IndirectObject wrap_by∂SimpleNounPhrase_DirObj
 1 wrap_by∂SimpleNounPhrase_DirObj wrap_by SimpleNounPhrase_DirObj
-1 PastPassiveVerbPhrase_3rd_Sng_Transitive VerbPastPassive_3rd_Sng_Transitive DirectObject∂IndirectObject∂wrap_by∂SimpleNounPhrase_DirObj
-1 DirectObject∂IndirectObject∂wrap_by∂SimpleNounPhrase_DirObj DirectObject IndirectObject∂wrap_by∂SimpleNounPhrase_DirObj
-1 IndirectObject∂wrap_by∂SimpleNounPhrase_DirObj IndirectObject wrap_by∂SimpleNounPhrase_DirObj
 1 wrap_by∂SimpleNounPhrase_DirObj wrap_by SimpleNounPhrase_DirObj
-1 PassiveVerbPhrase_3rd_Sng_Transitive VerbPassive_3rd_Sng_Transitive DirectObject∂IndirectObject∂wrap_by∂SimpleNounPhrase_DirObj
-1 DirectObject∂IndirectObject∂wrap_by∂SimpleNounPhrase_DirObj DirectObject IndirectObject∂wrap_by∂SimpleNounPhrase_DirObj
-1 IndirectObject∂wrap_by∂SimpleNounPhrase_DirObj IndirectObject wrap_by∂SimpleNounPhrase_DirObj
 1 wrap_by∂SimpleNounPhrase_DirObj wrap_by SimpleNounPhrase_DirObj
-1 PastPassiveVerbPhrase_3rd_Plr_Transitive VerbPastPassive_3rd_Plr_Transitive DirectObject∂IndirectObject∂wrap_by∂SimpleNounPhrase_DirObj
-1 DirectObject∂IndirectObject∂wrap_by∂SimpleNounPhrase_DirObj DirectObject IndirectObject∂wrap_by∂SimpleNounPhrase_DirObj
-1 IndirectObject∂wrap_by∂SimpleNounPhrase_DirObj IndirectObject wrap_by∂SimpleNounPhrase_DirObj
 1 wrap_by∂SimpleNounPhrase_DirObj wrap_by SimpleNounPhrase_DirObj
-1 PassiveVerbPhrase_3rd_Plr_Transitive VerbPassive_3rd_Plr_Transitive DirectObject∂IndirectObject∂wrap_by∂SimpleNounPhrase_DirObj
-1 DirectObject∂IndirectObject∂wrap_by∂SimpleNounPhrase_DirObj DirectObject IndirectObject∂wrap_by∂SimpleNounPhrase_DirObj
-1 IndirectObject∂wrap_by∂SimpleNounPhrase_DirObj IndirectObject wrap_by∂SimpleNounPhrase_DirObj
 1 wrap_by∂SimpleNounPhrase_DirObj wrap_by SimpleNounPhrase_DirObj
 
 	# Same as above, but in this case the verb might be followed by 'with' or 'from': I ride the horse to town with you.
-1 SimpleVerbPhrasePP_1st_Sng_Transitive WithTakersPP_1st_Sng_Transitive DirectObject∂WithEnding
-1 DirectObject∂WithEnding DirectObject WithEnding
-1 SimpleVerbPhrasePP_1st_Plr_Transitive WithTakersPP_1st_Plr_Transitive DirectObject∂WithEnding
-1 DirectObject∂WithEnding DirectObject WithEnding
-1 SimpleVerbPhrasePP_2nd_Sng_Transitive WithTakersPP_2nd_Sng_Transitive DirectObject∂WithEnding
-1 DirectObject∂WithEnding DirectObject WithEnding
-1 SimpleVerbPhrasePP_2nd_Plr_Transitive WithTakersPP_2nd_Plr_Transitive DirectObject∂WithEnding
-1 DirectObject∂WithEnding DirectObject WithEnding
-1 SimpleVerbPhrasePP_3rd_Sng_Transitive WithTakersPP_3rd_Sng_Transitive DirectObject∂WithEnding
-1 DirectObject∂WithEnding DirectObject WithEnding
-1 SimpleVerbPhrasePP_3rd_Plr_Transitive WithTakersPP_3rd_Plr_Transitive DirectObject∂WithEnding
-1 DirectObject∂WithEnding DirectObject WithEnding
-1 SimpleVerbPhrasePP_1st_Sng_Transitive FromTakersPP_1st_Sng_Transitive DirectObject∂FromEnding
 1 DirectObject∂FromEnding DirectObject FromEnding
 1 SimpleVerbPhrasePP_1st_Plr_Transitive FromTakersPP_1st_Plr_Transitive DirectObject∂FromEnding
 1 DirectObject∂FromEnding DirectObject FromEnding
@@ -1757,18 +1280,6 @@
 1 DirectObject∂FromEnding DirectObject FromEnding
 1 SimpleVerbPhrasePP_3rd_Plr_Transitive FromTakersPP_3rd_Plr_Transitive DirectObject∂FromEnding
 1 DirectObject∂FromEnding DirectObject FromEnding
-1 SimpleVerbPhrase_1st_Sng_Transitive WithTakers_1st_Sng_Transitive DirectObject∂WithEnding
-1 DirectObject∂WithEnding DirectObject WithEnding
-1 SimpleVerbPhrase_1st_Plr_Transitive WithTakers_1st_Plr_Transitive DirectObject∂WithEnding
-1 DirectObject∂WithEnding DirectObject WithEnding
-1 SimpleVerbPhrase_2nd_Sng_Transitive WithTakers_2nd_Sng_Transitive DirectObject∂WithEnding
-1 DirectObject∂WithEnding DirectObject WithEnding
-1 SimpleVerbPhrase_2nd_Plr_Transitive WithTakers_2nd_Plr_Transitive DirectObject∂WithEnding
-1 DirectObject∂WithEnding DirectObject WithEnding
-1 SimpleVerbPhrase_3rd_Sng_Transitive WithTakers_3rd_Sng_Transitive DirectObject∂WithEnding
-1 DirectObject∂WithEnding DirectObject WithEnding
-1 SimpleVerbPhrase_3rd_Plr_Transitive WithTakers_3rd_Plr_Transitive DirectObject∂WithEnding
-1 DirectObject∂WithEnding DirectObject WithEnding
 1 SimpleVerbPhrase_1st_Sng_Transitive FromTakers_1st_Sng_Transitive DirectObject∂FromEnding
 1 DirectObject∂FromEnding DirectObject FromEnding
 1 SimpleVerbPhrase_1st_Plr_Transitive FromTakers_1st_Plr_Transitive DirectObject∂FromEnding
@@ -1781,91 +1292,6 @@
 1 DirectObject∂FromEnding DirectObject FromEnding
 1 SimpleVerbPhrase_3rd_Plr_Transitive FromTakers_3rd_Plr_Transitive DirectObject∂FromEnding
 1 DirectObject∂FromEnding DirectObject FromEnding
-1 SimpleVerbPhrasePP_1st_Sng_Transitive WithTakersPP_1st_Sng_Transitive DirectObject∂IndirectObject∂WithEnding
-1 DirectObject∂IndirectObject∂WithEnding DirectObject IndirectObject∂WithEnding
-1 IndirectObject∂WithEnding IndirectObject WithEnding
-1 SimpleVerbPhrasePP_1st_Plr_Transitive WithTakersPP_1st_Plr_Transitive DirectObject∂IndirectObject∂WithEnding
-1 DirectObject∂IndirectObject∂WithEnding DirectObject IndirectObject∂WithEnding
-1 IndirectObject∂WithEnding IndirectObject WithEnding
-1 SimpleVerbPhrasePP_2nd_Sng_Transitive WithTakersPP_2nd_Sng_Transitive DirectObject∂IndirectObject∂WithEnding
-1 DirectObject∂IndirectObject∂WithEnding DirectObject IndirectObject∂WithEnding
-1 IndirectObject∂WithEnding IndirectObject WithEnding
-1 SimpleVerbPhrasePP_2nd_Plr_Transitive WithTakersPP_2nd_Plr_Transitive DirectObject∂IndirectObject∂WithEnding
-1 DirectObject∂IndirectObject∂WithEnding DirectObject IndirectObject∂WithEnding
-1 IndirectObject∂WithEnding IndirectObject WithEnding
-1 SimpleVerbPhrasePP_3rd_Sng_Transitive WithTakersPP_3rd_Sng_Transitive DirectObject∂IndirectObject∂WithEnding
-1 DirectObject∂IndirectObject∂WithEnding DirectObject IndirectObject∂WithEnding
-1 IndirectObject∂WithEnding IndirectObject WithEnding
-1 SimpleVerbPhrasePP_3rd_Plr_Transitive WithTakersPP_3rd_Plr_Transitive DirectObject∂IndirectObject∂WithEnding
-1 DirectObject∂IndirectObject∂WithEnding DirectObject IndirectObject∂WithEnding
-1 IndirectObject∂WithEnding IndirectObject WithEnding
-1 SimpleVerbPhrasePP_1st_Sng_Transitive FromTakersPP_1st_Sng_Transitive DirectObject∂IndirectObject∂FromEnding
-1 DirectObject∂IndirectObject∂FromEnding DirectObject IndirectObject∂FromEnding
-1 IndirectObject∂FromEnding IndirectObject FromEnding
-1 SimpleVerbPhrasePP_1st_Plr_Transitive FromTakersPP_1st_Plr_Transitive DirectObject∂IndirectObject∂FromEnding
-1 DirectObject∂IndirectObject∂FromEnding DirectObject IndirectObject∂FromEnding
-1 IndirectObject∂FromEnding IndirectObject FromEnding
-1 SimpleVerbPhrasePP_2nd_Sng_Transitive FromTakersPP_2nd_Sng_Transitive DirectObject∂IndirectObject∂FromEnding
-1 DirectObject∂IndirectObject∂FromEnding DirectObject IndirectObject∂FromEnding
-1 IndirectObject∂FromEnding IndirectObject FromEnding
-1 SimpleVerbPhrasePP_2nd_Plr_Transitive FromTakersPP_2nd_Plr_Transitive DirectObject∂IndirectObject∂FromEnding
-1 DirectObject∂IndirectObject∂FromEnding DirectObject IndirectObject∂FromEnding
-1 IndirectObject∂FromEnding IndirectObject FromEnding
-1 SimpleVerbPhrasePP_3rd_Sng_Transitive FromTakersPP_3rd_Sng_Transitive DirectObject∂IndirectObject∂FromEnding
-1 DirectObject∂IndirectObject∂FromEnding DirectObject IndirectObject∂FromEnding
-1 IndirectObject∂FromEnding IndirectObject FromEnding
-1 SimpleVerbPhrasePP_3rd_Plr_Transitive FromTakersPP_3rd_Plr_Transitive DirectObject∂IndirectObject∂FromEnding
-1 DirectObject∂IndirectObject∂FromEnding DirectObject IndirectObject∂FromEnding
-1 IndirectObject∂FromEnding IndirectObject FromEnding
-1 SimpleVerbPhrase_1st_Sng_Transitive WithTakers_1st_Sng_Transitive DirectObject∂IndirectObject∂WithEnding
-1 DirectObject∂IndirectObject∂WithEnding DirectObject IndirectObject∂WithEnding
-1 IndirectObject∂WithEnding IndirectObject WithEnding
-1 SimpleVerbPhrase_1st_Plr_Transitive WithTakers_1st_Plr_Transitive DirectObject∂IndirectObject∂WithEnding
-1 DirectObject∂IndirectObject∂WithEnding DirectObject IndirectObject∂WithEnding
-1 IndirectObject∂WithEnding IndirectObject WithEnding
-1 SimpleVerbPhrase_2nd_Sng_Transitive WithTakers_2nd_Sng_Transitive DirectObject∂IndirectObject∂WithEnding
-1 DirectObject∂IndirectObject∂WithEnding DirectObject IndirectObject∂WithEnding
-1 IndirectObject∂WithEnding IndirectObject WithEnding
-1 SimpleVerbPhrase_2nd_Plr_Transitive WithTakers_2nd_Plr_Transitive DirectObject∂IndirectObject∂WithEnding
-1 DirectObject∂IndirectObject∂WithEnding DirectObject IndirectObject∂WithEnding
-1 IndirectObject∂WithEnding IndirectObject WithEnding
-1 SimpleVerbPhrase_3rd_Sng_Transitive WithTakers_3rd_Sng_Transitive DirectObject∂IndirectObject∂WithEnding
-1 DirectObject∂IndirectObject∂WithEnding DirectObject IndirectObject∂WithEnding
-1 IndirectObject∂WithEnding IndirectObject WithEnding
-1 SimpleVerbPhrase_3rd_Plr_Transitive WithTakers_3rd_Plr_Transitive DirectObject∂IndirectObject∂WithEnding
-1 DirectObject∂IndirectObject∂WithEnding DirectObject IndirectObject∂WithEnding
-1 IndirectObject∂WithEnding IndirectObject WithEnding
-1 SimpleVerbPhrase_1st_Sng_Transitive FromTakers_1st_Sng_Transitive DirectObject∂IndirectObject∂FromEnding
-1 DirectObject∂IndirectObject∂FromEnding DirectObject IndirectObject∂FromEnding
-1 IndirectObject∂FromEnding IndirectObject FromEnding
-1 SimpleVerbPhrase_1st_Plr_Transitive FromTakers_1st_Plr_Transitive DirectObject∂IndirectObject∂FromEnding
-1 DirectObject∂IndirectObject∂FromEnding DirectObject IndirectObject∂FromEnding
-1 IndirectObject∂FromEnding IndirectObject FromEnding
-1 SimpleVerbPhrase_2nd_Sng_Transitive FromTakers_2nd_Sng_Transitive DirectObject∂IndirectObject∂FromEnding
-1 DirectObject∂IndirectObject∂FromEnding DirectObject IndirectObject∂FromEnding
-1 IndirectObject∂FromEnding IndirectObject FromEnding
-1 SimpleVerbPhrase_2nd_Plr_Transitive FromTakers_2nd_Plr_Transitive DirectObject∂IndirectObject∂FromEnding
-1 DirectObject∂IndirectObject∂FromEnding DirectObject IndirectObject∂FromEnding
-1 IndirectObject∂FromEnding IndirectObject FromEnding
-1 SimpleVerbPhrase_3rd_Sng_Transitive FromTakers_3rd_Sng_Transitive DirectObject∂IndirectObject∂FromEnding
-1 DirectObject∂IndirectObject∂FromEnding DirectObject IndirectObject∂FromEnding
-1 IndirectObject∂FromEnding IndirectObject FromEnding
-1 SimpleVerbPhrase_3rd_Plr_Transitive FromTakers_3rd_Plr_Transitive DirectObject∂IndirectObject∂FromEnding
-1 DirectObject∂IndirectObject∂FromEnding DirectObject IndirectObject∂FromEnding
-1 IndirectObject∂FromEnding IndirectObject FromEnding
-	1   SimpleVerbPhrasePP_1st_Sng_Transitive   WithTakersPP_1st_Sng_Transitive                             WithEnding
-	1   SimpleVerbPhrasePP_1st_Sng_Intransitive   WithTakersPP_1st_Sng_Intransitive                             WithEnding
-	1   SimpleVerbPhrasePP_1st_Plr_Transitive   WithTakersPP_1st_Plr_Transitive                             WithEnding
-	1   SimpleVerbPhrasePP_1st_Plr_Intransitive   WithTakersPP_1st_Plr_Intransitive                             WithEnding
-	1   SimpleVerbPhrasePP_2nd_Sng_Transitive   WithTakersPP_2nd_Sng_Transitive                             WithEnding
-	1   SimpleVerbPhrasePP_2nd_Sng_Intransitive   WithTakersPP_2nd_Sng_Intransitive                             WithEnding
-	1   SimpleVerbPhrasePP_2nd_Plr_Transitive   WithTakersPP_2nd_Plr_Transitive                             WithEnding
-	1   SimpleVerbPhrasePP_2nd_Plr_Intransitive   WithTakersPP_2nd_Plr_Intransitive                             WithEnding
-	1   SimpleVerbPhrasePP_3rd_Sng_Transitive   WithTakersPP_3rd_Sng_Transitive                             WithEnding
-	1   SimpleVerbPhrasePP_3rd_Sng_Intransitive   WithTakersPP_3rd_Sng_Intransitive                             WithEnding
-	1   SimpleVerbPhrasePP_3rd_Plr_Transitive   WithTakersPP_3rd_Plr_Transitive                             WithEnding
-	1   SimpleVerbPhrasePP_3rd_Plr_Intransitive   WithTakersPP_3rd_Plr_Intransitive                             WithEnding
-	1   SimpleVerbPhrasePP_1st_Sng_Transitive   FromTakersPP_1st_Sng_Transitive                             FromEnding
 	1   SimpleVerbPhrasePP_1st_Sng_Intransitive   FromTakersPP_1st_Sng_Intransitive                             FromEnding
 	1   SimpleVerbPhrasePP_1st_Plr_Transitive   FromTakersPP_1st_Plr_Transitive                             FromEnding
 	1   SimpleVerbPhrasePP_1st_Plr_Intransitive   FromTakersPP_1st_Plr_Intransitive                             FromEnding
@@ -1877,18 +1303,6 @@
 	1   SimpleVerbPhrasePP_3rd_Sng_Intransitive   FromTakersPP_3rd_Sng_Intransitive                             FromEnding
 	1   SimpleVerbPhrasePP_3rd_Plr_Transitive   FromTakersPP_3rd_Plr_Transitive                             FromEnding
 	1   SimpleVerbPhrasePP_3rd_Plr_Intransitive   FromTakersPP_3rd_Plr_Intransitive                             FromEnding
-	1   SimpleVerbPhrase_1st_Sng_Transitive   WithTakers_1st_Sng_Transitive                             WithEnding
-	1   SimpleVerbPhrase_1st_Sng_Intransitive   WithTakers_1st_Sng_Intransitive                             WithEnding
-	1   SimpleVerbPhrase_1st_Plr_Transitive   WithTakers_1st_Plr_Transitive                             WithEnding
-	1   SimpleVerbPhrase_1st_Plr_Intransitive   WithTakers_1st_Plr_Intransitive                             WithEnding
-	1   SimpleVerbPhrase_2nd_Sng_Transitive   WithTakers_2nd_Sng_Transitive                             WithEnding
-	1   SimpleVerbPhrase_2nd_Sng_Intransitive   WithTakers_2nd_Sng_Intransitive                             WithEnding
-	1   SimpleVerbPhrase_2nd_Plr_Transitive   WithTakers_2nd_Plr_Transitive                             WithEnding
-	1   SimpleVerbPhrase_2nd_Plr_Intransitive   WithTakers_2nd_Plr_Intransitive                             WithEnding
-	1   SimpleVerbPhrase_3rd_Sng_Transitive   WithTakers_3rd_Sng_Transitive                             WithEnding
-	1   SimpleVerbPhrase_3rd_Sng_Intransitive   WithTakers_3rd_Sng_Intransitive                             WithEnding
-	1   SimpleVerbPhrase_3rd_Plr_Transitive   WithTakers_3rd_Plr_Transitive                             WithEnding
-	1   SimpleVerbPhrase_3rd_Plr_Intransitive   WithTakers_3rd_Plr_Intransitive                             WithEnding
 	1   SimpleVerbPhrase_1st_Sng_Transitive   FromTakers_1st_Sng_Transitive                             FromEnding
 	1   SimpleVerbPhrase_1st_Sng_Intransitive   FromTakers_1st_Sng_Intransitive                             FromEnding
 	1   SimpleVerbPhrase_1st_Plr_Transitive   FromTakers_1st_Plr_Transitive                             FromEnding
@@ -1901,102 +1315,6 @@
 	1   SimpleVerbPhrase_3rd_Sng_Intransitive   FromTakers_3rd_Sng_Intransitive                             FromEnding
 	1   SimpleVerbPhrase_3rd_Plr_Transitive   FromTakers_3rd_Plr_Transitive                             FromEnding
 	1   SimpleVerbPhrase_3rd_Plr_Intransitive   FromTakers_3rd_Plr_Intransitive                             FromEnding
-1 SimpleVerbPhrasePP_1st_Sng_Transitive WithTakersPP_1st_Sng_Transitive IndirectObject∂WithEnding
-1 IndirectObject∂WithEnding IndirectObject WithEnding
-1 SimpleVerbPhrasePP_1st_Sng_Intransitive WithTakersPP_1st_Sng_Intransitive IndirectObject∂WithEnding
-1 IndirectObject∂WithEnding IndirectObject WithEnding
-1 SimpleVerbPhrasePP_1st_Plr_Transitive WithTakersPP_1st_Plr_Transitive IndirectObject∂WithEnding
-1 IndirectObject∂WithEnding IndirectObject WithEnding
-1 SimpleVerbPhrasePP_1st_Plr_Intransitive WithTakersPP_1st_Plr_Intransitive IndirectObject∂WithEnding
-1 IndirectObject∂WithEnding IndirectObject WithEnding
-1 SimpleVerbPhrasePP_2nd_Sng_Transitive WithTakersPP_2nd_Sng_Transitive IndirectObject∂WithEnding
-1 IndirectObject∂WithEnding IndirectObject WithEnding
-1 SimpleVerbPhrasePP_2nd_Sng_Intransitive WithTakersPP_2nd_Sng_Intransitive IndirectObject∂WithEnding
-1 IndirectObject∂WithEnding IndirectObject WithEnding
-1 SimpleVerbPhrasePP_2nd_Plr_Transitive WithTakersPP_2nd_Plr_Transitive IndirectObject∂WithEnding
-1 IndirectObject∂WithEnding IndirectObject WithEnding
-1 SimpleVerbPhrasePP_2nd_Plr_Intransitive WithTakersPP_2nd_Plr_Intransitive IndirectObject∂WithEnding
-1 IndirectObject∂WithEnding IndirectObject WithEnding
-1 SimpleVerbPhrasePP_3rd_Sng_Transitive WithTakersPP_3rd_Sng_Transitive IndirectObject∂WithEnding
-1 IndirectObject∂WithEnding IndirectObject WithEnding
-1 SimpleVerbPhrasePP_3rd_Sng_Intransitive WithTakersPP_3rd_Sng_Intransitive IndirectObject∂WithEnding
-1 IndirectObject∂WithEnding IndirectObject WithEnding
-1 SimpleVerbPhrasePP_3rd_Plr_Transitive WithTakersPP_3rd_Plr_Transitive IndirectObject∂WithEnding
-1 IndirectObject∂WithEnding IndirectObject WithEnding
-1 SimpleVerbPhrasePP_3rd_Plr_Intransitive WithTakersPP_3rd_Plr_Intransitive IndirectObject∂WithEnding
-1 IndirectObject∂WithEnding IndirectObject WithEnding
-1 SimpleVerbPhrasePP_1st_Sng_Transitive FromTakersPP_1st_Sng_Transitive IndirectObject∂FromEnding
-1 IndirectObject∂FromEnding IndirectObject FromEnding
-1 SimpleVerbPhrasePP_1st_Sng_Intransitive FromTakersPP_1st_Sng_Intransitive IndirectObject∂FromEnding
-1 IndirectObject∂FromEnding IndirectObject FromEnding
-1 SimpleVerbPhrasePP_1st_Plr_Transitive FromTakersPP_1st_Plr_Transitive IndirectObject∂FromEnding
-1 IndirectObject∂FromEnding IndirectObject FromEnding
-1 SimpleVerbPhrasePP_1st_Plr_Intransitive FromTakersPP_1st_Plr_Intransitive IndirectObject∂FromEnding
-1 IndirectObject∂FromEnding IndirectObject FromEnding
-1 SimpleVerbPhrasePP_2nd_Sng_Transitive FromTakersPP_2nd_Sng_Transitive IndirectObject∂FromEnding
-1 IndirectObject∂FromEnding IndirectObject FromEnding
-1 SimpleVerbPhrasePP_2nd_Sng_Intransitive FromTakersPP_2nd_Sng_Intransitive IndirectObject∂FromEnding
-1 IndirectObject∂FromEnding IndirectObject FromEnding
-1 SimpleVerbPhrasePP_2nd_Plr_Transitive FromTakersPP_2nd_Plr_Transitive IndirectObject∂FromEnding
-1 IndirectObject∂FromEnding IndirectObject FromEnding
-1 SimpleVerbPhrasePP_2nd_Plr_Intransitive FromTakersPP_2nd_Plr_Intransitive IndirectObject∂FromEnding
-1 IndirectObject∂FromEnding IndirectObject FromEnding
-1 SimpleVerbPhrasePP_3rd_Sng_Transitive FromTakersPP_3rd_Sng_Transitive IndirectObject∂FromEnding
-1 IndirectObject∂FromEnding IndirectObject FromEnding
-1 SimpleVerbPhrasePP_3rd_Sng_Intransitive FromTakersPP_3rd_Sng_Intransitive IndirectObject∂FromEnding
-1 IndirectObject∂FromEnding IndirectObject FromEnding
-1 SimpleVerbPhrasePP_3rd_Plr_Transitive FromTakersPP_3rd_Plr_Transitive IndirectObject∂FromEnding
-1 IndirectObject∂FromEnding IndirectObject FromEnding
-1 SimpleVerbPhrasePP_3rd_Plr_Intransitive FromTakersPP_3rd_Plr_Intransitive IndirectObject∂FromEnding
-1 IndirectObject∂FromEnding IndirectObject FromEnding
-1 SimpleVerbPhrase_1st_Sng_Transitive WithTakers_1st_Sng_Transitive IndirectObject∂WithEnding
-1 IndirectObject∂WithEnding IndirectObject WithEnding
-1 SimpleVerbPhrase_1st_Sng_Intransitive WithTakers_1st_Sng_Intransitive IndirectObject∂WithEnding
-1 IndirectObject∂WithEnding IndirectObject WithEnding
-1 SimpleVerbPhrase_1st_Plr_Transitive WithTakers_1st_Plr_Transitive IndirectObject∂WithEnding
-1 IndirectObject∂WithEnding IndirectObject WithEnding
-1 SimpleVerbPhrase_1st_Plr_Intransitive WithTakers_1st_Plr_Intransitive IndirectObject∂WithEnding
-1 IndirectObject∂WithEnding IndirectObject WithEnding
-1 SimpleVerbPhrase_2nd_Sng_Transitive WithTakers_2nd_Sng_Transitive IndirectObject∂WithEnding
-1 IndirectObject∂WithEnding IndirectObject WithEnding
-1 SimpleVerbPhrase_2nd_Sng_Intransitive WithTakers_2nd_Sng_Intransitive IndirectObject∂WithEnding
-1 IndirectObject∂WithEnding IndirectObject WithEnding
-1 SimpleVerbPhrase_2nd_Plr_Transitive WithTakers_2nd_Plr_Transitive IndirectObject∂WithEnding
-1 IndirectObject∂WithEnding IndirectObject WithEnding
-1 SimpleVerbPhrase_2nd_Plr_Intransitive WithTakers_2nd_Plr_Intransitive IndirectObject∂WithEnding
-1 IndirectObject∂WithEnding IndirectObject WithEnding
-1 SimpleVerbPhrase_3rd_Sng_Transitive WithTakers_3rd_Sng_Transitive IndirectObject∂WithEnding
-1 IndirectObject∂WithEnding IndirectObject WithEnding
-1 SimpleVerbPhrase_3rd_Sng_Intransitive WithTakers_3rd_Sng_Intransitive IndirectObject∂WithEnding
-1 IndirectObject∂WithEnding IndirectObject WithEnding
-1 SimpleVerbPhrase_3rd_Plr_Transitive WithTakers_3rd_Plr_Transitive IndirectObject∂WithEnding
-1 IndirectObject∂WithEnding IndirectObject WithEnding
-1 SimpleVerbPhrase_3rd_Plr_Intransitive WithTakers_3rd_Plr_Intransitive IndirectObject∂WithEnding
-1 IndirectObject∂WithEnding IndirectObject WithEnding
-1 SimpleVerbPhrase_1st_Sng_Transitive FromTakers_1st_Sng_Transitive IndirectObject∂FromEnding
-1 IndirectObject∂FromEnding IndirectObject FromEnding
-1 SimpleVerbPhrase_1st_Sng_Intransitive FromTakers_1st_Sng_Intransitive IndirectObject∂FromEnding
-1 IndirectObject∂FromEnding IndirectObject FromEnding
-1 SimpleVerbPhrase_1st_Plr_Transitive FromTakers_1st_Plr_Transitive IndirectObject∂FromEnding
-1 IndirectObject∂FromEnding IndirectObject FromEnding
-1 SimpleVerbPhrase_1st_Plr_Intransitive FromTakers_1st_Plr_Intransitive IndirectObject∂FromEnding
-1 IndirectObject∂FromEnding IndirectObject FromEnding
-1 SimpleVerbPhrase_2nd_Sng_Transitive FromTakers_2nd_Sng_Transitive IndirectObject∂FromEnding
-1 IndirectObject∂FromEnding IndirectObject FromEnding
-1 SimpleVerbPhrase_2nd_Sng_Intransitive FromTakers_2nd_Sng_Intransitive IndirectObject∂FromEnding
-1 IndirectObject∂FromEnding IndirectObject FromEnding
-1 SimpleVerbPhrase_2nd_Plr_Transitive FromTakers_2nd_Plr_Transitive IndirectObject∂FromEnding
-1 IndirectObject∂FromEnding IndirectObject FromEnding
-1 SimpleVerbPhrase_2nd_Plr_Intransitive FromTakers_2nd_Plr_Intransitive IndirectObject∂FromEnding
-1 IndirectObject∂FromEnding IndirectObject FromEnding
-1 SimpleVerbPhrase_3rd_Sng_Transitive FromTakers_3rd_Sng_Transitive IndirectObject∂FromEnding
-1 IndirectObject∂FromEnding IndirectObject FromEnding
-1 SimpleVerbPhrase_3rd_Sng_Intransitive FromTakers_3rd_Sng_Intransitive IndirectObject∂FromEnding
-1 IndirectObject∂FromEnding IndirectObject FromEnding
-1 SimpleVerbPhrase_3rd_Plr_Transitive FromTakers_3rd_Plr_Transitive IndirectObject∂FromEnding
-1 IndirectObject∂FromEnding IndirectObject FromEnding
-1 SimpleVerbPhrase_3rd_Plr_Intransitive FromTakers_3rd_Plr_Intransitive IndirectObject∂FromEnding
-1 IndirectObject∂FromEnding IndirectObject FromEnding
 
 	# Same as above, but followed by 'for'.  All verbs can do this, if it is "for [quantity of time]"
 1 SimpleVerbPhrasePP_1st_Sng_Transitive VerbPP_1st_Sng_Transitive DirectObject∂ForEnding
@@ -2023,42 +1341,6 @@
 1 DirectObject∂ForEnding DirectObject ForEnding
 1 SimpleVerbPhrase_3rd_Plr_Transitive Verb_3rd_Plr_Transitive DirectObject∂ForEnding
 1 DirectObject∂ForEnding DirectObject ForEnding
-1 SimpleVerbPhrasePP_1st_Sng_Transitive VerbPP_1st_Sng_Transitive DirectObject∂IndirectObject∂ForEnding
-1 DirectObject∂IndirectObject∂ForEnding DirectObject IndirectObject∂ForEnding
-1 IndirectObject∂ForEnding IndirectObject ForEnding
-1 SimpleVerbPhrasePP_1st_Plr_Transitive VerbPP_1st_Plr_Transitive DirectObject∂IndirectObject∂ForEnding
-1 DirectObject∂IndirectObject∂ForEnding DirectObject IndirectObject∂ForEnding
-1 IndirectObject∂ForEnding IndirectObject ForEnding
-1 SimpleVerbPhrasePP_2nd_Sng_Transitive VerbPP_2nd_Sng_Transitive DirectObject∂IndirectObject∂ForEnding
-1 DirectObject∂IndirectObject∂ForEnding DirectObject IndirectObject∂ForEnding
-1 IndirectObject∂ForEnding IndirectObject ForEnding
-1 SimpleVerbPhrasePP_2nd_Plr_Transitive VerbPP_2nd_Plr_Transitive DirectObject∂IndirectObject∂ForEnding
-1 DirectObject∂IndirectObject∂ForEnding DirectObject IndirectObject∂ForEnding
-1 IndirectObject∂ForEnding IndirectObject ForEnding
-1 SimpleVerbPhrasePP_3rd_Sng_Transitive VerbPP_3rd_Sng_Transitive DirectObject∂IndirectObject∂ForEnding
-1 DirectObject∂IndirectObject∂ForEnding DirectObject IndirectObject∂ForEnding
-1 IndirectObject∂ForEnding IndirectObject ForEnding
-1 SimpleVerbPhrasePP_3rd_Plr_Transitive VerbPP_3rd_Plr_Transitive DirectObject∂IndirectObject∂ForEnding
-1 DirectObject∂IndirectObject∂ForEnding DirectObject IndirectObject∂ForEnding
-1 IndirectObject∂ForEnding IndirectObject ForEnding
-1 SimpleVerbPhrase_1st_Sng_Transitive Verb_1st_Sng_Transitive DirectObject∂IndirectObject∂ForEnding
-1 DirectObject∂IndirectObject∂ForEnding DirectObject IndirectObject∂ForEnding
-1 IndirectObject∂ForEnding IndirectObject ForEnding
-1 SimpleVerbPhrase_1st_Plr_Transitive Verb_1st_Plr_Transitive DirectObject∂IndirectObject∂ForEnding
-1 DirectObject∂IndirectObject∂ForEnding DirectObject IndirectObject∂ForEnding
-1 IndirectObject∂ForEnding IndirectObject ForEnding
-1 SimpleVerbPhrase_2nd_Sng_Transitive Verb_2nd_Sng_Transitive DirectObject∂IndirectObject∂ForEnding
-1 DirectObject∂IndirectObject∂ForEnding DirectObject IndirectObject∂ForEnding
-1 IndirectObject∂ForEnding IndirectObject ForEnding
-1 SimpleVerbPhrase_2nd_Plr_Transitive Verb_2nd_Plr_Transitive DirectObject∂IndirectObject∂ForEnding
-1 DirectObject∂IndirectObject∂ForEnding DirectObject IndirectObject∂ForEnding
-1 IndirectObject∂ForEnding IndirectObject ForEnding
-1 SimpleVerbPhrase_3rd_Sng_Transitive Verb_3rd_Sng_Transitive DirectObject∂IndirectObject∂ForEnding
-1 DirectObject∂IndirectObject∂ForEnding DirectObject IndirectObject∂ForEnding
-1 IndirectObject∂ForEnding IndirectObject ForEnding
-1 SimpleVerbPhrase_3rd_Plr_Transitive Verb_3rd_Plr_Transitive DirectObject∂IndirectObject∂ForEnding
-1 DirectObject∂IndirectObject∂ForEnding DirectObject IndirectObject∂ForEnding
-1 IndirectObject∂ForEnding IndirectObject ForEnding
 	1   SimpleVerbPhrasePP_1st_Sng_Transitive   VerbPP_1st_Sng_Transitive                                     ForEnding
 	1   SimpleVerbPhrasePP_1st_Sng_Intransitive   VerbPP_1st_Sng_Intransitive                                     ForEnding
 	1   SimpleVerbPhrasePP_1st_Plr_Transitive   VerbPP_1st_Plr_Transitive                                     ForEnding
@@ -2083,54 +1365,6 @@
 	1   SimpleVerbPhrase_3rd_Sng_Intransitive   Verb_3rd_Sng_Intransitive                                     ForEnding
 	1   SimpleVerbPhrase_3rd_Plr_Transitive   Verb_3rd_Plr_Transitive                                     ForEnding
 	1   SimpleVerbPhrase_3rd_Plr_Intransitive   Verb_3rd_Plr_Intransitive                                     ForEnding
-1 SimpleVerbPhrasePP_1st_Sng_Transitive VerbPP_1st_Sng_Transitive IndirectObject∂ForEnding
-1 IndirectObject∂ForEnding IndirectObject ForEnding
-1 SimpleVerbPhrasePP_1st_Sng_Intransitive VerbPP_1st_Sng_Intransitive IndirectObject∂ForEnding
-1 IndirectObject∂ForEnding IndirectObject ForEnding
-1 SimpleVerbPhrasePP_1st_Plr_Transitive VerbPP_1st_Plr_Transitive IndirectObject∂ForEnding
-1 IndirectObject∂ForEnding IndirectObject ForEnding
-1 SimpleVerbPhrasePP_1st_Plr_Intransitive VerbPP_1st_Plr_Intransitive IndirectObject∂ForEnding
-1 IndirectObject∂ForEnding IndirectObject ForEnding
-1 SimpleVerbPhrasePP_2nd_Sng_Transitive VerbPP_2nd_Sng_Transitive IndirectObject∂ForEnding
-1 IndirectObject∂ForEnding IndirectObject ForEnding
-1 SimpleVerbPhrasePP_2nd_Sng_Intransitive VerbPP_2nd_Sng_Intransitive IndirectObject∂ForEnding
-1 IndirectObject∂ForEnding IndirectObject ForEnding
-1 SimpleVerbPhrasePP_2nd_Plr_Transitive VerbPP_2nd_Plr_Transitive IndirectObject∂ForEnding
-1 IndirectObject∂ForEnding IndirectObject ForEnding
-1 SimpleVerbPhrasePP_2nd_Plr_Intransitive VerbPP_2nd_Plr_Intransitive IndirectObject∂ForEnding
-1 IndirectObject∂ForEnding IndirectObject ForEnding
-1 SimpleVerbPhrasePP_3rd_Sng_Transitive VerbPP_3rd_Sng_Transitive IndirectObject∂ForEnding
-1 IndirectObject∂ForEnding IndirectObject ForEnding
-1 SimpleVerbPhrasePP_3rd_Sng_Intransitive VerbPP_3rd_Sng_Intransitive IndirectObject∂ForEnding
-1 IndirectObject∂ForEnding IndirectObject ForEnding
-1 SimpleVerbPhrasePP_3rd_Plr_Transitive VerbPP_3rd_Plr_Transitive IndirectObject∂ForEnding
-1 IndirectObject∂ForEnding IndirectObject ForEnding
-1 SimpleVerbPhrasePP_3rd_Plr_Intransitive VerbPP_3rd_Plr_Intransitive IndirectObject∂ForEnding
-1 IndirectObject∂ForEnding IndirectObject ForEnding
-1 SimpleVerbPhrase_1st_Sng_Transitive Verb_1st_Sng_Transitive IndirectObject∂ForEnding
-1 IndirectObject∂ForEnding IndirectObject ForEnding
-1 SimpleVerbPhrase_1st_Sng_Intransitive Verb_1st_Sng_Intransitive IndirectObject∂ForEnding
-1 IndirectObject∂ForEnding IndirectObject ForEnding
-1 SimpleVerbPhrase_1st_Plr_Transitive Verb_1st_Plr_Transitive IndirectObject∂ForEnding
-1 IndirectObject∂ForEnding IndirectObject ForEnding
-1 SimpleVerbPhrase_1st_Plr_Intransitive Verb_1st_Plr_Intransitive IndirectObject∂ForEnding
-1 IndirectObject∂ForEnding IndirectObject ForEnding
-1 SimpleVerbPhrase_2nd_Sng_Transitive Verb_2nd_Sng_Transitive IndirectObject∂ForEnding
-1 IndirectObject∂ForEnding IndirectObject ForEnding
-1 SimpleVerbPhrase_2nd_Sng_Intransitive Verb_2nd_Sng_Intransitive IndirectObject∂ForEnding
-1 IndirectObject∂ForEnding IndirectObject ForEnding
-1 SimpleVerbPhrase_2nd_Plr_Transitive Verb_2nd_Plr_Transitive IndirectObject∂ForEnding
-1 IndirectObject∂ForEnding IndirectObject ForEnding
-1 SimpleVerbPhrase_2nd_Plr_Intransitive Verb_2nd_Plr_Intransitive IndirectObject∂ForEnding
-1 IndirectObject∂ForEnding IndirectObject ForEnding
-1 SimpleVerbPhrase_3rd_Sng_Transitive Verb_3rd_Sng_Transitive IndirectObject∂ForEnding
-1 IndirectObject∂ForEnding IndirectObject ForEnding
-1 SimpleVerbPhrase_3rd_Sng_Intransitive Verb_3rd_Sng_Intransitive IndirectObject∂ForEnding
-1 IndirectObject∂ForEnding IndirectObject ForEnding
-1 SimpleVerbPhrase_3rd_Plr_Transitive Verb_3rd_Plr_Transitive IndirectObject∂ForEnding
-1 IndirectObject∂ForEnding IndirectObject ForEnding
-1 SimpleVerbPhrase_3rd_Plr_Intransitive Verb_3rd_Plr_Intransitive IndirectObject∂ForEnding
-1 IndirectObject∂ForEnding IndirectObject ForEnding
 
 	# Extremely Simple Version, just a verb and its modifier
 	1   NaiveVerbPhrasePP_1st_Sng_Transitive    VerbModifier VerbPP_1st_Sng_Transitive
@@ -2183,30 +1417,11 @@
 	1   NaiveVerbPhrase_3rd_Plr_Intransitive                 Verb_3rd_Plr_Intransitive
 
 	# To speak of something
-1 NaiveVerbPhrase_1st_Sng_Intransitive wrap_speak wrap_of∂SimpleNounPhrase_1st_Sng_IndObj
-1 wrap_of∂SimpleNounPhrase_1st_Sng_IndObj wrap_of SimpleNounPhrase_1st_Sng_IndObj
-1 NaiveVerbPhrase_1st_Plr_Intransitive wrap_speak wrap_of∂SimpleNounPhrase_1st_Plr_IndObj
-1 wrap_of∂SimpleNounPhrase_1st_Plr_IndObj wrap_of SimpleNounPhrase_1st_Plr_IndObj
-1 NaiveVerbPhrase_2nd_Sng_Intransitive wrap_speak wrap_of∂SimpleNounPhrase_2nd_Sng_IndObj
-1 wrap_of∂SimpleNounPhrase_2nd_Sng_IndObj wrap_of SimpleNounPhrase_2nd_Sng_IndObj
-1 NaiveVerbPhrase_2nd_Plr_Intransitive wrap_speak wrap_of∂SimpleNounPhrase_2nd_Plr_IndObj
-1 wrap_of∂SimpleNounPhrase_2nd_Plr_IndObj wrap_of SimpleNounPhrase_2nd_Plr_IndObj
 1 NaiveVerbPhrase_3rd_Sng_Intransitive wrap_speaks wrap_of∂SimpleNounPhrase_3rd_Sng_IndObj
 1 wrap_of∂SimpleNounPhrase_3rd_Sng_IndObj wrap_of SimpleNounPhrase_3rd_Sng_IndObj
 1 NaiveVerbPhrase_3rd_Plr_Intransitive wrap_speaks wrap_of∂SimpleNounPhrase_3rd_Plr_IndObj
 1 wrap_of∂SimpleNounPhrase_3rd_Plr_IndObj wrap_of SimpleNounPhrase_3rd_Plr_IndObj
-1 NaiveVerbPhrase_1st_Sng_Intransitive VerbModifier wrap_speak∂wrap_of∂SimpleNounPhrase_1st_Sng_IndObj
-1 wrap_speak∂wrap_of∂SimpleNounPhrase_1st_Sng_IndObj wrap_speak wrap_of∂SimpleNounPhrase_1st_Sng_IndObj
-1 wrap_of∂SimpleNounPhrase_1st_Sng_IndObj wrap_of SimpleNounPhrase_1st_Sng_IndObj
-1 NaiveVerbPhrase_1st_Plr_Intransitive VerbModifier wrap_speak∂wrap_of∂SimpleNounPhrase_1st_Plr_IndObj
-1 wrap_speak∂wrap_of∂SimpleNounPhrase_1st_Plr_IndObj wrap_speak wrap_of∂SimpleNounPhrase_1st_Plr_IndObj
-1 wrap_of∂SimpleNounPhrase_1st_Plr_IndObj wrap_of SimpleNounPhrase_1st_Plr_IndObj
-1 NaiveVerbPhrase_2nd_Sng_Intransitive VerbModifier wrap_speak∂wrap_of∂SimpleNounPhrase_2nd_Sng_IndObj
-1 wrap_speak∂wrap_of∂SimpleNounPhrase_2nd_Sng_IndObj wrap_speak wrap_of∂SimpleNounPhrase_2nd_Sng_IndObj
 1 wrap_of∂SimpleNounPhrase_2nd_Sng_IndObj wrap_of SimpleNounPhrase_2nd_Sng_IndObj
-1 NaiveVerbPhrase_2nd_Plr_Intransitive VerbModifier wrap_speak∂wrap_of∂SimpleNounPhrase_2nd_Plr_IndObj
-1 wrap_speak∂wrap_of∂SimpleNounPhrase_2nd_Plr_IndObj wrap_speak wrap_of∂SimpleNounPhrase_2nd_Plr_IndObj
-1 wrap_of∂SimpleNounPhrase_2nd_Plr_IndObj wrap_of SimpleNounPhrase_2nd_Plr_IndObj
 1 NaiveVerbPhrase_3rd_Sng_Intransitive VerbModifier wrap_speaks∂wrap_of∂SimpleNounPhrase_3rd_Sng_IndObj
 1 wrap_speaks∂wrap_of∂SimpleNounPhrase_3rd_Sng_IndObj wrap_speaks wrap_of∂SimpleNounPhrase_3rd_Sng_IndObj
 1 wrap_of∂SimpleNounPhrase_3rd_Sng_IndObj wrap_of SimpleNounPhrase_3rd_Sng_IndObj
@@ -2255,17 +1470,11 @@
 	1   ModalVerbPhrase_3rd_Sng_Intransitive        FullModal VerbPhrase_inf_Intransitive
 	1   ModalVerbPhrase_3rd_Plr_Transitive        FullModal VerbPhrase_inf_Transitive
 	1   ModalVerbPhrase_3rd_Plr_Intransitive        FullModal VerbPhrase_inf_Intransitive
-	1   ModalVerbPhrase_1st_Sng_Transitive        FullModal PastPassiveVerbPhrase_2nd_Sng_Transitive
 	1   ModalVerbPhrase_1st_Sng_Intransitive        FullModal PastPassiveVerbPhrase_2nd_Sng_Intransitive
-	1   ModalVerbPhrase_1st_Plr_Transitive        FullModal PastPassiveVerbPhrase_2nd_Plr_Transitive
 	1   ModalVerbPhrase_1st_Plr_Intransitive        FullModal PastPassiveVerbPhrase_2nd_Plr_Intransitive
-	1   ModalVerbPhrase_2nd_Sng_Transitive        FullModal PastPassiveVerbPhrase_2nd_Sng_Transitive
 	1   ModalVerbPhrase_2nd_Sng_Intransitive        FullModal PastPassiveVerbPhrase_2nd_Sng_Intransitive
-	1   ModalVerbPhrase_2nd_Plr_Transitive        FullModal PastPassiveVerbPhrase_2nd_Plr_Transitive
 	1   ModalVerbPhrase_2nd_Plr_Intransitive        FullModal PastPassiveVerbPhrase_2nd_Plr_Intransitive
-	1   ModalVerbPhrase_3rd_Sng_Transitive        FullModal PastPassiveVerbPhrase_2nd_Sng_Transitive
 	1   ModalVerbPhrase_3rd_Sng_Intransitive        FullModal PastPassiveVerbPhrase_2nd_Sng_Intransitive
-	1   ModalVerbPhrase_3rd_Plr_Transitive        FullModal PastPassiveVerbPhrase_2nd_Plr_Transitive
 	1   ModalVerbPhrase_3rd_Plr_Intransitive        FullModal PastPassiveVerbPhrase_2nd_Plr_Intransitive
 
 	#after a modal, have & be are always the infinitive form (never is, has, are, etc)
@@ -2398,21 +1607,11 @@
 	10  VerbPhrase_inf_Intransitive                            VerbModifier Verb_inf_Intransitive
 	10  VerbPhrase_inf_Transitive                            Verb_inf_Transitive
 	10  VerbPhrase_inf_Intransitive                            Verb_inf_Intransitive
-1 VerbPhrase_inf_Transitive wrap_speak wrap_of∂SimpleNounPhrase_1st_Sng_IndObj
 1 wrap_of∂SimpleNounPhrase_1st_Sng_IndObj wrap_of SimpleNounPhrase_1st_Sng_IndObj
-1 VerbPhrase_inf_Intransitive wrap_speak wrap_of∂SimpleNounPhrase_1st_Sng_IndObj
 1 wrap_of∂SimpleNounPhrase_1st_Sng_IndObj wrap_of SimpleNounPhrase_1st_Sng_IndObj
-1 VerbPhrase_inf_Transitive wrap_speak wrap_of∂SimpleNounPhrase_1st_Plr_IndObj
-1 wrap_of∂SimpleNounPhrase_1st_Plr_IndObj wrap_of SimpleNounPhrase_1st_Plr_IndObj
-1 VerbPhrase_inf_Intransitive wrap_speak wrap_of∂SimpleNounPhrase_1st_Plr_IndObj
-1 wrap_of∂SimpleNounPhrase_1st_Plr_IndObj wrap_of SimpleNounPhrase_1st_Plr_IndObj
-1 VerbPhrase_inf_Transitive wrap_speak wrap_of∂SimpleNounPhrase_2nd_Sng_IndObj
 1 wrap_of∂SimpleNounPhrase_2nd_Sng_IndObj wrap_of SimpleNounPhrase_2nd_Sng_IndObj
-1 VerbPhrase_inf_Intransitive wrap_speak wrap_of∂SimpleNounPhrase_2nd_Sng_IndObj
 1 wrap_of∂SimpleNounPhrase_2nd_Sng_IndObj wrap_of SimpleNounPhrase_2nd_Sng_IndObj
-1 VerbPhrase_inf_Transitive wrap_speak wrap_of∂SimpleNounPhrase_2nd_Plr_IndObj
 1 wrap_of∂SimpleNounPhrase_2nd_Plr_IndObj wrap_of SimpleNounPhrase_2nd_Plr_IndObj
-1 VerbPhrase_inf_Intransitive wrap_speak wrap_of∂SimpleNounPhrase_2nd_Plr_IndObj
 1 wrap_of∂SimpleNounPhrase_2nd_Plr_IndObj wrap_of SimpleNounPhrase_2nd_Plr_IndObj
 1 VerbPhrase_inf_Transitive wrap_speak wrap_of∂SimpleNounPhrase_3rd_Sng_IndObj
 1 wrap_of∂SimpleNounPhrase_3rd_Sng_IndObj wrap_of SimpleNounPhrase_3rd_Sng_IndObj
@@ -2425,100 +1624,26 @@
 
 	#vvvvv Subjunctive_1st_Sng is only 'suggest', so this line is saying that an allowable infinitive is 'I ought to suggest that [subjunctive clause]'
 1 VerbPhrase_inf_Transitive Subjunctive_1st_Sng wrap_that∂NounPhrase_Subj∂VerbPhrase_inf_Transitive
-1 wrap_that∂NounPhrase_Subj∂VerbPhrase_inf_Transitive wrap_that NounPhrase_Subj∂VerbPhrase_inf_Transitive
-1 NounPhrase_Subj∂VerbPhrase_inf_Transitive NounPhrase_Subj VerbPhrase_inf_Transitive
 1 VerbPhrase_inf_Intransitive Subjunctive_1st_Sng wrap_that∂NounPhrase_Subj∂VerbPhrase_inf_Transitive
-1 wrap_that∂NounPhrase_Subj∂VerbPhrase_inf_Transitive wrap_that NounPhrase_Subj∂VerbPhrase_inf_Transitive
-1 NounPhrase_Subj∂VerbPhrase_inf_Transitive NounPhrase_Subj VerbPhrase_inf_Transitive
-1 VerbPhrase_inf_Transitive Subjunctive_1st_Sng NounPhrase_Subj∂VerbPhrase_inf_Transitive
-1 NounPhrase_Subj∂VerbPhrase_inf_Transitive NounPhrase_Subj VerbPhrase_inf_Transitive
-1 VerbPhrase_inf_Intransitive Subjunctive_1st_Sng NounPhrase_Subj∂VerbPhrase_inf_Transitive
-1 NounPhrase_Subj∂VerbPhrase_inf_Transitive NounPhrase_Subj VerbPhrase_inf_Transitive
 	1   VerbPhrase_inf_Transitive   					    	Verb_inf_Transitive     DirectObject
-1 VerbPhrase_inf_Transitive Verb_inf_Transitive DirectObject∂IndirectObject
-1 DirectObject∂IndirectObject DirectObject IndirectObject
 	1   VerbPhrase_inf_Transitive       						Verb_inf_Transitive
 	1   VerbPhrase_inf_Intransitive       						Verb_inf_Intransitive
-	1   VerbPhrase_inf_Transitive   		    				Verb_inf_Transitive               IndirectObject
-	1   VerbPhrase_inf_Intransitive   		    				Verb_inf_Intransitive               IndirectObject
 
 	#Passive voice infinitives, oh boy
 	1   VerbPhrase_inf_Transitive   					    	VerbPassive_inf_Transitive    DirectObject
-1 VerbPhrase_inf_Transitive VerbPassive_inf_Transitive DirectObject∂IndirectObject
-1 DirectObject∂IndirectObject DirectObject IndirectObject
 	1   VerbPhrase_inf_Transitive       						VerbPassive_inf_Transitive
 	1   VerbPhrase_inf_Intransitive       						VerbPassive_inf_Intransitive
-	1   VerbPhrase_inf_Transitive   		    				VerbPassive_inf_Transitive              IndirectObject
-	1   VerbPhrase_inf_Intransitive   		    				VerbPassive_inf_Intransitive              IndirectObject
 
 	###Subjunctifier - the verb can take a subjunctive clause.
 	#  The only verb like this we have is suggest, which is transitive 
-	1   VerbPhrase_1st_Sng_Transitive                SubjunctiveVerbPhrase_1st_Sng
 	1   VerbPhrase_1st_Plr_Transitive                SubjunctiveVerbPhrase_1st_Plr
-	1   VerbPhrase_2nd_Sng_Transitive                SubjunctiveVerbPhrase_2nd_Sng
 	1   VerbPhrase_2nd_Plr_Transitive                SubjunctiveVerbPhrase_2nd_Plr
-	1   VerbPhrase_3rd_Sng_Transitive                SubjunctiveVerbPhrase_3rd_Sng
 	1   VerbPhrase_3rd_Plr_Transitive                SubjunctiveVerbPhrase_3rd_Plr
-1 SubjunctiveVerbPhrase_1st_Sng Subjunctive_1st_Sng wrap_that∂NounPhrase_Subj∂VerbPhrase_inf_Transitive
-1 wrap_that∂NounPhrase_Subj∂VerbPhrase_inf_Transitive wrap_that NounPhrase_Subj∂VerbPhrase_inf_Transitive
-1 NounPhrase_Subj∂VerbPhrase_inf_Transitive NounPhrase_Subj VerbPhrase_inf_Transitive
 1 SubjunctiveVerbPhrase_1st_Plr Subjunctive_1st_Plr wrap_that∂NounPhrase_Subj∂VerbPhrase_inf_Transitive
-1 wrap_that∂NounPhrase_Subj∂VerbPhrase_inf_Transitive wrap_that NounPhrase_Subj∂VerbPhrase_inf_Transitive
-1 NounPhrase_Subj∂VerbPhrase_inf_Transitive NounPhrase_Subj VerbPhrase_inf_Transitive
-1 SubjunctiveVerbPhrase_2nd_Sng Subjunctive_2nd_Sng wrap_that∂NounPhrase_Subj∂VerbPhrase_inf_Transitive
-1 wrap_that∂NounPhrase_Subj∂VerbPhrase_inf_Transitive wrap_that NounPhrase_Subj∂VerbPhrase_inf_Transitive
-1 NounPhrase_Subj∂VerbPhrase_inf_Transitive NounPhrase_Subj VerbPhrase_inf_Transitive
 1 SubjunctiveVerbPhrase_2nd_Plr Subjunctive_2nd_Plr wrap_that∂NounPhrase_Subj∂VerbPhrase_inf_Transitive
-1 wrap_that∂NounPhrase_Subj∂VerbPhrase_inf_Transitive wrap_that NounPhrase_Subj∂VerbPhrase_inf_Transitive
-1 NounPhrase_Subj∂VerbPhrase_inf_Transitive NounPhrase_Subj VerbPhrase_inf_Transitive
-1 SubjunctiveVerbPhrase_3rd_Sng Subjunctive_3rd_Sng wrap_that∂NounPhrase_Subj∂VerbPhrase_inf_Transitive
-1 wrap_that∂NounPhrase_Subj∂VerbPhrase_inf_Transitive wrap_that NounPhrase_Subj∂VerbPhrase_inf_Transitive
-1 NounPhrase_Subj∂VerbPhrase_inf_Transitive NounPhrase_Subj VerbPhrase_inf_Transitive
 1 SubjunctiveVerbPhrase_3rd_Plr Subjunctive_3rd_Plr wrap_that∂NounPhrase_Subj∂VerbPhrase_inf_Transitive
-1 wrap_that∂NounPhrase_Subj∂VerbPhrase_inf_Transitive wrap_that NounPhrase_Subj∂VerbPhrase_inf_Transitive
-1 NounPhrase_Subj∂VerbPhrase_inf_Transitive NounPhrase_Subj VerbPhrase_inf_Transitive
-1 SubjunctiveVerbPhrase_1st_Sng PPSubjunctive_1st_Sng wrap_that∂NounPhrase_Subj∂VerbPhrase_inf_Transitive
-1 wrap_that∂NounPhrase_Subj∂VerbPhrase_inf_Transitive wrap_that NounPhrase_Subj∂VerbPhrase_inf_Transitive
-1 NounPhrase_Subj∂VerbPhrase_inf_Transitive NounPhrase_Subj VerbPhrase_inf_Transitive
 1 SubjunctiveVerbPhrase_1st_Plr PPSubjunctive_1st_Plr wrap_that∂NounPhrase_Subj∂VerbPhrase_inf_Transitive
-1 wrap_that∂NounPhrase_Subj∂VerbPhrase_inf_Transitive wrap_that NounPhrase_Subj∂VerbPhrase_inf_Transitive
-1 NounPhrase_Subj∂VerbPhrase_inf_Transitive NounPhrase_Subj VerbPhrase_inf_Transitive
-1 SubjunctiveVerbPhrase_2nd_Sng PPSubjunctive_2nd_Sng wrap_that∂NounPhrase_Subj∂VerbPhrase_inf_Transitive
-1 wrap_that∂NounPhrase_Subj∂VerbPhrase_inf_Transitive wrap_that NounPhrase_Subj∂VerbPhrase_inf_Transitive
-1 NounPhrase_Subj∂VerbPhrase_inf_Transitive NounPhrase_Subj VerbPhrase_inf_Transitive
-1 SubjunctiveVerbPhrase_2nd_Plr PPSubjunctive_2nd_Plr wrap_that∂NounPhrase_Subj∂VerbPhrase_inf_Transitive
-1 wrap_that∂NounPhrase_Subj∂VerbPhrase_inf_Transitive wrap_that NounPhrase_Subj∂VerbPhrase_inf_Transitive
-1 NounPhrase_Subj∂VerbPhrase_inf_Transitive NounPhrase_Subj VerbPhrase_inf_Transitive
-1 SubjunctiveVerbPhrase_3rd_Sng PPSubjunctive_3rd_Sng wrap_that∂NounPhrase_Subj∂VerbPhrase_inf_Transitive
-1 wrap_that∂NounPhrase_Subj∂VerbPhrase_inf_Transitive wrap_that NounPhrase_Subj∂VerbPhrase_inf_Transitive
-1 NounPhrase_Subj∂VerbPhrase_inf_Transitive NounPhrase_Subj VerbPhrase_inf_Transitive
 1 SubjunctiveVerbPhrase_3rd_Plr PPSubjunctive_3rd_Plr wrap_that∂NounPhrase_Subj∂VerbPhrase_inf_Transitive
-1 wrap_that∂NounPhrase_Subj∂VerbPhrase_inf_Transitive wrap_that NounPhrase_Subj∂VerbPhrase_inf_Transitive
-1 NounPhrase_Subj∂VerbPhrase_inf_Transitive NounPhrase_Subj VerbPhrase_inf_Transitive
-1 SubjunctiveVerbPhrase_1st_Sng Subjunctive_1st_Sng NounPhrase_Subj∂VerbPhrase_inf_Transitive
-1 NounPhrase_Subj∂VerbPhrase_inf_Transitive NounPhrase_Subj VerbPhrase_inf_Transitive
-1 SubjunctiveVerbPhrase_1st_Plr Subjunctive_1st_Plr NounPhrase_Subj∂VerbPhrase_inf_Transitive
-1 NounPhrase_Subj∂VerbPhrase_inf_Transitive NounPhrase_Subj VerbPhrase_inf_Transitive
-1 SubjunctiveVerbPhrase_2nd_Sng Subjunctive_2nd_Sng NounPhrase_Subj∂VerbPhrase_inf_Transitive
-1 NounPhrase_Subj∂VerbPhrase_inf_Transitive NounPhrase_Subj VerbPhrase_inf_Transitive
-1 SubjunctiveVerbPhrase_2nd_Plr Subjunctive_2nd_Plr NounPhrase_Subj∂VerbPhrase_inf_Transitive
-1 NounPhrase_Subj∂VerbPhrase_inf_Transitive NounPhrase_Subj VerbPhrase_inf_Transitive
-1 SubjunctiveVerbPhrase_3rd_Sng Subjunctive_3rd_Sng NounPhrase_Subj∂VerbPhrase_inf_Transitive
-1 NounPhrase_Subj∂VerbPhrase_inf_Transitive NounPhrase_Subj VerbPhrase_inf_Transitive
-1 SubjunctiveVerbPhrase_3rd_Plr Subjunctive_3rd_Plr NounPhrase_Subj∂VerbPhrase_inf_Transitive
-1 NounPhrase_Subj∂VerbPhrase_inf_Transitive NounPhrase_Subj VerbPhrase_inf_Transitive
-1 SubjunctiveVerbPhrase_1st_Sng PPSubjunctive_1st_Sng NounPhrase_Subj∂VerbPhrase_inf_Transitive
-1 NounPhrase_Subj∂VerbPhrase_inf_Transitive NounPhrase_Subj VerbPhrase_inf_Transitive
-1 SubjunctiveVerbPhrase_1st_Plr PPSubjunctive_1st_Plr NounPhrase_Subj∂VerbPhrase_inf_Transitive
-1 NounPhrase_Subj∂VerbPhrase_inf_Transitive NounPhrase_Subj VerbPhrase_inf_Transitive
-1 SubjunctiveVerbPhrase_2nd_Sng PPSubjunctive_2nd_Sng NounPhrase_Subj∂VerbPhrase_inf_Transitive
-1 NounPhrase_Subj∂VerbPhrase_inf_Transitive NounPhrase_Subj VerbPhrase_inf_Transitive
-1 SubjunctiveVerbPhrase_2nd_Plr PPSubjunctive_2nd_Plr NounPhrase_Subj∂VerbPhrase_inf_Transitive
-1 NounPhrase_Subj∂VerbPhrase_inf_Transitive NounPhrase_Subj VerbPhrase_inf_Transitive
-1 SubjunctiveVerbPhrase_3rd_Sng PPSubjunctive_3rd_Sng NounPhrase_Subj∂VerbPhrase_inf_Transitive
-1 NounPhrase_Subj∂VerbPhrase_inf_Transitive NounPhrase_Subj VerbPhrase_inf_Transitive
-1 SubjunctiveVerbPhrase_3rd_Plr PPSubjunctive_3rd_Plr NounPhrase_Subj∂VerbPhrase_inf_Transitive
-1 NounPhrase_Subj∂VerbPhrase_inf_Transitive NounPhrase_Subj VerbPhrase_inf_Transitive
 
 	# "know" is like suggest but it does not take the subjunctive, just normal verbing
 	# It can also take 'what'
@@ -2645,34 +1770,6 @@
 	1   VerbPhrase_2nd_Plr_Intransitive                    wrap_are       ContinuousVerbPhrase_Intransitive
 	1   VerbPhrase_3rd_Plr_Transitive                    wrap_are       ContinuousVerbPhrase_Transitive
 	1   VerbPhrase_3rd_Plr_Intransitive                    wrap_are       ContinuousVerbPhrase_Intransitive
-1 VerbPhrase_1st_Sng_Transitive wrap_am SimpleContinuousVerbPhrase_Transitive∂WithEnding
-1 SimpleContinuousVerbPhrase_Transitive∂WithEnding SimpleContinuousVerbPhrase_Transitive WithEnding
-1 VerbPhrase_1st_Sng_Intransitive wrap_am SimpleContinuousVerbPhrase_Intransitive∂WithEnding
-1 SimpleContinuousVerbPhrase_Intransitive∂WithEnding SimpleContinuousVerbPhrase_Intransitive WithEnding
-1 VerbPhrase_3rd_Sng_Transitive wrap_is SimpleContinuousVerbPhrase_Transitive∂WithEnding
-1 SimpleContinuousVerbPhrase_Transitive∂WithEnding SimpleContinuousVerbPhrase_Transitive WithEnding
-1 VerbPhrase_3rd_Sng_Intransitive wrap_is SimpleContinuousVerbPhrase_Intransitive∂WithEnding
-1 SimpleContinuousVerbPhrase_Intransitive∂WithEnding SimpleContinuousVerbPhrase_Intransitive WithEnding
-1 VerbPhrase_2nd_Sng_Transitive wrap_are SimpleContinuousVerbPhrase_Transitive∂WithEnding
-1 SimpleContinuousVerbPhrase_Transitive∂WithEnding SimpleContinuousVerbPhrase_Transitive WithEnding
-1 VerbPhrase_2nd_Sng_Intransitive wrap_are SimpleContinuousVerbPhrase_Intransitive∂WithEnding
-1 SimpleContinuousVerbPhrase_Intransitive∂WithEnding SimpleContinuousVerbPhrase_Intransitive WithEnding
-1 VerbPhrase_2nd_Plr_Transitive wrap_are SimpleContinuousVerbPhrase_Transitive∂WithEnding
-1 SimpleContinuousVerbPhrase_Transitive∂WithEnding SimpleContinuousVerbPhrase_Transitive WithEnding
-1 VerbPhrase_2nd_Plr_Intransitive wrap_are SimpleContinuousVerbPhrase_Intransitive∂WithEnding
-1 SimpleContinuousVerbPhrase_Intransitive∂WithEnding SimpleContinuousVerbPhrase_Intransitive WithEnding
-1 VerbPhrase_1st_Plr_Transitive wrap_are SimpleContinuousVerbPhrase_Transitive∂WithEnding
-1 SimpleContinuousVerbPhrase_Transitive∂WithEnding SimpleContinuousVerbPhrase_Transitive WithEnding
-1 VerbPhrase_1st_Plr_Intransitive wrap_are SimpleContinuousVerbPhrase_Intransitive∂WithEnding
-1 SimpleContinuousVerbPhrase_Intransitive∂WithEnding SimpleContinuousVerbPhrase_Intransitive WithEnding
-1 VerbPhrase_2nd_Plr_Transitive wrap_are SimpleContinuousVerbPhrase_Transitive∂WithEnding
-1 SimpleContinuousVerbPhrase_Transitive∂WithEnding SimpleContinuousVerbPhrase_Transitive WithEnding
-1 VerbPhrase_2nd_Plr_Intransitive wrap_are SimpleContinuousVerbPhrase_Intransitive∂WithEnding
-1 SimpleContinuousVerbPhrase_Intransitive∂WithEnding SimpleContinuousVerbPhrase_Intransitive WithEnding
-1 VerbPhrase_3rd_Plr_Transitive wrap_are SimpleContinuousVerbPhrase_Transitive∂WithEnding
-1 SimpleContinuousVerbPhrase_Transitive∂WithEnding SimpleContinuousVerbPhrase_Transitive WithEnding
-1 VerbPhrase_3rd_Plr_Intransitive wrap_are SimpleContinuousVerbPhrase_Intransitive∂WithEnding
-1 SimpleContinuousVerbPhrase_Intransitive∂WithEnding SimpleContinuousVerbPhrase_Intransitive WithEnding
 
 	1   ContinuousVerbPhrase                                    ContinuousVerbPhrase_Transitive
 	1   ContinuousVerbPhrase                                    ContinuousVerbPhrase_Intransitive
@@ -2688,42 +1785,23 @@
 1 Gerund_Transitive∂ForEnding Gerund_Transitive ForEnding
 1 ContinuousVerbPhrase_Intransitive VerbModifier Gerund_Intransitive∂ForEnding
 1 Gerund_Intransitive∂ForEnding Gerund_Intransitive ForEnding
-	1   ContinuousVerbPhrase_Transitive                                   WithTakersContinuous_Transitive  WithEnding
-	1   ContinuousVerbPhrase_Intransitive                                   WithTakersContinuous_Intransitive  WithEnding
 	1   ContinuousVerbPhrase_Transitive                                   FromTakersContinuous_Transitive  FromEnding
-	1   ContinuousVerbPhrase_Intransitive                                   FromTakersContinuous_Intransitive  FromEnding
-1 ContinuousVerbPhrase_Transitive VerbModifier WithTakersContinuous_Transitive∂WithEnding
-1 WithTakersContinuous_Transitive∂WithEnding WithTakersContinuous_Transitive WithEnding
-1 ContinuousVerbPhrase_Intransitive VerbModifier WithTakersContinuous_Intransitive∂WithEnding
-1 WithTakersContinuous_Intransitive∂WithEnding WithTakersContinuous_Intransitive WithEnding
 1 ContinuousVerbPhrase_Transitive VerbModifier FromTakersContinuous_Transitive∂FromEnding
 1 FromTakersContinuous_Transitive∂FromEnding FromTakersContinuous_Transitive FromEnding
-1 ContinuousVerbPhrase_Intransitive VerbModifier FromTakersContinuous_Intransitive∂FromEnding
-1 FromTakersContinuous_Intransitive∂FromEnding FromTakersContinuous_Intransitive FromEnding
-1 ContinuousVerbPhrase_Transitive PresentParticipleSubjunctive wrap_that∂NounPhrase_Subj∂VerbPhrase_inf_Transitive
+1 NounPhrase_Subj∂VerbPhrase_inf_Transitive NounPhrase_Subj VerbPhrase_inf_Transitive
 1 wrap_that∂NounPhrase_Subj∂VerbPhrase_inf_Transitive wrap_that NounPhrase_Subj∂VerbPhrase_inf_Transitive
 1 NounPhrase_Subj∂VerbPhrase_inf_Transitive NounPhrase_Subj VerbPhrase_inf_Transitive
-1 ContinuousVerbPhrase_Intransitive PresentParticipleSubjunctive wrap_that∂NounPhrase_Subj∂VerbPhrase_inf_Transitive
-1 wrap_that∂NounPhrase_Subj∂VerbPhrase_inf_Transitive wrap_that NounPhrase_Subj∂VerbPhrase_inf_Transitive
 1 NounPhrase_Subj∂VerbPhrase_inf_Transitive NounPhrase_Subj VerbPhrase_inf_Transitive
-1 ContinuousVerbPhrase_Transitive PresentParticipleSubjunctive NounPhrase_Subj∂VerbPhrase_inf_Transitive
-1 NounPhrase_Subj∂VerbPhrase_inf_Transitive NounPhrase_Subj VerbPhrase_inf_Transitive
-1 ContinuousVerbPhrase_Intransitive PresentParticipleSubjunctive NounPhrase_Subj∂VerbPhrase_inf_Transitive
 1 NounPhrase_Subj∂VerbPhrase_inf_Transitive NounPhrase_Subj VerbPhrase_inf_Transitive
 
 	###Objects
 	1   DirectObject                                            NounPhrase_DirObj
-	1   IndirectObject                                          Prep NounPhrase_IndObj
 
 	###With-Takers - Certain verbs can be followed by 'with' "Speak with" "Ride with" "Drink with" etc
 	###From-Takers - same thing. {prep} domain is with and from.
-	1   WithEnding                                            wrap_with NounPhrase_IndObj
 	1   FromEnding                                            wrap_from NounPhrase_IndObj
-1 ForEnding wrap_for quant_Sng∂time_Sng
-1 quant_Sng∂time_Sng quant_Sng time_Sng
 1 ForEnding wrap_for quant_Plr∂time_Plr
 1 quant_Plr∂time_Plr quant_Plr time_Plr
-	1   ForEnding                                               wrap_for time_Sng
 	1   ForEnding                                               wrap_for time_Plr
 
 
@@ -2772,7 +1850,6 @@
 	1   isAdj+                                        Adj
 	1   isAdj+                                        Adj_comp than+
 	1   isAdj+                                        wrap_the Adj_sup
-	1   isAdj+                                        PrepOfLocation NounPhrase_IndObj
 	1   than+                                         wrap_than NounPhrase_DirObj
 	1   VerbModifier                                  Adv_cmverbs
 
@@ -2838,7 +1915,6 @@
 
 #Possessives
 	1   Determiner_1st_Sng Possessive_1st_Sng
-	1   Determiner_1st_Plr Possessive_1st_Plr
 	1   Determiner_2nd_Sng Possessive_2nd_Sng
 	1   Determiner_2nd_Plr Possessive_2nd_Plr
 	1   Determiner_3rd_Sng Possessive_3rd_Sng
