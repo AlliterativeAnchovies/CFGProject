@@ -29,7 +29,7 @@ if (len(sys.argv) == 2):
 			output.append(line)
 			
 	
-	disallowedMatches = ["FromTakersPP_1st_Sng_Transitive", "Noun_2nd_Plr", "Possessive_1st_Plr", "Noun_1st_Plr", "Noun_2nd_Sng", "Pronoun_1st_Plr_IndObj", "Noun_1st_Sng", "Determiner_1st_Plr", "FromTakersContinuous_Intransitive", "time_Sng","FromTakers_1st_Sng_Intransitive","Noun_2nd_Plr","FromTakersContinuous_Transitive","FromTakers_3rd_Plr_Intransitive","Pronoun_1st_Plr_DirObj","FromTakers_2nd_Plr_Transitive","Noun_2nd_Sng","FromTakers_2nd_Plr_Intransitive","FromTakers_1st_Plr_Intransitive","FromTakers_1st_Sng_Transitive","FromTakers_1st_Plr_Transitive","FromTakers_2nd_Sng_Intransitive","FromTakers_2nd_Sng_Transitive","FromTakersPP_1st_Plr_Intransitive"]
+	disallowedMatches = ["FromTakersPP_1st_Sng_Transitive", "Noun_2nd_Plr", "Possessive_1st_Plr", "Noun_1st_Plr", "Noun_2nd_Sng", "Pronoun_1st_Plr_IndObj", "Noun_1st_Sng", "Determiner_1st_Plr", "FromTakersContinuous_Intransitive", "time_Sng","FromTakers_1st_Sng_Intransitive","Noun_2nd_Plr","FromTakersContinuous_Transitive","FromTakers_3rd_Plr_Intransitive","Pronoun_1st_Plr_DirObj","FromTakers_2nd_Plr_Transitive","Noun_2nd_Sng","FromTakers_2nd_Plr_Intransitive","FromTakers_1st_Plr_Intransitive","FromTakers_1st_Sng_Transitive","FromTakers_1st_Plr_Transitive","FromTakers_2nd_Sng_Intransitive","FromTakers_2nd_Sng_Transitive","FromTakersPP_1st_Plr_Intransitive","FromTakersPP_3rd_Plr_Transitive"]
 			
 	disallowedRemoved = 0
 	lhsRemoved = set([])
@@ -66,7 +66,7 @@ if (len(sys.argv) == 2):
 					output.remove(line)
 					lhsRemoved.add(split[1])
 					break
-	
+
 
 	#We have now removed the expanded templates (contextExpander.py), turned to CNF, and removed all nonterminals that did not have an associated terminal
 	#The final step is to normalize the probabilities so that their sum is at most 100
@@ -117,12 +117,11 @@ if (len(sys.argv) == 2):
 					valOfMax = v
 					indxOfMax = a
 			if indxOfMax == -1: continue
-			newOutput_a = output[a].split()
+			newOutput_a = output[indxOfMax].split()
 			newOutput_a[0] = str(int(newOutput_a[0])-1)
 			if newOutput_a[0] == 0:
 				print("Error: " + LHS)
 			output[indxOfMax] = "\n"+" ".join(newOutput_a)
-
 
 
 	open("CNFConversion.txt", "w").write("".join(output))

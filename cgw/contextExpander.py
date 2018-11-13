@@ -155,8 +155,8 @@ for line in allLines:
 
 
 #print(outputString)
-outputString = "# The start symbol is TOP.\n# These two rules are required; choose their weights carefully!\n99  TOP  S1\n#1   TOP  S2\n" + outputString
-outputString = outputString + "\n# in case you use S1.gr by itself\n1   S2   Misc"
+outputString = "# The start symbol is TOP.\n# These two rules are required; choose their weights carefully!\n99  TOP  S1\n1   TOP  S2\n" + outputString
+outputString = outputString + "\n# in case you use S1.gr by itself\n1   S2   Misc\n"
 #fout = open("innerWorkings/S1.gr", "w")
 #print(outputString)
 #fout.write(outputString)
