@@ -125,7 +125,7 @@ def getCheckOutput(input = 'innerWorkings/stringWrapper.txt'):
 if len(sys.argv) <= 1:
 	print("Use either 'python run.py generate', 'python run.py check', 'python run.py compile', 'python run.py getUnknown', or 'python run.py niceParseTree'")
 elif sys.argv[1] == "generate":
-	call(["python", "innerWorkings/pcfg_parse_gen.py", "-o", "10", "-g","innerWorkings/S1.gr,innerWorkings/Vocab.gr"])
+	call(["python", "innerWorkings/pcfg_parse_gen.py", "-o", "30", "-g","innerWorkings/S1.gr,innerWorkings/Vocab.gr"])
 elif sys.argv[1] == "check":
 	call(checkCommand+'innerWorkings/example_sentences.txt',shell=True)
 elif sys.argv[1] == "compile":

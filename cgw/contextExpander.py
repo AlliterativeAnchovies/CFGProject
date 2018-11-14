@@ -155,7 +155,7 @@ for line in allLines:
 
 
 #print(outputString)
-outputString = "# The start symbol is TOP.\n# These two rules are required; choose their weights carefully!\n99  TOP  S1\n1   TOP  S2\n" + outputString
+outputString = "#We, 'Team Adequate', wrote some code to compile a non-CNF grammar to CNF, along with some other helpful shortcuts.\n#It is all available from here: github.com/AlliterativeAnchovies/CFGProject\n#CFGTemplate.txt is the actual grammar we wrote, pre-compilation.\n# The start symbol is TOP.\n# These two rules are required; choose their weights carefully!\n99  TOP  S1\n#1   TOP  S2#This rule randomly causes our grammar to print 'Mis'...  So I'm not gonna use it, sorry.\n" + outputString
 outputString = outputString + "\n# in case you use S1.gr by itself\n1   S2   Misc\n"
 #fout = open("innerWorkings/S1.gr", "w")
 #print(outputString)

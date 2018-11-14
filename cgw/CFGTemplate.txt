@@ -27,6 +27,7 @@
 }
 1   wrap_to_be                  wrap_to wrap_be
 1   ought_modal                 wrap_ought wrap_to
+1   exclamationMark             !
 
 ### Clauses ###=========================================================================================
 {
@@ -48,7 +49,7 @@
 
 	1   S1               StatementClause  EOS_Statement
 	1   S1               QuestionClause   EOS_Question
-	1   S1               ImperativeClause EOS_Statement
+	1   S1               ImperativeClause exclamationMark
 
 	############Statements############
 
@@ -125,7 +126,7 @@
 	############Imperatives###########
 
 	#Either simply VP ("Speak!") or, to invert it into the negative ("Do not speak!") do + not + VP_inf
-	1   ImperativeClause                   VerbPhrase
+	1   ImperativeClause                   VerbPhrase_inf
 	1   ImperativeClause                   wrap_do wrap_not VerbPhrase_inf
 
 }
@@ -249,15 +250,15 @@
 	50   NounPhrase{person}{plurality}{role}            SimpleNounPhrase{person}{plurality}{role}
 
 	#Naive Noun Phrase - either [Determiner Noun] or [Pronoun] or [Proper Noun]
-	1   SimpleNounPhrase{person}{plurality}{role}      Determiner{person}{plurality}              Noun{person}{plurality}
-	1   SimpleNounPhrase{person}{plurality}{role}      Determiner{person}{plurality} NounModifier Noun{person}{plurality}
-	1   SimpleNounPhrase{person}{plurality}{role}      Determiner{person}{plurality}              Noun{person}{plurality} ObjectClause{person}{plurality}
-	1   SimpleNounPhrase{person}{plurality}{role}      Determiner{person}{plurality} NounModifier Noun{person}{plurality} ObjectClause{person}{plurality}
+	10   SimpleNounPhrase{person}{plurality}{role}      Determiner{person}{plurality}              Noun{person}{plurality}
+	10   SimpleNounPhrase{person}{plurality}{role}      Determiner{person}{plurality} NounModifier Noun{person}{plurality}
+	10   SimpleNounPhrase{person}{plurality}{role}      Determiner{person}{plurality}              Noun{person}{plurality} ObjectClause{person}{plurality}
+	10   SimpleNounPhrase{person}{plurality}{role}      Determiner{person}{plurality} NounModifier Noun{person}{plurality} ObjectClause{person}{plurality}
 	1   SimpleNounPhrase{person}{plurality}{role}      Pronoun{person}{plurality}{role}
-	1   SimpleNounPhrase{person}{plurality}{role}      Pronoun{person}{plurality}{role} ObjectClause{person}{plurality}
-	1   SimpleNounPhrase_3rd_Sng{role}                 ProperStuffs_Sng
+	#1   SimpleNounPhrase{person}{plurality}{role}      Pronoun{person}{plurality}{role} ObjectClause{person}{plurality}
+	10   SimpleNounPhrase_3rd_Sng{role}                 ProperStuffs_Sng
 	1   SimpleNounPhrase_3rd_Sng{role}                 ProperStuffs_Sng ObjectClause{person}{plurality}
-	1   SimpleNounPhrase_3rd_Plr{role}                 ProperStuffs_Plr
+	10   SimpleNounPhrase_3rd_Plr{role}                 ProperStuffs_Plr
 	1   SimpleNounPhrase_3rd_Plr{role}                 ProperStuffs_Plr ObjectClause{person}{plurality}
 
 	#Parenthetical Expression - "Arthur [, the king ,] likes tiny men ." Brackets indicate the expression
@@ -277,7 +278,7 @@
 	#It is Sir Lancelot [who knows Zoot],[that knows Zoot],[which knows Zoot]
 
 	1   ObjectClause{person}{plurality}                wrap_who   VerbPhrase{person}{plurality}
-	1   ObjectClause{person}{plurality}                wrap_that  VerbPhrase{person}{plurality}
+	50   ObjectClause{person}{plurality}                wrap_that  VerbPhrase{person}{plurality}
 	1   ObjectClause{person}{plurality}                wrap_which VerbPhrase{person}{plurality}
 
 	#Gerund Noun Phrase: "[[[Quickly running]]] through the store is illegal."  {Verbs ending in -ing can act as nouns, they are called gerunds}
@@ -286,7 +287,7 @@
 	#"He likes running", "He hates running", etc.  This is worth looking into, however I bet that every time -ing can be used
 	#in this context, we could use the infinitive instead - "He likes to run", "He hates to run".  So it would probably be best to handle
 	#that by having infinitives have a chance to evaluate to a gerund instead.
-	50   NounPhrase_3rd_Sng_Subj                        Adv_cmadj GerundPhrase
+	10   NounPhrase_3rd_Sng_Subj                        Adv_cmadj GerundPhrase
 	50   NounPhrase_3rd_Sng_Subj                        GerundPhrase
 	1   GerundPhrase                                   GerundPhrase{transitivity}
 	1   GerundPhrase{transitivity}                     Gerund{transitivity}
@@ -309,15 +310,17 @@
 	#"big" [ADJ], "big yellow" [ADJ ADJ], "unfortunately small" [ADV ADJ] are the 3 types of modifiers.
 	#This section could be split off into its own "AdjectivePhrase" bit but I think that is overkill, this should suffice.
 	#Adv_cmadj is the subset of adverbs that can modify adjectives (since not all adverbs can)
-	1   NounModifier                       Adj
-	1   NounModifier                       Adj Adj
-	1   NounModifier                       Adv_cmadj Adj
+	80   NounModifier                       Adj
+	10   NounModifier                       Adj Adj
+	10   NounModifier                       Adv_cmadj Adj
 
 }
 ### Verb Phrases ###=====================================================================================
 {
 	<person _1st _2nd _3rd>
 	<plurality _Sng _Plr>
+	<person2 _1st _2nd _3rd>
+	<plurality2 _Sng _Plr>
 	<transitivity _Transitive _Intransitive>
 	<PP PP ε>
 	<extrapasty Past ε>
@@ -370,10 +373,10 @@
 	1   VerbPhrase{PP}{person}{plurality}{transitivity}                         NaiveVerbPhrase{PP}{person}{plurality}{transitivity}
 
 	# Verb + (optional DirecObj only if transitive) + (optional IndirecObj) 
-	1   SimpleVerbPhrase{PP}{person}{plurality}_Transitive         Verb{PP}{person}{plurality}_Transitive    DirectObject
-	1   SimpleVerbPhrase{PP}{person}{plurality}_Transitive         Verb{PP}{person}{plurality}_Transitive    DirectObject IndirectObject
-	1   SimpleVerbPhrase{PP}{person}{plurality}{transitivity}      Verb{PP}{person}{plurality}{transitivity}
-	1   SimpleVerbPhrase{PP}{person}{plurality}{transitivity}      Verb{PP}{person}{plurality}{transitivity}              IndirectObject
+	20   SimpleVerbPhrase{PP}{person}{plurality}_Transitive         Verb{PP}{person}{plurality}_Transitive    DirectObject
+	20   SimpleVerbPhrase{PP}{person}{plurality}_Transitive         Verb{PP}{person}{plurality}_Transitive    DirectObject IndirectObject
+	20   SimpleVerbPhrase{PP}{person}{plurality}{transitivity}      Verb{PP}{person}{plurality}{transitivity}
+	20   SimpleVerbPhrase{PP}{person}{plurality}{transitivity}      Verb{PP}{person}{plurality}{transitivity}              IndirectObject
 
 	# Simple Verb Phrase but with VerbModifier coming after the verb.
 	1   BackwardsVerbPhrase{PP}{person}{plurality}_Transitive      Verb{PP}{person}{plurality}_Transitive    VerbModifier DirectObject
@@ -430,17 +433,17 @@
 	###Infinite - the verb is in the infinitive (or subjunctive).
 	
 	1   VerbPhrase_inf                                          VerbPhrase_inf{transitivity}
-	10  VerbPhrase_inf{transitivity}                            VerbModifier Verb_inf{transitivity}
-	10  VerbPhrase_inf{transitivity}                            Verb_inf{transitivity}
+	20  VerbPhrase_inf{transitivity}                            VerbModifier Verb_inf{transitivity}
+	20  VerbPhrase_inf{transitivity}                            Verb_inf{transitivity}
 	1   VerbPhrase_inf{transitivity}                            wrap_speak wrap_of SimpleNounPhrase{person}{plurality}_IndObj
 
 	#vvvvv Subjunctive_1st_Sng is only 'suggest', so this line is saying that an allowable infinitive is 'I ought to suggest that [subjunctive clause]'
-	1   VerbPhrase_inf{transitivity}                            Subjunctive_1st_Sng wrap_that NounPhrase_Subj VerbPhrase_inf_Transitive
-	1   VerbPhrase_inf{transitivity}                            Subjunctive_1st_Sng           NounPhrase_Subj VerbPhrase_inf_Transitive
-	1   VerbPhrase_inf_Transitive   					    	Verb_inf_Transitive     DirectObject
-	1   VerbPhrase_inf_Transitive   				    		Verb_inf_Transitive     DirectObject IndirectObject
-	1   VerbPhrase_inf{transitivity}       						Verb_inf{transitivity}
-	1   VerbPhrase_inf{transitivity}   		    				Verb_inf{transitivity}               IndirectObject
+	1 VerbPhrase_inf{transitivity}                            Subjunctive_1st_Sng wrap_that NounPhrase_Subj VerbPhrase_inf_Transitive
+	1 VerbPhrase_inf{transitivity}                            Subjunctive_1st_Sng           NounPhrase_Subj VerbPhrase_inf_Transitive
+	10   VerbPhrase_inf_Transitive   					    	Verb_inf_Transitive     DirectObject
+	10   VerbPhrase_inf_Transitive   				    		Verb_inf_Transitive     DirectObject IndirectObject
+	10   VerbPhrase_inf{transitivity}       						Verb_inf{transitivity}
+	10   VerbPhrase_inf{transitivity}   		    				Verb_inf{transitivity}               IndirectObject
 
 	#Passive voice infinitives, oh boy
 	1   VerbPhrase_inf_Transitive   					    	VerbPassive_inf_Transitive    DirectObject
@@ -459,12 +462,12 @@
 	# "know" is like suggest but it does not take the subjunctive, just normal verbing
 	# It can also take 'what'
 	1   VerbPhrase{person}{plurality}_Transitive                PseudoSubjunctiveVerbPhrase{person}{plurality}
-	1   PseudoSubjunctiveVerbPhrase{person}{plurality}          PseudoSubjunctive{person}{plurality}   wrap_that NounPhrase_Subj VerbPhrase
-	1   PseudoSubjunctiveVerbPhrase{person}{plurality}          PseudoPPSubjunctive{person}{plurality} wrap_that NounPhrase_Subj VerbPhrase
-	1   PseudoSubjunctiveVerbPhrase{person}{plurality}          PseudoSubjunctive{person}{plurality}   wrap_what NounPhrase_Subj VerbPhrase
-	1   PseudoSubjunctiveVerbPhrase{person}{plurality}          PseudoPPSubjunctive{person}{plurality} wrap_what NounPhrase_Subj VerbPhrase
-	1   PseudoSubjunctiveVerbPhrase{person}{plurality}          PseudoSubjunctive{person}{plurality}             NounPhrase_Subj VerbPhrase
-	1   PseudoSubjunctiveVerbPhrase{person}{plurality}          PseudoPPSubjunctive{person}{plurality}           NounPhrase_Subj VerbPhrase
+	1   PseudoSubjunctiveVerbPhrase{person}{plurality}          PseudoSubjunctive{person}{plurality}   wrap_that NounPhrase{person2}{plurality2}_Subj VerbPhrase{person2}{plurality2}
+	1   PseudoSubjunctiveVerbPhrase{person}{plurality}          PseudoPPSubjunctive{person}{plurality} wrap_that NounPhrase{person2}{plurality2}_Subj VerbPhrase{person2}{plurality2}
+	1   PseudoSubjunctiveVerbPhrase{person}{plurality}          PseudoSubjunctive{person}{plurality}   wrap_what NounPhrase{person2}{plurality2}_Subj VerbPhrase{person2}{plurality2}
+	1   PseudoSubjunctiveVerbPhrase{person}{plurality}          PseudoPPSubjunctive{person}{plurality} wrap_what NounPhrase{person2}{plurality2}_Subj VerbPhrase{person2}{plurality2}
+	1   PseudoSubjunctiveVerbPhrase{person}{plurality}          PseudoSubjunctive{person}{plurality}             NounPhrase{person2}{plurality2}_Subj VerbPhrase{person2}{plurality2}
+	1   PseudoSubjunctiveVerbPhrase{person}{plurality}          PseudoPPSubjunctive{person}{plurality}           NounPhrase{person2}{plurality2}_Subj VerbPhrase{person2}{plurality2}
 
 	###Present Participle - the verb is conjugated like a present participle
 	#  We will only handle simple cases with this, analagously to the Naive case
